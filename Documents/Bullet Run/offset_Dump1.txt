@@ -1,0 +1,4 @@
+GObjObjects_Pattern	1
+Names_Pattern			1
+GObjObjects_offset		0x17D6928
+Names_offset			0x17943C4

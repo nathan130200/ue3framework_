@@ -163,12 +163,17 @@ void GetOffsetPositions()
 	char* Object_StateFrame				= "StateFrame";
 	char* Object_ObjectArchetype		= "ObjectArchetype";
 	char* Object_Next					= "Next";
-	char* Object_ObjectFlags			= "ObjectFlags";	
+	char* Object_ObjectFlags			= "ObjectFlags";
+	char* Object_NetIndex				= "NetIndex";
+
+
 
 	int Object_Start = 0;
 	DWORD Object_ClassPtr = 0;
 	DWORD Offset_MaxObjects = 0x4;
 
+	DWORD Offset_1					    = 0;
+	DWORD Offset_NetIndex				= 0;
 	DWORD Offset_ObjectFlags			= 0;
 	DWORD Offset_Next					= 0;
 	DWORD Offset_ObjectArchetype		= 0;
@@ -188,6 +193,10 @@ void GetOffsetPositions()
 
 	sprintf_s ( cBuffer, "%s\\%s\\Property_Dump.txt", SDK_BASE_DIR, GAME_NAME_S );
 	FILE* pPropFile = fopen(cBuffer, "w+");
+
+	sprintf_s ( cBuffer, "%s\\%s\\Property_Dump2.txt", SDK_BASE_DIR, GAME_NAME_S );
+	FILE* pPropFile2 = fopen(cBuffer, "w+");
+
 	for (int i = 0; i < GObjObjects->Num; i++)
 	{
 		DWORD Object = (DWORD) GObjObjects->Data[i];
@@ -221,6 +230,7 @@ jmpOne:
 			continue;
 
 		DWORD Name = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
+
 		if (!Offset_Outer)
 		{
 			if (!strcmp(Names->Data[Name]->Name, Object_Outer))
@@ -307,8 +317,28 @@ jmpOne:
 			{
 				Offset_ObjectFlags = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
 			}
+		}
+
+		if (!Offset_StateFrame)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_StateFrame))
+			{
+				Offset_StateFrame = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
 		}	
-	}
+
+		if (!Offset_NetIndex)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_NetIndex))
+			{
+				Offset_NetIndex = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}	
+
+		Offset_1 = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+		fprintf(pPropFile2, "Names[%06i]	%s				Offset: 0x%X \n", i, Names->Data[Name]->Name, Offset_1);
+		fprintf(pPropFile2, "UObject[%06i]	%-50s 			Offset: 0x%X\n", i, GetName ( GObjObjects->Data[ i ] ), Offset_1);
+	} 
 
 	if (!Offset_Outer || !Offset_Class)
 		return;
@@ -352,18 +382,21 @@ jmpThree:
 	if (!Offset_PropertySize)
 		return;
 
-	fprintf(pPropFile, "\nUObject:\n");
-	fprintf(pPropFile, "\t- VfTableObject\t\t\t0x%X\n",				Offset_VfTableObject);
-	fprintf(pPropFile, "\t- ObjectInternalInteger\t\t\t0x%X\n",		Offset_ObjectInternalInteger);
-	fprintf(pPropFile, "\t- ObjectFlags\t\t\t0x%X\n",				Offset_ObjectFlags);
-	fprintf(pPropFile, "\t- Linker\t\t\t0x%X\n",					Offset_Linker);
-	fprintf(pPropFile, "\t- LinkerIndex\t\t\t0x%X\n",				Offset_LinkerIndex);
-	fprintf(pPropFile, "\t- HashNext\t\t\t0x%X\n",					Offset_HashNext);
-	fprintf(pPropFile, "\t- HashOuterNext\t\t\t0x%X\n",				Offset_HashOuterNext);
-	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n",						Offset_Outer);
-	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n",						Offset_Name);
-	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n",						Offset_Class);
-	fprintf(pPropFile, "\t- ObjectArchetype\t\t\t0x%X\n",			Offset_ObjectArchetype);
+	fprintf(pPropFile, "\nclass UObject\n{\npublic:\n");
+	fprintf(pPropFile, "\t struct FPointer        VfTableObject;\t			//0x%X (0x04)\n",		Offset_VfTableObject);
+	fprintf(pPropFile, "\t int                    ObjectInternalInteger;\t	//0x%X (0x04)\n",		Offset_ObjectInternalInteger);
+	fprintf(pPropFile, "\t struct FQWord          ObjectFlags;\t			//0x%X (0x08)\n",		Offset_ObjectFlags);
+	fprintf(pPropFile, "\t class UObject*         Linker;\t					//0x%X (0x04)\n",		Offset_Linker);
+	fprintf(pPropFile, "\t struct FPointer        LinkerIndex;\t			//0x%X (0x04)\n",		Offset_LinkerIndex);
+	fprintf(pPropFile, "\t struct FPointer        HashNext;\t				//0x%X (0x04)\n",		Offset_HashNext);
+	fprintf(pPropFile, "\t struct FPointer        HashOuterNext;\t			//0x%X (0x04)\n",		Offset_HashOuterNext);
+	fprintf(pPropFile, "\t int                    NetIndex;\t				//0x%X (0x04)\n",		Offset_StateFrame);
+	fprintf(pPropFile, "\t struct FPointer        StateFrame;\t				//0x%X (0x04)\n",		Offset_NetIndex);
+	fprintf(pPropFile, "\t class UObject*         Outer;\t					//0x%X (0x04)\n",		Offset_Outer);
+	fprintf(pPropFile, "\t struct FName           Name;\t					//0x%X (0x08)\n",		Offset_Name);
+	fprintf(pPropFile, "\t class UClass*          Class;\t					//0x%X (0x04)\n",		Offset_Class);
+	fprintf(pPropFile, "\t class UObject*         ObjectArchetype;\t		//0x%X (0x04)\n",		Offset_ObjectArchetype);
+	fprintf(pPropFile, "\n}\n");
 
 	fprintf(pPropFile, "\nUProperty:\n");
 	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n",				Offset_PropertyOffset);
@@ -375,6 +408,7 @@ jmpThree:
 
 
 	fclose(pPropFile);
+	fclose(pPropFile2);
 }
 
 BOOL Init_Core()
