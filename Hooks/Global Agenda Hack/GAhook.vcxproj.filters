@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{70844dcb-e30a-45c7-86f0-d5081674e54e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hook">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Framework\Utils">
+      <UniqueIdentifier>{9462e057-0982-41d8-8d7e-454c77322a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\UE3">
+      <UniqueIdentifier>{4cf00e1c-ebce-45af-b527-5a6ce14d12d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Renders">
+      <UniqueIdentifier>{73409311-5173-4742-81b5-29a147531d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Menu">
+      <UniqueIdentifier>{d0bcae79-b213-4a4c-b70b-e28e9a1e4558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Hack">
+      <UniqueIdentifier>{80635b65-2ba5-48af-af40-48ac8c4e5242}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hook.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Framework\Utils\Utils.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Framework\Utils\vmthooks.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Framework\Framework.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\Entry.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\Utils.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\vmthooks.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\2DRadar.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\AimBot.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\Color.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\ESP.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\IsVisible.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\Misc.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\UE3Math.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\WorldToScreen.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Renders\CRender.h">
+      <Filter>Framework\Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Menu\MenuManager.h">
+      <Filter>Framework\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Hack\GADraw.h">
+      <Filter>Framework\Hack</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

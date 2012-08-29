@@ -1,0 +1,109 @@
+AA3Game native flag = 0x8000
+MarsGame native flag = 0x400
+APB native flag = 0x400
+CrimeCraft native flag = 0x400
+ParabellumTheGame native flag = 0x400
+EndWar native flag = 0x400
+ava native flag = 0x400
+biahh native flag = 0x400
+R6Vegas2_Game native flag = 0x400
+HOMEFRONT native flag = 0x400
+
+
+// GObjects
+//	1) 8B ? ? ? ? ? ? ? ? 6A 01 8B ? E8
+//	2) 8B 41 04 8B ? ? ? ? ? 8B 04 81 C3
+
+// Both GObjects and GNames
+//	4) A1 ? ? ? ? 8B 04 88
+
+// GNames
+// 	1) 3B 05 ? ? ? ? 7D ? 8B ? ? ? ? ? ? ? ? 74
+//	2) 3B 05 ? ? ? ? ? ? 8B 0D ? ? ? ? 83 ? ? ? ? ? B8  01 00 00 00 
+
+Primary Concepts
+
+GObjects
+	A1 ? ? ? ? 8B 04 ? 8B ? ? 25 00 02 00 00
+	\xA1\x00\x00\x00\x00\x8B\x04\x00\x8B\x00\x00\x25\x00\x02\x00\x00
+	x????xxxxxxxxxxx
+	+ 0x1
+
+	Games Supported
+		UT3
+		Parabellum
+		Gears of War
+		America's Army
+
+8B ? ? ? ? ? 8B 04 ? 8B ? ? 25 00 02 00 00
+\x8B\x00\x00\x00\x00\x00\x8B\x04\x00\x8B\x00\x00\x25\x00\x02\x00\x00
+x?????xx?x??xxxxx
++ 0x2
+
+AvA
+AA3
+GOW
+UT3
+Parabellum
+
+GNames
+	A1 ? ? ? ? 8B 04 ? 8B ? ? 81 E1 00 10 00 00
+	\xA1\x00\x00\x00\x00\x8B\x04\x00\x8B\x00\x00\x81\xE1\x00\x01\x00\x00
+	x????xxxxxxxxxxxx
+	+ 0x1
+
+	Games Supported
+		UT3
+		Parabellum
+		Gears of War
+		Alliance of Valiant Arms
+
+ProcessEvent sig finds at address + 0x25F
+
+Search each VTable for size of 0x500 for pattern
+74 ? 83 C0 07 
+
+should add:
+ 83 E0 F8 E8 ? ? ? ? 8B C4
+x?xxxxxxx????xx
+
+8B 0D ? ? ? ? 8B 04 ? 8B ? ? 81 E1 00 10 00 00
+
+8B ? ? ? ? ? ? ? ? 6A 01 8B ? E8 ? ? ? ? 56 E8 ? ? ? ? 8D
+\x8B\x00\x00\x00\x00\x00\x00\x00\x00\x6A\x01\x8B\x00\xE8\x00\x00\x00\x00\x56\xE8\x00\x00\x00\x00\x8D
+x????????xxx?x????xx????x
+
+works for AvA
+
+Secondary Concepts
+
+GObjects
+	8B ? ? ? ? ? ? ? ? 6A 01 8B ? E8 ? ? ? ? 8B ? E8
+	x????????xxx?x????x?x
+	+ 0x2
+Works with 2 games
+
+GNames
+	3B 05 ? ? ? ? ? ? 8B 0D ? ? ? ? 83 ? ? ? ? ? B8  01 00 00 00 
+	\x3B\x05\x00\x00\x00\x00\x00\x00\x8B\x0D\x00\x00\x00\x00\x83\x00\x00\x00\x00\x00\xB8\x01\x00\x00\x00
+	xx??????xx????x?????xxxxx
+	+ 0xA
+
+	Works on America's Army
+	Works on AvA
+
+GObjects: 7D ? 8B 0D ? ? ? ? 8B 04 81
+	+ 0x4
+		AvA
+		AA3
+		UT3
+		Borderlands
+		Parabellum
+
+GNames: 8B ? 8B 0D ? ? ? ? 8B 04 81
+	+ 0x4
+		AvA
+		AA3
+		UT3
+
+8B 44 24 04 8B 0D ? ? ? ? 8B 04 81 C3
