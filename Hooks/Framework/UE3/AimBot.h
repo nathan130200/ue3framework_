@@ -1,5 +1,6 @@
 bool AutoKnifeKeyIsPressed = NULL;
 bool AutoKnifeWeaponOut = FALSE;
+
 class Aim
 {
 public:
@@ -67,7 +68,12 @@ public:
 					else
 					{
 						CurrentTargetedPawn = Pawn;
+						AutoKnifeWeaponOut = FALSE;
 					}
+				}
+				else
+				{
+					AutoKnifeWeaponOut = FALSE;
 				}
 			}
 
@@ -75,17 +81,22 @@ public:
 
 			if( CurrentTarget && PawnDistance < 1.0f)
 			{
-				if (!AutoKnifeWeaponOut)
-				{
-					keybd_event('4', NULL, KEYEVENTF_KEYUP, NULL);
+				//if (!AutoKnifeWeaponOut)
+				//{
+					keybd_event(VkKeyScan('4'), 0, 0, 0);
+					keybd_event(VkKeyScan('4'), 0, 0, 0);
+					Sleep(10);
+					keybd_event(VkKeyScan('4'), 0, 0, 0);
 					AutoKnifeWeaponOut = TRUE;
-				}
+				//}
 
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
 
 
-				mouse_event(MOUSEEVENTF_LEFTDOWN,  0, 0, 0, 0);		
+				mouse_event(MOUSEEVENTF_LEFTDOWN,  0, 0, 0, 0);	
+				Sleep(10);
+				mouse_event(MOUSEEVENTF_LEFTUP,  0, 0, 0, 0);	
 
 #ifdef GASDK || TASDK
 				Controller->Rotation = AimRotation;
@@ -95,6 +106,10 @@ public:
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 				APBPController->ClientSetCtrlRotation(AimRotation);
 #endif
+			}
+			else
+			{
+				AutoKnifeWeaponOut = FALSE;
 			}
 		}
 		else

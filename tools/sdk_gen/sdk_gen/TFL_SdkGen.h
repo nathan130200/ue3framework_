@@ -39,8 +39,13 @@ using namespace std;
 # ========================================================================================= #
 */
 
+//
+#include "UE3BasicCore\BL\GameDefines.h"
+#include "UE3BasicCore\BL\ObjectFunctions.h"
+#include "UE3BasicCore\BL\PiecesOfCode.h"
+
 // Sanctum
-#include "UE3BasicCore\ST\GameDefines.h"
+//#include "UE3BasicCore\ST\GameDefines.h"
 //#include "UE3BasicCore\ST\ObjectFunctions.h"
 //#include "UE3BasicCore\ST\PiecesOfCode.h"
 
