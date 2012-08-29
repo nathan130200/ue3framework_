@@ -66,6 +66,32 @@ public:
 	}
 #endif
 
+#ifdef UE3_9
+	static void CRender::DrawString( UCanvas* pCanvas, float X, float Y, const FColor& Color, bool Center, wchar_t* String )
+	{
+		float OldCurX		= pCanvas->CurX;
+		float OldCurY		= pCanvas->CurY;
+		FColor OldColor		= pCanvas->DrawColor;
+
+		pCanvas->CurX		= X;
+		pCanvas->CurY		= Y;
+		pCanvas->DrawColor  = Color;
+
+		if ( Center )
+		{
+			float XL, YL;
+			pCanvas->TextSize( String, 0, 0, &XL, &YL );
+			pCanvas->CurX -= XL / 2;
+		}
+
+		pCanvas->DrawText(String, false, 1, 1, NULL);
+    
+		pCanvas->CurX      = OldCurX;
+		pCanvas->CurY      = OldCurY;
+		pCanvas->DrawColor  = OldColor;
+	}
+#endif
+
 	static void CRender::DrawStringEx( UCanvas* Canvas, float X, float Y, const FColor& Color, bool Center, wchar_t* String, ... )
 	{
 		wchar_t StringBuffer [1024];
@@ -100,7 +126,7 @@ public:
 	}
 #endif
 
-#ifdef UE3_5
+#ifdef UE3_5 || UE3_9
 	static void CRender::DrawRect( UCanvas* Canvas, float X, float Y, float W, float H, const FLinearColor& Color )
 	{
 		Canvas->CurX = X;
@@ -117,6 +143,26 @@ public:
 		DrawRect( Canvas, X, Y + H - 1, W, 1, Color );
 	}
 #endif
+
+#ifdef UE3_9
+	static void CRender::DrawRect( UCanvas* Canvas, float X, float Y, float W, float H, const FLinearColor& Color )
+	{
+		Canvas->CurX = X;
+		Canvas->CurY = Y;
+
+		Canvas->DrawTile( Canvas->DefaultTexture, W, H, 0, 0, 1, 1, Color, NULL, NULL);
+	}
+
+	static void CRender::DrawBox( UCanvas* Canvas, float X, float Y, float W, float H, const FLinearColor& Color )
+	{
+		DrawRect( Canvas, X, Y, W, 1, Color );
+		DrawRect( Canvas, X, Y, 1, H, Color );
+		DrawRect( Canvas, X + W - 1, Y, 1, H, Color );
+		DrawRect( Canvas, X, Y + H - 1, W, 1, Color );
+	}
+#endif
+
+
 
 	void CRender::DrawLine(UCanvas* pCanvas, float startX, float startY, float endX, float endY, FColor cColor )
 	{

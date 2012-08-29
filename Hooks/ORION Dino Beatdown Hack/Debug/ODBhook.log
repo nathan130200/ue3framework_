@@ -1,0 +1,36 @@
+﻿Build started 8/29/2012 5:27:20 AM.
+     1>Project "C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Hooks\ORION Dino Beatdown Hack\ODBhook.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\ODBHack.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt hook.cpp /DODBSDK /DUE3_9 
+         hook.cpp
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\renders\crender.h(129): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\ue3math.h(5): warning C4005: 'PI' : macro redefinition
+                 c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\utils\utils.h(10) : see previous definition of 'PI'
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\isvisible.h(28): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\aimbot.h(52): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\aimbot.h(90): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\aimbot.h(115): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\ue3\aimbot.h(141): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\menu\menumanager.h(111): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\menu\menumanager.h(193): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\menu\menumanager.h(91): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\menu\menumanager.h(123): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\domo\desktop\hack stuff\ue3framework\trunk\hooks\framework\framework.h(110): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.dll" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\ODBHack.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.lib" /MACHINE:X86 /DLL Debug\Utils.obj
+         Debug\vmthooks.obj
+         Debug\hook.obj
+         LINK : C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.dll not found or not built by the last incremental link; performing full link
+         ODBhook.vcxproj -> C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.dll
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Debug\ODBHack.dll;#2" /manifest Debug\ODBHack.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\ODBHack.unsuccessfulbuild".
+         Touching "Debug\ODBHack.lastbuildstate".
+     1>Done Building Project "C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Hooks\ORION Dino Beatdown Hack\ODBhook.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:23.53

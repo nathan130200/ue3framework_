@@ -32,6 +32,11 @@
 #include "..\sdks\TASDK\SdkHeaders.h"
 #endif
 
+#ifdef ODBSDK
+#include "..\sdks\ODBSDK\SdkHeaders.h"
+#endif
+
+
 float CurrentBest = 999999.0f;
 APawn *CurrentTarget = NULL;
 FVector CurrentLocation;
@@ -86,6 +91,10 @@ BOOL AutoFireKeyIsPressed = FALSE;
 
 #ifdef TASDK
 #include "Hack\TADraw.h"
+#endif
+
+#ifdef ODBSDK
+#include "Hack\ODBDraw.h"
 #endif
 
 class Framework

@@ -83,6 +83,11 @@ public:
 		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuBarHeight, LColorMenuBar);
 #endif
 
+#ifdef UE3_9
+		CRender::DrawGradientBox(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuHeight, ColorBlack, 5, 5, 5);
+		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuBarHeight, LColorMenuBar);
+#endif
+
 		for (int i = 0; i < MenuTabs.size(); i++)
 		{
 			float TmpMenuTabX = MenuOriginX + MenuTabs[i].x;
@@ -103,7 +108,13 @@ public:
 		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, ColorYellow);
 #endif
 
-#ifdef UE3_5
+#ifdef UE3_5 || UE3_9
+		CRender::DrawRect(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x, MenuOriginY + MenuBarHeight + 5, MenuTabWidth, MenuTabHeight, LColorYellow);
+		CRender::DrawString(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x + (MenuTabWidth / 2), MenuOriginY + MenuBarHeight + 8, ColorLightGray, TRUE, MenuTabs[SelectedMenuTab].Label);
+		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, LColorYellow);
+#endif
+
+#ifdef UE3_9
 		CRender::DrawRect(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x, MenuOriginY + MenuBarHeight + 5, MenuTabWidth, MenuTabHeight, LColorYellow);
 		CRender::DrawString(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x + (MenuTabWidth / 2), MenuOriginY + MenuBarHeight + 8, ColorLightGray, TRUE, MenuTabs[SelectedMenuTab].Label);
 		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, LColorYellow);
@@ -120,6 +131,11 @@ public:
 #endif
 
 #ifdef UE3_5
+				CRender::DrawBox(Canvas, MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, LColorLightGray);
+				CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 15, MenuOriginY + CheckBoxes[i].y - 2, ColorWhite, FALSE, CheckBoxes[i].Label);
+#endif
+
+#ifdef UE3_9
 				CRender::DrawBox(Canvas, MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, LColorLightGray);
 				CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 15, MenuOriginY + CheckBoxes[i].y - 2, ColorWhite, FALSE, CheckBoxes[i].Label);
 #endif
@@ -174,7 +190,11 @@ public:
 		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, ColorGreen);
 #endif
 
-#ifdef UE3_5
+#ifdef UE3_5 || UE3_9
+		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, LColorGreen);
+#endif
+
+#ifdef UE3_9
 		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, LColorGreen);
 #endif
 
