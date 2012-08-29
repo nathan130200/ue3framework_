@@ -1,0 +1,125 @@
+/*------------------------------------*/
+
+void GetOffsetPositions(void)
+{
+	char* Object_Name = "Name";
+	char* Object_Outer = "Outer";
+	char* Object_Class = "Class";
+	char* Object_Object = "Object";
+
+	int Object_Start = 0;
+	DWORD Object_ClassPtr = 0;
+	DWORD Offset_MaxObjects = 0x4;
+
+	DWORD Offset_Outer = 0;
+	DWORD Offset_Class = 0;
+	DWORD Offset_Name = 0x2C;
+	DWORD Offset_Max = 0x150;
+	DWORD Offset_PropertySize = 0;
+	DWORD Offset_PropertyOffset = 0;
+
+	FILE* pPropFile = fopen("C:\\Property_Dump.txt", "w+");
+	for (int i = 0; i < UObject::GObjObjects()->Count; i++)
+	{
+		DWORD Object = (DWORD) UObject::GObjObjects()->Data[i];
+		if (Object == NULL)
+			continue;
+
+		DWORD Name = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
+		if (!strcmp(FName::Names()->Data[Name]->szName, Object_Name))
+		{
+			for (DWORD j = Offset_Name; j < Offset_Max; j++)
+			{
+				DWORD Offset = *(DWORD*)((DWORD) Object + (DWORD) j);
+				if (Offset == Offset_Name)
+				{
+					Offset_PropertyOffset = j;
+					Object_Start = i - (Offset_Max / 4);
+					goto jmpOne;
+				}
+			}
+		}
+	}
+
+jmpOne:
+	if (!Offset_PropertyOffset)
+		return;
+
+	for (unsigned long i = Object_Start; i < UObject::GObjObjects()->Count; i++)
+	{
+		DWORD Object = (DWORD) UObject::GObjObjects()->Data[i];
+		if (Object == NULL)
+			continue;
+
+		DWORD Name = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
+		if (!Offset_Outer)
+		{
+			if (!strcmp(FName::Names()->Data[Name]->szName, Object_Outer))
+			{
+				Offset_Outer = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_Class)
+		{
+			if (!strcmp(FName::Names()->Data[Name]->szName, Object_Class))
+			{
+				Offset_Class = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+	}
+
+	if (!Offset_Outer || !Offset_Class)
+		return;
+
+	for (unsigned long i = 0; i < UObject::GObjObjects()->Count; i++)
+	{
+		DWORD Object = (DWORD) UObject::GObjObjects()->Data[i];
+		if (Object == NULL)
+			continue;
+
+		DWORD ObjectName = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
+		DWORD Class = *(DWORD*)((DWORD) Object + (DWORD) Offset_Class);
+		DWORD ClassOffset = *(DWORD*)((DWORD) Class + (DWORD) Offset_Name);
+
+		if (!strcmp(FName::Names()->Data[ClassOffset]->szName, Object_Class) && !strcmp(FName::Names()->Data[ObjectName]->szName, Object_Object))
+		{
+			Object_ClassPtr = Object;
+			goto jmpTwo;
+		}
+	}
+
+jmpTwo:
+	if (!Object_ClassPtr)
+		return;
+
+	for (unsigned long i = 0; i < Offset_MaxObjects; i++)
+	{
+		DWORD Temp = (Offset_Class + 0x4 + (i * 0x4));
+		for (unsigned long j = Offset_Class; j < Offset_Max; j++)
+		{
+			DWORD Offset = *(DWORD*)((DWORD) Object_ClassPtr + (DWORD) j);
+			if (Offset == Temp)
+			{
+				Offset_PropertySize = j;
+				goto jmpThree;
+			}
+		}
+	}
+
+jmpThree:
+	if (!Offset_PropertySize)
+		return;
+
+	fprintf(pPropFile, "\nUObject:\n");
+	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n", Offset_Outer);
+	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n", Offset_Name);
+	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n", Offset_Class);
+	fprintf(pPropFile, "\nUProperty:\n");
+	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n", Offset_PropertyOffset);
+	fprintf(pPropFile, "\nUStruct:\n");
+	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n", Offset_PropertySize);
+	fclose(pPropFile);
+}
+
+/*------------------------------------*/
