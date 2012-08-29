@@ -26,7 +26,7 @@ public:
 #endif
 
 #ifdef GASDK || TASDK			
-			vHeadBone = Location;
+			vHeadBone = EndLocation;
 #endif
 
 		return FastTrace( Controller, TargetPawn, StartLocation, vHeadBone );

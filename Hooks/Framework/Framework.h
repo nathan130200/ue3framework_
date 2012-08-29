@@ -14,6 +14,8 @@
 #include <sstream>
 #include <fstream>
 
+#include "ragekings.h"
+
 #ifdef BRSDK
 #include "..\sdks\BRSDK\SdkHeaders.h"
 #endif

@@ -72,6 +72,9 @@
     <ClInclude Include="Hack\GADraw.h">
       <Filter>Framework\Hack</Filter>
     </ClInclude>
+    <ClInclude Include="ragekings.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Utils.cpp">

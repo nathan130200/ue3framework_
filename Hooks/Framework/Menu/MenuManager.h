@@ -42,38 +42,7 @@ static BOOL MouseClickedOnCheckbox = FALSE;
 
 class CMenuManager
 {
-public:	
-	static void MenuInit()
-	{
-		MenuOriginX = 10;
-		MenuOriginY = 10;
-
-		//===========================
-		AddTab(10,	0, L"ESP");
-		//===========================
-		AddCheckBox(20, 60,		0,	L"Name ESP");
-		AddCheckBox(20, 80,		0,	L"Health ESP");
-		AddCheckBox(20, 100,	0,	L"Distance ESP");
-		AddCheckBox(20, 120,	0,	L"Bone ESP");
-		AddCheckBox(20, 140,	0,	L"Box ESP");
-
-		//===========================
-		AddTab(70,	0, L"Aimbot");
-		//===========================
-		AddCheckBox(20, 60,		1,	L"AimBot");
-		AddCheckBox(20, 80,		1,	L"AutoFireBot");
-
-		//===========================
-		AddTab(130, 0, L"Misc");
-		//===========================
-		AddCheckBox(20, 60,		2,	L"Visible Enemy Info");
-		AddCheckBox(20, 80,		2,	L"Line To Target");
-		AddCheckBox(20, 100,	2,	L"CossHair");
-		AddCheckBox(20,	120,	2,	L"Radar");
-
-		//===========================
-	}
-
+public:
 	static void AddTab(float x, float y, WCHAR *Label)
 	{
 		MenuTab Tab = { x, y, Label };

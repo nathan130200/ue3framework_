@@ -41,42 +41,37 @@ void Draw( UCanvas* Canvas, ATgPlayerController* Controller, FVector CameraLocat
 			Screen.Y += 15;
 		}
 
-//		if(CheckBoxes[3].Checked)
-//		{
-//			ESP::BoneESP(Canvas, Pawn, DrawColor);
-//		}
-
-		if(CheckBoxes[4].Checked)
+		if(CheckBoxes[3].Checked)
 		{
 			ESP::Boxes( Canvas, Pawn, DrawColor );
 		}
 
-		if(CheckBoxes[5].Checked)
+		if(CheckBoxes[4].Checked)
 		{
 			Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 
-		if(CheckBoxes[6].Checked)
+		if(CheckBoxes[5].Checked)
 		{
 			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
 		}
 
-		if(CheckBoxes[7].Checked)
+		if(CheckBoxes[6].Checked)
 		{
 			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
 		}
 
-		if(CheckBoxes[8].Checked)
+		if(CheckBoxes[7].Checked)
 		{
 			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
 		}
 
-		if(CheckBoxes[9].Checked)
+		if(CheckBoxes[8].Checked)
 		{
 			Misc::DrawCossHair(Canvas, ColorGreen);
 		}
 
-		if(CheckBoxes[10].Checked)
+		if(CheckBoxes[9].Checked)
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
 		}

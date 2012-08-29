@@ -1,5 +1,3 @@
-#define BRSDK
-#define UE3_5
 #include "..\Framework\Framework.h"
 
 char FunctionName[ 256 ]; 
@@ -94,6 +92,37 @@ bool FindGameTables( void )
     return true;
 }
 
+void MenuInit()
+{
+	MenuOriginX = 10;
+	MenuOriginY = 10;
+
+	//===========================
+	CMenuManager::AddTab(10,	0,	L"ESP");
+	//===========================
+	CMenuManager::AddCheckBox(20,	60,		0,	L"Name ESP");
+	CMenuManager::AddCheckBox(20,	80,		0,	L"Health ESP");
+	CMenuManager::AddCheckBox(20,	100,	0,	L"Distance ESP");
+	CMenuManager::AddCheckBox(20,	120,	0,	L"Bone ESP");
+	CMenuManager::AddCheckBox(20,	140,	0,	L"Box ESP");
+
+	//===========================
+	CMenuManager::AddTab(70,	0,	L"Aimbot");
+	//===========================
+	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
+	CMenuManager::AddCheckBox(20,	80,		1,	L"AutoFireBot");
+
+	//===========================
+	CMenuManager::AddTab(130,	0,	L"Misc");
+	//===========================
+	CMenuManager::AddCheckBox(20,	60,		2,	L"Visible Enemy Info");
+	CMenuManager::AddCheckBox(20,	80,		2,	L"Line To Target");
+	CMenuManager::AddCheckBox(20,	100,	2,	L"CossHair");
+	CMenuManager::AddCheckBox(20,	120,	2,	L"Radar");
+
+	//===========================
+}
+
 HMODULE Entry::g_hMainModule;
 DWORD Entry::dwCodeSize;
 DWORD Entry::dwCodeOffset;
@@ -122,7 +151,7 @@ unsigned long ModuleThread( void* )
 
 		PostRender_Name = Framework::FindName( "PostRender" );
 
-		CMenuManager::MenuInit();
+		MenuInit();
 
 		toolkit::VMTHook* hook = new toolkit::VMTHook(GameEngine->GameViewport); 
 		pProcessEvent = hook->GetMethod<tProcessEvent>(68); 
@@ -137,20 +166,19 @@ DWORD deinitThread(LPVOID lpArguments)
 	return 0;
 }
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+BOOL WINAPI DllMain( HMODULE hModule, DWORD dwReason, GEMODULE * pGem )
 {
-
-	switch (ul_reason_for_call)
-	{
+    switch ( dwReason )
+    {
 	case DLL_PROCESS_ATTACH:
 		{
-			Entry::g_hMainModule = GetModuleHandle(NULL);
-			CreateThread( 0, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(ModuleThread), 0, 0, 0 );
+			DisableThreadLibraryCalls( hModule );
+			CreateThread( NULL, 0, ( LPTHREAD_START_ROUTINE )ModuleThread, pGem, 0, NULL );
 		}
 		break;
 	case DLL_PROCESS_DETACH:
 		{
-			CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)deinitThread, (LPVOID)NULL, 0, NULL);
+			DisableThreadLibraryCalls( hModule );
 		}
 		break;
 	}
