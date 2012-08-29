@@ -149,10 +149,10 @@ void NameDump()
 
 void GetOffsetPositions()
 {
-	char* Object_Name = "Name";
-	char* Object_Outer = "Outer";
-	char* Object_Class = "Class";
-	char* Object_Object = "Object";
+	char* Object_Name			= "Name";
+	char* Object_Outer			= "Outer";
+	char* Object_Class			= "Class";
+	char* Object_Object			= "Object";
 
 	int Object_Start = 0;
 	DWORD Object_ClassPtr = 0;
@@ -260,13 +260,13 @@ jmpThree:
 		return;
 
 	fprintf(pPropFile, "\nUObject:\n");
-	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n", Offset_Outer);
-	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n", Offset_Name);
-	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n", Offset_Class);
+	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n",			Offset_Outer);
+	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n",			Offset_Name);
+	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n",			Offset_Class);
 	fprintf(pPropFile, "\nUProperty:\n");
-	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n", Offset_PropertyOffset);
+	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n",	Offset_PropertyOffset);
 	fprintf(pPropFile, "\nUStruct:\n");
-	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n", Offset_PropertySize);
+	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n",	Offset_PropertySize);
 	fclose(pPropFile);
 }
 
