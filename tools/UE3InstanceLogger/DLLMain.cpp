@@ -166,8 +166,6 @@ void GetOffsetPositions()
 	char* Object_ObjectFlags			= "ObjectFlags";
 	char* Object_NetIndex				= "NetIndex";
 
-
-
 	int Object_Start = 0;
 	DWORD Object_ClassPtr = 0;
 	DWORD Offset_MaxObjects = 0x4;
@@ -403,9 +401,6 @@ jmpThree:
 
 	fprintf(pPropFile, "\nUStruct:\n");
 	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n",				Offset_PropertySize);
-
-
-
 
 	fclose(pPropFile);
 	fclose(pPropFile2);
