@@ -56,7 +56,8 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 
 		if(CheckBoxes[6].Checked)
 		{
-			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 
 		if(CheckBoxes[7].Checked)

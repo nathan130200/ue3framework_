@@ -39,14 +39,20 @@ using namespace std;
 # ========================================================================================= #
 */
 
-//#include "UE3BasicCore\BL\GameDefines.h"
+
+#include "UE3BasicCore\ODB\GameDefines.h"
+#include "UE3BasicCore\ODB\ObjectFunctions.h"
+#include "UE3BasicCore\ODB\PiecesOfCode.h"
+
+
+#include "UE3BasicCore\BL\GameDefines.h"
 //#include "UE3BasicCore\BL\ObjectFunctions.h"
 //#include "UE3BasicCore\BL\PiecesOfCode.h"
 
 // Global Agenda
-#include "UE3BasicCore\GA\GameDefines.h"
-#include "UE3BasicCore\GA\ObjectFunctions.h"
-#include "UE3BasicCore\GA\PiecesOfCode.h"
+//#include "UE3BasicCore\GA\GameDefines.h"
+//#include "UE3BasicCore\GA\ObjectFunctions.h"
+//#include "UE3BasicCore\GA\PiecesOfCode.h"
 
 // America's Army 3
 //#include "UE3BasicCore\AA3\GameDefines.h"

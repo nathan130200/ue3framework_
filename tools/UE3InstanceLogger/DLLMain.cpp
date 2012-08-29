@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <direct.h>
 #include "TFL_HT.h"
+#include "Engine.h"
 
 char cBuffer[512] = { NULL };
 
@@ -10,7 +11,7 @@ char cBuffer[512] = { NULL };
 #define GA
 
 #define SDK_BASE_DIR				"C:\\Hack"
-#define	GAME_NAME_S					"GA"
+#define	GAME_NAME_S					"UE3"
 
 DWORD		Offset_Name				= 0x2C;
 
@@ -55,39 +56,39 @@ DWORD		Offset_Name				= 0x2C;
 	DWORD		Names_offset3			= NULL;
 #endif
 
-template < class T > struct TArray 
+template < class T > struct TArray2 
 {
 	T*		Data;
 	DWORD	Num;
 	DWORD	Max;
 };
 
-struct UObject
+struct UObject2
 {
 	UCHAR	Unknown		[ 0x2C ];	// unknowed data
 	DWORD	NameIndex;				// struct FName
 };
 
-struct FNameEntry
+struct FNameEntry2
 {
 	UCHAR	Unknown		[ 0x10 ];	// unknowed data
 	char	Name		[ 1 ];		// name
 };
 
 // Objects and Names arrays
-TArray< UObject* >*		GObjObjects;
-TArray< FNameEntry* >*	Names;
+TArray2< UObject2* >*		GObjObjects;
+TArray2< FNameEntry2* >*	Names;
 
 #ifdef offset
 	#ifdef GA
 		// Global Agenda
-		GObjObjects = ( TArray< UObject* >* )		0x13465A54; // 8/27/2012
-		Names		= ( TArray< FNameEntry* >* )	0x13454180; // 8/27/2012
+		GObjObjects = ( TArray2< UObject2* >* )		0x13465A54; // 8/27/2012
+		Names		= ( TArray2< FNameEntry2* >* )	0x13454180; // 8/27/2012
 	#endif
 #endif
 
 // funcs
-PCHAR GetName ( UObject* Object )
+PCHAR GetName ( UObject2* Object )
 {
 	DWORD NameIndex	= *(PDWORD) ( (DWORD) Object + Offset_Name );
 
@@ -140,7 +141,7 @@ void NameDump()
 		if ( ! Names->Data[ i ] ) { continue; }
 		
 		// log the object
-		fprintf ( Log, "Name[%06i] %s\n", i, Names->Data[ i ]->Name );
+		fprintf ( Log, "Name[%06i] %s: \t\t0x%X\n", i, Names->Data[ i ]->Name, Names->Data[ i ] );
 	}
 
 	// close log
@@ -149,21 +150,41 @@ void NameDump()
 
 void GetOffsetPositions()
 {
-	char* Object_Name			= "Name";
-	char* Object_Outer			= "Outer";
-	char* Object_Class			= "Class";
-	char* Object_Object			= "Object";
+	char* Object_Name					= "Name";
+	char* Object_Outer					= "Outer";
+	char* Object_Class					= "Class";
+	char* Object_Object					= "Object";
+	char* Object_Linker					= "Linker";
+	char* Object_LinkerIndex			= "LinkerIndex";
+	char* Object_VfTableObject			= "VfTableObject";
+	char* Object_ObjectInternalInteger	= "ObjectInternalInteger";
+	char* Object_HashNext				= "HashNext";
+	char* Object_HashOuterNext			= "HashOuterNext";
+	char* Object_StateFrame				= "StateFrame";
+	char* Object_ObjectArchetype		= "ObjectArchetype";
+	char* Object_Next					= "Next";
+	char* Object_ObjectFlags			= "ObjectFlags";	
 
 	int Object_Start = 0;
 	DWORD Object_ClassPtr = 0;
 	DWORD Offset_MaxObjects = 0x4;
 
-	DWORD Offset_Outer			= 0;
-	DWORD Offset_Class			= 0;
-	DWORD Offset_Name			= 0x2C;
-	DWORD Offset_Max			= 0x150;
-	DWORD Offset_PropertySize	= 0;
-	DWORD Offset_PropertyOffset = 0;
+	DWORD Offset_ObjectFlags			= 0;
+	DWORD Offset_Next					= 0;
+	DWORD Offset_ObjectArchetype		= 0;
+	DWORD Offset_StateFrame				= 0;
+	DWORD Offset_HashOuterNext			= 0;
+	DWORD Offset_HashNext				= 0;
+	DWORD Offset_ObjectInternalInteger	= 0;
+	DWORD Offset_VfTableObject			= 0;
+	DWORD Offset_LinkerIndex			= 0;
+	DWORD Offset_Linker					= 0;
+	DWORD Offset_Outer					= 0;
+	DWORD Offset_Class					= 0;
+	DWORD Offset_Name					= 0x2C;
+	DWORD Offset_Max					= 0x150;
+	DWORD Offset_PropertySize			= 0;
+	DWORD Offset_PropertyOffset			= 0;
 
 	sprintf_s ( cBuffer, "%s\\%s\\Property_Dump.txt", SDK_BASE_DIR, GAME_NAME_S );
 	FILE* pPropFile = fopen(cBuffer, "w+");
@@ -215,6 +236,78 @@ jmpOne:
 				Offset_Class = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
 			}
 		}
+
+		if (!Offset_Linker)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_Linker))
+			{
+				Offset_Linker = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_LinkerIndex)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_LinkerIndex))
+			{
+				Offset_LinkerIndex = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_VfTableObject)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_VfTableObject))
+			{
+				Offset_VfTableObject = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_ObjectInternalInteger)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_ObjectInternalInteger))
+			{
+				Offset_ObjectInternalInteger = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}	
+
+		if (!Offset_HashNext)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_HashNext))
+			{
+				Offset_HashNext = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_HashOuterNext)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_HashOuterNext))
+			{
+				Offset_HashOuterNext = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_StateFrame)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_StateFrame))
+			{
+				Offset_StateFrame = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_ObjectArchetype)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_ObjectArchetype))
+			{
+				Offset_ObjectArchetype = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}
+
+		if (!Offset_ObjectFlags)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_ObjectFlags))
+			{
+				Offset_ObjectFlags = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}	
 	}
 
 	if (!Offset_Outer || !Offset_Class)
@@ -260,13 +353,27 @@ jmpThree:
 		return;
 
 	fprintf(pPropFile, "\nUObject:\n");
-	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n",			Offset_Outer);
-	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n",			Offset_Name);
-	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n",			Offset_Class);
+	fprintf(pPropFile, "\t- VfTableObject\t\t\t0x%X\n",				Offset_VfTableObject);
+	fprintf(pPropFile, "\t- ObjectInternalInteger\t\t\t0x%X\n",		Offset_ObjectInternalInteger);
+	fprintf(pPropFile, "\t- ObjectFlags\t\t\t0x%X\n",				Offset_ObjectFlags);
+	fprintf(pPropFile, "\t- Linker\t\t\t0x%X\n",					Offset_Linker);
+	fprintf(pPropFile, "\t- LinkerIndex\t\t\t0x%X\n",				Offset_LinkerIndex);
+	fprintf(pPropFile, "\t- HashNext\t\t\t0x%X\n",					Offset_HashNext);
+	fprintf(pPropFile, "\t- HashOuterNext\t\t\t0x%X\n",				Offset_HashOuterNext);
+	fprintf(pPropFile, "\t- Outer\t\t\t0x%X\n",						Offset_Outer);
+	fprintf(pPropFile, "\t- Name\t\t\t0x%X\n",						Offset_Name);
+	fprintf(pPropFile, "\t- Class\t\t\t0x%X\n",						Offset_Class);
+	fprintf(pPropFile, "\t- ObjectArchetype\t\t\t0x%X\n",			Offset_ObjectArchetype);
+
 	fprintf(pPropFile, "\nUProperty:\n");
-	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n",	Offset_PropertyOffset);
+	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n",				Offset_PropertyOffset);
+
 	fprintf(pPropFile, "\nUStruct:\n");
-	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n",	Offset_PropertySize);
+	fprintf(pPropFile, "\t- PropertySize\t\t0x%X\n",				Offset_PropertySize);
+
+
+
+
 	fclose(pPropFile);
 }
 
@@ -292,8 +399,11 @@ BOOL Init_Core()
 		fflush(poffsetlog);
 		fclose(poffsetlog);
 
-		GObjObjects		= ( TArray< UObject* >* )		GObjObjects_offset1;		// global objects
-		Names			= ( TArray< FNameEntry* >* )	Names_offset1;				// global names
+		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset1;		// global objects
+		Names			= ( TArray2< FNameEntry2* >* )	Names_offset1;				// global names
+
+		GObjects	= GObjObjects_offset1;
+		GNames		= Names_offset1;
 
 		return true;
 	}
@@ -315,8 +425,11 @@ BOOL Init_Core()
 		fflush(poffsetlog);
 		fclose(poffsetlog);
 
-		GObjObjects		= ( TArray< UObject* >* )		GObjObjects_offset2;		// global objects
-		Names			= ( TArray< FNameEntry* >* )	Names_offset2;			// global names
+		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset2;		// global objects
+		Names			= ( TArray2< FNameEntry2* >* )	Names_offset2;			// global names
+			
+		GObjects	= GObjObjects_offset2;
+		GNames		= Names_offset2;
 
 		return true;
 	}
@@ -338,8 +451,11 @@ BOOL Init_Core()
 		fflush(poffsetlog);
 		fclose(poffsetlog);
 
-		GObjObjects		= ( TArray< UObject* >* )		GObjObjects_offset3;		// global objects
-		Names			= ( TArray< FNameEntry* >* )	Names_offset3;				// global names
+		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset3;		// global objects
+		Names			= ( TArray2< FNameEntry2* >* )	Names_offset3;				// global names
+
+		GObjects	= GObjObjects_offset3;
+		GNames		= Names_offset3;
 
 		return true;
 	}

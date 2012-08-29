@@ -17,7 +17,6 @@ void Draw( UCanvas* Canvas, ATgPlayerController* Controller, FVector CameraLocat
 		bool IsVisible = IsVisible::Visible( Controller, Pawn, CameraLocation, Location );
 		bool IsEnemy = Controller->IsEnemy(Pawn);
 
-
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
 		
 	
