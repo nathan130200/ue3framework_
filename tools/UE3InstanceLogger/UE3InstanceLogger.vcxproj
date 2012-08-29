@@ -61,11 +61,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DLLMain.cpp" />
-    <ClCompile Include="TFL_HT.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="TFL_HT.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

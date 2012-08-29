@@ -1,8 +1,14 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <direct.h>
-#include "TFL_HT.h"
+#include <string>
+#include <sstream>
+#include <fstream>
+
 #include "Engine.h"
+#include "Utils.h"
+
+using namespace std;
 
 char cBuffer[512] = { NULL };
 
@@ -17,30 +23,36 @@ DWORD		Offset_Name				= 0x2C;
 
 #ifdef Pattern
 #define GObjects_Pattern1			"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
-#define GObjects_Mask1				"x????x??x??xxxxx"
+#define GObjects_Mask1  			"x????x??x??xxxxx"
 #define GObjects_Offset1			0x1
 
-#define GNames_Pattern1				"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
+#define GNames_Pattern1 		    "\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
 #define GNames_Mask1				"xx????xxxxx"
-#define GNames_Offset1				0x2
+#define GNames_Offset1  			0x2
 
 #define GObjects_Pattern2			"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
 #define GObjects_Mask2				"x?????xx?xx?xxxxx"
 #define GObjects_Offset2			0x2
 
-#define GNames_Pattern2				"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
-#define GNames_Mask2				"xx????xxxxx"
+#define GNames_Pattern2 			"\x8b\x35\x00\x00\x00\x00\x8b\x0d\x00\x00\x00\x00\x83\xc4\x08" 
+#define GNames_Mask2				"xx????xx????xxx"
 #define GNames_Offset2				0x2
 
 #define GObjects_Pattern3			"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
 #define GObjects_Mask3				"x?????xx?xx?xxxxx"
 #define GObjects_Offset3			0x2
 
-#define GNames_Pattern3				"\x8b\x35\x00\x00\x00\x00\x8b\x0d\x00\x00\x00\x00\x83\xc4\x08" 
-#define GNames_Mask3				"xx????xx????xxx"
-#define GNames_Offset3				0x2
-
+#define GNames_Pattern3				"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
+#define GNames_Mask3				"xx????xxxxx"
+#define GNames_Offset3 				0x2
 #endif
+
+bool Pattern1		= false;
+bool Pattern2		= false;
+bool Pattern3		= false;
+bool isnotPattern	= false;
+
+BOOL Init_Core();
 
 #ifdef Pattern
 	DWORD		GObjObjects_offset		= NULL;
@@ -87,6 +99,23 @@ TArray2< FNameEntry2* >*	Names;
 	#endif
 #endif
 
+ofstream	ofile;
+void add_log( char* LOG_FILE, const char *fmt, ... )
+{
+	ofile.open( LOG_FILE, ios::app );
+
+	va_list va_alist;
+	char logbuf[256] = {0};
+
+	va_start( va_alist, fmt );
+	vsnprintf( logbuf + strlen(logbuf), sizeof(logbuf) - strlen(logbuf), fmt, va_alist );
+	va_end( va_alist );
+
+	ofile << logbuf << endl;
+
+	ofile.close();
+}
+
 // funcs
 PCHAR GetName ( UObject2* Object )
 {
@@ -109,11 +138,17 @@ PCHAR GetName ( UObject2* Object )
 
 void ObjectDump()
 {
+	if(isnotPattern)
+		return;
+
 	// log file
 	FILE* Log = NULL;
 	sprintf_s ( cBuffer, "%s\\%s\\ObjectDump.txt", SDK_BASE_DIR, GAME_NAME_S );
 	fopen_s ( &Log, cBuffer, "w+" );
-	
+
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "void ObjectDump()\nGObjObjects->Num: %i", GObjObjects->Num );
+
 	for ( DWORD i = 0x0; i < GObjObjects->Num; i++ )
 	{
 		// check if it's a valid object
@@ -129,11 +164,17 @@ void ObjectDump()
 
 void NameDump()
 {
+	if(isnotPattern)
+		return;
+
 	// log file
 	FILE* Log = NULL;	
 	sprintf_s ( cBuffer, "%s\\%s\\NameDump.txt", SDK_BASE_DIR, GAME_NAME_S );
 	fopen_s ( &Log, cBuffer, "w+" );
-	
+
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "void NameDump()\nNames->Num: %i", Names->Num );	
+
 	//for ( DWORD i = 0x0; i < Names->Num; i += 0x3 )
 	for ( DWORD i = 0x0; i < Names->Num; i++ )
 	{
@@ -162,7 +203,7 @@ void GetOffsetPositions()
 	char* Object_HashOuterNext			= "HashOuterNext";
 	char* Object_StateFrame				= "StateFrame";
 	char* Object_ObjectArchetype		= "ObjectArchetype";
-	char* Object_Next					= "Next";
+	char* Object_Next					= "NextEvaluator";
 	char* Object_ObjectFlags			= "ObjectFlags";
 	char* Object_NetIndex				= "NetIndex";
 
@@ -189,17 +230,33 @@ void GetOffsetPositions()
 	DWORD Offset_PropertySize			= 0;
 	DWORD Offset_PropertyOffset			= 0;
 
-	sprintf_s ( cBuffer, "%s\\%s\\Property_Dump.txt", SDK_BASE_DIR, GAME_NAME_S );
+	sprintf_s ( cBuffer, "%s\\%s\\Propert_Dump.txt", SDK_BASE_DIR, GAME_NAME_S );
 	FILE* pPropFile = fopen(cBuffer, "w+");
 
-	sprintf_s ( cBuffer, "%s\\%s\\Property_Dump2.txt", SDK_BASE_DIR, GAME_NAME_S );
+	sprintf_s ( cBuffer, "%s\\%s\\Propert_Dump2.txt", SDK_BASE_DIR, GAME_NAME_S );
 	FILE* pPropFile2 = fopen(cBuffer, "w+");
+
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "void GetOffsetPositions()\nGObjObjects->Num: %i", GObjObjects->Num );	
+
+
+	if(GObjObjects->Num > 80171 && Pattern1 || Pattern2 || Pattern3)
+	{
+		Init_Core();
+		isnotPattern = true;
+		return;
+	}
+
 
 	for (int i = 0; i < GObjObjects->Num; i++)
 	{
 		DWORD Object = (DWORD) GObjObjects->Data[i];
 		if (Object == NULL)
+		{
+			sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+			add_log(cBuffer, "Object has returned NULL on step 1" );
 			continue;
+		}
 
 		DWORD Name = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
 		if (!strcmp(Names->Data[Name]->Name, Object_Name))
@@ -219,13 +276,21 @@ void GetOffsetPositions()
 
 jmpOne:
 	if (!Offset_PropertyOffset)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log(cBuffer, "Offset_PropertyOffset has returned NULL on step 2" );
 		return;
+	}
 
 	for (unsigned long i = Object_Start; i < GObjObjects->Num; i++)
 	{
 		DWORD Object = (DWORD) GObjObjects->Data[i];
 		if (Object == NULL)
+		{
+			sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+			add_log(cBuffer, "Object has returned NULL on step 2" );
 			continue;
+		}
 
 		DWORD Name = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
 
@@ -333,19 +398,35 @@ jmpOne:
 			}
 		}	
 
+		if (!Offset_Next)
+		{
+			if (!strcmp(Names->Data[Name]->Name, Object_Next))
+			{
+				Offset_Next = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
+			}
+		}	
+
 		Offset_1 = *(DWORD*)((DWORD) Object + (DWORD) Offset_PropertyOffset);
-		fprintf(pPropFile2, "Names[%06i]	%s				Offset: 0x%X \n", i, Names->Data[Name]->Name, Offset_1);
-		fprintf(pPropFile2, "UObject[%06i]	%-50s 			Offset: 0x%X\n", i, GetName ( GObjObjects->Data[ i ] ), Offset_1);
+		fprintf(pPropFile2, "Names[%06i]	%-50s 			Offset: 0x%X \n", i, Names->Data[Name]->Name, Offset_1);
 	} 
 
 	if (!Offset_Outer || !Offset_Class)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log(cBuffer, "failed on if (!Offset_Outer || !Offset_Class)" );
 		return;
+	}
+
 
 	for (unsigned long i = 0; i < GObjObjects->Num; i++)
 	{
 		DWORD Object = (DWORD) GObjObjects->Data[i];
 		if (Object == NULL)
+		{
+			sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+			add_log(cBuffer, "Object has returned NULL on step 3" );
 			continue;
+		}
 
 		DWORD ObjectName = *(DWORD*)((DWORD) Object + (DWORD) Offset_Name);
 		DWORD Class = *(DWORD*)((DWORD) Object + (DWORD) Offset_Class);
@@ -360,7 +441,11 @@ jmpOne:
 
 jmpTwo:
 	if (!Object_ClassPtr)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log(cBuffer, "failed on if (!Object_ClassPtr)" );
 		return;
+	}
 
 	for (unsigned long i = 0; i < Offset_MaxObjects; i++)
 	{
@@ -396,6 +481,10 @@ jmpThree:
 	fprintf(pPropFile, "\t class UObject*         ObjectArchetype;\t		//0x%X (0x04)\n",		Offset_ObjectArchetype);
 	fprintf(pPropFile, "\n}\n");
 
+	fprintf(pPropFile, "\nclass UField : public UObject\n{\npublic:\n");
+	fprintf(pPropFile, "\t class UField*		Next;\t						//0x%X (0x04)\n",		Offset_Next);
+	fprintf(pPropFile, "\n}\n");
+
 	fprintf(pPropFile, "\nUProperty:\n");
 	fprintf(pPropFile, "\t- PropertyOffset\t0x%X\n",				Offset_PropertyOffset);
 
@@ -406,15 +495,44 @@ jmpThree:
 	fclose(pPropFile2);
 }
 
+bool is1good = false;
+bool is2good = false;
+bool is3good = false;
+
 BOOL Init_Core()
 {
 #ifdef Pattern
-	MODULEINFO miGame = TFLHACKT00LS::GetModuleInfo ( NULL );
 
-	GObjObjects_offset1	= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GObjects_Pattern1, (char*) GObjects_Mask1 ) + GObjects_Offset1 );
-	Names_offset1		= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GNames_Pattern1, (char*) GNames_Mask1 ) + GNames_Offset1 );
-	
-	if(GObjObjects_offset1 != NULL && Names_offset1 != NULL)
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "\nstart pattern scan" );
+
+	MODULEINFO miGame = Utils::GetModuleInfo ( NULL );
+
+	add_log( cBuffer, "GetModuleInfo\nlpBaseOfDll: 0x%X\nSizeOfImage: 0x%X\n", miGame.lpBaseOfDll, miGame.SizeOfImage );
+
+	if(!Pattern1)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "Pattern #1 start" );
+		
+		GObjObjects_offset1	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*) GObjects_Pattern1,		GObjects_Mask1	)	+ GObjects_Offset1	);
+		
+		if(GObjObjects_offset1  != NULL)
+		{
+			add_log( cBuffer, "#1 GObjObjects_offset1: 0x%X", GObjObjects_offset1 );
+		
+			Names_offset1		= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*) GNames_Pattern1,		GNames_Mask1	)	+ GNames_Offset1	);
+
+			if(Names_offset1  != NULL)
+			{
+				add_log( cBuffer, "#1 Names_offset1: 0x%X", Names_offset1 );
+				is1good = true;
+			}
+		}
+		add_log( cBuffer, "Pattern #1 stop" );
+	}
+
+	if(is1good && !Pattern1 && GObjObjects_offset1 != NULL && Names_offset1 != NULL)
 	{
 		sprintf_s ( cBuffer, "%s\\%s\\offset_Dump1.txt", SDK_BASE_DIR, GAME_NAME_S );
 		FILE* poffsetlog = fopen(cBuffer, "w+");
@@ -434,13 +552,40 @@ BOOL Init_Core()
 		GObjects	= GObjObjects_offset1;
 		GNames		= Names_offset1;
 
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "successful pattern scan #1" );
+
+		Pattern1 = true;
+
+		GetOffsetPositions();
+		NameDump();
+		ObjectDump();
+
+		isnotPattern = false;
 		return true;
 	}
 
-	GObjObjects_offset2	= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GObjects_Pattern2, (char*) GObjects_Mask2 ) + GObjects_Offset2 );
-	Names_offset2		= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GNames_Pattern2, (char*) GNames_Mask2 ) + GNames_Offset2 );
-	
-	if(GObjObjects_offset2 != NULL && Names_offset2 != NULL)
+	if(!Pattern2)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "Pattern #2 start" );
+
+		GObjObjects_offset2	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage,		(BYTE*)  GObjects_Pattern2, (char*) GObjects_Mask2 ) + GObjects_Offset2 );
+
+		if(GObjObjects_offset2  != NULL)
+		{
+			add_log( cBuffer, "#2 GObjObjects_offset2: 0x%X", GObjObjects_offset2 );
+
+			Names_offset2		=*(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll,	miGame.SizeOfImage,		(BYTE*)  GNames_Pattern2, (char*) GNames_Mask2 ) + GNames_Offset2 );
+			if(Names_offset2  != NULL)
+			{
+				add_log( cBuffer, "#2 Names_offset2: 0x%X", Names_offset2 );
+				is2good = true;
+			}
+		}
+	}
+
+	if(is2good && !Pattern2 && GObjObjects_offset2 != NULL && Names_offset2 != NULL)
 	{
 		sprintf_s ( cBuffer, "%s\\%s\\offset_Dump2.txt", SDK_BASE_DIR, GAME_NAME_S );
 		FILE* poffsetlog = fopen(cBuffer, "w+");
@@ -460,13 +605,40 @@ BOOL Init_Core()
 		GObjects	= GObjObjects_offset2;
 		GNames		= Names_offset2;
 
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "successful pattern scan #2" );
+
+		Pattern2 = true;
+
+		GetOffsetPositions();
+		NameDump();
+		ObjectDump();
+
+		isnotPattern = false;
 		return true;
 	}
 
-	GObjObjects_offset3	= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GObjects_Pattern3, (char*) GObjects_Mask3 ) + GObjects_Offset3 );
-	Names_offset3		= *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GNames_Pattern3, (char*) GNames_Mask3 ) + GNames_Offset3 );
+	if(!Pattern3)
+	{
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "Pattern #3 start" );
 
-	if(GObjObjects_offset3 != NULL && Names_offset3 != NULL)
+		GObjObjects_offset3	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*)  GObjects_Pattern3, (char*) GObjects_Mask3 ) + GObjects_Offset3 );
+
+		if(GObjObjects_offset3  != NULL)
+		{
+			add_log( cBuffer, "#3 GObjObjects_offset3: 0x%X", GObjObjects_offset3 );
+
+			Names_offset3		= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*)  GNames_Pattern3, (char*) GNames_Mask3 ) + GNames_Offset3 );
+			if(Names_offset3  != NULL)
+			{
+				add_log( cBuffer, "#3 Names_offset3: 0x%X", Names_offset3 );
+				is3good = true;
+			}
+		}
+	}
+
+	if(is3good && !Pattern3 && GObjObjects_offset3 != NULL && Names_offset3 != NULL)
 	{
 		sprintf_s ( cBuffer, "%s\\%s\\offset_Dump3.txt", SDK_BASE_DIR, GAME_NAME_S );
 		FILE* poffsetlog = fopen(cBuffer, "w+");
@@ -486,8 +658,21 @@ BOOL Init_Core()
 		GObjects	= GObjObjects_offset3;
 		GNames		= Names_offset3;
 
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "successful pattern scan #3" );
+
+		Pattern3 = true;
+
+		GetOffsetPositions();
+		NameDump();
+		ObjectDump();
+		
+		isnotPattern = false;
 		return true;
 	}
+
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "unsuccessful pattern scan" );
 #endif
 	 return false;
 }
@@ -497,6 +682,9 @@ void onAttach()
 	while ( !GetAsyncKeyState( VK_HOME ) )
 		Sleep( 100 );
 
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log( cBuffer, "hello and welcome to Domo's scan tool logs tool enabled" );
+
 	// mkdir base dir
 	_mkdir ( SDK_BASE_DIR );
 
@@ -504,14 +692,15 @@ void onAttach()
 	sprintf_s ( cBuffer, "%s\\%s", SDK_BASE_DIR, GAME_NAME_S );
 	_mkdir ( cBuffer );
 
+	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+	add_log(cBuffer, "successfully created directories" );
+
 #ifdef Pattern
     if ( Init_Core() )
     {
 #endif
-		GetOffsetPositions();
-		NameDump();
-		ObjectDump();
-
+		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
+		add_log( cBuffer, "tool completed" );
 #ifdef Pattern
 	}
 #endif
