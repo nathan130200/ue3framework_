@@ -1,6 +1,6 @@
 static char weap = 0;
 
-void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, APawn* you )
+void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, AcAPBPawn* you )
 {
 	if ( Canvas == NULL || Controller == NULL || Controller->WorldInfo == NULL || Controller->WorldInfo->PawnList == NULL || you == NULL )
 		return;
@@ -17,10 +17,16 @@ void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLoc
 		AcAPBPawn* APBPawnTarget = reinterpret_cast<AcAPBPawn*>(Pawn);
 		AcAPBPlayerController* TargetController = reinterpret_cast<AcAPBPlayerController*>(Pawn);
 
+		if(APBPawnTarget->m_MissionSideInfo.m_nMissionUID != you->m_MissionSideInfo.m_nMissionUID)
+			 continue;
+
+		if ( APBPawnTarget->m_DyingData.eDyingState != 0 || Pawn->IsA(AVehicle::StaticClass()))
+			 continue;
+
 		FVector Location = Pawn->Location;
-		bool IsPlayer = ( Pawn->PlayerReplicationInfo != NULL );
-		bool IsVisible = IsVisible::Visible( Controller, Pawn, CameraLocation, Location );
-		bool IsEnemy = IsPlayer ? (  Controller->m_eFaction != APBPawnTarget->m_eFaction ) : true;
+		bool IsPlayer = true; 
+		bool IsVisible = true; //IsVisible::FastTraceAPB( Controller, TargetController, CameraLocation, Location );
+		bool IsEnemy = IsPlayer ? (  Controller->m_eFaction != APBPawnTarget->m_eFaction ) : false;
 
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
 
@@ -56,7 +62,7 @@ void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLoc
 
 		if(CheckBoxes[5].Checked)
 		{
-			//Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
+			Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 
 		if(CheckBoxes[6].Checked)

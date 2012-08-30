@@ -154,6 +154,11 @@ public:
 				Controller->Rotation = AimRotation;
 #endif
 
+#ifdef APBSDK
+				AcAPBPawn* APBPawn = reinterpret_cast<AcAPBPawn*>(LocalPlayer->Actor->Pawn);
+				APBPawn->SetCameraAimRotPawn( &AimRotation );
+#endif
+
 #ifdef BRSDK
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 				APBPController->ClientSetCtrlRotation(AimRotation);

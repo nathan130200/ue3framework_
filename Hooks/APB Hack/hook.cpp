@@ -28,7 +28,6 @@ void PostRender ( UCanvas* pCanvas )
 	Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
 	APawn* Pawn = reinterpret_cast<APawn*>(LocalPlayer->Actor->Pawn);
 
-	
 	AcAPBPlayerController* AcAPBController = reinterpret_cast<AcAPBPlayerController*>(LocalPlayer->Actor);
 	AcAPBPawn* APBPawn = reinterpret_cast<AcAPBPawn*>(LocalPlayer->Actor->Pawn);
 
@@ -37,7 +36,7 @@ void PostRender ( UCanvas* pCanvas )
 
 	Controller->GetPlayerViewPoint( &CameraLocation, &CameraRotation );
 
-	Draw( pCanvas, AcAPBController, CameraLocation, CameraRotation, Pawn );
+	Draw( pCanvas, AcAPBController, CameraLocation, CameraRotation, APBPawn );
 }
 
 void __declspec(naked) hkProcessEvent ()
