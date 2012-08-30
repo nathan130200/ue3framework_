@@ -208,3 +208,4 @@ struct FScriptDelegate
 #include "SDK_HEADERS\CrimeCraftEd_classes.h"
 #include "SDK_HEADERS\CrimeCraftEd_f_structs.h"
 #include "SDK_HEADERS\CrimeCraftEd_functions.h"
+
