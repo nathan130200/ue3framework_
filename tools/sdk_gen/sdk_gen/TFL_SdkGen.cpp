@@ -18,6 +18,10 @@
 
 #include "TFL_SdkGen.h"
 
+DWORD lpBaseOfDll = NULL;
+DWORD SizeOfImage = NULL;
+
+
 /*
 # ========================================================================================= #
 # Print Code														
@@ -2198,14 +2202,39 @@ void ProcessFuncsByPackage ( UObject* pPackageToProcess )
 	}
 }
 
+
+using namespace std;
+ofstream	ofiles;
+void add_log( char* LOG_FILE, const char *fmt, ... )
+{
+	ofiles.open( LOG_FILE, ios::app );
+
+	va_list va_alist;
+	char logbuf[256] = {0};
+
+	va_start( va_alist, fmt );
+	vsnprintf( logbuf + strlen(logbuf), sizeof(logbuf) - strlen(logbuf), fmt, va_alist );
+	va_end( va_alist );
+
+	ofiles << logbuf << endl;
+
+	ofiles.close();
+}
+
+
 void gethook(UObject* pObject)
 {
 		char fmt[512];
 		sprintf(fmt, "%s\\%s\\HookLog.txt", SDK_BASE_DIR, GAME_NAME_S);
 
+		char fmt2[512];
+		sprintf(fmt2, "%s\\%s\\UE3Log.txt", SDK_BASE_DIR, GAME_NAME_S);
+
 		FILE *f = fopen(fmt, "a");
 
 		char * str = pObject->GetFullName();
+
+		add_log(fmt2, "%s", str );
 
 		char * space = strstr(str, " ");
 
@@ -2227,15 +2256,27 @@ void gethook(UObject* pObject)
 
 void ProcessPackages()
 {
+	char cBufferlog[256] = { 0 };
+	sprintf_s ( cBufferlog, "%s\\%s\\UE3.log", SDK_BASE_DIR, GAME_NAME_S );
+
+	char cBufferlog2[256] = { 0 };
+	sprintf_s ( cBufferlog2, "%s\\%s\\UE3_1.log", SDK_BASE_DIR, GAME_NAME_S );
+
+	char cBufferlog3[256] = { 0 };
+	sprintf_s ( cBufferlog3, "%s\\%s\\UE3_2.log", SDK_BASE_DIR, GAME_NAME_S );
+
 	// create packages array
 	vector< UObject* > vPackages;
 	
+	add_log(cBufferlog, "UObject::GObjObjects()->Num(): %i", UObject::GObjObjects()->Num() );
+
 	// loop objects and process packages
 	for ( int i = 0; i < UObject::GObjObjects()->Num(); i++ )
 	{
 		// get object
 		UObject* pObject = UObject::GObjObjects()->Data[ i ];
-		
+		add_log(cBufferlog2, "pObject[%i]: 0x%X",  i, pObject );
+	
 		if ( ! pObject )
 			continue;
 
@@ -2254,6 +2295,8 @@ void ProcessPackages()
 			{
 				vPackages.push_back ( pPackageObject );
 
+				add_log(cBufferlog3, "%s[%i]: 0x%X", pPackageObject->GetName(), i, pObject );
+
 				// create new structs package header file
 				sprintf_s ( cBuffer, "%s\\%s\\SDK_HEADERS\\%s_structs.h", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
 				fopen_s ( &pFile, cBuffer, "w+" );
@@ -2265,6 +2308,10 @@ void ProcessPackages()
 				ProcessScriptStructsByPackage ( pPackageObject );
 
 				PrintFileFooter();
+
+				add_log(cBufferlog, "structs: %s", pPackageObject->GetName() );
+
+				fflush(pFile);
 				fclose ( pFile );
 
 				// create new classes package header file
@@ -2284,6 +2331,10 @@ void ProcessPackages()
 				ProcessClassesByPackage ( pPackageObject );
 
 				PrintFileFooter();
+
+				add_log(cBufferlog, "classes: %s", pPackageObject->GetName() );
+
+				fflush(pFile);
 				fclose ( pFile );
 
 				// create new function structs package header file
@@ -2297,6 +2348,10 @@ void ProcessPackages()
 				ProcessFuncStructsByPackage ( pPackageObject );
 
 				PrintFileFooter();
+
+				add_log(cBufferlog, "f_structs: %s", pPackageObject->GetName() );
+
+				fflush(pFile);
 				fclose ( pFile );
 
 				// create new function package header file
@@ -2317,6 +2372,10 @@ void ProcessPackages()
 				ProcessFuncsByPackage ( pPackageObject );
 
 				PrintFileFooter();
+				
+				add_log(cBufferlog, "functions: %s", pPackageObject->GetName() );
+
+				fflush( pFile );
 				fclose ( pFile );
 			}
 		}
@@ -2334,6 +2393,9 @@ void Init_Core()
 #ifdef Pattern
 	MODULEINFO miGame = TFLHACKT00LS::GetModuleInfo ( NULL );
 	
+	lpBaseOfDll = (DWORD)miGame.lpBaseOfDll;
+	SizeOfImage	= miGame.SizeOfImage;
+
 	// get GObjects
 	GObjects = *(unsigned long*) ( TFLHACKT00LS::FindPattern( (unsigned long) miGame.lpBaseOfDll, miGame.SizeOfImage, (unsigned char*) GObjects_Pattern, (char*) GObjects_Mask ) + GObjects_Offset );
 	
@@ -2427,14 +2489,19 @@ void OnAttach()
 	// get start time
 	GetSystemTime ( &stST );
 
+	sprintf_s ( cBuffer, "%s\\%s\\UE3.log", SDK_BASE_DIR, GAME_NAME_S );
+
 	// initialize
 	Init_Core();
+	add_log( cBuffer, "Init_Core" );
 
 	// process packages
 	ProcessPackages();
+	add_log( cBuffer, "ProcessPackages" );
 
 	// finalize
 	Final_SdkHeaders();
+	add_log( cBuffer, "Final_SdkHeaders" );
 
 	// get end time
 	GetSystemTime ( &stET );

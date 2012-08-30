@@ -23,6 +23,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <fstream>
 
 #include <string>
 #include <vector>
@@ -38,6 +39,11 @@ using namespace std;
 # Game Specific Includes (UE3 Basic Core)													
 # ========================================================================================= #
 */
+
+// Section 8
+//#include "UE3BasicCore\S8\GameDefines.h"
+//#include "UE3BasicCore\S8\ObjectFunctions.h"
+//#include "UE3BasicCore\S8\PiecesOfCode.h"
 
 // CrimeCraft
 #include "UE3BasicCore\CC\GameDefines.h"
