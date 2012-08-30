@@ -23,23 +23,23 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 
 		FVector Screen = WorldToScreen::World( Canvas, Location );
 		
-		CRender::DrawStringEx( Canvas, 100, 100, ColorGreen, 0, L"AutoFirePressed: %d", AutoFireKeyIsPressed );
-		CRender::DrawStringEx( Canvas, 100, 120, ColorGreen, 0, L"SwitchWeapon: %d", weap % 10 );
+		//CRender::DrawStringEx( Canvas, 100, 100, ColorGreen, 0, L"AutoFirePressed: %d", AutoFireKeyIsPressed );
+		//CRender::DrawStringEx( Canvas, 100, 120, ColorGreen, 0, L"SwitchWeapon: %d", weap % 10 );
 
-		if( GetAsyncKeyState( 'X' ) )
-		{
-			weap++;
-			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-			APBPController->SwitchWeapon(weap % 10);
-			Sleep(100);
-		}
+		//if( GetAsyncKeyState( 'X' ) )
+		//{
+		//	weap++;
+		//	APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
+		//	APBPController->SwitchWeapon(weap % 10);
+		//	Sleep(100);
+		//}
 
-		if( GetAsyncKeyState( 'Z' ) )
-		{
-			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-			APBPController->StopFire(0);
-			Sleep(100);
-		}
+		//if( GetAsyncKeyState( 'Z' ) )
+		//{
+		//	APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
+		//	APBPController->StopFire(0);
+		//	Sleep(100);
+		//}
 
 
 		if (CheckBoxes[0].Checked)
@@ -102,7 +102,7 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 
 		if(CheckBoxes[11].Checked)
 		{
-			CRender::DrawStringEx( Canvas, 100, 140, ColorGreen, 0, L"AutoKnifeIsChecked");
+			//CRender::DrawStringEx( Canvas, 100, 140, ColorGreen, 0, L"AutoKnifeIsChecked");
 			Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 	}

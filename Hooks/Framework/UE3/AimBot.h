@@ -61,7 +61,7 @@ public:
 	{
 		if( GetAsyncKeyState( 'F' ) )
 		{
-			CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
+			//CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
 			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 
 			FVector vHeadBone;
@@ -92,7 +92,7 @@ public:
 			}
 
 			float PawnDistance = Radar::calcdist(CameraLocation, Location) / 100;
-			CRender::DrawStringEx( Canvas, 100, 160, ColorGreen, 0, L"Current Target %d Distance %f", CurrentTarget, PawnDistance);
+			//CRender::DrawStringEx( Canvas, 100, 160, ColorGreen, 0, L"Current Target %d Distance %f", CurrentTarget, PawnDistance);
 
 			if(CurrentTarget && PawnDistance < 1.0f)
 			{
