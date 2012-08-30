@@ -5,7 +5,6 @@
 #include <sstream>
 #include <fstream>
 
-#include "Engine.h"
 #include "Utils.h"
 
 using namespace std;
@@ -14,7 +13,7 @@ char cBuffer[512] = { NULL };
 
 #define Pattern
 //#define offset
-#define GA
+//#define APB
 
 #define SDK_BASE_DIR				"C:\\Hack"
 #define	GAME_NAME_S					"UE3"
@@ -87,15 +86,29 @@ struct FNameEntry2
 	char	Name		[ 1 ];		// name
 };
 
+#ifdef Pattern
 // Objects and Names arrays
-TArray2< UObject2* >*		GObjObjects;
-TArray2< FNameEntry2* >*	Names;
+	TArray2< UObject2* >*		GObjObjects;
+	TArray2< FNameEntry2* >*	Names;
+#endif
 
 #ifdef offset
 	#ifdef GA
 		// Global Agenda
-		GObjObjects = ( TArray2< UObject2* >* )		0x13465A54; // 8/27/2012
-		Names		= ( TArray2< FNameEntry2* >* )	0x13454180; // 8/27/2012
+		TArray2< UObject2* >*		GObjObjects = ( TArray2< UObject2* >* )			0x13465A54;		// 8/27/2012
+		TArray2< FNameEntry2* >*	Names		= ( TArray2< FNameEntry2* >* )		0x13454180;		// 8/27/2012
+	#endif
+
+	#ifdef CC
+		// Global Agenda
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x2675DFC;		// 8/28/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x2675D10;		// 8/28/2012
+	#endif
+
+	#ifdef APB
+		// APB
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x1269BEFC;		// 8/28/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x1269BBB8;		// 8/28/2012
 	#endif
 #endif
 
@@ -240,7 +253,7 @@ void GetOffsetPositions()
 	add_log( cBuffer, "void GetOffsetPositions()\nGObjObjects->Num: %i", GObjObjects->Num );	
 
 
-	if(GObjObjects->Num > 80171 && Pattern1 || Pattern2 || Pattern3)
+	if(GObjObjects->Num < 60171 && Pattern1 || Pattern2 || Pattern3)
 	{
 		Init_Core();
 		isnotPattern = true;
@@ -517,11 +530,30 @@ BOOL Init_Core()
 		
 		GObjObjects_offset1	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*) GObjects_Pattern1,		GObjects_Mask1	)	+ GObjects_Offset1	);
 		
+		if(GObjObjects_offset1 == NULL)
+		{
+			add_log( cBuffer, "Pattern #1 stop\n" );
+			goto jmptwo;
+		}
+
+
 		if(GObjObjects_offset1  != NULL)
 		{
 			add_log( cBuffer, "#1 GObjObjects_offset1: 0x%X", GObjObjects_offset1 );
 		
 			Names_offset1		= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*) GNames_Pattern1,		GNames_Mask1	)	+ GNames_Offset1	);
+
+			if(Names_offset1 == NULL)
+			{
+				add_log( cBuffer, "Pattern #1 stop\n" );
+				goto jmptwo;
+			}
+
+			if(GObjObjects_offset1 == Names_offset1)
+			{
+				add_log( cBuffer, "Pattern #1 stop\n" );
+				goto jmptwo;
+			}
 
 			if(Names_offset1  != NULL)
 			{
@@ -529,7 +561,7 @@ BOOL Init_Core()
 				is1good = true;
 			}
 		}
-		add_log( cBuffer, "Pattern #1 stop" );
+		add_log( cBuffer, "Pattern #1 stop\n" );
 	}
 
 	if(is1good && !Pattern1 && GObjObjects_offset1 != NULL && Names_offset1 != NULL)
@@ -549,9 +581,6 @@ BOOL Init_Core()
 		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset1;		// global objects
 		Names			= ( TArray2< FNameEntry2* >* )	Names_offset1;				// global names
 
-		GObjects	= GObjObjects_offset1;
-		GNames		= Names_offset1;
-
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 		add_log( cBuffer, "successful pattern scan #1" );
 
@@ -565,6 +594,7 @@ BOOL Init_Core()
 		return true;
 	}
 
+jmptwo:
 	if(!Pattern2)
 	{
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
@@ -572,17 +602,37 @@ BOOL Init_Core()
 
 		GObjObjects_offset2	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage,		(BYTE*)  GObjects_Pattern2, (char*) GObjects_Mask2 ) + GObjects_Offset2 );
 
+		if(GObjObjects_offset2  == NULL)
+		{
+			add_log( cBuffer, "Pattern #2 stop\n" );
+			goto jmpthree;
+		}
+
+		if(GObjObjects_offset2 == GObjObjects_offset1)
+		{
+			add_log( cBuffer, "Pattern #2 stop\n" );
+			goto jmpthree;
+		}
+
 		if(GObjObjects_offset2  != NULL)
 		{
 			add_log( cBuffer, "#2 GObjObjects_offset2: 0x%X", GObjObjects_offset2 );
 
 			Names_offset2		=*(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll,	miGame.SizeOfImage,		(BYTE*)  GNames_Pattern2, (char*) GNames_Mask2 ) + GNames_Offset2 );
+	
+			if(Names_offset2  == NULL)
+			{
+				add_log( cBuffer, "Pattern #2 stop\n" );
+				goto jmpthree;
+			}
+
 			if(Names_offset2  != NULL)
 			{
 				add_log( cBuffer, "#2 Names_offset2: 0x%X", Names_offset2 );
 				is2good = true;
 			}
 		}
+		add_log( cBuffer, "Pattern #2 stop\n" );
 	}
 
 	if(is2good && !Pattern2 && GObjObjects_offset2 != NULL && Names_offset2 != NULL)
@@ -601,9 +651,6 @@ BOOL Init_Core()
 
 		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset2;		// global objects
 		Names			= ( TArray2< FNameEntry2* >* )	Names_offset2;			// global names
-			
-		GObjects	= GObjObjects_offset2;
-		GNames		= Names_offset2;
 
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 		add_log( cBuffer, "successful pattern scan #2" );
@@ -618,6 +665,7 @@ BOOL Init_Core()
 		return true;
 	}
 
+jmpthree:
 	if(!Pattern3)
 	{
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
@@ -625,17 +673,37 @@ BOOL Init_Core()
 
 		GObjObjects_offset3	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*)  GObjects_Pattern3, (char*) GObjects_Mask3 ) + GObjects_Offset3 );
 
+		if(GObjObjects_offset3 == NULL)
+		{
+			add_log( cBuffer, "Pattern #3 stop\n" );
+			goto END;
+		}	
+
+		if(GObjObjects_offset2 == GObjObjects_offset3)
+		{
+			add_log( cBuffer, "Pattern #3 stop\n" );
+			goto END;
+		}	
+
 		if(GObjObjects_offset3  != NULL)
 		{
 			add_log( cBuffer, "#3 GObjObjects_offset3: 0x%X", GObjObjects_offset3 );
 
 			Names_offset3		= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*)  GNames_Pattern3, (char*) GNames_Mask3 ) + GNames_Offset3 );
+	
+			if(Names_offset3 == NULL)
+			{
+				add_log( cBuffer, "Pattern #3 stop\n" );
+				goto END;
+			}	
+
 			if(Names_offset3  != NULL)
 			{
 				add_log( cBuffer, "#3 Names_offset3: 0x%X", Names_offset3 );
 				is3good = true;
 			}
 		}
+		add_log( cBuffer, "Pattern #3 stop\n" );
 	}
 
 	if(is3good && !Pattern3 && GObjObjects_offset3 != NULL && Names_offset3 != NULL)
@@ -655,9 +723,6 @@ BOOL Init_Core()
 		GObjObjects		= ( TArray2< UObject2* >* )		GObjObjects_offset3;		// global objects
 		Names			= ( TArray2< FNameEntry2* >* )	Names_offset3;				// global names
 
-		GObjects	= GObjObjects_offset3;
-		GNames		= Names_offset3;
-
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 		add_log( cBuffer, "successful pattern scan #3" );
 
@@ -671,6 +736,7 @@ BOOL Init_Core()
 		return true;
 	}
 
+END:
 	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 	add_log( cBuffer, "unsuccessful pattern scan" );
 #endif
@@ -694,6 +760,12 @@ void onAttach()
 
 	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 	add_log(cBuffer, "successfully created directories" );
+
+#ifdef offset
+		GetOffsetPositions();
+		NameDump();
+		ObjectDump();
+#endif
 
 #ifdef Pattern
     if ( Init_Core() )

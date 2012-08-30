@@ -30,13 +30,13 @@
 #define ProcessEvent_Mask		"x?xxxxxxx????xx"
 
 // UE3 Tables Sigs
-#define GObjects_Pattern		"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
-#define GObjects_Mask   		"x????x??x??xxxxx"
-#define GObjects_Offset			0x1
-
-#define GNames_Pattern 		    "\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
-#define GNames_Mask				"xx????xxxxx"
-#define GNames_Offset  			0x2
+//#define GObjects_Pattern		"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
+//#define GObjects_Mask   		"x????x??x??xxxxx"
+//#define GObjects_Offset			0x1
+//
+//#define GNames_Pattern 		    "\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
+//#define GNames_Mask				"xx????xxxxx"
+//#define GNames_Offset  			0x2
 
 
 // Function Flags ( incomplete )
@@ -101,8 +101,8 @@
 # ========================================================================================= #
 */
 
-unsigned long GObjects			= NULL;
-unsigned long GNames			= NULL;
+unsigned long GObjects			= 0x2675DFC;
+unsigned long GNames			= 0x2675D10;
 
 
 /*
@@ -271,20 +271,20 @@ struct FQWord
 class UObject
 {
 public:
-	 struct FPointer        VfTableObject;						//0x0 (0x04)
-	 int                    ObjectInternalInteger;				//0x4 (0x04)
-	 struct FQWord          ObjectFlags;						//0x8 (0x08)
-	 struct FPointer        HashNext;							//0x10 (0x04)
-	 struct FPointer        HashOuterNext;						//0x14 (0x04)
-	 int                    NetIndex;							//0x18 (0x04)
-	 class UObject*         Linker;								//0x1C (0x04)
-	 struct FPointer        LinkerIndex;						//0x20 (0x04)
-	 struct FPointer        StateFrame;							//0x24 (0x04)
-	 class UObject*         Outer;								//0x28 (0x04)
-	 struct FName           Name;								//0x2C (0x08)
-	 class UClass*          Class;								//0x34 (0x04)
-	 class UObject*         ObjectArchetype;					//0x38 (0x04)
-	 unsigned char			UnknownData00[ 0x4 ];
+	 struct FPointer        VfTableObject;					//0x0 (0x04)
+	 int                    ObjectInternalInteger;			//0x4 (0x04)
+	 struct FQWord          ObjectFlags;					//0x8 (0x08)
+	 struct FPointer        HashNext;						//0x10 (0x04)
+	 struct FPointer        HashOuterNext;					//0x14 (0x04)
+	 int                    NetIndex;						//0x18 (0x04)
+	 class UObject*         Linker;							//0x1C (0x04)
+	 struct FPointer        LinkerIndex;					//0x20 (0x04)
+	 struct FPointer        StateFrame;						//0x24 (0x04)
+	 class UObject*         Outer;							//0x28 (0x04)
+	 struct FName           Name;							//0x2C (0x08)
+	 class UClass*          Class;							//0x34 (0x04)
+	 class UObject*         ObjectArchetype;				//0x38 (0x04)
+
 
 private:
 	static UClass* pClassPointer;
@@ -317,6 +317,7 @@ public:
 	class UField : public UObject
 	{
 	public:
+		class UField*		SuperField;									// 0x0048 (0x04)
 		class UField*		Next;										// 0x003C (0x04)
 
 	private:
@@ -374,11 +375,12 @@ public:
 		class UStruct : public UField
 		{
 		public:
-			unsigned char			UnknownData00[ 0x8 ];					// 0x0040 (0x08)
-			class UField*			SuperField;								// 0x0048 (0x04)
-			class UField*			Children;								// 0x004C (0x04)
-			unsigned long			PropertySize;							// 0x0050 (0x04)
-			unsigned char			UnknownData01[ 0x30 ];					// 0x0054 (0x30)
+			DWORD			ScriptText;				// 0x48
+			DWORD			CppText;				// 0x4C
+			UField*			Children;				// 0x50
+			DWORD			PropertySize;			// 0x54
+			TArray<BYTE>	Script;					// 0x58
+			unsigned char	unknown_data0x1[0x30];	// 0x60
 
 		private:
 			static UClass* pClassPointer;

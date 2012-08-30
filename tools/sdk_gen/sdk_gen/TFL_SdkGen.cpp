@@ -2331,6 +2331,7 @@ void ProcessPackages()
 
 void Init_Core()
 {
+#ifdef Pattern
 	MODULEINFO miGame = TFLHACKT00LS::GetModuleInfo ( NULL );
 	
 	// get GObjects
@@ -2349,6 +2350,7 @@ void Init_Core()
 
 	// empty line
 	fprintf ( pLog, "\n" );
+#endif
 }
 
 /*
@@ -2396,7 +2398,10 @@ void Final_SdkHeaders()
 void OnAttach()
 {
 	//Sleep ( 60000 );
-	
+
+	while ( !GetAsyncKeyState( VK_HOME ) )
+		Sleep( 100 );
+
 	// times
 	SYSTEMTIME stST, stET;
 	FILETIME ftST, ftET;
