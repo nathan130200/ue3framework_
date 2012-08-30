@@ -528,6 +528,8 @@ BOOL Init_Core()
 		sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 		add_log( cBuffer, "Pattern #1 start" );
 		
+		VirtualProtect(miGame.lpBaseOfDll, miGame.SizeOfImage, PAGE_READWRITE | PAGE_EXECUTE, NULL);
+
 		GObjObjects_offset1	= *(unsigned long*)( Utils::FindPattern( (DWORD)miGame.lpBaseOfDll, miGame.SizeOfImage, (BYTE*) GObjects_Pattern1,		GObjects_Mask1	)	+ GObjects_Offset1	);
 		
 		if(GObjObjects_offset1 == NULL)

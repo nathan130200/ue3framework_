@@ -24,12 +24,12 @@
 
 // Game
 #define CLASS_ALIGN				0x4
-//#define PROCESS_EVENT_OFFSET	0xF8
+#define PROCESS_EVENT_OFFSET	0xF0
 #define Pattern	
 
 // ProcessEvent Sig
-#define ProcessEvent_Pattern	"\x74\x00\x83\xC0\x07\x83\xE0\xF8\xE8\x00\x00\x00\x00\x8B\xC4"
-#define ProcessEvent_Mask		"x?xxxxxxx????xx"
+//#define ProcessEvent_Pattern	"\x74\x00\x83\xC0\x07\x83\xE0\xF8\xE8\x00\x00\x00\x00\x8B\xC4"
+//#define ProcessEvent_Mask		"x?xxxxxxx????xx"
 
 // UE3 Tables Sigs
 #define GObjects_Pattern		"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
