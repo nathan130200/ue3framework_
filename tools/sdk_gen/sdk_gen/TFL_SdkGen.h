@@ -39,10 +39,10 @@ using namespace std;
 # ========================================================================================= #
 */
 
-//
-#include "UE3BasicCore\BL\GameDefines.h"
-#include "UE3BasicCore\BL\ObjectFunctions.h"
-#include "UE3BasicCore\BL\PiecesOfCode.h"
+// CrimeCraft
+#include "UE3BasicCore\CC\GameDefines.h"
+#include "UE3BasicCore\CC\ObjectFunctions.h"
+#include "UE3BasicCore\CC\PiecesOfCode.h"
 
 // Sanctum
 //#include "UE3BasicCore\ST\GameDefines.h"

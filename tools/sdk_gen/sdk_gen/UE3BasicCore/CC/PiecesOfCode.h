@@ -1,7 +1,7 @@
 /*
 #############################################################################################
-# Game: Blacklight: Retribution																#
-# Version: 0.930																			#
+# Game: CrimeCraft																			#
+# Version: idk																				#
 # ========================================================================================= #
 # File: PiecesOfCode.h																		#
 #############################################################################################
@@ -298,16 +298,16 @@ bool UObject::IsA ( UClass* pClass ) \n\
 } \n"
 
 #define CLASS_PROPERTIES_UFIELD "\
+	class UField*                                      SuperField;                                       		// NOT AUTO-GENERATED PROPERTY \n\
 	class UField*                                      Next;                                             		// NOT AUTO-GENERATED PROPERTY \n"
 
 #define CLASS_PROPERTIES_UFUNCTION "\
 	unsigned long                                      FunctionFlags;                                    		// NOT AUTO-GENERATED PROPERTY \n\
 	unsigned long                                      iNative;                                          		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned char                                      UnknownData00[ 0x18 ];                                   // NOT AUTO-GENERATED PROPERTY \n"
-
-#define CLASS_PROPERTIES_USTRUCT "\
-	unsigned char                                      UnknownData00[ 0x8 ];                                    // NOT AUTO-GENERATED PROPERTY \n\
-	class UField*                                      SuperField;                                              // NOT AUTO-GENERATED PROPERTY \n\
-	class UField*                                      Children;                                                // NOT AUTO-GENERATED PROPERTY \n\
-	unsigned long                                      PropertySize;                                            // NOT AUTO-GENERATED PROPERTY \n\
-	unsigned char                                      UnknownData01[ 0x30 ];                                   // NOT AUTO-GENERATED PROPERTY \n"
+	unsigned long                                      RepOffset;                                        		// NOT AUTO-GENERATED PROPERTY \n\
+	unsigned char                                      OperPrecedence;                                   		// NOT AUTO-GENERATED PROPERTY \n\
+	struct FName                                       FriendlyName;                                     		// NOT AUTO-GENERATED PROPERTY \n\
+	unsigned char                                      NumParms;                                         		// NOT AUTO-GENERATED PROPERTY \n\
+	unsigned long                                      ParmsSize;                                        		// NOT AUTO-GENERATED PROPERTY \n\
+	unsigned long                                      ReturnValueOffset;                                		// NOT AUTO-GENERATED PROPERTY \n\
+	void*                                              Func;                                             		// NOT AUTO-GENERATED PROPERTY \n"
