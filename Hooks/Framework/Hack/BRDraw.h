@@ -78,7 +78,6 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 		if(CheckBoxes[6].Checked)
 		{
 			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
-			//Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 
 		if(CheckBoxes[7].Checked)
@@ -99,6 +98,12 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 		if(CheckBoxes[10].Checked)
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
+		}
+
+		if(CheckBoxes[11].Checked)
+		{
+			CRender::DrawStringEx( Canvas, 100, 140, ColorGreen, 0, L"AutoKnifeIsChecked");
+			Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 	}
 }

@@ -61,6 +61,9 @@ public:
 	{
 		if( GetAsyncKeyState( 'F' ) )
 		{
+			CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
+			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
+
 			FVector vHeadBone;
 #ifdef BRSDK
 			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
@@ -69,9 +72,10 @@ public:
 #ifdef GASDK || TASDK			
 			vHeadBone = Location;
 #endif
+			float Distance = (vHeadBone - CameraLocation).Length();
+
 			if( IsEnemy && IsVisible )
 			{
-				float Distance = (vHeadBone - CameraLocation).Length();
 				if (Distance <= CurrentBest)
 				{
 					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
@@ -87,9 +91,13 @@ public:
 				}
 			}
 
-			if(CurrentTarget)
+			float PawnDistance = Radar::calcdist(CameraLocation, Location) / 100;
+			CRender::DrawStringEx( Canvas, 100, 160, ColorGreen, 0, L"Current Target %d Distance %f", CurrentTarget, PawnDistance);
+
+			if(CurrentTarget && PawnDistance < 1.0f)
 			{
-				
+				APBPController->SwitchWeapon(0);
+
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
 
@@ -101,6 +109,8 @@ public:
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 				APBPController->ClientSetCtrlRotation(AimRotation);
 #endif
+
+				APBPController->StartFire(0);
 			}
 		}
 	}

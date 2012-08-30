@@ -110,7 +110,7 @@ void MenuInit()
 	CMenuManager::AddTab(70,	0,	L"Aimbot");
 	//===========================
 	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
-	CMenuManager::AddCheckBox(20,	80,		1,	L"AutoFireBot");
+	CMenuManager::AddCheckBox(20,	80,		1,	L"Auto Fire Bot");
 
 	//===========================
 	CMenuManager::AddTab(130,	0,	L"Misc");
@@ -121,6 +121,8 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	120,	2,	L"Radar");
 
 	//===========================
+
+	CMenuManager::AddCheckBox(20,	100,	1,	L"Auto Knife");
 }
 
 HMODULE Entry::g_hMainModule;
