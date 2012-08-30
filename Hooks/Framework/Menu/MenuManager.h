@@ -154,7 +154,7 @@ public:
 
 				if (CheckBoxes[i].Checked)
 				{
-					CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 2, MenuOriginY + CheckBoxes[i].y-2, ColorWhite, FALSE, L"X");
+					CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 1, MenuOriginY + CheckBoxes[i].y-2, ColorWhite, FALSE, L"X");
 				}
 			}
 		}
