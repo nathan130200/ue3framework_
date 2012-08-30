@@ -7,37 +7,53 @@ public:
 
 	static void Aim::AutoFireBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* pCanvas)
 	{
-		if( IsEnemy && IsVisible )
-		{
-			float Distance = (Location - CameraLocation).Length();
+		APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 
-			if ( Distance < CurrentBest )
+		if(GetAsyncKeyState( 'F' ))
+		{
+			FVector vHeadBone;
+#ifdef BRSDK
+			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
+#endif
+
+#ifdef GASDK || TASDK			
+			vHeadBone = Location;
+#endif
+			if( IsEnemy && IsVisible )
 			{
-					CurrentBest = Distance;
-					CurrentTarget = Pawn;
-					CurrentLocation = Location;
+				float Distance = (vHeadBone - CameraLocation).Length();
+
+				if (Distance <= CurrentBest)
+				{
+					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
+					{
+						CurrentBest = Distance;
+						CurrentTarget = Pawn;
+						CurrentLocation = vHeadBone;
+					}
+					else
+					{
+						CurrentTargetedPawn = Pawn;
+					}
+				}
 			}
-		}
 
-		DWORD FIsPressed = GetAsyncKeyState( 'F' );
-
-		if( FIsPressed && CurrentTarget )
-		{
-			if (!AutoFireKeyIsPressed)
+			if(CurrentTarget && !AutoFireKeyIsPressed)
 			{
-				mouse_event(MOUSEEVENTF_LEFTDOWN,  0, 0, 0, 0);
-				//mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+				APBPController->StartFire(2);
+				APBPController->StartFire(0);
 				AutoFireKeyIsPressed = TRUE;
+			}
+			else
+			{
+				APBPController->StopFire(0);
+				AutoFireKeyIsPressed = FALSE;
 			}
 		}
 		else
 		{
-			if(AutoFireKeyIsPressed)
-			{
-				mouse_event(MOUSEEVENTF_LEFTUP,  0, 0, 0, 0);
-				//mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-				AutoFireKeyIsPressed = FALSE;
-			}
+			APBPController->StopFire(0);
+			AutoFireKeyIsPressed = FALSE;
 		}
 	}
 
@@ -56,7 +72,6 @@ public:
 			if( IsEnemy && IsVisible )
 			{
 				float Distance = (vHeadBone - CameraLocation).Length();
-				
 				if (Distance <= CurrentBest)
 				{
 					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
@@ -68,35 +83,15 @@ public:
 					else
 					{
 						CurrentTargetedPawn = Pawn;
-						AutoKnifeWeaponOut = FALSE;
 					}
-				}
-				else
-				{
-					AutoKnifeWeaponOut = FALSE;
 				}
 			}
 
-			float PawnDistance = Radar::calcdist(CameraLocation,vHeadBone) /100;
-
-			if( CurrentTarget && PawnDistance < 1.0f)
+			if(CurrentTarget)
 			{
-				//if (!AutoKnifeWeaponOut)
-				//{
-					keybd_event(VkKeyScan('4'), 0, 0, 0);
-					keybd_event(VkKeyScan('4'), 0, 0, 0);
-					Sleep(10);
-					keybd_event(VkKeyScan('4'), 0, 0, 0);
-					AutoKnifeWeaponOut = TRUE;
-				//}
-
+				
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
-
-
-				mouse_event(MOUSEEVENTF_LEFTDOWN,  0, 0, 0, 0);	
-				Sleep(10);
-				mouse_event(MOUSEEVENTF_LEFTUP,  0, 0, 0, 0);	
 
 #ifdef GASDK || TASDK
 				Controller->Rotation = AimRotation;
@@ -107,14 +102,6 @@ public:
 				APBPController->ClientSetCtrlRotation(AimRotation);
 #endif
 			}
-			else
-			{
-				AutoKnifeWeaponOut = FALSE;
-			}
-		}
-		else
-		{
-			AutoKnifeWeaponOut = FALSE;
 		}
 	}
 
