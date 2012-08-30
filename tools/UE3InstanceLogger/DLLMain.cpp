@@ -19,6 +19,7 @@ char cBuffer[512] = { NULL };
 #define	GAME_NAME_S					"UE3"
 
 DWORD		Offset_Name				= 0x2C;
+//DWORD		Offset_Name				= 0x30;
 
 #ifdef Pattern
 #define GObjects_Pattern1			"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
@@ -239,6 +240,7 @@ void GetOffsetPositions()
 	DWORD Offset_Outer					= 0;
 	DWORD Offset_Class					= 0;
 	DWORD Offset_Name					= 0x2C;
+	//DWORD Offset_Name					= 0x30;
 	DWORD Offset_Max					= 0x150;
 	DWORD Offset_PropertySize			= 0;
 	DWORD Offset_PropertyOffset			= 0;

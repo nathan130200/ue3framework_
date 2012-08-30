@@ -56,7 +56,7 @@ void Draw( UCanvas* Canvas, APlayerController* Controller, FVector CameraLocatio
 
 		if(CheckBoxes[6].Checked)
 		{
-			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
 		}
 
 		if(CheckBoxes[7].Checked)

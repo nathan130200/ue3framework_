@@ -29,14 +29,14 @@
 #define ProcessEvent_Pattern	"\x83\xC0\x07\x83\xE0\xF8\xE8\x00\x00\x00\x00\x8B\xC4"
 #define ProcessEvent_Mask		"xxxxxxx????xx"
 
-// UE3 Tables Sigs
-#define GObjects_Pattern		"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
-#define GObjects_Mask			"x?????xx?xx?xxxxx"
-#define GObjects_Offset			0x2
-
-#define GNames_Pattern			"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
-#define GNames_Mask				"xx????xxxxx"
-#define GNames_Offset			0x2
+//// UE3 Tables Sigs
+//#define GObjects_Pattern		"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
+//#define GObjects_Mask			"x?????xx?xx?xxxxx"
+//#define GObjects_Offset			0x2
+//
+//#define GNames_Pattern			"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
+//#define GNames_Mask				"xx????xxxxx"
+//#define GNames_Offset			0x2
 
 // Function Flags ( incomplete )
 #define FUNC_Final				0x00000001
@@ -100,8 +100,8 @@
 # ========================================================================================= #
 */
 
-unsigned long GObjects			= NULL;
-unsigned long GNames			= NULL;
+unsigned long GObjects			= 0x1269BEFC;
+unsigned long GNames			= 0x1269BBB8;
 
 /*
 # ========================================================================================= #

@@ -17,8 +17,11 @@
 # ========================================================================================= #
 */
 
-#define GObjects			0x02675DFC
-#define GNames				0x02675D10
+//#define GObjects			0x02675DFC
+//#define GNames			0x02675D10
+
+unsigned long	GObjects	= NULL;
+unsigned long	GNames		= NULL;
 
 /*
 # ========================================================================================= #

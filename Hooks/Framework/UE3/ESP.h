@@ -1,6 +1,12 @@
 class ESP
 {
 public:
+	static void ESP::NameAPB(UCanvas* Canvas, FVector Screen, APawn* Pawn, FColor DrawColor)
+	{
+		CRender::DrawString( Canvas, Screen.X, Screen.Y-50, DrawColor, true, L"TEST" );
+		Screen.Y += 15;
+	}
+
 	static void ESP::Name(UCanvas* Canvas, FVector Screen, APawn* Pawn, FColor DrawColor)
 	{
 		CRender::DrawString( Canvas, Screen.X, Screen.Y-50, DrawColor, true, Pawn->PlayerReplicationInfo->PlayerName.Data );
@@ -72,6 +78,7 @@ public:
 		}
 	}
 
+#ifdef BRSDK
 	static void ESP::BoneESP(UCanvas* Canvas, APawn* Target, FColor cColor)
 	{
 		if(Target->Mesh != NULL)
@@ -86,6 +93,7 @@ public:
 			}
 		}
 	}
+
 
 	static void ESP::BoneFESP(UCanvas* Canvas, APawn* Target, FColor cColor)
 	{
@@ -212,4 +220,6 @@ public:
 			Canvas->Draw2DLine(vRFoot.X, vRFoot.Y, vRcalf.X, vRcalf.Y, cColor);
 		}
 	}
+#endif
+
 };

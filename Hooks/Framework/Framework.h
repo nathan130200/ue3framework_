@@ -36,6 +36,13 @@
 #include "..\sdks\ODBSDK\SdkHeaders.h"
 #endif
 
+#ifdef CCSDK
+#include "..\sdks\CCSDK\SdkHeaders.h"
+#endif
+
+#ifdef APBSDK
+#include "..\sdks\APBSDK\SdkHeaders.h"
+#endif
 
 float CurrentBest = 999999.0f;
 APawn *CurrentTarget = NULL;
@@ -67,6 +74,8 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "Renders\CRender.h"
 
 #include "UE3\Color.h"
+
+#ifndef test
 #include "UE3\UE3Math.h"
 #include "UE3\2DRadar.h"
 #include "UE3\WorldToScreen.h"
@@ -74,6 +83,7 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "UE3\ESP.h"
 #include "UE3\AimBot.h"
 #include "UE3\Misc.h"
+#endif
 
 #include "Menu\MenuManager.h"
 
@@ -95,6 +105,14 @@ BOOL AutoFireKeyIsPressed = FALSE;
 
 #ifdef ODBSDK
 #include "Hack\ODBDraw.h"
+#endif
+
+#ifdef CCSDK
+#include "Hack\ODBDraw.h"
+#endif
+
+#ifdef APBSDK
+#include "Hack\APBDraw.h"
 #endif
 
 class Framework

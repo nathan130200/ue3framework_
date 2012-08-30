@@ -6,6 +6,7 @@ class Aim
 {
 public:
 
+#ifdef BRSDK
 	static void Aim::AutoFireBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* pCanvas)
 	{
 		APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
@@ -13,13 +14,9 @@ public:
 		if(GetAsyncKeyState( 'F' ))
 		{
 			FVector vHeadBone;
-#ifdef BRSDK
-			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-#endif
 
-#ifdef GASDK || TASDK			
-			vHeadBone = Location;
-#endif
+			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
+
 			if( IsEnemy && IsVisible )
 			{
 				float Distance = (vHeadBone - CameraLocation).Length();
@@ -63,21 +60,20 @@ public:
 			AutoFireAimed = FALSE;
 		}
 	}
+#endif
 
+#ifdef BRSDK
 	static void Aim::AutoKnife(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
 	{
 		if( GetAsyncKeyState( 'F' ) )
 		{
 			//CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
-			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
+
 
 			FVector vHeadBone;
 #ifdef BRSDK
+			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-#endif
-
-#ifdef GASDK || TASDK			
-			vHeadBone = Location;
 #endif
 			float Distance = (vHeadBone - CameraLocation).Length();
 
@@ -108,10 +104,6 @@ public:
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
 
-#ifdef GASDK || TASDK
-				Controller->Rotation = AimRotation;
-#endif
-
 #ifdef BRSDK
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 				APBPController->ClientSetCtrlRotation(AimRotation);
@@ -121,6 +113,7 @@ public:
 			}
 		}
 	}
+#endif
 
 	static void Aim::AimBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
 	{
@@ -131,7 +124,7 @@ public:
 			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
 #endif
 
-#ifdef GASDK || TASDK			
+#ifdef GASDK || TASDK || CCSDK		
 			vHeadBone = Location;
 #endif
 			if( IsEnemy && IsVisible )
@@ -157,7 +150,7 @@ public:
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
 
-#ifdef GASDK || TASDK
+#ifdef GASDK || TASDK || CCSDK
 				Controller->Rotation = AimRotation;
 #endif
 

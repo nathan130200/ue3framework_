@@ -25,7 +25,7 @@ public:
 			vHeadBone = WorldToScreen::BRBones(EndLocation, TargetPawn);
 #endif
 
-#ifdef GASDK || TASDK			
+#ifdef GASDK || TASDK || CCSDK || APBSDK	
 			vHeadBone = EndLocation;
 #endif
 

@@ -59,8 +59,8 @@ public:
 		if( Transformed.Z < 1.00f )
 			Transformed.Z = 1.00f;
 
-		//float FOVAngle = Controller->FOVAngle;
-		float FOVAngle = Controller->eventGetFOVAngle();
+		float FOVAngle = Controller->FOVAngle;
+		//float FOVAngle = Controller->eventGetFOVAngle();
 
 		Out.X = ( Canvas->ClipX / 2.0f ) + Transformed.X * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
 		Out.Y = ( Canvas->ClipY / 2.0f ) + -Transformed.Y * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
@@ -68,6 +68,7 @@ public:
 		return Out;
 	}
 
+#ifdef BRSDK
 	static FVector WorldToScreen::BRBones(FVector Location, APawn* Pawn)
 	{
 		FVector vHeadBone;
@@ -100,5 +101,6 @@ public:
 
 		return vHeadBone;
 	}
+#endif
 
 };

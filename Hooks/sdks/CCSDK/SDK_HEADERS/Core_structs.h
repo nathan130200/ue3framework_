@@ -25,18 +25,265 @@
 // 0x000C
 struct FRotator
 {
-	int                                                Pitch;                                            		// 0x0000 (0x0004) [0x0000000000000001]              ( CPF_Edit )
-	int                                                Yaw;                                              		// 0x0004 (0x0004) [0x0000000000000001]              ( CPF_Edit )
-	int                                                Roll;                                             		// 0x0008 (0x0004) [0x0000000000000001]              ( CPF_Edit )
+    INT Pitch, Yaw, Roll;
+
+    FRotator() {}
+
+    FRotator( INT Pitch, INT Yaw, INT Roll )
+    {
+        this->Pitch = Pitch;
+        this->Yaw = Yaw;
+        this->Roll = Roll;
+    }
+
+    FRotator operator - () { return FRotator( -Pitch, -Yaw, -Roll ); }
+
+    FRotator operator + ( FRotator r ) { return FRotator( Pitch + r.Pitch, Yaw + r.Yaw, Roll + r.Roll ); }
+    FRotator operator - ( FRotator r ) { return FRotator( Pitch - r.Pitch, Yaw - r.Yaw, Roll - r.Roll ); }
+    FRotator operator * ( FRotator r ) { return FRotator( Pitch * r.Pitch, Yaw * r.Yaw, Roll * r.Roll ); }
+    FRotator operator / ( FRotator r ) { return FRotator( Pitch/ r.Pitch, Yaw / r.Yaw, Roll / r.Roll ); }
+
+    FRotator operator = ( FRotator r )
+    {
+        this->Pitch = r.Pitch;
+        this->Yaw = r.Yaw;
+        this->Roll = r.Roll;
+
+        return *this;
+    }
+
+    FRotator operator += ( FRotator r )
+    {
+        this->Pitch += r.Pitch;
+        this->Yaw += r.Yaw;
+        this->Roll += r.Roll;
+
+        return *this;
+    }
+
+    FRotator operator -= ( FRotator r )
+    {
+        this->Pitch -= r.Pitch;
+        this->Yaw -= r.Yaw;
+        this->Roll -= r.Roll;
+
+        return *this;
+    }
+
+    FRotator operator /= ( FRotator r )
+    {
+        this->Pitch /= r.Pitch;
+        this->Yaw /= r.Yaw;
+        this->Roll /= r.Roll;
+
+        return *this;
+    }
+
+    FRotator operator *= ( FRotator r )
+    {
+        this->Pitch *= r.Pitch;
+        this->Yaw *= r.Yaw;
+        this->Roll *= r.Roll;
+
+        return *this;
+    }
+
+    FRotator operator + ( FLOAT f ) { return FRotator( Pitch + f, Yaw + f, Roll + f ); }
+    FRotator operator - ( FLOAT f ) { return FRotator( Pitch - f, Yaw - f, Roll - f ); }
+    FRotator operator * ( FLOAT f ) { return FRotator( Pitch * f, Yaw * f, Roll * f ); }
+    FRotator operator / ( FLOAT f ) { return FRotator( Pitch / f, Yaw / f, Roll / f ); }
+
+    FRotator operator = ( FLOAT f )
+    {
+        this->Pitch = f;
+        this->Yaw = f;
+        this->Roll = f;
+
+        return *this;
+    }
+
+    FRotator operator += ( FLOAT f )
+    {
+        this->Pitch += f;
+        this->Yaw += f;
+        this->Roll += f;
+
+        return *this;
+    }
+
+    FRotator operator -= ( FLOAT f )
+    {
+        this->Pitch -= f;
+        this->Yaw -= f;
+        this->Roll -= f;
+
+        return *this;
+    }
+
+    FRotator operator /= ( FLOAT f )
+    {
+        this->Pitch /= f;
+        this->Yaw /= f;
+        this->Roll /= f;
+
+        return *this;
+    }
+
+    FRotator operator *= ( FLOAT f )
+    {
+        this->Pitch *= f;
+        this->Yaw *= f;
+        this->Roll *= f;
+
+        return *this;
+    }
+
+    BOOL operator == ( FRotator r ) { return ( ( Pitch == r.Pitch ) && ( Yaw == r.Yaw ) && ( Roll == r.Roll ) ); }
+    BOOL operator != ( FRotator r ) { return ( ( Pitch != r.Pitch ) || ( Yaw != r.Yaw ) || ( Roll != r.Roll ) ); }
+
+    FLOAT operator [] ( INT i )
+    {
+        if( i == 0 )
+            return Pitch;
+        else if( i == 1 )
+            return Yaw;
+        else 
+            return Roll;
+    }
 };
 
 // ScriptStruct Core.Object.Vector
 // 0x000C
 struct FVector
 {
-	float                                              X;                                                		// 0x0000 (0x0004) [0x0000000000000001]              ( CPF_Edit )
-	float                                              Y;                                                		// 0x0004 (0x0004) [0x0000000000000001]              ( CPF_Edit )
-	float                                              Z;                                                		// 0x0008 (0x0004) [0x0000000000000001]              ( CPF_Edit )
+    FLOAT X, Y, Z;
+
+    FVector() {}
+
+    FVector( FLOAT X, FLOAT Y, FLOAT Z )
+    {
+        this->X = X;
+        this->Y = Y;
+        this->Z = Z;
+    }
+
+    FVector operator - () { return FVector( -X, -Y, -Z ); }
+
+    FVector operator + ( FVector v ) { return FVector( X + v.X, Y + v.Y, Z + v.Z ); }
+    FVector operator - ( FVector v ) { return FVector( X - v.X, Y - v.Y, Z - v.Z ); }
+    FVector operator * ( FVector v ) { return FVector( X * v.X, Y * v.Y, Z * v.Z ); }
+    FVector operator / ( FVector v ) { return FVector( X / v.X, Y / v.Y, Z / v.Z ); }
+
+    FVector operator = ( FVector v )
+    {
+        this->X = v.X;
+        this->Y = v.Y;
+        this->Z = v.Z;
+
+        return *this;
+    }
+
+    FVector operator += ( FVector v )
+    {
+        this->X += v.X;
+        this->Y += v.Y;
+        this->Z += v.Z;
+
+        return *this;
+    }
+
+    FVector operator -= ( FVector v )
+    {
+        this->X -= v.X;
+        this->Y -= v.Y;
+        this->Z -= v.Z;
+
+        return *this;
+    }
+
+    FVector operator /= ( FVector v )
+    {
+        this->X /= v.X;
+        this->Y /= v.Y;
+        this->Z /= v.Z;
+
+        return *this;
+    }
+
+    FVector operator *= ( FVector v )
+    {
+        this->X *= v.X;
+        this->Y *= v.Y;
+        this->Z *= v.Z;
+
+        return *this;
+    }
+
+    FVector operator + ( FLOAT f ) { return FVector( X + f, Y + f, Z + f ); }
+    FVector operator - ( FLOAT f ) { return FVector( X - f, Y - f, Z - f ); }
+    FVector operator * ( FLOAT f ) { return FVector( X * f, Y * f, Z * f ); }
+    FVector operator / ( FLOAT f ) { return FVector( X / f, Y / f, Z / f ); }
+
+    FVector operator = ( FLOAT f )
+    {
+        this->X = f;
+        this->Y = f;
+        this->Z = f;
+
+        return *this;
+    }
+
+    FVector operator += ( FLOAT f )
+    {
+        this->X += f;
+        this->Y += f;
+        this->Z += f;
+
+        return *this;
+    }
+
+    FVector operator -= ( FLOAT f )
+    {
+        this->X -= f;
+        this->Y -= f;
+        this->Z -= f;
+
+        return *this;
+    }
+
+    FVector operator /= ( FLOAT f )
+    {
+        this->X /= f;
+        this->Y /= f;
+        this->Z /= f;
+
+        return *this;
+    }
+
+    FVector operator *= ( FLOAT f )
+    {
+        this->X *= f;
+        this->Y *= f;
+        this->Z *= f;
+
+        return *this;
+    }
+
+    BOOL operator == ( FVector v ) { return ( ( X == v.X ) && ( Y == v.Y ) && ( Z == v.Z ) ); }
+    BOOL operator != ( FVector v ) { return ( ( X != v.X ) || ( Y != v.Y ) || ( Z != v.Z ) ); }
+
+    FLOAT operator [] ( INT i )
+    {
+        if( i == 0 )
+            return X;
+        else if( i == 1 )
+            return Y;
+        else 
+            return Z;
+    }
+
+    FLOAT Length() { return sqrtf( X * X + Y * Y + Z * Z ); }
+	FRotator Rotator();
 };
 
 // ScriptStruct Core.Object.Plane
