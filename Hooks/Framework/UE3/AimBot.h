@@ -1,5 +1,6 @@
 bool AutoKnifeKeyIsPressed = NULL;
 bool AutoKnifeWeaponOut = FALSE;
+BOOL AutoFireAimed = FALSE;
 
 class Aim
 {
@@ -40,7 +41,12 @@ public:
 
 			if(CurrentTarget && !AutoFireKeyIsPressed)
 			{
-				APBPController->StartFire(2);
+				if (!AutoFireAimed)
+				{
+					AutoFireAimed = TRUE;
+					APBPController->StartFire(2);
+				}
+
 				APBPController->StartFire(0);
 				AutoFireKeyIsPressed = TRUE;
 			}
@@ -54,6 +60,7 @@ public:
 		{
 			APBPController->StopFire(0);
 			AutoFireKeyIsPressed = FALSE;
+			AutoFireAimed = FALSE;
 		}
 	}
 
