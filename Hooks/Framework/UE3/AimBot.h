@@ -110,11 +110,17 @@ public:
 #endif
 
 				APBPController->StartFire(0);
+
+				AutoKnifeWeaponOut = true;
 			}
 
-			if (CurrentTarget && CurrentTarget->Health < 1)
+			if (PawnDistance > 1.0f)
 			{
-				APBPController->SwitchWeapon(1);
+				if(AutoKnifeWeaponOut)
+				{
+					APBPController->SwitchWeapon(1);
+					AutoKnifeWeaponOut = false;
+				}
 			}
 		}
 	}
