@@ -1,0 +1,39 @@
+﻿Build started 8/30/2012 9:11:19 PM.
+     1>Project "C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\tools\UE3InstanceLogger\UE3InstanceLogger.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\UE3InstanceLogger.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DLLMain.cpp Utils.cpp
+         DLLMain.cpp
+     1>DLLMain.cpp(125): warning C4996: 'vsnprintf': This function or variable may be unsafe. Consider using vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(354) : see declaration of 'vsnprintf'
+     1>DLLMain.cpp(249): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>DLLMain.cpp(252): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>DLLMain.cpp(266): warning C4018: '<' : signed/unsigned mismatch
+     1>DLLMain.cpp(574): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>DLLMain.cpp(645): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>DLLMain.cpp(716): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+         Utils.cpp
+     1>Utils.cpp(18): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(249) : see declaration of 'freopen'
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Release\UE3InstanceLogger.dll" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\UE3InstanceLogger.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Release\UE3InstanceLogger.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Release\UE3InstanceLogger.lib" /MACHINE:X86 /DLL Release\DLLMain.obj
+         Release\Utils.obj
+         Generating code
+         Finished generating code
+         UE3InstanceLogger.vcxproj -> C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Release\UE3InstanceLogger.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\Release\UE3InstanceLogger.dll;#2" /manifest Release\UE3InstanceLogger.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\UE3InstanceLogger.unsuccessfulbuild".
+         Touching "Release\UE3InstanceLogger.lastbuildstate".
+     1>Done Building Project "C:\Users\domo\Desktop\Hack Stuff\ue3framework\trunk\tools\UE3InstanceLogger\UE3InstanceLogger.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:16.88

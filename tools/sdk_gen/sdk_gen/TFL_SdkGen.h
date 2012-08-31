@@ -51,9 +51,9 @@ using namespace std;
 //#include "UE3BasicCore\S8\PiecesOfCode.h"
 
 // CrimeCraft
-//#include "UE3BasicCore\CC\GameDefines.h"
-//#include "UE3BasicCore\CC\ObjectFunctions.h"
-//#include "UE3BasicCore\CC\PiecesOfCode.h"
+#include "UE3BasicCore\CC\GameDefines.h"
+#include "UE3BasicCore\CC\ObjectFunctions.h"
+#include "UE3BasicCore\CC\PiecesOfCode.h"
 
 // Sanctum
 //#include "UE3BasicCore\ST\GameDefines.h"
@@ -76,9 +76,9 @@ using namespace std;
 //#include "UE3BasicCore\AA3\PiecesOfCode.h"
 
 // All Points Bulletin Reloaded
-#include "UE3BasicCore\APB\GameDefines.h"
-#include "UE3BasicCore\APB\ObjectFunctions.h"
-#include "UE3BasicCore\APB\PiecesOfCode.h"
+//#include "UE3BasicCore\APB\GameDefines.h"
+//#include "UE3BasicCore\APB\ObjectFunctions.h"
+//#include "UE3BasicCore\APB\PiecesOfCode.h"
 
 // Tom Clancy's Rainbow Six Vegas 2
 //#include "UE3BasicCore\R6V2\GameDefines.h"
