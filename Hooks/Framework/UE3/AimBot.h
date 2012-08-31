@@ -41,7 +41,7 @@ public:
 				if (!AutoFireAimed)
 				{
 					AutoFireAimed = TRUE;
-					APBPController->StartFire(2);
+					//APBPController->StartFire(2);
 				}
 
 				APBPController->StartFire(0);
@@ -110,6 +110,11 @@ public:
 #endif
 
 				APBPController->StartFire(0);
+			}
+
+			if (CurrentTarget && CurrentTarget->Health < 1)
+			{
+				APBPController->SwitchWeapon(1);
 			}
 		}
 	}
