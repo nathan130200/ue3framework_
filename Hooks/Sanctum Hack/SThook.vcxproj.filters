@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{ed333824-b74b-4c66-b2da-be602227157c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Utils">
+      <UniqueIdentifier>{6c92d3b5-10d1-451d-b7e9-c20fced8066a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\UE3">
+      <UniqueIdentifier>{63e9002c-c84b-4073-ba68-138a62d6722d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Renders">
+      <UniqueIdentifier>{bf28aeed-ab25-4342-84cf-e0efa7cabb7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Menu">
+      <UniqueIdentifier>{6aaff8b5-8eb8-47d8-a466-4dd38f3f9723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Hack">
+      <UniqueIdentifier>{afc75799-a97b-4563-8c21-9ba9147be656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hook">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Framework\Framework.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\Entry.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\Utils.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Utils\vmthooks.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\2DRadar.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\AimBot.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\Color.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\ESP.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\IsVisible.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\Misc.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\UE3Math.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\UE3\WorldToScreen.h">
+      <Filter>Framework\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Renders\CRender.h">
+      <Filter>Framework\Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\Menu\MenuManager.h">
+      <Filter>Framework\Menu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hook.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Framework\Utils\Utils.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Framework\Utils\vmthooks.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

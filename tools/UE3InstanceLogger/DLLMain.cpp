@@ -13,7 +13,7 @@ char cBuffer[512] = { NULL };
 
 #define Pattern
 //#define offset
-//#define APB
+//#define TWFC
 
 #define SDK_BASE_DIR				"C:\\Hack"
 #define	GAME_NAME_S					"UE3"
@@ -101,15 +101,21 @@ struct FNameEntry2
 	#endif
 
 	#ifdef CC
-		// Global Agenda
+		// CrimeCraft GangWars
 		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x2675DFC;		// 8/28/2012
 		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x2675D10;		// 8/28/2012
 	#endif
 
 	#ifdef APB
-		// APB
+		// APB Reloaded
 		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x1269BEFC;		// 8/28/2012
 		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x1269BBB8;		// 8/28/2012
+	#endif
+
+	#ifdef TWFC
+		// Transformers War for Cybertron
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x12B2F0A4;		// 8/30/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x12B2F0F4;		// 8/30/2012
 	#endif
 #endif
 
@@ -484,11 +490,11 @@ jmpThree:
 	fprintf(pPropFile, "\t struct FPointer        VfTableObject;\t			//0x%X (0x04)\n",		Offset_VfTableObject);
 	fprintf(pPropFile, "\t int                    ObjectInternalInteger;\t	//0x%X (0x04)\n",		Offset_ObjectInternalInteger);
 	fprintf(pPropFile, "\t struct FQWord          ObjectFlags;\t			//0x%X (0x08)\n",		Offset_ObjectFlags);
-	fprintf(pPropFile, "\t class UObject*         Linker;\t					//0x%X (0x04)\n",		Offset_Linker);
-	fprintf(pPropFile, "\t struct FPointer        LinkerIndex;\t			//0x%X (0x04)\n",		Offset_LinkerIndex);
 	fprintf(pPropFile, "\t struct FPointer        HashNext;\t				//0x%X (0x04)\n",		Offset_HashNext);
 	fprintf(pPropFile, "\t struct FPointer        HashOuterNext;\t			//0x%X (0x04)\n",		Offset_HashOuterNext);
 	fprintf(pPropFile, "\t int                    NetIndex;\t				//0x%X (0x04)\n",		Offset_StateFrame);
+	fprintf(pPropFile, "\t class UObject*         Linker;\t					//0x%X (0x04)\n",		Offset_Linker);
+	fprintf(pPropFile, "\t struct FPointer        LinkerIndex;\t			//0x%X (0x04)\n",		Offset_LinkerIndex);
 	fprintf(pPropFile, "\t struct FPointer        StateFrame;\t				//0x%X (0x04)\n",		Offset_NetIndex);
 	fprintf(pPropFile, "\t class UObject*         Outer;\t					//0x%X (0x04)\n",		Offset_Outer);
 	fprintf(pPropFile, "\t struct FName           Name;\t					//0x%X (0x08)\n",		Offset_Name);

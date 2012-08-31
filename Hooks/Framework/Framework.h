@@ -44,6 +44,10 @@
 #include "..\sdks\APBSDK\SdkHeaders.h"
 #endif
 
+#ifdef STSDK
+#include "..\sdks\STSDK\SdkHeaders.h"
+#endif
+
 float CurrentBest = 999999.0f;
 APawn *CurrentTarget = NULL;
 FVector CurrentLocation;
@@ -113,6 +117,10 @@ BOOL AutoFireKeyIsPressed = FALSE;
 
 #ifdef APBSDK
 #include "Hack\APBDraw.h"
+#endif
+
+#ifdef STSDK
+//#include "Hack\STDraw.h"
 #endif
 
 class Framework

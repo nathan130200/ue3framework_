@@ -41,19 +41,14 @@ using namespace std;
 */
 
 // Section 8
-//#include "UE3BasicCore\S9\GameDefines.h"
-//#include "UE3BasicCore\S9\ObjectFunctions.h"
-//#include "UE3BasicCore\S9\PiecesOfCode.h"
-
-// Section 8
 //#include "UE3BasicCore\S8\GameDefines.h"
 //#include "UE3BasicCore\S8\ObjectFunctions.h"
 //#include "UE3BasicCore\S8\PiecesOfCode.h"
 
 // CrimeCraft
-#include "UE3BasicCore\CC\GameDefines.h"
-#include "UE3BasicCore\CC\ObjectFunctions.h"
-#include "UE3BasicCore\CC\PiecesOfCode.h"
+//#include "UE3BasicCore\CC\GameDefines.h"
+//#include "UE3BasicCore\CC\ObjectFunctions.h"
+//#include "UE3BasicCore\CC\PiecesOfCode.h"
 
 // Sanctum
 //#include "UE3BasicCore\ST\GameDefines.h"
