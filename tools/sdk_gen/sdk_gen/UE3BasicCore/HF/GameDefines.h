@@ -319,7 +319,7 @@ public:
 	class UField : public UObject
 	{
 	public:
-		class UField*		SuperField;	                                // 0x003C
+		class UField*			SuperField;								// 0x0048 (0x04)
 		class UField*		Next;										// 0x0040
 
 	private:
@@ -419,15 +419,18 @@ public:
 			class UFunction : public UStruct
 			{
 			public:
-				DWORD                                              FunctionFlags;
-				WORD                                               iNative;
-				WORD                                               RepOffset;
-				unsigned char                                      OperPrecedence;
-				class FName                                        FriendlyName;
-				unsigned char                                      NumParms;
-				WORD                                               ParmsSize;
-				WORD                                               ReturnValueOffset;
-				void*                                              Func;
+				DWORD               UnknownPtr;
+				BYTE                UnknownBytes[28];
+				unsigned long		FunctionFlags;								// 0x0094 (0x04)
+				unsigned short		iNative;									// 0x0098 (0x02)
+				unsigned short		RepOffset;									// 0x009A (0x02)
+				DWORD               FName_Index;
+				DWORD				FName_Unknown_Data;
+				unsigned char		NumParms;									// 0x00A8 (0x01)
+				unsigned short		ParmsSize;									// 0x00AC (0x02)
+				unsigned short		ReturnValueOffset;							// 0x00AE (0x02)
+				BYTE				pad[4];
+				void*				Func;										// 0x00B0 (0x04)
 
 			private:
 				static UClass* pClassPointer;

@@ -11,13 +11,14 @@ using namespace std;
 
 char cBuffer[512] = { NULL };
 
-//#define Pattern
-#define offset
-#define test
+#define Pattern
+//#define offset
+//#define Bulletstorm
 
 #define SDK_BASE_DIR				"C:\\Hack"
 #define	GAME_NAME_S					"UE3"
 
+//DWORD		Offset_Name				= 0x28;
 DWORD		Offset_Name				= 0x2C;
 //DWORD		Offset_Name				= 0x30;
 //DWORD		Offset_Name				= 0xFC;
@@ -130,6 +131,14 @@ struct FNameEntry2
 		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x14D41EC;		// 8/31/2012
 		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x14C1EC8;		// 8/31/2012
 	#endif
+
+	#ifdef Bulletstorm
+		// Bulletstorm
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x171999C;		// 8/31/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x16D7664;		// 8/31/2012
+	#endif
+
+		
 #endif
 
 ofstream	ofile;
@@ -258,9 +267,9 @@ void GetOffsetPositions()
 	DWORD Offset_Linker					= 0;
 	DWORD Offset_Outer					= 0;
 	DWORD Offset_Class					= 0;
-	//DWORD Offset_Name					= 0x2C;
+	//DWORD Offset_Name					= 0x28;
+	DWORD Offset_Name					= 0x2C;
 	//DWORD Offset_Name					= 0x30;
-	DWORD Offset_Name					= 0xFC;
 	DWORD Offset_Max					= 0x150;
 	DWORD Offset_PropertySize			= 0;
 	DWORD Offset_PropertyOffset			= 0;

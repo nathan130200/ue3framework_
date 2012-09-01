@@ -71,9 +71,14 @@ using namespace std;
 //#include "UE3BasicCore\ODB\PiecesOfCode.h"
 
 // Global Agenda
-#include "UE3BasicCore\GA\GameDefines.h"
-#include "UE3BasicCore\GA\ObjectFunctions.h"
-#include "UE3BasicCore\GA\PiecesOfCode.h"
+//#include "UE3BasicCore\GA\GameDefines.h"
+//#include "UE3BasicCore\GA\ObjectFunctions.h"
+//#include "UE3BasicCore\GA\PiecesOfCode.h"
+
+#include "UE3BasicCore\HF\GameDefines.h"
+#include "UE3BasicCore\HF\ObjectFunctions.h"
+#include "UE3BasicCore\HF\PiecesOfCode.h"
+
 
 // America's Army 3
 //#include "UE3BasicCore\AA3\GameDefines.h"
@@ -111,9 +116,9 @@ using namespace std;
 //#include "UE3BasicCore\SMNC\PiecesOfCode.h"
 
 // Tribes Ascend
-//#include "UE3BasicCore\TA\GameDefines.h"
-//#include "UE3BasicCore\TA\ObjectFunctions.h"
-//#include "UE3BasicCore\TA\PiecesOfCode.h"
+////#include "UE3BasicCore\TA\GameDefines.h"
+////#include "UE3BasicCore\TA\ObjectFunctions.h"
+////#include "UE3BasicCore\TA\PiecesOfCode.h"
 
 // Bullet Run
 //#include "UE3BasicCore\BR\GameDefines.h"
