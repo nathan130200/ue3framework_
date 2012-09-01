@@ -17,15 +17,18 @@ void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLoc
 		AcAPBPawn* APBPawnTarget = reinterpret_cast<AcAPBPawn*>(Pawn);
 		AcAPBPlayerController* TargetController = reinterpret_cast<AcAPBPlayerController*>(Pawn);
 
-		if(APBPawnTarget->m_MissionSideInfo.m_nMissionUID != you->m_MissionSideInfo.m_nMissionUID)
-			 continue;
+		//if(APBPawnTarget->m_MissionSideInfo.m_nMissionUID != you->m_MissionSideInfo.m_nMissionUID)
+		//	 continue;
 
 		if ( APBPawnTarget->m_DyingData.eDyingState != 0 || Pawn->IsA(AVehicle::StaticClass()))
 			 continue;
 
 		FVector Location = Pawn->Location;
+
+		AActor* bTrace = IsVisible::FastTraceAPB( Controller, TargetController, CameraLocation, Location );
+
 		bool IsPlayer = true; 
-		bool IsVisible = true; //IsVisible::FastTraceAPB( Controller, TargetController, CameraLocation, Location );
+		bool IsVisible = true; //(TargetController->m_CurrentTarget != bTrace);
 		bool IsEnemy = IsPlayer ? (  Controller->m_eFaction != APBPawnTarget->m_eFaction ) : false;
 
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );

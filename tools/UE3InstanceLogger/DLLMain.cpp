@@ -11,9 +11,9 @@ using namespace std;
 
 char cBuffer[512] = { NULL };
 
-#define Pattern
-//#define offset
-//#define TWFC
+//#define Pattern
+#define offset
+#define T0
 
 #define SDK_BASE_DIR				"C:\\Hack"
 #define	GAME_NAME_S					"UE3"
@@ -116,6 +116,12 @@ struct FNameEntry2
 		// Transformers War for Cybertron
 		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x12B2F0A4;		// 8/30/2012
 		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x12B2F0F4;		// 8/30/2012
+	#endif
+
+	#ifdef T0
+		// Transformers War for Cybertron
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x2278E7C;		// 8/30/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x2278E4C;		// 8/30/2012
 	#endif
 #endif
 

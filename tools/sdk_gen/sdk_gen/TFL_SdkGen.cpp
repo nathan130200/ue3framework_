@@ -2431,6 +2431,7 @@ void Final_SdkHeaders()
 	
 	PrintSectionHeader ( "Defines" );
 	fprintf ( pFile, "#define GObjects\t\t\t0x%08X\n", GObjects );
+
 	#ifdef GNames_Pattern
 	fprintf ( pFile, "#define GNames\t\t\t\t0x%08X\n", GNames );
 	#endif

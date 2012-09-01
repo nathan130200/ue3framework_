@@ -40,6 +40,18 @@ using namespace std;
 # ========================================================================================= #
 */
 
+// Tron Evolution
+#include "UE3BasicCore\TE\GameDefines.h"
+#include "UE3BasicCore\TE\ObjectFunctions.h"
+#include "UE3BasicCore\TE\PiecesOfCode.h"
+
+
+// Section 8
+//#include "UE3BasicCore\HF\GameDefines.h"
+//#include "UE3BasicCore\HF\ObjectFunctions.h"
+//#include "UE3BasicCore\HF\PiecesOfCode.h"
+
+
 // Section 8
 //#include "UE3BasicCore\S8\GameDefines.h"
 //#include "UE3BasicCore\S8\ObjectFunctions.h"

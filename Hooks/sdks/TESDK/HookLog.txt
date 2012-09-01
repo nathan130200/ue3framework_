@@ -1,0 +1,9 @@
+GridEngine Transient.GridEngine
+GFxEngine Transient.GFxEngine
+PgGFxGameViewportClient Transient.GridEngine.PgGFxGameViewportClient
+Console Transient.GridEngine.PgGFxGameViewportClient.Console
+UIInteraction Transient.GridEngine.PgGFxGameViewportClient.UIInteraction
+GameUISceneClient Transient.GridEngine.PgGFxGameViewportClient.UIInteraction.GameUISceneClient
+PlayerManagerInteraction Transient.GridEngine.PgGFxGameViewportClient.PlayerManagerInteraction
+LocalPlayer Transient.GridEngine.LocalPlayer
+GFxInteraction Transient.GridEngine.PgGFxGameViewportClient.GFxInteraction

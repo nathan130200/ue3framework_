@@ -59,7 +59,11 @@ public:
 		if( Transformed.Z < 1.00f )
 			Transformed.Z = 1.00f;
 
-#ifdef GASDK || TASDK || CCSDK || APBSDK
+#ifdef GASDK || TASDK || CCSDK
+	float FOVAngle = Controller->FOVAngle;
+#endif
+
+#ifdef APBSDK
 	float FOVAngle = Controller->FOVAngle;
 #endif
 
