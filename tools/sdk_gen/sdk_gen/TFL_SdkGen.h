@@ -41,16 +41,14 @@ using namespace std;
 */
 
 // Tron Evolution
-#include "UE3BasicCore\TE\GameDefines.h"
-#include "UE3BasicCore\TE\ObjectFunctions.h"
-#include "UE3BasicCore\TE\PiecesOfCode.h"
-
+//#include "UE3BasicCore\TE\GameDefines.h"
+//#include "UE3BasicCore\TE\ObjectFunctions.h"
+//#include "UE3BasicCore\TE\PiecesOfCode.h"
 
 // Section 8
 //#include "UE3BasicCore\HF\GameDefines.h"
 //#include "UE3BasicCore\HF\ObjectFunctions.h"
 //#include "UE3BasicCore\HF\PiecesOfCode.h"
-
 
 // Section 8
 //#include "UE3BasicCore\S8\GameDefines.h"
@@ -73,9 +71,9 @@ using namespace std;
 //#include "UE3BasicCore\ODB\PiecesOfCode.h"
 
 // Global Agenda
-//#include "UE3BasicCore\GA\GameDefines.h"
-//#include "UE3BasicCore\GA\ObjectFunctions.h"
-//#include "UE3BasicCore\GA\PiecesOfCode.h"
+#include "UE3BasicCore\GA\GameDefines.h"
+#include "UE3BasicCore\GA\ObjectFunctions.h"
+#include "UE3BasicCore\GA\PiecesOfCode.h"
 
 // America's Army 3
 //#include "UE3BasicCore\AA3\GameDefines.h"

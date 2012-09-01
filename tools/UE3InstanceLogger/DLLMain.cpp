@@ -13,13 +13,14 @@ char cBuffer[512] = { NULL };
 
 //#define Pattern
 #define offset
-#define T0
+#define test
 
 #define SDK_BASE_DIR				"C:\\Hack"
 #define	GAME_NAME_S					"UE3"
 
 DWORD		Offset_Name				= 0x2C;
 //DWORD		Offset_Name				= 0x30;
+//DWORD		Offset_Name				= 0xFC;
 
 #ifdef Pattern
 #define GObjects_Pattern1			"\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"
@@ -120,8 +121,14 @@ struct FNameEntry2
 
 	#ifdef T0
 		// Transformers War for Cybertron
-		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x2278E7C;		// 8/30/2012
-		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x2278E4C;		// 8/30/2012
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x2278E7C;		// 8/31/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x2278E4C;		// 8/31/2012
+	#endif
+
+	#ifdef test
+		// Transformers War for Cybertron
+		TArray2< UObject2* >*		GObjObjects		= ( TArray2< UObject2* >* )		0x14D41EC;		// 8/31/2012
+		TArray2< FNameEntry2* >*	Names			= ( TArray2< FNameEntry2* >* )	0x14C1EC8;		// 8/31/2012
 	#endif
 #endif
 
@@ -251,8 +258,9 @@ void GetOffsetPositions()
 	DWORD Offset_Linker					= 0;
 	DWORD Offset_Outer					= 0;
 	DWORD Offset_Class					= 0;
-	DWORD Offset_Name					= 0x2C;
+	//DWORD Offset_Name					= 0x2C;
 	//DWORD Offset_Name					= 0x30;
+	DWORD Offset_Name					= 0xFC;
 	DWORD Offset_Max					= 0x150;
 	DWORD Offset_PropertySize			= 0;
 	DWORD Offset_PropertyOffset			= 0;

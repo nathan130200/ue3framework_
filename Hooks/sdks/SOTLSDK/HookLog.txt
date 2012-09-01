@@ -1,0 +1,7 @@
+YGameEngine Transient.YGameEngine
+UTGameViewportClient Transient.YGameEngine.UTGameViewportClient
+Console Transient.YGameEngine.UTGameViewportClient.Console
+UTGameInteraction Transient.YGameEngine.UTGameViewportClient.UTGameInteraction
+UTGameUISceneClient Transient.YGameEngine.UTGameViewportClient.UTGameInteraction.UTGameUISceneClient
+PlayerManagerInteraction Transient.YGameEngine.UTGameViewportClient.PlayerManagerInteraction
+LocalPlayer Transient.YGameEngine.LocalPlayer

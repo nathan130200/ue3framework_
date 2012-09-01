@@ -48,6 +48,10 @@
 #include "..\sdks\STSDK\SdkHeaders.h"
 #endif
 
+#ifdef SOTLSDK
+#include "..\sdks\SOTLSDK\SdkHeaders.h"
+#endif
+
 float CurrentBest = 999999.0f;
 APawn *CurrentTarget = NULL;
 FVector CurrentLocation;
