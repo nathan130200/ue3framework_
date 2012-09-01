@@ -24,6 +24,7 @@
 
 // Game
 #define CLASS_ALIGN				0x4
+#define Pattern
 
 // ProcessEvent Sig
 #define ProcessEvent_Pattern	"\x74\x00\x83\xC0\x07\x83\xE0\xF8\xE8\x00\x00\x00\x00\x8B\xC4"

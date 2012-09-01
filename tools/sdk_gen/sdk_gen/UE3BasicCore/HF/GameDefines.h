@@ -319,8 +319,8 @@ public:
 	class UField : public UObject
 	{
 	public:
-		class UField*			SuperField;								// 0x0048 (0x04)
-		class UField*		Next;										// 0x0040
+		class UField*		SuperField;								// 0x0048 (0x04)
+		class UField*		Next;									// 0x0040
 
 	private:
 		static UClass* pClassPointer;
