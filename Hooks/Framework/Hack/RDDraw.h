@@ -22,12 +22,6 @@ void Draw( UCanvas* Canvas, APlayerController* Controller, FVector CameraLocatio
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
 
 		FVector Screen = WorldToScreen::World( Canvas, Location );
-		
-		if(CheckBoxes[11].Checked)
-		{
-			//CRender::DrawStringEx( Canvas, 100, 140, ColorGreen, 0, L"AutoKnifeIsChecked");
-			//Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
-		}
 
 		if ( Pawn->Health < 1 )
 			continue;
@@ -52,40 +46,30 @@ void Draw( UCanvas* Canvas, APlayerController* Controller, FVector CameraLocatio
 
 		if(CheckBoxes[3].Checked)
 		{
-			//ESP::BoneESP(Canvas, Pawn, DrawColor);
+			ESP::Boxes( Canvas, Pawn, DrawColor );
 		}
 
 		if(CheckBoxes[4].Checked)
 		{
-			ESP::Boxes( Canvas, Pawn, DrawColor );
+			Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
 		}
 
 		if(CheckBoxes[5].Checked)
 		{
-			Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
+			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
 		}
 
 		if(CheckBoxes[6].Checked)
 		{
-			//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
 		}
 
 		if(CheckBoxes[7].Checked)
 		{
-			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
-		}
-
-		if(CheckBoxes[8].Checked)
-		{
-			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
-		}
-
-		if(CheckBoxes[9].Checked)
-		{
 			Misc::DrawCossHair(Canvas, ColorGreen);
 		}
 
-		if(CheckBoxes[10].Checked)
+		if(CheckBoxes[8].Checked)
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
 		}

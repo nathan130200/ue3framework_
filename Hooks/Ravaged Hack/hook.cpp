@@ -60,11 +60,11 @@ void __declspec(naked) hkProcessEvent ()
     }
 	_asm pushad	
 	
-  //  if ( pUFunc )
-  //  {
-		//if ( pUFunc->Name.Index == PostRender_Name )
-  //          PostRender(((UGameViewportClient_eventPostRender_Parms*)pParms)->Canvas );
-  //  }
+    if ( pUFunc )
+    {
+		if ( pUFunc->Name.Index == PostRender_Name )
+            PostRender(((UGameViewportClient_eventPostRender_Parms*)pParms)->Canvas );
+    }
 
     __asm popad
     __asm
@@ -100,14 +100,12 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	60,		0,	L"Name ESP");
 	CMenuManager::AddCheckBox(20,	80,		0,	L"Health ESP");
 	CMenuManager::AddCheckBox(20,	100,	0,	L"Distance ESP");
-	CMenuManager::AddCheckBox(20,	120,	0,	L"Bone ESP");
-	CMenuManager::AddCheckBox(20,	140,	0,	L"Box ESP");
+	CMenuManager::AddCheckBox(20,	120,	0,	L"Box ESP");
 
 	//===========================
 	CMenuManager::AddTab(70,	0,	L"Aimbot");
 	//===========================
 	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
-	CMenuManager::AddCheckBox(20,	80,		1,	L"Auto Fire Bot");
 
 	//===========================
 	CMenuManager::AddTab(130,	0,	L"Misc");
@@ -116,10 +114,7 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	80,		2,	L"Line To Target");
 	CMenuManager::AddCheckBox(20,	100,	2,	L"CossHair");
 	CMenuManager::AddCheckBox(20,	120,	2,	L"Radar");
-
 	//===========================
-
-	CMenuManager::AddCheckBox(20,	100,	1,	L"Auto Knife");
 }
 
 HMODULE Entry::g_hMainModule;
@@ -153,11 +148,6 @@ unsigned long ModuleThread( void* )
 		hook->HookMethod(&hkProcessEvent, 67);
 	}
 
-	return 0;
-}
-
-DWORD deinitThread(LPVOID lpArguments)
-{
 	return 0;
 }
 

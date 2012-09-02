@@ -80,7 +80,7 @@ public:
 		if ( Center )
 		{
 			float XL, YL;
-			pCanvas->TextSize( String, 0, 0, &XL, &YL );
+			pCanvas->TextSize( String, 1, 1, &XL, &YL );
 			pCanvas->CurX -= XL / 2;
 		}
 
