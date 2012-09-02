@@ -49,6 +49,10 @@ public:
 			vHeadBone = EndLocation;
 #endif
 
+#ifdef RDSDK	
+			vHeadBone = EndLocation;
+#endif
+
 		return FastTrace( Controller, TargetPawn, StartLocation, vHeadBone );
 	}
 };

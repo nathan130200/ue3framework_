@@ -67,6 +67,10 @@ public:
 	float FOVAngle = Controller->FOVAngle;
 #endif
 
+#ifdef RDSDK
+	float FOVAngle = Controller->eventGetFOVAngle();
+#endif
+
 #ifdef BRSDK
 	float FOVAngle = Controller->eventGetFOVAngle();
 #endif

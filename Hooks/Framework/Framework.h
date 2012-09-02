@@ -52,6 +52,10 @@
 #include "..\sdks\SOTLSDK\SdkHeaders.h"
 #endif
 
+#ifdef RDSDK
+#include "..\sdks\RDSDK\SdkHeaders.h"
+#endif
+
 float CurrentBest = 999999.0f;
 APawn *CurrentTarget = NULL;
 FVector CurrentLocation;
@@ -125,6 +129,10 @@ BOOL AutoFireKeyIsPressed = FALSE;
 
 #ifdef STSDK
 //#include "Hack\STDraw.h"
+#endif
+
+#ifdef RDSDK
+#include "Hack\RDDraw.h"
 #endif
 
 class Framework

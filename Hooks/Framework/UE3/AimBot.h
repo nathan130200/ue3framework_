@@ -138,6 +138,10 @@ public:
 #ifdef GASDK || TASDK || CCSDK		
 			vHeadBone = Location;
 #endif
+
+#ifdef RDSDK	
+			vHeadBone = Location;
+#endif
 			if( IsEnemy && IsVisible )
 			{
 				float Distance = (vHeadBone - CameraLocation).Length();
@@ -162,6 +166,10 @@ public:
 				FRotator AimRotation = AimForward.Rotator();
 
 #ifdef GASDK || TASDK || CCSDK
+				Controller->Rotation = AimRotation;
+#endif
+
+#ifdef RDSDK	
 				Controller->Rotation = AimRotation;
 #endif
 
