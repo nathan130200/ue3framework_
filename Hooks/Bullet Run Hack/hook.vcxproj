@@ -66,26 +66,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Framework\Utils\Utils.cpp" />
-    <ClCompile Include="..\Framework\Utils\vmthooks.cpp" />
+    <ClCompile Include="Framework\Utils\Utils.cpp" />
+    <ClCompile Include="Framework\Utils\vmthooks.cpp" />
     <ClCompile Include="hook.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Framework\Framework.h" />
-    <ClInclude Include="..\Framework\Hack\BRDraw.h" />
-    <ClInclude Include="..\Framework\Menu\MenuManager.h" />
-    <ClInclude Include="..\Framework\Renders\CRender.h" />
-    <ClInclude Include="..\Framework\UE3\2DRadar.h" />
-    <ClInclude Include="..\Framework\UE3\AimBot.h" />
-    <ClInclude Include="..\Framework\UE3\Color.h" />
-    <ClInclude Include="..\Framework\UE3\ESP.h" />
-    <ClInclude Include="..\Framework\UE3\IsVisible.h" />
-    <ClInclude Include="..\Framework\UE3\Misc.h" />
-    <ClInclude Include="..\Framework\UE3\UE3Math.h" />
-    <ClInclude Include="..\Framework\UE3\WorldToScreen.h" />
-    <ClInclude Include="..\Framework\Utils\Entry.h" />
-    <ClInclude Include="..\Framework\Utils\Utils.h" />
-    <ClInclude Include="..\Framework\Utils\vmthooks.h" />
+    <ClInclude Include="Framework\Framework.h" />
+    <ClInclude Include="Framework\Hack\BRDraw.h" />
+    <ClInclude Include="Framework\Menu\MenuManager.h" />
+    <ClInclude Include="Framework\ragekings.h" />
+    <ClInclude Include="Framework\Renders\CRender.h" />
+    <ClInclude Include="Framework\UE3\2DRadar.h" />
+    <ClInclude Include="Framework\UE3\AimBot.h" />
+    <ClInclude Include="Framework\UE3\Color.h" />
+    <ClInclude Include="Framework\UE3\ESP.h" />
+    <ClInclude Include="Framework\UE3\IsVisible.h" />
+    <ClInclude Include="Framework\UE3\Misc.h" />
+    <ClInclude Include="Framework\UE3\UE3Math.h" />
+    <ClInclude Include="Framework\UE3\WorldToScreen.h" />
+    <ClInclude Include="Framework\Utils\Entry.h" />
+    <ClInclude Include="Framework\Utils\Utils.h" />
+    <ClInclude Include="Framework\Utils\vmthooks.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

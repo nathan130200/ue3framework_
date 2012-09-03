@@ -78,7 +78,7 @@ using namespace std;
 //#include "UE3BasicCore\HF\GameDefines.h"
 //#include "UE3BasicCore\HF\ObjectFunctions.h"
 //#include "UE3BasicCore\HF\PiecesOfCode.h"
-//
+
 
 // America's Army 3
 //#include "UE3BasicCore\AA3\GameDefines.h"
@@ -101,9 +101,9 @@ using namespace std;
 //#include "UE3BasicCore\RO2\PiecesOfCode.h"
  
 // Blacklight: Retribution
-//#include "UE3BasicCore\BLR\GameDefines.h"
-//#include "UE3BasicCore\BLR\ObjectFunctions.h"
-//#include "UE3BasicCore\BLR\PiecesOfCode.h"
+#include "UE3BasicCore\BLR\GameDefines.h"
+#include "UE3BasicCore\BLR\ObjectFunctions.h"
+#include "UE3BasicCore\BLR\PiecesOfCode.h"
 
 // Mass Effect 3
 //#include "UE3BasicCore\ME3\GameDefines.h"
@@ -121,9 +121,9 @@ using namespace std;
 ////#include "UE3BasicCore\TA\PiecesOfCode.h"
 
 // Bullet Run
-#include "UE3BasicCore\BR\GameDefines.h"
-#include "UE3BasicCore\BR\ObjectFunctions.h"
-#include "UE3BasicCore\BR\PiecesOfCode.h"
+//#include "UE3BasicCore\BR\GameDefines.h"
+//#include "UE3BasicCore\BR\ObjectFunctions.h"
+//#include "UE3BasicCore\BR\PiecesOfCode.h"
 
 /*
 # ========================================================================================= #

@@ -120,7 +120,6 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	80,		2,	L"Line To Target");
 	CMenuManager::AddCheckBox(20,	100,	2,	L"CossHair");
 	CMenuManager::AddCheckBox(20,	120,	2,	L"Radar");
-
 	//===========================
 }
 

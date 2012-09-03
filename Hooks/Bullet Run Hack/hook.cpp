@@ -1,4 +1,4 @@
-#include "..\Framework\Framework.h"
+#include "Framework\Framework.h"
 
 char FunctionName[ 256 ]; 
 
