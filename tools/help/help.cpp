@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv)
 {
-	char* exe	= "ArcticCombat.exe";
+	char* exe	= "CrimeCraft.exe";
 
 	PROCESSENTRY32 PE32;
 	bool FindGame = true;
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	INJECTSTATS Stats;
 	ZeroMemory(&Info,sizeof(INJECTINFO));
 	Info.SourceType = SOURCE_FILE;
-	Info.Source = "C:\\test.dll";
+	Info.Source = "c:\\CCHack.dll";
 	Info.TargetType = TARGET_PROCESS;
 	Info.Target = exe;
 	Info.Options = INJECT_RANDOMHEAD | INJECT_RANDOMTAIL | INJECT_DESTROYHEADERS | INJECT_RANDOMPOSITION;

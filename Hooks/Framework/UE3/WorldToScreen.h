@@ -59,7 +59,7 @@ public:
 		if( Transformed.Z < 1.00f )
 			Transformed.Z = 1.00f;
 
-#ifdef GASDK || TASDK || CCSDK
+#ifdef GASDK || TASDK
 	float FOVAngle = Controller->FOVAngle;
 #endif
 
@@ -73,6 +73,10 @@ public:
 
 #ifdef BRSDK
 	float FOVAngle = Controller->eventGetFOVAngle();
+#endif
+
+#ifdef CCSDK
+	float FOVAngle = Controller->FOVAngle;
 #endif
 
 		Out.X = ( Canvas->ClipX / 2.0f ) + Transformed.X * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;

@@ -71,10 +71,10 @@ public:
 
 
 			FVector vHeadBone;
-#ifdef BRSDK
+
 			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-#endif
+
 			float Distance = (vHeadBone - CameraLocation).Length();
 
 			if( IsEnemy && IsVisible )
@@ -103,11 +103,9 @@ public:
 
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
-
-#ifdef BRSDK
+					
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				APBPController->ClientSetCtrlRotation(AimRotation);
-#endif
+				//APBPController->ClientSetCtrlRotation(AimRotation);
 
 				APBPController->StartFire(0);
 
@@ -179,8 +177,8 @@ public:
 #endif
 
 #ifdef BRSDK
-				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				APBPController->ClientSetCtrlRotation(AimRotation);
+				APBPawn* APBPController = reinterpret_cast<APBPawn*>( LocalPlayer->Actor->Pawn );
+				APBPController->SetViewRotation(AimRotation);
 #endif
 			}
 		}

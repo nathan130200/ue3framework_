@@ -43,7 +43,7 @@ void Draw( UCanvas* Canvas, APlayerController* Controller, FVector CameraLocatio
 
 		if(CheckBoxes[3].Checked)
 		{
-			ESP::BoneESP(Canvas, Pawn, DrawColor);
+			//ESP::BoneESP(Canvas, Pawn, DrawColor);
 		}
 
 		if(CheckBoxes[4].Checked)
@@ -58,7 +58,7 @@ void Draw( UCanvas* Canvas, APlayerController* Controller, FVector CameraLocatio
 
 		if(CheckBoxes[6].Checked)
 		{
-			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
 		}
 
 		if(CheckBoxes[7].Checked)

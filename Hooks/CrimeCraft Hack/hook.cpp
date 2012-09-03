@@ -33,13 +33,15 @@ void PostRender ( UCanvas* pCanvas )
 	}
 
 	Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
+	ACCController*	AController = reinterpret_cast<ACCController*>( LocalPlayer->Actor );
+
 	APawn* Pawn = reinterpret_cast<APawn*>(LocalPlayer->Actor->Pawn);
 
 	if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL )
 		return;
 
-	CameraLocation = Controller->Location;
-	CameraRotation = Controller->Rotation;
+	CameraLocation = AController->CalcViewLocation;
+	CameraRotation = AController->CalcViewRotation;
 	
 	CRender::DrawStringEx( pCanvas, 10, 10, ColorGreen, 0, L"Location %0.2f %0.2f %0.2f", CameraLocation.X, CameraLocation.Y, CameraLocation.Z );
 

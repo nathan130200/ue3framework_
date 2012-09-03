@@ -99,6 +99,40 @@ struct UPBItemShopClient_execdebugPrintSetPreset_Parms
 	// struct FString                                  itemList;                                         		// 0x002C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 };
 
+// Function PBItemShop.PBItemShopClient.RemoveDelegate_OnSetLastDisplayedCoolnessDone
+// [0x00020002] 
+struct UPBItemShopClient_execRemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms
+{
+	struct FScriptDelegate                             func;                                             		// 0x0000 (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	class UObject*                                     Parent;                                           		// 0x000C (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ReturnValue;                                      		// 0x0010 (0x0004) [0x0000000000000580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+};
+
+// Function PBItemShop.PBItemShopClient.AddDelegate_OnSetLastDisplayedCoolnessDone
+// [0x00020002] 
+struct UPBItemShopClient_execAddDelegate_OnSetLastDisplayedCoolnessDone_Parms
+{
+	struct FScriptDelegate                             func;                                             		// 0x0000 (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	class UObject*                                     Parent;                                           		// 0x000C (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ReturnValue;                                      		// 0x0010 (0x0004) [0x0000000000000580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+};
+
+// Function PBItemShop.PBItemShopClient.OnSetLastDisplayedCoolnessDone
+// [0x00120000] 
+struct UPBItemShopClient_execOnSetLastDisplayedCoolnessDone_Parms
+{
+	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+};
+
+// Function PBItemShop.PBItemShopClient.SetLastDisplayedCoolness
+// [0x00020C00] ( FUNC_Event | FUNC_Native )
+struct UPBItemShopClient_eventSetLastDisplayedCoolness_Parms
+{
+	int                                                lastDisplayedCoolness;                            		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+};
+
 // Function PBItemShop.PBItemShopClient.RemoveDelegate_OnGetCasTicketDone
 // [0x00020002] 
 struct UPBItemShopClient_execRemoveDelegate_OnGetCasTicketDone_Parms
@@ -1756,7 +1790,7 @@ struct UPBItemShopClient_execOnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PBItemShop.PBItemShopClient.GetCharacterProfile
@@ -3188,6 +3222,7 @@ struct UPBItemShopServer_execOnGetProfileDetailsServerDone_Parms
 	int                                                coolness;                                         		// 0x0080 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                profileReputation;                                		// 0x0084 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	unsigned char                                      accountLevel;                                     		// 0x0088 (0x0001) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ProgressionSubmitCount;                           		// 0x008C (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
 // Function PBItemShop.PBItemShopServer.GetProfileDetailsServer

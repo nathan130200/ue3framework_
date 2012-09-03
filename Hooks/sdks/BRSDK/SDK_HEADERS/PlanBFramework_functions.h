@@ -33,7 +33,7 @@ void APBBaseFlock::eventHearNoise ( float Loudness, class AActor* NoiseMaker, st
 	static UFunction* pFnHearNoise = NULL;
 
 	if ( ! pFnHearNoise )
-		pFnHearNoise = (UFunction*) UObject::GObjObjects()->Data[ 36811 ];
+		pFnHearNoise = (UFunction*) UObject::GObjObjects()->Data[ 36828 ];
 
 	APBBaseFlock_eventHearNoise_Parms HearNoise_Parms;
 	HearNoise_Parms.Loudness = Loudness;
@@ -53,7 +53,7 @@ void APBBaseGameReplicationInfo::SetNoStreamWorldTextureForFrames ( int NumFrame
 	static UFunction* pFnSetNoStreamWorldTextureForFrames = NULL;
 
 	if ( ! pFnSetNoStreamWorldTextureForFrames )
-		pFnSetNoStreamWorldTextureForFrames = (UFunction*) UObject::GObjObjects()->Data[ 36819 ];
+		pFnSetNoStreamWorldTextureForFrames = (UFunction*) UObject::GObjObjects()->Data[ 36836 ];
 
 	APBBaseGameReplicationInfo_execSetNoStreamWorldTextureForFrames_Parms SetNoStreamWorldTextureForFrames_Parms;
 	SetNoStreamWorldTextureForFrames_Parms.NumFrames = NumFrames;
@@ -74,7 +74,7 @@ void APBBaseGameReplicationInfo::PostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 36817 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 36834 ];
 
 	APBBaseGameReplicationInfo_execPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -91,7 +91,7 @@ bool APBBasePawn::IsFullBodyAnimPlaying ( )
 	static UFunction* pFnIsFullBodyAnimPlaying = NULL;
 
 	if ( ! pFnIsFullBodyAnimPlaying )
-		pFnIsFullBodyAnimPlaying = (UFunction*) UObject::GObjObjects()->Data[ 37104 ];
+		pFnIsFullBodyAnimPlaying = (UFunction*) UObject::GObjObjects()->Data[ 37121 ];
 
 	APBBasePawn_execIsFullBodyAnimPlaying_Parms IsFullBodyAnimPlaying_Parms;
 
@@ -114,7 +114,7 @@ float APBBasePawn::PlayFullBodyAnim ( struct FName AnimName, unsigned long Cycle
 	static UFunction* pFnPlayFullBodyAnim = NULL;
 
 	if ( ! pFnPlayFullBodyAnim )
-		pFnPlayFullBodyAnim = (UFunction*) UObject::GObjObjects()->Data[ 37098 ];
+		pFnPlayFullBodyAnim = (UFunction*) UObject::GObjObjects()->Data[ 37115 ];
 
 	APBBasePawn_execPlayFullBodyAnim_Parms PlayFullBodyAnim_Parms;
 	memcpy ( &PlayFullBodyAnim_Parms.AnimName, &AnimName, 0x8 );
@@ -136,7 +136,7 @@ void APBBasePawn::PlayFullRagDoll ( )
 	static UFunction* pFnPlayFullRagDoll = NULL;
 
 	if ( ! pFnPlayFullRagDoll )
-		pFnPlayFullRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 37097 ];
+		pFnPlayFullRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 37114 ];
 
 	APBBasePawn_execPlayFullRagDoll_Parms PlayFullRagDoll_Parms;
 
@@ -156,7 +156,7 @@ void APBBasePawn::eventRigidBodyCollision ( class UPrimitiveComponent* HitCompon
 	static UFunction* pFnRigidBodyCollision = NULL;
 
 	if ( ! pFnRigidBodyCollision )
-		pFnRigidBodyCollision = (UFunction*) UObject::GObjObjects()->Data[ 37076 ];
+		pFnRigidBodyCollision = (UFunction*) UObject::GObjObjects()->Data[ 37093 ];
 
 	APBBasePawn_eventRigidBodyCollision_Parms RigidBodyCollision_Parms;
 	RigidBodyCollision_Parms.HitComponent = HitComponent;
@@ -178,7 +178,7 @@ void APBBasePawn::OnTimer_SwitchOffMotors ( )
 	static UFunction* pFnOnTimer_SwitchOffMotors = NULL;
 
 	if ( ! pFnOnTimer_SwitchOffMotors )
-		pFnOnTimer_SwitchOffMotors = (UFunction*) UObject::GObjObjects()->Data[ 37075 ];
+		pFnOnTimer_SwitchOffMotors = (UFunction*) UObject::GObjObjects()->Data[ 37092 ];
 
 	APBBasePawn_execOnTimer_SwitchOffMotors_Parms OnTimer_SwitchOffMotors_Parms;
 
@@ -195,7 +195,7 @@ void APBBasePawn::eventOnPhysicsChanged ( unsigned char oldPhysics )
 	static UFunction* pFnOnPhysicsChanged = NULL;
 
 	if ( ! pFnOnPhysicsChanged )
-		pFnOnPhysicsChanged = (UFunction*) UObject::GObjObjects()->Data[ 37073 ];
+		pFnOnPhysicsChanged = (UFunction*) UObject::GObjObjects()->Data[ 37090 ];
 
 	APBBasePawn_eventOnPhysicsChanged_Parms OnPhysicsChanged_Parms;
 	OnPhysicsChanged_Parms.oldPhysics = oldPhysics;
@@ -214,7 +214,7 @@ bool APBBasePawn::IsUpperBoneName ( struct FName InName )
 	static UFunction* pFnIsUpperBoneName = NULL;
 
 	if ( ! pFnIsUpperBoneName )
-		pFnIsUpperBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37065 ];
+		pFnIsUpperBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37082 ];
 
 	APBBasePawn_execIsUpperBoneName_Parms IsUpperBoneName_Parms;
 	memcpy ( &IsUpperBoneName_Parms.InName, &InName, 0x8 );
@@ -235,7 +235,7 @@ bool APBBasePawn::IsLowerBoneName ( struct FName InName )
 	static UFunction* pFnIsLowerBoneName = NULL;
 
 	if ( ! pFnIsLowerBoneName )
-		pFnIsLowerBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37059 ];
+		pFnIsLowerBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37076 ];
 
 	APBBasePawn_execIsLowerBoneName_Parms IsLowerBoneName_Parms;
 	memcpy ( &IsLowerBoneName_Parms.InName, &InName, 0x8 );
@@ -255,7 +255,7 @@ void APBBasePawn::SetUpperBonesFixed ( unsigned long bFixed )
 	static UFunction* pFnSetUpperBonesFixed = NULL;
 
 	if ( ! pFnSetUpperBonesFixed )
-		pFnSetUpperBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37060 ];
+		pFnSetUpperBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37077 ];
 
 	APBBasePawn_execSetUpperBonesFixed_Parms SetUpperBonesFixed_Parms;
 	SetUpperBonesFixed_Parms.bFixed = bFixed;
@@ -273,7 +273,7 @@ void APBBasePawn::SetLowerBonesFixed ( unsigned long bFixed )
 	static UFunction* pFnSetLowerBonesFixed = NULL;
 
 	if ( ! pFnSetLowerBonesFixed )
-		pFnSetLowerBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37054 ];
+		pFnSetLowerBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37071 ];
 
 	APBBasePawn_execSetLowerBonesFixed_Parms SetLowerBonesFixed_Parms;
 	SetLowerBonesFixed_Parms.bFixed = bFixed;
@@ -291,7 +291,7 @@ void APBBasePawn::SetAllBonesFixed ( unsigned long bFixed )
 	static UFunction* pFnSetAllBonesFixed = NULL;
 
 	if ( ! pFnSetAllBonesFixed )
-		pFnSetAllBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37050 ];
+		pFnSetAllBonesFixed = (UFunction*) UObject::GObjObjects()->Data[ 37067 ];
 
 	APBBasePawn_execSetAllBonesFixed_Parms SetAllBonesFixed_Parms;
 	SetAllBonesFixed_Parms.bFixed = bFixed;
@@ -309,7 +309,7 @@ bool APBBasePawn::HasFixedBones ( )
 	static UFunction* pFnHasFixedBones = NULL;
 
 	if ( ! pFnHasFixedBones )
-		pFnHasFixedBones = (UFunction*) UObject::GObjObjects()->Data[ 37045 ];
+		pFnHasFixedBones = (UFunction*) UObject::GObjObjects()->Data[ 37062 ];
 
 	APBBasePawn_execHasFixedBones_Parms HasFixedBones_Parms;
 
@@ -327,7 +327,7 @@ void APBBasePawn::TerminateCustomRagdoll ( )
 	static UFunction* pFnTerminateCustomRagdoll = NULL;
 
 	if ( ! pFnTerminateCustomRagdoll )
-		pFnTerminateCustomRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37044 ];
+		pFnTerminateCustomRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37061 ];
 
 	APBBasePawn_execTerminateCustomRagdoll_Parms TerminateCustomRagdoll_Parms;
 
@@ -344,7 +344,7 @@ void APBBasePawn::InitCustomRagdoll ( unsigned char targetPhysics )
 	static UFunction* pFnInitCustomRagdoll = NULL;
 
 	if ( ! pFnInitCustomRagdoll )
-		pFnInitCustomRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37042 ];
+		pFnInitCustomRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37059 ];
 
 	APBBasePawn_execInitCustomRagdoll_Parms InitCustomRagdoll_Parms;
 	InitCustomRagdoll_Parms.targetPhysics = targetPhysics;
@@ -361,7 +361,7 @@ void APBBasePawn::TerminateRagdoll ( )
 	static UFunction* pFnTerminateRagdoll = NULL;
 
 	if ( ! pFnTerminateRagdoll )
-		pFnTerminateRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37041 ];
+		pFnTerminateRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37058 ];
 
 	APBBasePawn_execTerminateRagdoll_Parms TerminateRagdoll_Parms;
 
@@ -378,7 +378,7 @@ bool APBBasePawn::IsNetworkAuthorityPawn ( )
 	static UFunction* pFnIsNetworkAuthorityPawn = NULL;
 
 	if ( ! pFnIsNetworkAuthorityPawn )
-		pFnIsNetworkAuthorityPawn = (UFunction*) UObject::GObjObjects()->Data[ 37038 ];
+		pFnIsNetworkAuthorityPawn = (UFunction*) UObject::GObjObjects()->Data[ 37055 ];
 
 	APBBasePawn_execIsNetworkAuthorityPawn_Parms IsNetworkAuthorityPawn_Parms;
 
@@ -397,7 +397,7 @@ bool APBBasePawn::CanRender ( )
 	static UFunction* pFnCanRender = NULL;
 
 	if ( ! pFnCanRender )
-		pFnCanRender = (UFunction*) UObject::GObjObjects()->Data[ 37035 ];
+		pFnCanRender = (UFunction*) UObject::GObjObjects()->Data[ 37052 ];
 
 	APBBasePawn_execCanRender_Parms CanRender_Parms;
 
@@ -415,7 +415,7 @@ void APBBasePawn::RecoverFromRagdoll ( )
 	static UFunction* pFnRecoverFromRagdoll = NULL;
 
 	if ( ! pFnRecoverFromRagdoll )
-		pFnRecoverFromRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37033 ];
+		pFnRecoverFromRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 37050 ];
 
 	APBBasePawn_execRecoverFromRagdoll_Parms RecoverFromRagdoll_Parms;
 
@@ -431,7 +431,7 @@ void APBBasePawn::eventTakeHitBlendedOut ( )
 	static UFunction* pFnTakeHitBlendedOut = NULL;
 
 	if ( ! pFnTakeHitBlendedOut )
-		pFnTakeHitBlendedOut = (UFunction*) UObject::GObjObjects()->Data[ 37032 ];
+		pFnTakeHitBlendedOut = (UFunction*) UObject::GObjObjects()->Data[ 37049 ];
 
 	APBBasePawn_eventTakeHitBlendedOut_Parms TakeHitBlendedOut_Parms;
 
@@ -447,7 +447,7 @@ void APBBasePawn::PlayTakeHitEffects ( )
 	static UFunction* pFnPlayTakeHitEffects = NULL;
 
 	if ( ! pFnPlayTakeHitEffects )
-		pFnPlayTakeHitEffects = (UFunction*) UObject::GObjObjects()->Data[ 37029 ];
+		pFnPlayTakeHitEffects = (UFunction*) UObject::GObjObjects()->Data[ 37046 ];
 
 	APBBasePawn_execPlayTakeHitEffects_Parms PlayTakeHitEffects_Parms;
 
@@ -470,7 +470,7 @@ void APBBasePawn::PlayHit ( float Damage, class AController* InstigatedBy, struc
 	static UFunction* pFnPlayHit = NULL;
 
 	if ( ! pFnPlayHit )
-		pFnPlayHit = (UFunction*) UObject::GObjObjects()->Data[ 37017 ];
+		pFnPlayHit = (UFunction*) UObject::GObjObjects()->Data[ 37034 ];
 
 	APBBasePawn_execPlayHit_Parms PlayHit_Parms;
 	PlayHit_Parms.Damage = Damage;
@@ -493,7 +493,7 @@ void APBBasePawn::eventOnVirtualPhysicsWeightChanged ( )
 	static UFunction* pFnOnVirtualPhysicsWeightChanged = NULL;
 
 	if ( ! pFnOnVirtualPhysicsWeightChanged )
-		pFnOnVirtualPhysicsWeightChanged = (UFunction*) UObject::GObjObjects()->Data[ 37016 ];
+		pFnOnVirtualPhysicsWeightChanged = (UFunction*) UObject::GObjObjects()->Data[ 37033 ];
 
 	APBBasePawn_eventOnVirtualPhysicsWeightChanged_Parms OnVirtualPhysicsWeightChanged_Parms;
 
@@ -509,7 +509,7 @@ void APBBasePawn::eventOnPhysicsWeightChanged ( )
 	static UFunction* pFnOnPhysicsWeightChanged = NULL;
 
 	if ( ! pFnOnPhysicsWeightChanged )
-		pFnOnPhysicsWeightChanged = (UFunction*) UObject::GObjObjects()->Data[ 37015 ];
+		pFnOnPhysicsWeightChanged = (UFunction*) UObject::GObjObjects()->Data[ 37032 ];
 
 	APBBasePawn_eventOnPhysicsWeightChanged_Parms OnPhysicsWeightChanged_Parms;
 
@@ -527,7 +527,7 @@ void APBBasePawn::OnPawnCommand ( class APBBasePlayerController* playerCtrl, str
 	static UFunction* pFnOnPawnCommand = NULL;
 
 	if ( ! pFnOnPawnCommand )
-		pFnOnPawnCommand = (UFunction*) UObject::GObjObjects()->Data[ 37010 ];
+		pFnOnPawnCommand = (UFunction*) UObject::GObjObjects()->Data[ 37027 ];
 
 	APBBasePawn_execOnPawnCommand_Parms OnPawnCommand_Parms;
 	OnPawnCommand_Parms.playerCtrl = playerCtrl;
@@ -546,7 +546,7 @@ void APBBasePawn::eventOnBlendRagdollChildAnimEnd ( unsigned char eChild )
 	static UFunction* pFnOnBlendRagdollChildAnimEnd = NULL;
 
 	if ( ! pFnOnBlendRagdollChildAnimEnd )
-		pFnOnBlendRagdollChildAnimEnd = (UFunction*) UObject::GObjObjects()->Data[ 37008 ];
+		pFnOnBlendRagdollChildAnimEnd = (UFunction*) UObject::GObjObjects()->Data[ 37025 ];
 
 	APBBasePawn_eventOnBlendRagdollChildAnimEnd_Parms OnBlendRagdollChildAnimEnd_Parms;
 	OnBlendRagdollChildAnimEnd_Parms.eChild = eChild;
@@ -564,7 +564,7 @@ void APBBasePawn::ServerSlideDown ( unsigned long bSlide )
 	static UFunction* pFnServerSlideDown = NULL;
 
 	if ( ! pFnServerSlideDown )
-		pFnServerSlideDown = (UFunction*) UObject::GObjObjects()->Data[ 37006 ];
+		pFnServerSlideDown = (UFunction*) UObject::GObjObjects()->Data[ 37023 ];
 
 	APBBasePawn_execServerSlideDown_Parms ServerSlideDown_Parms;
 	ServerSlideDown_Parms.bSlide = bSlide;
@@ -582,7 +582,7 @@ void APBBasePawn::OnDuck ( unsigned long bDucked )
 	static UFunction* pFnOnDuck = NULL;
 
 	if ( ! pFnOnDuck )
-		pFnOnDuck = (UFunction*) UObject::GObjObjects()->Data[ 37004 ];
+		pFnOnDuck = (UFunction*) UObject::GObjObjects()->Data[ 37021 ];
 
 	APBBasePawn_execOnDuck_Parms OnDuck_Parms;
 	OnDuck_Parms.bDucked = bDucked;
@@ -601,7 +601,7 @@ void APBBasePawn::TeleportToSpot ( class ANavigationPoint* Spot, unsigned long b
 	static UFunction* pFnTeleportToSpot = NULL;
 
 	if ( ! pFnTeleportToSpot )
-		pFnTeleportToSpot = (UFunction*) UObject::GObjObjects()->Data[ 37001 ];
+		pFnTeleportToSpot = (UFunction*) UObject::GObjObjects()->Data[ 37018 ];
 
 	APBBasePawn_execTeleportToSpot_Parms TeleportToSpot_Parms;
 	TeleportToSpot_Parms.Spot = Spot;
@@ -620,7 +620,7 @@ bool APBBasePawn::StopWeaponFiring ( )
 	static UFunction* pFnStopWeaponFiring = NULL;
 
 	if ( ! pFnStopWeaponFiring )
-		pFnStopWeaponFiring = (UFunction*) UObject::GObjObjects()->Data[ 36999 ];
+		pFnStopWeaponFiring = (UFunction*) UObject::GObjObjects()->Data[ 37016 ];
 
 	APBBasePawn_execStopWeaponFiring_Parms StopWeaponFiring_Parms;
 
@@ -642,7 +642,7 @@ void APBBasePawn::PostRenderFor ( class APlayerController* PC, class UCanvas* Ca
 	static UFunction* pFnPostRenderFor = NULL;
 
 	if ( ! pFnPostRenderFor )
-		pFnPostRenderFor = (UFunction*) UObject::GObjObjects()->Data[ 36994 ];
+		pFnPostRenderFor = (UFunction*) UObject::GObjObjects()->Data[ 37011 ];
 
 	APBBasePawn_execPostRenderFor_Parms PostRenderFor_Parms;
 	PostRenderFor_Parms.PC = PC;
@@ -663,7 +663,7 @@ void APBBasePawn::GetLowerBoneNames ( TArray< struct FName >* lowerBodyBoneNames
 	static UFunction* pFnGetLowerBoneNames = NULL;
 
 	if ( ! pFnGetLowerBoneNames )
-		pFnGetLowerBoneNames = (UFunction*) UObject::GObjObjects()->Data[ 36990 ];
+		pFnGetLowerBoneNames = (UFunction*) UObject::GObjObjects()->Data[ 37007 ];
 
 	APBBasePawn_execGetLowerBoneNames_Parms GetLowerBoneNames_Parms;
 
@@ -683,7 +683,7 @@ bool APBBasePawn::IsFirstPerson ( )
 	static UFunction* pFnIsFirstPerson = NULL;
 
 	if ( ! pFnIsFirstPerson )
-		pFnIsFirstPerson = (UFunction*) UObject::GObjObjects()->Data[ 36985 ];
+		pFnIsFirstPerson = (UFunction*) UObject::GObjObjects()->Data[ 37002 ];
 
 	APBBasePawn_execIsFirstPerson_Parms IsFirstPerson_Parms;
 
@@ -704,7 +704,7 @@ bool APBBasePawn::GetHeadLocAndRot ( struct FVector* HeadLoc, struct FRotator* h
 	static UFunction* pFnGetHeadLocAndRot = NULL;
 
 	if ( ! pFnGetHeadLocAndRot )
-		pFnGetHeadLocAndRot = (UFunction*) UObject::GObjObjects()->Data[ 36979 ];
+		pFnGetHeadLocAndRot = (UFunction*) UObject::GObjObjects()->Data[ 36996 ];
 
 	APBBasePawn_execGetHeadLocAndRot_Parms GetHeadLocAndRot_Parms;
 
@@ -730,7 +730,7 @@ bool APBBasePawn::eventGetHeadLocation ( struct FVector* out_vHeadLocation )
 	static UFunction* pFnGetHeadLocation = NULL;
 
 	if ( ! pFnGetHeadLocation )
-		pFnGetHeadLocation = (UFunction*) UObject::GObjObjects()->Data[ 36946 ];
+		pFnGetHeadLocation = (UFunction*) UObject::GObjObjects()->Data[ 36963 ];
 
 	APBBasePawn_eventGetHeadLocation_Parms GetHeadLocation_Parms;
 
@@ -753,7 +753,7 @@ float APBBasePawn::eventTickCameraEyeHeight_Smoothing ( float DeltaTime )
 	static UFunction* pFnTickCameraEyeHeight_Smoothing = NULL;
 
 	if ( ! pFnTickCameraEyeHeight_Smoothing )
-		pFnTickCameraEyeHeight_Smoothing = (UFunction*) UObject::GObjObjects()->Data[ 36971 ];
+		pFnTickCameraEyeHeight_Smoothing = (UFunction*) UObject::GObjObjects()->Data[ 36988 ];
 
 	APBBasePawn_eventTickCameraEyeHeight_Smoothing_Parms TickCameraEyeHeight_Smoothing_Parms;
 	TickCameraEyeHeight_Smoothing_Parms.DeltaTime = DeltaTime;
@@ -773,7 +773,7 @@ void APBBasePawn::eventTickCameraEyePlane_Smoothing ( float DeltaTime )
 	static UFunction* pFnTickCameraEyePlane_Smoothing = NULL;
 
 	if ( ! pFnTickCameraEyePlane_Smoothing )
-		pFnTickCameraEyePlane_Smoothing = (UFunction*) UObject::GObjObjects()->Data[ 36968 ];
+		pFnTickCameraEyePlane_Smoothing = (UFunction*) UObject::GObjObjects()->Data[ 36985 ];
 
 	APBBasePawn_eventTickCameraEyePlane_Smoothing_Parms TickCameraEyePlane_Smoothing_Parms;
 	TickCameraEyePlane_Smoothing_Parms.DeltaTime = DeltaTime;
@@ -795,7 +795,7 @@ float APBBasePawn::Tick_SmoothValue ( float DeltaTime, float fSmoothingFactor, f
 	static UFunction* pFnTick_SmoothValue = NULL;
 
 	if ( ! pFnTick_SmoothValue )
-		pFnTick_SmoothValue = (UFunction*) UObject::GObjObjects()->Data[ 36960 ];
+		pFnTick_SmoothValue = (UFunction*) UObject::GObjObjects()->Data[ 36977 ];
 
 	APBBasePawn_execTick_SmoothValue_Parms Tick_SmoothValue_Parms;
 	Tick_SmoothValue_Parms.DeltaTime = DeltaTime;
@@ -818,7 +818,7 @@ bool APBBasePawn::IsAlive ( )
 	static UFunction* pFnIsAlive = NULL;
 
 	if ( ! pFnIsAlive )
-		pFnIsAlive = (UFunction*) UObject::GObjObjects()->Data[ 36958 ];
+		pFnIsAlive = (UFunction*) UObject::GObjObjects()->Data[ 36975 ];
 
 	APBBasePawn_execIsAlive_Parms IsAlive_Parms;
 
@@ -840,7 +840,7 @@ void APBBasePawn::TraceTest ( )
 	static UFunction* pFnTraceTest = NULL;
 
 	if ( ! pFnTraceTest )
-		pFnTraceTest = (UFunction*) UObject::GObjObjects()->Data[ 36949 ];
+		pFnTraceTest = (UFunction*) UObject::GObjObjects()->Data[ 36966 ];
 
 	APBBasePawn_execTraceTest_Parms TraceTest_Parms;
 
@@ -857,7 +857,7 @@ struct FTakeHitInfo APBBasePawn::GetHitInfo ( )
 	static UFunction* pFnGetHitInfo = NULL;
 
 	if ( ! pFnGetHitInfo )
-		pFnGetHitInfo = (UFunction*) UObject::GObjObjects()->Data[ 36947 ];
+		pFnGetHitInfo = (UFunction*) UObject::GObjObjects()->Data[ 36964 ];
 
 	APBBasePawn_execGetHitInfo_Parms GetHitInfo_Parms;
 
@@ -875,7 +875,7 @@ void APBBasePawn::UpdatePawnViewLocation ( )
 	static UFunction* pFnUpdatePawnViewLocation = NULL;
 
 	if ( ! pFnUpdatePawnViewLocation )
-		pFnUpdatePawnViewLocation = (UFunction*) UObject::GObjObjects()->Data[ 36943 ];
+		pFnUpdatePawnViewLocation = (UFunction*) UObject::GObjObjects()->Data[ 36960 ];
 
 	APBBasePawn_execUpdatePawnViewLocation_Parms UpdatePawnViewLocation_Parms;
 
@@ -892,7 +892,7 @@ struct FVector APBBasePawn::GetPawnViewLocation ( )
 	static UFunction* pFnGetPawnViewLocation = NULL;
 
 	if ( ! pFnGetPawnViewLocation )
-		pFnGetPawnViewLocation = (UFunction*) UObject::GObjObjects()->Data[ 36940 ];
+		pFnGetPawnViewLocation = (UFunction*) UObject::GObjObjects()->Data[ 36957 ];
 
 	APBBasePawn_execGetPawnViewLocation_Parms GetPawnViewLocation_Parms;
 
@@ -911,7 +911,7 @@ void APBBasePawn::SetUpdateSkelWhenNotRendered ( unsigned long bValue )
 	static UFunction* pFnSetUpdateSkelWhenNotRendered = NULL;
 
 	if ( ! pFnSetUpdateSkelWhenNotRendered )
-		pFnSetUpdateSkelWhenNotRendered = (UFunction*) UObject::GObjObjects()->Data[ 36938 ];
+		pFnSetUpdateSkelWhenNotRendered = (UFunction*) UObject::GObjObjects()->Data[ 36955 ];
 
 	APBBasePawn_execSetUpdateSkelWhenNotRendered_Parms SetUpdateSkelWhenNotRendered_Parms;
 	SetUpdateSkelWhenNotRendered_Parms.bValue = bValue;
@@ -929,7 +929,7 @@ void APBBasePawn::GetDebugStringArray ( TArray< struct FString >* DebugInfo )
 	static UFunction* pFnGetDebugStringArray = NULL;
 
 	if ( ! pFnGetDebugStringArray )
-		pFnGetDebugStringArray = (UFunction*) UObject::GObjObjects()->Data[ 36935 ];
+		pFnGetDebugStringArray = (UFunction*) UObject::GObjObjects()->Data[ 36952 ];
 
 	APBBasePawn_execGetDebugStringArray_Parms GetDebugStringArray_Parms;
 
@@ -949,7 +949,7 @@ class APBBasePlayerController* APBBasePawn::GetBasePlayerController ( )
 	static UFunction* pFnGetBasePlayerController = NULL;
 
 	if ( ! pFnGetBasePlayerController )
-		pFnGetBasePlayerController = (UFunction*) UObject::GObjObjects()->Data[ 36933 ];
+		pFnGetBasePlayerController = (UFunction*) UObject::GObjObjects()->Data[ 36950 ];
 
 	APBBasePawn_execGetBasePlayerController_Parms GetBasePlayerController_Parms;
 
@@ -968,7 +968,7 @@ void APBBasePawn::FreezeRagDoll ( unsigned long bFreeze )
 	static UFunction* pFnFreezeRagDoll = NULL;
 
 	if ( ! pFnFreezeRagDoll )
-		pFnFreezeRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 36931 ];
+		pFnFreezeRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 36948 ];
 
 	APBBasePawn_execFreezeRagDoll_Parms FreezeRagDoll_Parms;
 	FreezeRagDoll_Parms.bFreeze = bFreeze;
@@ -986,7 +986,7 @@ void APBBasePawn::eventEncroachedBy ( class AActor* Other )
 	static UFunction* pFnEncroachedBy = NULL;
 
 	if ( ! pFnEncroachedBy )
-		pFnEncroachedBy = (UFunction*) UObject::GObjObjects()->Data[ 36928 ];
+		pFnEncroachedBy = (UFunction*) UObject::GObjObjects()->Data[ 36945 ];
 
 	APBBasePawn_eventEncroachedBy_Parms EncroachedBy_Parms;
 	EncroachedBy_Parms.Other = Other;
@@ -1005,7 +1005,7 @@ void APBBasePawn::DrawStaticDebug ( class APBBasePlayerController* localPlayerCt
 	static UFunction* pFnDrawStaticDebug = NULL;
 
 	if ( ! pFnDrawStaticDebug )
-		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 36918 ];
+		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 36935 ];
 
 	APBBasePawn_execDrawStaticDebug_Parms DrawStaticDebug_Parms;
 	DrawStaticDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -1027,7 +1027,7 @@ void APBBasePawn::AddVelocity ( struct FVector NewVelocity, struct FVector HitLo
 	static UFunction* pFnAddVelocity = NULL;
 
 	if ( ! pFnAddVelocity )
-		pFnAddVelocity = (UFunction*) UObject::GObjObjects()->Data[ 36913 ];
+		pFnAddVelocity = (UFunction*) UObject::GObjObjects()->Data[ 36930 ];
 
 	APBBasePawn_execAddVelocity_Parms AddVelocity_Parms;
 	memcpy ( &AddVelocity_Parms.NewVelocity, &NewVelocity, 0xC );
@@ -1047,7 +1047,7 @@ void APBBasePawn::PlayBleedEffects ( )
 	static UFunction* pFnPlayBleedEffects = NULL;
 
 	if ( ! pFnPlayBleedEffects )
-		pFnPlayBleedEffects = (UFunction*) UObject::GObjObjects()->Data[ 36911 ];
+		pFnPlayBleedEffects = (UFunction*) UObject::GObjObjects()->Data[ 36928 ];
 
 	APBBasePawn_execPlayBleedEffects_Parms PlayBleedEffects_Parms;
 
@@ -1063,7 +1063,7 @@ void APBBasePawn::PlayRagDoll ( )
 	static UFunction* pFnPlayRagDoll = NULL;
 
 	if ( ! pFnPlayRagDoll )
-		pFnPlayRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 36909 ];
+		pFnPlayRagDoll = (UFunction*) UObject::GObjObjects()->Data[ 36926 ];
 
 	APBBasePawn_execPlayRagDoll_Parms PlayRagDoll_Parms;
 
@@ -1079,7 +1079,7 @@ void APBBasePawn::Suicide ( )
 	static UFunction* pFnSuicide = NULL;
 
 	if ( ! pFnSuicide )
-		pFnSuicide = (UFunction*) UObject::GObjObjects()->Data[ 36908 ];
+		pFnSuicide = (UFunction*) UObject::GObjObjects()->Data[ 36925 ];
 
 	APBBasePawn_execSuicide_Parms Suicide_Parms;
 
@@ -1096,7 +1096,7 @@ void APBBasePawn::SetHandIKEnabled ( unsigned long bEnabled )
 	static UFunction* pFnSetHandIKEnabled = NULL;
 
 	if ( ! pFnSetHandIKEnabled )
-		pFnSetHandIKEnabled = (UFunction*) UObject::GObjObjects()->Data[ 36906 ];
+		pFnSetHandIKEnabled = (UFunction*) UObject::GObjObjects()->Data[ 36923 ];
 
 	APBBasePawn_execSetHandIKEnabled_Parms SetHandIKEnabled_Parms;
 	SetHandIKEnabled_Parms.bEnabled = bEnabled;
@@ -1113,7 +1113,7 @@ void APBBasePawn::ResetCharPhysState ( )
 	static UFunction* pFnResetCharPhysState = NULL;
 
 	if ( ! pFnResetCharPhysState )
-		pFnResetCharPhysState = (UFunction*) UObject::GObjObjects()->Data[ 36905 ];
+		pFnResetCharPhysState = (UFunction*) UObject::GObjObjects()->Data[ 36922 ];
 
 	APBBasePawn_execResetCharPhysState_Parms ResetCharPhysState_Parms;
 
@@ -1130,7 +1130,7 @@ void APBBasePawn::SetPawnRBChannels ( unsigned long bRagdollMode )
 	static UFunction* pFnSetPawnRBChannels = NULL;
 
 	if ( ! pFnSetPawnRBChannels )
-		pFnSetPawnRBChannels = (UFunction*) UObject::GObjObjects()->Data[ 36903 ];
+		pFnSetPawnRBChannels = (UFunction*) UObject::GObjObjects()->Data[ 36920 ];
 
 	APBBasePawn_execSetPawnRBChannels_Parms SetPawnRBChannels_Parms;
 	SetPawnRBChannels_Parms.bRagdollMode = bRagdollMode;
@@ -1147,7 +1147,7 @@ void APBBasePawn::StopAndResetAllAnimations ( )
 	static UFunction* pFnStopAndResetAllAnimations = NULL;
 
 	if ( ! pFnStopAndResetAllAnimations )
-		pFnStopAndResetAllAnimations = (UFunction*) UObject::GObjObjects()->Data[ 36901 ];
+		pFnStopAndResetAllAnimations = (UFunction*) UObject::GObjObjects()->Data[ 36918 ];
 
 	APBBasePawn_execStopAndResetAllAnimations_Parms StopAndResetAllAnimations_Parms;
 
@@ -1163,7 +1163,7 @@ void APBBasePawn::StopAllAnimations ( )
 	static UFunction* pFnStopAllAnimations = NULL;
 
 	if ( ! pFnStopAllAnimations )
-		pFnStopAllAnimations = (UFunction*) UObject::GObjObjects()->Data[ 36899 ];
+		pFnStopAllAnimations = (UFunction*) UObject::GObjObjects()->Data[ 36916 ];
 
 	APBBasePawn_execStopAllAnimations_Parms StopAllAnimations_Parms;
 
@@ -1181,7 +1181,7 @@ void APBBasePawn::GoIntoRagdoll ( class UClass* DamageType, struct FTraceHitInfo
 	static UFunction* pFnGoIntoRagdoll = NULL;
 
 	if ( ! pFnGoIntoRagdoll )
-		pFnGoIntoRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 36893 ];
+		pFnGoIntoRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 36910 ];
 
 	APBBasePawn_execGoIntoRagdoll_Parms GoIntoRagdoll_Parms;
 	GoIntoRagdoll_Parms.DamageType = DamageType;
@@ -1199,7 +1199,7 @@ void APBBasePawn::GoIntoRagdollNextFrame ( )
 	static UFunction* pFnGoIntoRagdollNextFrame = NULL;
 
 	if ( ! pFnGoIntoRagdollNextFrame )
-		pFnGoIntoRagdollNextFrame = (UFunction*) UObject::GObjObjects()->Data[ 36889 ];
+		pFnGoIntoRagdollNextFrame = (UFunction*) UObject::GObjObjects()->Data[ 36906 ];
 
 	APBBasePawn_execGoIntoRagdollNextFrame_Parms GoIntoRagdollNextFrame_Parms;
 
@@ -1217,7 +1217,7 @@ void APBBasePawn::PlayDying ( class UClass* DamageType, struct FVector HitLoc )
 	static UFunction* pFnPlayDying = NULL;
 
 	if ( ! pFnPlayDying )
-		pFnPlayDying = (UFunction*) UObject::GObjObjects()->Data[ 36869 ];
+		pFnPlayDying = (UFunction*) UObject::GObjObjects()->Data[ 36886 ];
 
 	APBBasePawn_execPlayDying_Parms PlayDying_Parms;
 	PlayDying_Parms.DamageType = DamageType;
@@ -1236,7 +1236,7 @@ bool APBBasePawn::CanGrabLadder ( )
 	static UFunction* pFnCanGrabLadder = NULL;
 
 	if ( ! pFnCanGrabLadder )
-		pFnCanGrabLadder = (UFunction*) UObject::GObjObjects()->Data[ 36864 ];
+		pFnCanGrabLadder = (UFunction*) UObject::GObjObjects()->Data[ 36881 ];
 
 	APBBasePawn_execCanGrabLadder_Parms CanGrabLadder_Parms;
 
@@ -1255,7 +1255,7 @@ void APBBasePawn::Bleed ( struct FTakeHitInfo* HitInfo )
 	static UFunction* pFnBleed = NULL;
 
 	if ( ! pFnBleed )
-		pFnBleed = (UFunction*) UObject::GObjObjects()->Data[ 36862 ];
+		pFnBleed = (UFunction*) UObject::GObjObjects()->Data[ 36879 ];
 
 	APBBasePawn_execBleed_Parms Bleed_Parms;
 
@@ -1275,7 +1275,7 @@ void APBBasePawn::eventReplicatedEvent ( struct FName VarName )
 	static UFunction* pFnReplicatedEvent = NULL;
 
 	if ( ! pFnReplicatedEvent )
-		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 36860 ];
+		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 36877 ];
 
 	APBBasePawn_eventReplicatedEvent_Parms ReplicatedEvent_Parms;
 	memcpy ( &ReplicatedEvent_Parms.VarName, &VarName, 0x8 );
@@ -1293,7 +1293,7 @@ struct FName APBBasePawn::GetWeaponInHandBoneName ( )
 	static UFunction* pFnGetWeaponInHandBoneName = NULL;
 
 	if ( ! pFnGetWeaponInHandBoneName )
-		pFnGetWeaponInHandBoneName = (UFunction*) UObject::GObjObjects()->Data[ 36857 ];
+		pFnGetWeaponInHandBoneName = (UFunction*) UObject::GObjObjects()->Data[ 36874 ];
 
 	APBBasePawn_execGetWeaponInHandBoneName_Parms GetWeaponInHandBoneName_Parms;
 
@@ -1312,7 +1312,7 @@ bool APBBasePawn::TestSkeletonOverlap ( )
 	static UFunction* pFnTestSkeletonOverlap = NULL;
 
 	if ( ! pFnTestSkeletonOverlap )
-		pFnTestSkeletonOverlap = (UFunction*) UObject::GObjObjects()->Data[ 36855 ];
+		pFnTestSkeletonOverlap = (UFunction*) UObject::GObjObjects()->Data[ 36872 ];
 
 	APBBasePawn_execTestSkeletonOverlap_Parms TestSkeletonOverlap_Parms;
 
@@ -1335,7 +1335,7 @@ bool APBBasePawn::HasRagdoll ( )
 	static UFunction* pFnHasRagdoll = NULL;
 
 	if ( ! pFnHasRagdoll )
-		pFnHasRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 36853 ];
+		pFnHasRagdoll = (UFunction*) UObject::GObjObjects()->Data[ 36870 ];
 
 	APBBasePawn_execHasRagdoll_Parms HasRagdoll_Parms;
 
@@ -1358,7 +1358,7 @@ bool APBBasePawn::IsLayingOnBack ( )
 	static UFunction* pFnIsLayingOnBack = NULL;
 
 	if ( ! pFnIsLayingOnBack )
-		pFnIsLayingOnBack = (UFunction*) UObject::GObjObjects()->Data[ 36851 ];
+		pFnIsLayingOnBack = (UFunction*) UObject::GObjObjects()->Data[ 36868 ];
 
 	APBBasePawn_execIsLayingOnBack_Parms IsLayingOnBack_Parms;
 
@@ -1381,7 +1381,7 @@ float APBBasePawn::GetPhysicsWeight ( )
 	static UFunction* pFnGetPhysicsWeight = NULL;
 
 	if ( ! pFnGetPhysicsWeight )
-		pFnGetPhysicsWeight = (UFunction*) UObject::GObjObjects()->Data[ 36849 ];
+		pFnGetPhysicsWeight = (UFunction*) UObject::GObjObjects()->Data[ 36866 ];
 
 	APBBasePawn_execGetPhysicsWeight_Parms GetPhysicsWeight_Parms;
 
@@ -1403,7 +1403,7 @@ void APBBasePawn::RestorePreRagdollCollisionComponent ( )
 	static UFunction* pFnRestorePreRagdollCollisionComponent = NULL;
 
 	if ( ! pFnRestorePreRagdollCollisionComponent )
-		pFnRestorePreRagdollCollisionComponent = (UFunction*) UObject::GObjObjects()->Data[ 36848 ];
+		pFnRestorePreRagdollCollisionComponent = (UFunction*) UObject::GObjObjects()->Data[ 36865 ];
 
 	APBBasePawn_execRestorePreRagdollCollisionComponent_Parms RestorePreRagdollCollisionComponent_Parms;
 
@@ -1424,7 +1424,7 @@ void APBBasePlayerController::UpdateWeaponRotation ( float DeltaTime )
 	static UFunction* pFnUpdateWeaponRotation = NULL;
 
 	if ( ! pFnUpdateWeaponRotation )
-		pFnUpdateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37241 ];
+		pFnUpdateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37258 ];
 
 	APBBasePlayerController_execUpdateWeaponRotation_Parms UpdateWeaponRotation_Parms;
 	UpdateWeaponRotation_Parms.DeltaTime = DeltaTime;
@@ -1442,7 +1442,7 @@ void APBBasePlayerController::UpdateCameraModeBlendFactor ( float fDeltaTime )
 	static UFunction* pFnUpdateCameraModeBlendFactor = NULL;
 
 	if ( ! pFnUpdateCameraModeBlendFactor )
-		pFnUpdateCameraModeBlendFactor = (UFunction*) UObject::GObjObjects()->Data[ 37233 ];
+		pFnUpdateCameraModeBlendFactor = (UFunction*) UObject::GObjObjects()->Data[ 37250 ];
 
 	APBBasePlayerController_execUpdateCameraModeBlendFactor_Parms UpdateCameraModeBlendFactor_Parms;
 	UpdateCameraModeBlendFactor_Parms.fDeltaTime = fDeltaTime;
@@ -1461,7 +1461,7 @@ void APBBasePlayerController::GetPlayerViewPoint ( struct FVector* POVLocation, 
 	static UFunction* pFnGetPlayerViewPoint = NULL;
 
 	if ( ! pFnGetPlayerViewPoint )
-		pFnGetPlayerViewPoint = (UFunction*) UObject::GObjObjects()->Data[ 37230 ];
+		pFnGetPlayerViewPoint = (UFunction*) UObject::GObjObjects()->Data[ 37247 ];
 
 	APBBasePlayerController_execGetPlayerViewPoint_Parms GetPlayerViewPoint_Parms;
 
@@ -1483,7 +1483,7 @@ void APBBasePlayerController::TestNavigation ( )
 	static UFunction* pFnTestNavigation = NULL;
 
 	if ( ! pFnTestNavigation )
-		pFnTestNavigation = (UFunction*) UObject::GObjObjects()->Data[ 37227 ];
+		pFnTestNavigation = (UFunction*) UObject::GObjObjects()->Data[ 37244 ];
 
 	APBBasePlayerController_execTestNavigation_Parms TestNavigation_Parms;
 
@@ -1500,7 +1500,7 @@ void APBBasePlayerController::SetCameraMode ( struct FName NewCamMode )
 	static UFunction* pFnSetCameraMode = NULL;
 
 	if ( ! pFnSetCameraMode )
-		pFnSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37224 ];
+		pFnSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37241 ];
 
 	APBBasePlayerController_execSetCameraMode_Parms SetCameraMode_Parms;
 	memcpy ( &SetCameraMode_Parms.NewCamMode, &NewCamMode, 0x8 );
@@ -1518,7 +1518,7 @@ void APBBasePlayerController::SetBehindView ( unsigned long bNewBehindView )
 	static UFunction* pFnSetBehindView = NULL;
 
 	if ( ! pFnSetBehindView )
-		pFnSetBehindView = (UFunction*) UObject::GObjObjects()->Data[ 37222 ];
+		pFnSetBehindView = (UFunction*) UObject::GObjObjects()->Data[ 37239 ];
 
 	APBBasePlayerController_execSetBehindView_Parms SetBehindView_Parms;
 	SetBehindView_Parms.bNewBehindView = bNewBehindView;
@@ -1535,7 +1535,7 @@ void APBBasePlayerController::ServerSuicide ( )
 	static UFunction* pFnServerSuicide = NULL;
 
 	if ( ! pFnServerSuicide )
-		pFnServerSuicide = (UFunction*) UObject::GObjObjects()->Data[ 37221 ];
+		pFnServerSuicide = (UFunction*) UObject::GObjObjects()->Data[ 37238 ];
 
 	APBBasePlayerController_execServerSuicide_Parms ServerSuicide_Parms;
 
@@ -1552,7 +1552,7 @@ void APBBasePlayerController::ServerSetCameraMode ( struct FName NewCamMode )
 	static UFunction* pFnServerSetCameraMode = NULL;
 
 	if ( ! pFnServerSetCameraMode )
-		pFnServerSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37219 ];
+		pFnServerSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37236 ];
 
 	APBBasePlayerController_execServerSetCameraMode_Parms ServerSetCameraMode_Parms;
 	memcpy ( &ServerSetCameraMode_Parms.NewCamMode, &NewCamMode, 0x8 );
@@ -1569,7 +1569,7 @@ void APBBasePlayerController::OnCameraTransitionFinished ( )
 	static UFunction* pFnOnCameraTransitionFinished = NULL;
 
 	if ( ! pFnOnCameraTransitionFinished )
-		pFnOnCameraTransitionFinished = (UFunction*) UObject::GObjObjects()->Data[ 37218 ];
+		pFnOnCameraTransitionFinished = (UFunction*) UObject::GObjObjects()->Data[ 37235 ];
 
 	APBBasePlayerController_execOnCameraTransitionFinished_Parms OnCameraTransitionFinished_Parms;
 
@@ -1586,7 +1586,7 @@ void APBBasePlayerController::OnCameraModeChanged ( struct FName NewCamMode )
 	static UFunction* pFnOnCameraModeChanged = NULL;
 
 	if ( ! pFnOnCameraModeChanged )
-		pFnOnCameraModeChanged = (UFunction*) UObject::GObjObjects()->Data[ 37215 ];
+		pFnOnCameraModeChanged = (UFunction*) UObject::GObjObjects()->Data[ 37232 ];
 
 	APBBasePlayerController_execOnCameraModeChanged_Parms OnCameraModeChanged_Parms;
 	memcpy ( &OnCameraModeChanged_Parms.NewCamMode, &NewCamMode, 0x8 );
@@ -1607,7 +1607,7 @@ void APBBasePlayerController::NotifyKilled ( class AController* Killer, class AC
 	static UFunction* pFnNotifyKilled = NULL;
 
 	if ( ! pFnNotifyKilled )
-		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 37210 ];
+		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 37227 ];
 
 	APBBasePlayerController_execNotifyKilled_Parms NotifyKilled_Parms;
 	NotifyKilled_Parms.Killer = Killer;
@@ -1628,7 +1628,7 @@ bool APBBasePlayerController::IsFreeCamera ( )
 	static UFunction* pFnIsFreeCamera = NULL;
 
 	if ( ! pFnIsFreeCamera )
-		pFnIsFreeCamera = (UFunction*) UObject::GObjObjects()->Data[ 37208 ];
+		pFnIsFreeCamera = (UFunction*) UObject::GObjObjects()->Data[ 37225 ];
 
 	APBBasePlayerController_execIsFreeCamera_Parms IsFreeCamera_Parms;
 
@@ -1647,7 +1647,7 @@ bool APBBasePlayerController::IsSecurityCamera ( )
 	static UFunction* pFnIsSecurityCamera = NULL;
 
 	if ( ! pFnIsSecurityCamera )
-		pFnIsSecurityCamera = (UFunction*) UObject::GObjObjects()->Data[ 37206 ];
+		pFnIsSecurityCamera = (UFunction*) UObject::GObjObjects()->Data[ 37223 ];
 
 	APBBasePlayerController_execIsSecurityCamera_Parms IsSecurityCamera_Parms;
 
@@ -1666,7 +1666,7 @@ bool APBBasePlayerController::IsThirdPerson ( )
 	static UFunction* pFnIsThirdPerson = NULL;
 
 	if ( ! pFnIsThirdPerson )
-		pFnIsThirdPerson = (UFunction*) UObject::GObjObjects()->Data[ 37204 ];
+		pFnIsThirdPerson = (UFunction*) UObject::GObjObjects()->Data[ 37221 ];
 
 	APBBasePlayerController_execIsThirdPerson_Parms IsThirdPerson_Parms;
 
@@ -1685,7 +1685,7 @@ bool APBBasePlayerController::IsFirstPerson ( )
 	static UFunction* pFnIsFirstPerson = NULL;
 
 	if ( ! pFnIsFirstPerson )
-		pFnIsFirstPerson = (UFunction*) UObject::GObjObjects()->Data[ 36988 ];
+		pFnIsFirstPerson = (UFunction*) UObject::GObjObjects()->Data[ 37005 ];
 
 	APBBasePlayerController_execIsFirstPerson_Parms IsFirstPerson_Parms;
 
@@ -1703,7 +1703,7 @@ void APBBasePlayerController::eventResetCameraMode ( )
 	static UFunction* pFnResetCameraMode = NULL;
 
 	if ( ! pFnResetCameraMode )
-		pFnResetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37203 ];
+		pFnResetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37220 ];
 
 	APBBasePlayerController_eventResetCameraMode_Parms ResetCameraMode_Parms;
 
@@ -1720,7 +1720,7 @@ bool APBBasePlayerController::ShouldInterpolateWeaponRotation ( )
 	static UFunction* pFnShouldInterpolateWeaponRotation = NULL;
 
 	if ( ! pFnShouldInterpolateWeaponRotation )
-		pFnShouldInterpolateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37199 ];
+		pFnShouldInterpolateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37216 ];
 
 	APBBasePlayerController_execShouldInterpolateWeaponRotation_Parms ShouldInterpolateWeaponRotation_Parms;
 
@@ -1740,7 +1740,7 @@ class APBCameraAction* APBBasePlayerController::SetCameraAction ( class APBCamer
 	static UFunction* pFnSetCameraAction = NULL;
 
 	if ( ! pFnSetCameraAction )
-		pFnSetCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37193 ];
+		pFnSetCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37210 ];
 
 	APBBasePlayerController_execSetCameraAction_Parms SetCameraAction_Parms;
 	SetCameraAction_Parms.pAction = pAction;
@@ -1760,7 +1760,7 @@ class APBCameraActionManager* APBBasePlayerController::GetCameraManager ( )
 	static UFunction* pFnGetCameraManager = NULL;
 
 	if ( ! pFnGetCameraManager )
-		pFnGetCameraManager = (UFunction*) UObject::GObjObjects()->Data[ 37191 ];
+		pFnGetCameraManager = (UFunction*) UObject::GObjObjects()->Data[ 37208 ];
 
 	APBBasePlayerController_execGetCameraManager_Parms GetCameraManager_Parms;
 
@@ -1779,7 +1779,7 @@ void APBBasePlayerController::ClientSetCameraMode ( struct FName NewCamMode )
 	static UFunction* pFnClientSetCameraMode = NULL;
 
 	if ( ! pFnClientSetCameraMode )
-		pFnClientSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37189 ];
+		pFnClientSetCameraMode = (UFunction*) UObject::GObjObjects()->Data[ 37206 ];
 
 	APBBasePlayerController_execClientSetCameraMode_Parms ClientSetCameraMode_Parms;
 	memcpy ( &ClientSetCameraMode_Parms.NewCamMode, &NewCamMode, 0x8 );
@@ -1799,7 +1799,7 @@ void APBBasePlayerController::ClientStopActorSoundComponent ( class USoundCue* A
 	static UFunction* pFnClientStopActorSoundComponent = NULL;
 
 	if ( ! pFnClientStopActorSoundComponent )
-		pFnClientStopActorSoundComponent = (UFunction*) UObject::GObjObjects()->Data[ 37183 ];
+		pFnClientStopActorSoundComponent = (UFunction*) UObject::GObjObjects()->Data[ 37200 ];
 
 	APBBasePlayerController_execClientStopActorSoundComponent_Parms ClientStopActorSoundComponent_Parms;
 	ClientStopActorSoundComponent_Parms.ASound = ASound;
@@ -1823,7 +1823,7 @@ void APBBasePlayerController::eventClientHearSound ( class USoundCue* ASound, cl
 	static UFunction* pFnClientHearSound = NULL;
 
 	if ( ! pFnClientHearSound )
-		pFnClientHearSound = (UFunction*) UObject::GObjObjects()->Data[ 37174 ];
+		pFnClientHearSound = (UFunction*) UObject::GObjObjects()->Data[ 37191 ];
 
 	APBBasePlayerController_eventClientHearSound_Parms ClientHearSound_Parms;
 	ClientHearSound_Parms.ASound = ASound;
@@ -1846,7 +1846,7 @@ bool APBBasePlayerController::CalculateDeltaTime ( float* fDeltaTime )
 	static UFunction* pFnCalculateDeltaTime = NULL;
 
 	if ( ! pFnCalculateDeltaTime )
-		pFnCalculateDeltaTime = (UFunction*) UObject::GObjObjects()->Data[ 37170 ];
+		pFnCalculateDeltaTime = (UFunction*) UObject::GObjObjects()->Data[ 37187 ];
 
 	APBBasePlayerController_execCalculateDeltaTime_Parms CalculateDeltaTime_Parms;
 
@@ -1868,7 +1868,7 @@ bool APBBasePlayerController::IsDeveloperInstallation ( )
 	static UFunction* pFnIsDeveloperInstallation = NULL;
 
 	if ( ! pFnIsDeveloperInstallation )
-		pFnIsDeveloperInstallation = (UFunction*) UObject::GObjObjects()->Data[ 37095 ];
+		pFnIsDeveloperInstallation = (UFunction*) UObject::GObjObjects()->Data[ 37112 ];
 
 	APBBasePlayerController_execIsDeveloperInstallation_Parms IsDeveloperInstallation_Parms;
 
@@ -1892,7 +1892,7 @@ float APBBasePlayerController::GetViewRayDot ( struct FVector vLocation )
 	static UFunction* pFnGetViewRayDot = NULL;
 
 	if ( ! pFnGetViewRayDot )
-		pFnGetViewRayDot = (UFunction*) UObject::GObjObjects()->Data[ 37167 ];
+		pFnGetViewRayDot = (UFunction*) UObject::GObjObjects()->Data[ 37184 ];
 
 	APBBasePlayerController_execGetViewRayDot_Parms GetViewRayDot_Parms;
 	memcpy ( &GetViewRayDot_Parms.vLocation, &vLocation, 0xC );
@@ -1916,7 +1916,7 @@ void APBBasePlayerController::MapCheck ( struct FString strCommandline )
 	static UFunction* pFnMapCheck = NULL;
 
 	if ( ! pFnMapCheck )
-		pFnMapCheck = (UFunction*) UObject::GObjObjects()->Data[ 37165 ];
+		pFnMapCheck = (UFunction*) UObject::GObjObjects()->Data[ 37182 ];
 
 	APBBasePlayerController_execMapCheck_Parms MapCheck_Parms;
 	memcpy ( &MapCheck_Parms.strCommandline, &strCommandline, 0xC );
@@ -1933,7 +1933,7 @@ void APBBasePlayerController::eventPostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37164 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37181 ];
 
 	APBBasePlayerController_eventPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -1949,7 +1949,7 @@ void APBBasePlayerController::ShowMapCheckDlg ( )
 	static UFunction* pFnShowMapCheckDlg = NULL;
 
 	if ( ! pFnShowMapCheckDlg )
-		pFnShowMapCheckDlg = (UFunction*) UObject::GObjObjects()->Data[ 37163 ];
+		pFnShowMapCheckDlg = (UFunction*) UObject::GObjObjects()->Data[ 37180 ];
 
 	APBBasePlayerController_execShowMapCheckDlg_Parms ShowMapCheckDlg_Parms;
 
@@ -1969,7 +1969,7 @@ void APBBasePlayerController::NotifyCameraActionUninstalled ( )
 	static UFunction* pFnNotifyCameraActionUninstalled = NULL;
 
 	if ( ! pFnNotifyCameraActionUninstalled )
-		pFnNotifyCameraActionUninstalled = (UFunction*) UObject::GObjObjects()->Data[ 37162 ];
+		pFnNotifyCameraActionUninstalled = (UFunction*) UObject::GObjObjects()->Data[ 37179 ];
 
 	APBBasePlayerController_execNotifyCameraActionUninstalled_Parms NotifyCameraActionUninstalled_Parms;
 
@@ -1986,7 +1986,7 @@ float APBBasePlayerController::GetAppSeconds ( )
 	static UFunction* pFnGetAppSeconds = NULL;
 
 	if ( ! pFnGetAppSeconds )
-		pFnGetAppSeconds = (UFunction*) UObject::GObjObjects()->Data[ 37160 ];
+		pFnGetAppSeconds = (UFunction*) UObject::GObjObjects()->Data[ 37177 ];
 
 	APBBasePlayerController_execGetAppSeconds_Parms GetAppSeconds_Parms;
 
@@ -2008,7 +2008,7 @@ void UPBDebugWindow::Render ( )
 	static UFunction* pFnRender = NULL;
 
 	if ( ! pFnRender )
-		pFnRender = (UFunction*) UObject::GObjObjects()->Data[ 37395 ];
+		pFnRender = (UFunction*) UObject::GObjObjects()->Data[ 37412 ];
 
 	UPBDebugWindow_execRender_Parms Render_Parms;
 
@@ -2024,7 +2024,7 @@ void UPBDebugWindow::Scroll ( )
 	static UFunction* pFnScroll = NULL;
 
 	if ( ! pFnScroll )
-		pFnScroll = (UFunction*) UObject::GObjObjects()->Data[ 37394 ];
+		pFnScroll = (UFunction*) UObject::GObjObjects()->Data[ 37411 ];
 
 	UPBDebugWindow_execScroll_Parms Scroll_Parms;
 
@@ -2041,7 +2041,7 @@ void UPBDebugWindow::SetText ( struct FString Text )
 	static UFunction* pFnSetText = NULL;
 
 	if ( ! pFnSetText )
-		pFnSetText = (UFunction*) UObject::GObjObjects()->Data[ 37392 ];
+		pFnSetText = (UFunction*) UObject::GObjObjects()->Data[ 37409 ];
 
 	UPBDebugWindow_execSetText_Parms SetText_Parms;
 	memcpy ( &SetText_Parms.Text, &Text, 0xC );
@@ -2058,7 +2058,7 @@ void UPBDebugWindow::Close ( )
 	static UFunction* pFnClose = NULL;
 
 	if ( ! pFnClose )
-		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 37391 ];
+		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 37408 ];
 
 	UPBDebugWindow_execClose_Parms Close_Parms;
 
@@ -2081,7 +2081,7 @@ void UPBDebugWindow::Text ( int X, int Y, struct FString txt )
 	static UFunction* pFnText = NULL;
 
 	if ( ! pFnText )
-		pFnText = (UFunction*) UObject::GObjObjects()->Data[ 37387 ];
+		pFnText = (UFunction*) UObject::GObjObjects()->Data[ 37404 ];
 
 	UPBDebugWindow_execText_Parms Text_Parms;
 	Text_Parms.X = X;
@@ -2104,7 +2104,7 @@ void UPBDebugWindow::Clear ( )
 	static UFunction* pFnClear = NULL;
 
 	if ( ! pFnClear )
-		pFnClear = (UFunction*) UObject::GObjObjects()->Data[ 37386 ];
+		pFnClear = (UFunction*) UObject::GObjObjects()->Data[ 37403 ];
 
 	UPBDebugWindow_execClear_Parms Clear_Parms;
 
@@ -2129,7 +2129,7 @@ void UPBDebugWindow::Open ( int PosX, int PosY, int Width, int Height, struct FS
 	static UFunction* pFnOpen = NULL;
 
 	if ( ! pFnOpen )
-		pFnOpen = (UFunction*) UObject::GObjObjects()->Data[ 37380 ];
+		pFnOpen = (UFunction*) UObject::GObjObjects()->Data[ 37397 ];
 
 	UPBDebugWindow_execOpen_Parms Open_Parms;
 	Open_Parms.PosX = PosX;
@@ -2154,7 +2154,7 @@ void UPBExplosionLight::ValidateLightSetting ( )
 	static UFunction* pFnValidateLightSetting = NULL;
 
 	if ( ! pFnValidateLightSetting )
-		pFnValidateLightSetting = (UFunction*) UObject::GObjObjects()->Data[ 37410 ];
+		pFnValidateLightSetting = (UFunction*) UObject::GObjObjects()->Data[ 37427 ];
 
 	UPBExplosionLight_execValidateLightSetting_Parms ValidateLightSetting_Parms;
 
@@ -2174,7 +2174,7 @@ void UPBExplosionLight::ResetLight ( )
 	static UFunction* pFnResetLight = NULL;
 
 	if ( ! pFnResetLight )
-		pFnResetLight = (UFunction*) UObject::GObjObjects()->Data[ 37409 ];
+		pFnResetLight = (UFunction*) UObject::GObjObjects()->Data[ 37426 ];
 
 	UPBExplosionLight_execResetLight_Parms ResetLight_Parms;
 
@@ -2196,7 +2196,7 @@ int UPBLevelCheckCommandlet::eventMain ( struct FString Params )
 	static UFunction* pFnMain = NULL;
 
 	if ( ! pFnMain )
-		pFnMain = (UFunction*) UObject::GObjObjects()->Data[ 37786 ];
+		pFnMain = (UFunction*) UObject::GObjObjects()->Data[ 37803 ];
 
 	UPBLevelCheckCommandlet_eventMain_Parms Main_Parms;
 	memcpy ( &Main_Parms.Params, &Params, 0xC );
@@ -2222,7 +2222,7 @@ class AEmitter* UPBPhysicsEffectGenerator::SpawnExplosionEffects ( struct FVecto
 	static UFunction* pFnSpawnExplosionEffects = NULL;
 
 	if ( ! pFnSpawnExplosionEffects )
-		pFnSpawnExplosionEffects = (UFunction*) UObject::GObjObjects()->Data[ 37605 ];
+		pFnSpawnExplosionEffects = (UFunction*) UObject::GObjObjects()->Data[ 37622 ];
 
 	UPBPhysicsEffectGenerator_execSpawnExplosionEffects_Parms SpawnExplosionEffects_Parms;
 	memcpy ( &SpawnExplosionEffects_Parms.Location, &Location, 0xC );
@@ -2247,7 +2247,7 @@ void UPBPhysicsEffectGenerator::SetSoundMode ( struct FName SoundModeName, struc
 	static UFunction* pFnSetSoundMode = NULL;
 
 	if ( ! pFnSetSoundMode )
-		pFnSetSoundMode = (UFunction*) UObject::GObjObjects()->Data[ 37599 ];
+		pFnSetSoundMode = (UFunction*) UObject::GObjObjects()->Data[ 37616 ];
 
 	UPBPhysicsEffectGenerator_execSetSoundMode_Parms SetSoundMode_Parms;
 	memcpy ( &SetSoundMode_Parms.SoundModeName, &SoundModeName, 0x8 );
@@ -2270,7 +2270,7 @@ class UPBExplosionLight* UPBPhysicsEffectGenerator::CreateExplosionLight ( class
 	static UFunction* pFnCreateExplosionLight = NULL;
 
 	if ( ! pFnCreateExplosionLight )
-		pFnCreateExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37591 ];
+		pFnCreateExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37608 ];
 
 	UPBPhysicsEffectGenerator_execCreateExplosionLight_Parms CreateExplosionLight_Parms;
 	CreateExplosionLight_Parms.attachTo = attachTo;
@@ -2295,7 +2295,7 @@ bool UPBPhysicsEffectGenerator::ShouldSpawnExplosionLight ( struct FVector Locat
 	static UFunction* pFnShouldSpawnExplosionLight = NULL;
 
 	if ( ! pFnShouldSpawnExplosionLight )
-		pFnShouldSpawnExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37587 ];
+		pFnShouldSpawnExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37604 ];
 
 	UPBPhysicsEffectGenerator_execShouldSpawnExplosionLight_Parms ShouldSpawnExplosionLight_Parms;
 	memcpy ( &ShouldSpawnExplosionLight_Parms.Location, &Location, 0xC );
@@ -2315,7 +2315,7 @@ void UPBPhysicsEffectGenerator::SpawnSoundIndicator ( class UAudioComponent* AC 
 	static UFunction* pFnSpawnSoundIndicator = NULL;
 
 	if ( ! pFnSpawnSoundIndicator )
-		pFnSpawnSoundIndicator = (UFunction*) UObject::GObjObjects()->Data[ 37585 ];
+		pFnSpawnSoundIndicator = (UFunction*) UObject::GObjObjects()->Data[ 37602 ];
 
 	UPBPhysicsEffectGenerator_execSpawnSoundIndicator_Parms SpawnSoundIndicator_Parms;
 	SpawnSoundIndicator_Parms.AC = AC;
@@ -2334,7 +2334,7 @@ bool UPBPhysicsEffectGenerator::RecurseSoundNodes ( class USoundNode* sndNode )
 	static UFunction* pFnRecurseSoundNodes = NULL;
 
 	if ( ! pFnRecurseSoundNodes )
-		pFnRecurseSoundNodes = (UFunction*) UObject::GObjObjects()->Data[ 37578 ];
+		pFnRecurseSoundNodes = (UFunction*) UObject::GObjObjects()->Data[ 37595 ];
 
 	UPBPhysicsEffectGenerator_execRecurseSoundNodes_Parms RecurseSoundNodes_Parms;
 	RecurseSoundNodes_Parms.sndNode = sndNode;
@@ -2355,7 +2355,7 @@ bool UPBPhysicsEffectGenerator::IsSoundCueValid ( class USoundCue* sndCue )
 	static UFunction* pFnIsSoundCueValid = NULL;
 
 	if ( ! pFnIsSoundCueValid )
-		pFnIsSoundCueValid = (UFunction*) UObject::GObjObjects()->Data[ 37575 ];
+		pFnIsSoundCueValid = (UFunction*) UObject::GObjObjects()->Data[ 37592 ];
 
 	UPBPhysicsEffectGenerator_execIsSoundCueValid_Parms IsSoundCueValid_Parms;
 	IsSoundCueValid_Parms.sndCue = sndCue;
@@ -2377,7 +2377,7 @@ class UAudioComponent* UPBPhysicsEffectGenerator::CreateActorAudioComponentAt ( 
 	static UFunction* pFnCreateActorAudioComponentAt = NULL;
 
 	if ( ! pFnCreateActorAudioComponentAt )
-		pFnCreateActorAudioComponentAt = (UFunction*) UObject::GObjObjects()->Data[ 37565 ];
+		pFnCreateActorAudioComponentAt = (UFunction*) UObject::GObjObjects()->Data[ 37582 ];
 
 	UPBPhysicsEffectGenerator_execCreateActorAudioComponentAt_Parms CreateActorAudioComponentAt_Parms;
 	CreateActorAudioComponentAt_Parms.ASound = ASound;
@@ -2399,7 +2399,7 @@ float UPBPhysicsEffectGenerator::GetVelocityVolumeMultiplier ( float fVelocityKm
 	static UFunction* pFnGetVelocityVolumeMultiplier = NULL;
 
 	if ( ! pFnGetVelocityVolumeMultiplier )
-		pFnGetVelocityVolumeMultiplier = (UFunction*) UObject::GObjObjects()->Data[ 37562 ];
+		pFnGetVelocityVolumeMultiplier = (UFunction*) UObject::GObjObjects()->Data[ 37579 ];
 
 	UPBPhysicsEffectGenerator_execGetVelocityVolumeMultiplier_Parms GetVelocityVolumeMultiplier_Parms;
 	GetVelocityVolumeMultiplier_Parms.fVelocityKmh = fVelocityKmh;
@@ -2424,7 +2424,7 @@ int UPBReplaceActorCommandlet::eventMain ( struct FString Params )
 	static UFunction* pFnMain = NULL;
 
 	if ( ! pFnMain )
-		pFnMain = (UFunction*) UObject::GObjObjects()->Data[ 37853 ];
+		pFnMain = (UFunction*) UObject::GObjObjects()->Data[ 37870 ];
 
 	UPBReplaceActorCommandlet_eventMain_Parms Main_Parms;
 	memcpy ( &Main_Parms.Params, &Params, 0xC );
@@ -2447,7 +2447,7 @@ void APBVehicleAutoPilotController::ResetPawnControls ( )
 	static UFunction* pFnResetPawnControls = NULL;
 
 	if ( ! pFnResetPawnControls )
-		pFnResetPawnControls = (UFunction*) UObject::GObjObjects()->Data[ 38002 ];
+		pFnResetPawnControls = (UFunction*) UObject::GObjObjects()->Data[ 38019 ];
 
 	APBVehicleAutoPilotController_execResetPawnControls_Parms ResetPawnControls_Parms;
 
@@ -2464,7 +2464,7 @@ class ANavigationPoint* APBVehicleAutoPilotController::FindRandomNavigationPoint
 	static UFunction* pFnFindRandomNavigationPointXXX = NULL;
 
 	if ( ! pFnFindRandomNavigationPointXXX )
-		pFnFindRandomNavigationPointXXX = (UFunction*) UObject::GObjObjects()->Data[ 37997 ];
+		pFnFindRandomNavigationPointXXX = (UFunction*) UObject::GObjObjects()->Data[ 38014 ];
 
 	APBVehicleAutoPilotController_execFindRandomNavigationPointXXX_Parms FindRandomNavigationPointXXX_Parms;
 
@@ -2483,7 +2483,7 @@ class ANavigationPoint* APBVehicleAutoPilotController::FindRandomNavigationPoint
 	static UFunction* pFnFindRandomNavigationPoint = NULL;
 
 	if ( ! pFnFindRandomNavigationPoint )
-		pFnFindRandomNavigationPoint = (UFunction*) UObject::GObjObjects()->Data[ 37990 ];
+		pFnFindRandomNavigationPoint = (UFunction*) UObject::GObjObjects()->Data[ 38007 ];
 
 	APBVehicleAutoPilotController_execFindRandomNavigationPoint_Parms FindRandomNavigationPoint_Parms;
 
@@ -2502,7 +2502,7 @@ class ANavigationPoint* APBVehicleAutoPilotController::FindNextNavigationPoint (
 	static UFunction* pFnFindNextNavigationPoint = NULL;
 
 	if ( ! pFnFindNextNavigationPoint )
-		pFnFindNextNavigationPoint = (UFunction*) UObject::GObjObjects()->Data[ 37987 ];
+		pFnFindNextNavigationPoint = (UFunction*) UObject::GObjObjects()->Data[ 38004 ];
 
 	APBVehicleAutoPilotController_execFindNextNavigationPoint_Parms FindNextNavigationPoint_Parms;
 
@@ -2522,7 +2522,7 @@ void APBVehicleAutoPilotController::DrawDebug ( class APlayerController* PC, cla
 	static UFunction* pFnDrawDebug = NULL;
 
 	if ( ! pFnDrawDebug )
-		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37984 ];
+		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 38001 ];
 
 	APBVehicleAutoPilotController_execDrawDebug_Parms DrawDebug_Parms;
 	DrawDebug_Parms.PC = PC;
@@ -2540,7 +2540,7 @@ void APBVehicleAutoPilotController_Aircraft::ResetPawnControls ( )
 	static UFunction* pFnResetPawnControls = NULL;
 
 	if ( ! pFnResetPawnControls )
-		pFnResetPawnControls = (UFunction*) UObject::GObjObjects()->Data[ 38003 ];
+		pFnResetPawnControls = (UFunction*) UObject::GObjObjects()->Data[ 38020 ];
 
 	APBVehicleAutoPilotController_Aircraft_execResetPawnControls_Parms ResetPawnControls_Parms;
 
@@ -2565,7 +2565,7 @@ void APBKActor::TakeRadiusDamage ( class AController* InstigatedBy, float BaseDa
 	static UFunction* pFnTakeRadiusDamage = NULL;
 
 	if ( ! pFnTakeRadiusDamage )
-		pFnTakeRadiusDamage = (UFunction*) UObject::GObjObjects()->Data[ 37771 ];
+		pFnTakeRadiusDamage = (UFunction*) UObject::GObjObjects()->Data[ 37788 ];
 
 	APBKActor_execTakeRadiusDamage_Parms TakeRadiusDamage_Parms;
 	TakeRadiusDamage_Parms.InstigatedBy = InstigatedBy;
@@ -2597,7 +2597,7 @@ void APBKActor::TakeDamage ( int DamageAmount, class AController* EventInstigato
 	static UFunction* pFnTakeDamage = NULL;
 
 	if ( ! pFnTakeDamage )
-		pFnTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37761 ];
+		pFnTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37778 ];
 
 	APBKActor_execTakeDamage_Parms TakeDamage_Parms;
 	TakeDamage_Parms.DamageAmount = DamageAmount;
@@ -2623,7 +2623,7 @@ void APBKActor::ShiftToStaticMesh ( class UStaticMesh* NewMesh, unsigned long bN
 	static UFunction* pFnShiftToStaticMesh = NULL;
 
 	if ( ! pFnShiftToStaticMesh )
-		pFnShiftToStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37754 ];
+		pFnShiftToStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37771 ];
 
 	APBKActor_execShiftToStaticMesh_Parms ShiftToStaticMesh_Parms;
 	ShiftToStaticMesh_Parms.NewMesh = NewMesh;
@@ -2642,7 +2642,7 @@ void APBKActor::ShiftStaticMesh ( )
 	static UFunction* pFnShiftStaticMesh = NULL;
 
 	if ( ! pFnShiftStaticMesh )
-		pFnShiftStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37749 ];
+		pFnShiftStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37766 ];
 
 	APBKActor_execShiftStaticMesh_Parms ShiftStaticMesh_Parms;
 
@@ -2658,7 +2658,7 @@ void APBKActor::RemoveEffects ( )
 	static UFunction* pFnRemoveEffects = NULL;
 
 	if ( ! pFnRemoveEffects )
-		pFnRemoveEffects = (UFunction*) UObject::GObjObjects()->Data[ 37748 ];
+		pFnRemoveEffects = (UFunction*) UObject::GObjObjects()->Data[ 37765 ];
 
 	APBKActor_execRemoveEffects_Parms RemoveEffects_Parms;
 
@@ -2674,7 +2674,7 @@ void APBKActor::Reset ( )
 	static UFunction* pFnReset = NULL;
 
 	if ( ! pFnReset )
-		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37747 ];
+		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37764 ];
 
 	APBKActor_execReset_Parms Reset_Parms;
 
@@ -2690,7 +2690,7 @@ void APBKActor::eventDestroyed ( )
 	static UFunction* pFnDestroyed = NULL;
 
 	if ( ! pFnDestroyed )
-		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 37746 ];
+		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 37763 ];
 
 	APBKActor_eventDestroyed_Parms Destroyed_Parms;
 
@@ -2706,7 +2706,7 @@ void APBKActor::BehindReset ( )
 	static UFunction* pFnBehindReset = NULL;
 
 	if ( ! pFnBehindReset )
-		pFnBehindReset = (UFunction*) UObject::GObjObjects()->Data[ 37745 ];
+		pFnBehindReset = (UFunction*) UObject::GObjObjects()->Data[ 37762 ];
 
 	APBKActor_execBehindReset_Parms BehindReset_Parms;
 
@@ -2723,7 +2723,7 @@ void APBKActor::eventReplicatedEvent ( struct FName VarName )
 	static UFunction* pFnReplicatedEvent = NULL;
 
 	if ( ! pFnReplicatedEvent )
-		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37743 ];
+		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37760 ];
 
 	APBKActor_eventReplicatedEvent_Parms ReplicatedEvent_Parms;
 	memcpy ( &ReplicatedEvent_Parms.VarName, &VarName, 0x8 );
@@ -2740,7 +2740,7 @@ void APBKActor::PostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37742 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37759 ];
 
 	APBKActor_execPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -2757,7 +2757,7 @@ class UParticleSystemComponent* APBKActor::eventPlayRestOnGroundEffect ( )
 	static UFunction* pFnPlayRestOnGroundEffect = NULL;
 
 	if ( ! pFnPlayRestOnGroundEffect )
-		pFnPlayRestOnGroundEffect = (UFunction*) UObject::GObjObjects()->Data[ 37739 ];
+		pFnPlayRestOnGroundEffect = (UFunction*) UObject::GObjObjects()->Data[ 37756 ];
 
 	APBKActor_eventPlayRestOnGroundEffect_Parms PlayRestOnGroundEffect_Parms;
 
@@ -2776,7 +2776,7 @@ class UParticleSystemComponent* APBKActor::eventPlayWakeupEffect ( )
 	static UFunction* pFnPlayWakeupEffect = NULL;
 
 	if ( ! pFnPlayWakeupEffect )
-		pFnPlayWakeupEffect = (UFunction*) UObject::GObjObjects()->Data[ 37736 ];
+		pFnPlayWakeupEffect = (UFunction*) UObject::GObjObjects()->Data[ 37753 ];
 
 	APBKActor_eventPlayWakeupEffect_Parms PlayWakeupEffect_Parms;
 
@@ -2795,7 +2795,7 @@ void APBKActor::OnWakeRigidBody ( class UPBSeqAct_WakeRigidBody* seqAction )
 	static UFunction* pFnOnWakeRigidBody = NULL;
 
 	if ( ! pFnOnWakeRigidBody )
-		pFnOnWakeRigidBody = (UFunction*) UObject::GObjObjects()->Data[ 37731 ];
+		pFnOnWakeRigidBody = (UFunction*) UObject::GObjObjects()->Data[ 37748 ];
 
 	APBKActor_execOnWakeRigidBody_Parms OnWakeRigidBody_Parms;
 	OnWakeRigidBody_Parms.seqAction = seqAction;
@@ -2812,7 +2812,7 @@ void APBKActor::eventOnBecomeStationary ( )
 	static UFunction* pFnOnBecomeStationary = NULL;
 
 	if ( ! pFnOnBecomeStationary )
-		pFnOnBecomeStationary = (UFunction*) UObject::GObjObjects()->Data[ 37730 ];
+		pFnOnBecomeStationary = (UFunction*) UObject::GObjObjects()->Data[ 37747 ];
 
 	APBKActor_eventOnBecomeStationary_Parms OnBecomeStationary_Parms;
 
@@ -2828,7 +2828,7 @@ void APBKActor::OnClientReset ( )
 	static UFunction* pFnOnClientReset = NULL;
 
 	if ( ! pFnOnClientReset )
-		pFnOnClientReset = (UFunction*) UObject::GObjObjects()->Data[ 37729 ];
+		pFnOnClientReset = (UFunction*) UObject::GObjObjects()->Data[ 37746 ];
 
 	APBKActor_execOnClientReset_Parms OnClientReset_Parms;
 
@@ -2845,7 +2845,7 @@ void APBKActor::GetDebugStringArray ( TArray< struct FString >* DebugInfo )
 	static UFunction* pFnGetDebugStringArray = NULL;
 
 	if ( ! pFnGetDebugStringArray )
-		pFnGetDebugStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37725 ];
+		pFnGetDebugStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37742 ];
 
 	APBKActor_execGetDebugStringArray_Parms GetDebugStringArray_Parms;
 
@@ -2866,7 +2866,7 @@ bool APBKActor::EncroachingOn_Prototype ( class AActor* Other )
 	static UFunction* pFnEncroachingOn_Prototype = NULL;
 
 	if ( ! pFnEncroachingOn_Prototype )
-		pFnEncroachingOn_Prototype = (UFunction*) UObject::GObjObjects()->Data[ 37717 ];
+		pFnEncroachingOn_Prototype = (UFunction*) UObject::GObjObjects()->Data[ 37734 ];
 
 	APBKActor_execEncroachingOn_Prototype_Parms EncroachingOn_Prototype_Parms;
 	EncroachingOn_Prototype_Parms.Other = Other;
@@ -2887,7 +2887,7 @@ bool APBKActor::EncroachingOn ( class AActor* Other )
 	static UFunction* pFnEncroachingOn = NULL;
 
 	if ( ! pFnEncroachingOn )
-		pFnEncroachingOn = (UFunction*) UObject::GObjObjects()->Data[ 37714 ];
+		pFnEncroachingOn = (UFunction*) UObject::GObjObjects()->Data[ 37731 ];
 
 	APBKActor_execEncroachingOn_Parms EncroachingOn_Parms;
 	EncroachingOn_Parms.Other = Other;
@@ -2908,7 +2908,7 @@ void APBKActor::DrawDebug ( class APBBasePlayerController* localPlayerCtrl, clas
 	static UFunction* pFnDrawDebug = NULL;
 
 	if ( ! pFnDrawDebug )
-		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37709 ];
+		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37726 ];
 
 	APBKActor_execDrawDebug_Parms DrawDebug_Parms;
 	DrawDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -2930,7 +2930,7 @@ bool APBKActor::ShouldDrawDebug ( class APBBasePlayerController* localPlayerCtrl
 	static UFunction* pFnShouldDrawDebug = NULL;
 
 	if ( ! pFnShouldDrawDebug )
-		pFnShouldDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37704 ];
+		pFnShouldDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37721 ];
 
 	APBKActor_execShouldDrawDebug_Parms ShouldDrawDebug_Parms;
 	ShouldDrawDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -2957,7 +2957,7 @@ void APBKActor::DrawStaticDebug ( class APBBasePlayerController* localPlayerCtrl
 	static UFunction* pFnDrawStaticDebug = NULL;
 
 	if ( ! pFnDrawStaticDebug )
-		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 37698 ];
+		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 37715 ];
 
 	APBKActor_execDrawStaticDebug_Parms DrawStaticDebug_Parms;
 	DrawStaticDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -2977,7 +2977,7 @@ void APBKActor::DebugCommand ( class APBBasePlayerController* playerCtrl, struct
 	static UFunction* pFnDebugCommand = NULL;
 
 	if ( ! pFnDebugCommand )
-		pFnDebugCommand = (UFunction*) UObject::GObjObjects()->Data[ 37689 ];
+		pFnDebugCommand = (UFunction*) UObject::GObjObjects()->Data[ 37706 ];
 
 	APBKActor_execDebugCommand_Parms DebugCommand_Parms;
 	DebugCommand_Parms.playerCtrl = playerCtrl;
@@ -3000,7 +3000,7 @@ float APBKActor::ModifyRadiusDamage ( class AActor* Victim, struct FVector HurtO
 	static UFunction* pFnModifyRadiusDamage = NULL;
 
 	if ( ! pFnModifyRadiusDamage )
-		pFnModifyRadiusDamage = (UFunction*) UObject::GObjObjects()->Data[ 37683 ];
+		pFnModifyRadiusDamage = (UFunction*) UObject::GObjObjects()->Data[ 37700 ];
 
 	APBKActor_execModifyRadiusDamage_Parms ModifyRadiusDamage_Parms;
 	ModifyRadiusDamage_Parms.Victim = Victim;
@@ -3031,7 +3031,7 @@ bool APBKActor::AGHurtRadius ( float BaseDamage, float DamageRadius, class UClas
 	static UFunction* pFnAGHurtRadius = NULL;
 
 	if ( ! pFnAGHurtRadius )
-		pFnAGHurtRadius = (UFunction*) UObject::GObjObjects()->Data[ 37670 ];
+		pFnAGHurtRadius = (UFunction*) UObject::GObjObjects()->Data[ 37687 ];
 
 	APBKActor_execAGHurtRadius_Parms AGHurtRadius_Parms;
 	AGHurtRadius_Parms.BaseDamage = BaseDamage;
@@ -3058,7 +3058,7 @@ void APBKActor::Detach ( class AActor* Other )
 	static UFunction* pFnDetach = NULL;
 
 	if ( ! pFnDetach )
-		pFnDetach = (UFunction*) UObject::GObjObjects()->Data[ 37668 ];
+		pFnDetach = (UFunction*) UObject::GObjObjects()->Data[ 37685 ];
 
 	APBKActor_execDetach_Parms Detach_Parms;
 	Detach_Parms.Other = Other;
@@ -3076,7 +3076,7 @@ void APBKActor::Attach ( class AActor* Other )
 	static UFunction* pFnAttach = NULL;
 
 	if ( ! pFnAttach )
-		pFnAttach = (UFunction*) UObject::GObjObjects()->Data[ 37665 ];
+		pFnAttach = (UFunction*) UObject::GObjObjects()->Data[ 37682 ];
 
 	APBKActor_execAttach_Parms Attach_Parms;
 	Attach_Parms.Other = Other;
@@ -3095,7 +3095,7 @@ class UPBExplosionLight* APBKActor::CreateExplosionLight ( class AActor* attachT
 	static UFunction* pFnCreateExplosionLight = NULL;
 
 	if ( ! pFnCreateExplosionLight )
-		pFnCreateExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37661 ];
+		pFnCreateExplosionLight = (UFunction*) UObject::GObjObjects()->Data[ 37678 ];
 
 	APBKActor_execCreateExplosionLight_Parms CreateExplosionLight_Parms;
 	CreateExplosionLight_Parms.attachTo = attachTo;
@@ -3117,7 +3117,7 @@ class UAudioComponent* APBKActor::CreateAudioComponentAt ( class USoundCue* ASou
 	static UFunction* pFnCreateAudioComponentAt = NULL;
 
 	if ( ! pFnCreateAudioComponentAt )
-		pFnCreateAudioComponentAt = (UFunction*) UObject::GObjObjects()->Data[ 37656 ];
+		pFnCreateAudioComponentAt = (UFunction*) UObject::GObjObjects()->Data[ 37673 ];
 
 	APBKActor_execCreateAudioComponentAt_Parms CreateAudioComponentAt_Parms;
 	CreateAudioComponentAt_Parms.ASound = ASound;
@@ -3138,7 +3138,7 @@ bool APBKActor::CheckForErrors ( )
 	static UFunction* pFnCheckForErrors = NULL;
 
 	if ( ! pFnCheckForErrors )
-		pFnCheckForErrors = (UFunction*) UObject::GObjObjects()->Data[ 37653 ];
+		pFnCheckForErrors = (UFunction*) UObject::GObjObjects()->Data[ 37670 ];
 
 	APBKActor_execCheckForErrors_Parms CheckForErrors_Parms;
 
@@ -3157,7 +3157,7 @@ void APBKActor::SetMaximumAngularVelocity ( float MaxVelocity )
 	static UFunction* pFnSetMaximumAngularVelocity = NULL;
 
 	if ( ! pFnSetMaximumAngularVelocity )
-		pFnSetMaximumAngularVelocity = (UFunction*) UObject::GObjObjects()->Data[ 37651 ];
+		pFnSetMaximumAngularVelocity = (UFunction*) UObject::GObjObjects()->Data[ 37668 ];
 
 	APBKActor_execSetMaximumAngularVelocity_Parms SetMaximumAngularVelocity_Parms;
 	SetMaximumAngularVelocity_Parms.MaxVelocity = MaxVelocity;
@@ -3180,7 +3180,7 @@ void APBKActor::WakeRigidBody ( struct FVector InitialLinearVelocity, struct FVe
 	static UFunction* pFnWakeRigidBody = NULL;
 
 	if ( ! pFnWakeRigidBody )
-		pFnWakeRigidBody = (UFunction*) UObject::GObjObjects()->Data[ 37648 ];
+		pFnWakeRigidBody = (UFunction*) UObject::GObjObjects()->Data[ 37665 ];
 
 	APBKActor_execWakeRigidBody_Parms WakeRigidBody_Parms;
 	memcpy ( &WakeRigidBody_Parms.InitialLinearVelocity, &InitialLinearVelocity, 0xC );
@@ -3202,7 +3202,7 @@ void APBKActor::ResetPhysics ( )
 	static UFunction* pFnResetPhysics = NULL;
 
 	if ( ! pFnResetPhysics )
-		pFnResetPhysics = (UFunction*) UObject::GObjObjects()->Data[ 37647 ];
+		pFnResetPhysics = (UFunction*) UObject::GObjObjects()->Data[ 37664 ];
 
 	APBKActor_execResetPhysics_Parms ResetPhysics_Parms;
 
@@ -3222,7 +3222,7 @@ void APBKActor::PutToSleep ( )
 	static UFunction* pFnPutToSleep = NULL;
 
 	if ( ! pFnPutToSleep )
-		pFnPutToSleep = (UFunction*) UObject::GObjObjects()->Data[ 37646 ];
+		pFnPutToSleep = (UFunction*) UObject::GObjObjects()->Data[ 37663 ];
 
 	APBKActor_execPutToSleep_Parms PutToSleep_Parms;
 
@@ -3244,7 +3244,7 @@ float APBKActor::GetRBMass ( int nBodyIndex )
 	static UFunction* pFnGetRBMass = NULL;
 
 	if ( ! pFnGetRBMass )
-		pFnGetRBMass = (UFunction*) UObject::GObjObjects()->Data[ 37643 ];
+		pFnGetRBMass = (UFunction*) UObject::GObjObjects()->Data[ 37660 ];
 
 	APBKActor_execGetRBMass_Parms GetRBMass_Parms;
 	GetRBMass_Parms.nBodyIndex = nBodyIndex;
@@ -3268,7 +3268,7 @@ class UPhysicalMaterial* APBKActor::GetPhysicalMaterial ( )
 	static UFunction* pFnGetPhysicalMaterial = NULL;
 
 	if ( ! pFnGetPhysicalMaterial )
-		pFnGetPhysicalMaterial = (UFunction*) UObject::GObjObjects()->Data[ 37641 ];
+		pFnGetPhysicalMaterial = (UFunction*) UObject::GObjObjects()->Data[ 37658 ];
 
 	APBKActor_execGetPhysicalMaterial_Parms GetPhysicalMaterial_Parms;
 
@@ -3290,7 +3290,7 @@ void APBPhysicsBasePawn::PlayTakeHitEffects_U3 ( )
 	static UFunction* pFnPlayTakeHitEffects_U3 = NULL;
 
 	if ( ! pFnPlayTakeHitEffects_U3 )
-		pFnPlayTakeHitEffects_U3 = (UFunction*) UObject::GObjObjects()->Data[ 37851 ];
+		pFnPlayTakeHitEffects_U3 = (UFunction*) UObject::GObjObjects()->Data[ 37868 ];
 
 	APBPhysicsBasePawn_execPlayTakeHitEffects_U3_Parms PlayTakeHitEffects_U3_Parms;
 
@@ -3312,7 +3312,7 @@ void APBPhysicsBasePawn::PlayHit_U3 ( float Damage, class AController* Instigate
 	static UFunction* pFnPlayHit_U3 = NULL;
 
 	if ( ! pFnPlayHit_U3 )
-		pFnPlayHit_U3 = (UFunction*) UObject::GObjObjects()->Data[ 37844 ];
+		pFnPlayHit_U3 = (UFunction*) UObject::GObjObjects()->Data[ 37861 ];
 
 	APBPhysicsBasePawn_execPlayHit_U3_Parms PlayHit_U3_Parms;
 	PlayHit_U3_Parms.Damage = Damage;
@@ -3341,7 +3341,7 @@ void APBPhysicsBasePawn::PlayHit ( float Damage, class AController* InstigatedBy
 	static UFunction* pFnPlayHit = NULL;
 
 	if ( ! pFnPlayHit )
-		pFnPlayHit = (UFunction*) UObject::GObjObjects()->Data[ 37836 ];
+		pFnPlayHit = (UFunction*) UObject::GObjObjects()->Data[ 37853 ];
 
 	APBPhysicsBasePawn_execPlayHit_Parms PlayHit_Parms;
 	PlayHit_Parms.Damage = Damage;
@@ -3366,7 +3366,7 @@ bool APBPhysicsBasePawn::IsUpperBoneName ( struct FName InName )
 	static UFunction* pFnIsUpperBoneName = NULL;
 
 	if ( ! pFnIsUpperBoneName )
-		pFnIsUpperBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37833 ];
+		pFnIsUpperBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37850 ];
 
 	APBPhysicsBasePawn_execIsUpperBoneName_Parms IsUpperBoneName_Parms;
 	memcpy ( &IsUpperBoneName_Parms.InName, &InName, 0x8 );
@@ -3387,7 +3387,7 @@ bool APBPhysicsBasePawn::IsLowerBoneName ( struct FName InName )
 	static UFunction* pFnIsLowerBoneName = NULL;
 
 	if ( ! pFnIsLowerBoneName )
-		pFnIsLowerBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37827 ];
+		pFnIsLowerBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37844 ];
 
 	APBPhysicsBasePawn_execIsLowerBoneName_Parms IsLowerBoneName_Parms;
 	memcpy ( &IsLowerBoneName_Parms.InName, &InName, 0x8 );
@@ -3407,7 +3407,7 @@ void APBPhysicsBasePawn::GetLowerBoneNames ( TArray< struct FName >* lowerBodyBo
 	static UFunction* pFnGetLowerBoneNames = NULL;
 
 	if ( ! pFnGetLowerBoneNames )
-		pFnGetLowerBoneNames = (UFunction*) UObject::GObjObjects()->Data[ 37824 ];
+		pFnGetLowerBoneNames = (UFunction*) UObject::GObjObjects()->Data[ 37841 ];
 
 	APBPhysicsBasePawn_execGetLowerBoneNames_Parms GetLowerBoneNames_Parms;
 
@@ -3427,7 +3427,7 @@ void APBPhysicsBasePawn::eventReplicatedEvent ( struct FName VarName )
 	static UFunction* pFnReplicatedEvent = NULL;
 
 	if ( ! pFnReplicatedEvent )
-		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37822 ];
+		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37839 ];
 
 	APBPhysicsBasePawn_eventReplicatedEvent_Parms ReplicatedEvent_Parms;
 	memcpy ( &ReplicatedEvent_Parms.VarName, &VarName, 0x8 );
@@ -3445,7 +3445,7 @@ void UPBPhysicsSynchronizer::GetDebugInfo ( TArray< struct FString >* DebugInfo 
 	static UFunction* pFnGetDebugInfo = NULL;
 
 	if ( ! pFnGetDebugInfo )
-		pFnGetDebugInfo = (UFunction*) UObject::GObjObjects()->Data[ 37511 ];
+		pFnGetDebugInfo = (UFunction*) UObject::GObjObjects()->Data[ 37528 ];
 
 	UPBPhysicsSynchronizer_execGetDebugInfo_Parms GetDebugInfo_Parms;
 
@@ -3465,7 +3465,7 @@ void UPBPhysicsSynchronizer::DrawDebug_ResetInformation ( class AActor* invoker 
 	static UFunction* pFnDrawDebug_ResetInformation = NULL;
 
 	if ( ! pFnDrawDebug_ResetInformation )
-		pFnDrawDebug_ResetInformation = (UFunction*) UObject::GObjObjects()->Data[ 37505 ];
+		pFnDrawDebug_ResetInformation = (UFunction*) UObject::GObjObjects()->Data[ 37522 ];
 
 	UPBPhysicsSynchronizer_execDrawDebug_ResetInformation_Parms DrawDebug_ResetInformation_Parms;
 	DrawDebug_ResetInformation_Parms.invoker = invoker;
@@ -3484,7 +3484,7 @@ void UPBPhysicsSynchronizer::StoreResetInformation ( struct FVector InLocation, 
 	static UFunction* pFnStoreResetInformation = NULL;
 
 	if ( ! pFnStoreResetInformation )
-		pFnStoreResetInformation = (UFunction*) UObject::GObjObjects()->Data[ 37502 ];
+		pFnStoreResetInformation = (UFunction*) UObject::GObjObjects()->Data[ 37519 ];
 
 	UPBPhysicsSynchronizer_execStoreResetInformation_Parms StoreResetInformation_Parms;
 	memcpy ( &StoreResetInformation_Parms.InLocation, &InLocation, 0xC );
@@ -3506,7 +3506,7 @@ void UPBPhysicsSynchronizer::ResetToInitialPhysicsState ( )
 	static UFunction* pFnResetToInitialPhysicsState = NULL;
 
 	if ( ! pFnResetToInitialPhysicsState )
-		pFnResetToInitialPhysicsState = (UFunction*) UObject::GObjObjects()->Data[ 37501 ];
+		pFnResetToInitialPhysicsState = (UFunction*) UObject::GObjObjects()->Data[ 37518 ];
 
 	UPBPhysicsSynchronizer_execResetToInitialPhysicsState_Parms ResetToInitialPhysicsState_Parms;
 
@@ -3526,7 +3526,7 @@ void UPBPhysicsSynchronizer::ResetLastReceivedSendData ( )
 	static UFunction* pFnResetLastReceivedSendData = NULL;
 
 	if ( ! pFnResetLastReceivedSendData )
-		pFnResetLastReceivedSendData = (UFunction*) UObject::GObjObjects()->Data[ 37500 ];
+		pFnResetLastReceivedSendData = (UFunction*) UObject::GObjObjects()->Data[ 37517 ];
 
 	UPBPhysicsSynchronizer_execResetLastReceivedSendData_Parms ResetLastReceivedSendData_Parms;
 
@@ -3547,7 +3547,7 @@ void UPBPhysicsSynchronizer::OnRigidBodyStateReplication ( struct FRigidBodyStat
 	static UFunction* pFnOnRigidBodyStateReplication = NULL;
 
 	if ( ! pFnOnRigidBodyStateReplication )
-		pFnOnRigidBodyStateReplication = (UFunction*) UObject::GObjObjects()->Data[ 37498 ];
+		pFnOnRigidBodyStateReplication = (UFunction*) UObject::GObjObjects()->Data[ 37515 ];
 
 	UPBPhysicsSynchronizer_execOnRigidBodyStateReplication_Parms OnRigidBodyStateReplication_Parms;
 
@@ -3572,7 +3572,7 @@ float UPBPhysicsSynchronizer::MeterToUT ( float fMeter )
 	static UFunction* pFnMeterToUT = NULL;
 
 	if ( ! pFnMeterToUT )
-		pFnMeterToUT = (UFunction*) UObject::GObjObjects()->Data[ 37495 ];
+		pFnMeterToUT = (UFunction*) UObject::GObjObjects()->Data[ 37512 ];
 
 	UPBPhysicsSynchronizer_execMeterToUT_Parms MeterToUT_Parms;
 	MeterToUT_Parms.fMeter = fMeter;
@@ -3597,7 +3597,7 @@ float UPBPhysicsSynchronizer::KmhToUTs ( float fKmH )
 	static UFunction* pFnKmhToUTs = NULL;
 
 	if ( ! pFnKmhToUTs )
-		pFnKmhToUTs = (UFunction*) UObject::GObjObjects()->Data[ 37492 ];
+		pFnKmhToUTs = (UFunction*) UObject::GObjObjects()->Data[ 37509 ];
 
 	UPBPhysicsSynchronizer_execKmhToUTs_Parms KmhToUTs_Parms;
 	KmhToUTs_Parms.fKmH = fKmH;
@@ -3622,7 +3622,7 @@ float UPBPhysicsSynchronizer::GetRBMass ( int nBodyIndex )
 	static UFunction* pFnGetRBMass = NULL;
 
 	if ( ! pFnGetRBMass )
-		pFnGetRBMass = (UFunction*) UObject::GObjObjects()->Data[ 37489 ];
+		pFnGetRBMass = (UFunction*) UObject::GObjObjects()->Data[ 37506 ];
 
 	UPBPhysicsSynchronizer_execGetRBMass_Parms GetRBMass_Parms;
 	GetRBMass_Parms.nBodyIndex = nBodyIndex;
@@ -3647,7 +3647,7 @@ float UPBPhysicsSynchronizer::UTToMeter ( float fU3 )
 	static UFunction* pFnUTToMeter = NULL;
 
 	if ( ! pFnUTToMeter )
-		pFnUTToMeter = (UFunction*) UObject::GObjObjects()->Data[ 37360 ];
+		pFnUTToMeter = (UFunction*) UObject::GObjObjects()->Data[ 37377 ];
 
 	UPBPhysicsSynchronizer_execUTToMeter_Parms UTToMeter_Parms;
 	UTToMeter_Parms.fU3 = fU3;
@@ -3672,7 +3672,7 @@ float UPBPhysicsSynchronizer::UTsToKmh ( float fU3Velocity )
 	static UFunction* pFnUTsToKmh = NULL;
 
 	if ( ! pFnUTsToKmh )
-		pFnUTsToKmh = (UFunction*) UObject::GObjObjects()->Data[ 36867 ];
+		pFnUTsToKmh = (UFunction*) UObject::GObjObjects()->Data[ 36884 ];
 
 	UPBPhysicsSynchronizer_execUTsToKmh_Parms UTsToKmh_Parms;
 	UTsToKmh_Parms.fU3Velocity = fU3Velocity;
@@ -3697,7 +3697,7 @@ struct FVector UPBPhysicsSynchronizer::GetKmh ( struct FVector vU3Velocity )
 	static UFunction* pFnGetKmh = NULL;
 
 	if ( ! pFnGetKmh )
-		pFnGetKmh = (UFunction*) UObject::GObjObjects()->Data[ 37484 ];
+		pFnGetKmh = (UFunction*) UObject::GObjObjects()->Data[ 37501 ];
 
 	UPBPhysicsSynchronizer_execGetKmh_Parms GetKmh_Parms;
 	memcpy ( &GetKmh_Parms.vU3Velocity, &vU3Velocity, 0xC );
@@ -3720,7 +3720,7 @@ void UPBPhysicsSynchronizer::InitialPhysicsStateSnapshot ( )
 	static UFunction* pFnInitialPhysicsStateSnapshot = NULL;
 
 	if ( ! pFnInitialPhysicsStateSnapshot )
-		pFnInitialPhysicsStateSnapshot = (UFunction*) UObject::GObjObjects()->Data[ 37483 ];
+		pFnInitialPhysicsStateSnapshot = (UFunction*) UObject::GObjObjects()->Data[ 37500 ];
 
 	UPBPhysicsSynchronizer_execInitialPhysicsStateSnapshot_Parms InitialPhysicsStateSnapshot_Parms;
 
@@ -3742,7 +3742,7 @@ class UPhysicalMaterial* UPBPhysicsSynchronizer::GetCorrectPhysicalMaterialForSt
 	static UFunction* pFnGetCorrectPhysicalMaterialForStaticMesh = NULL;
 
 	if ( ! pFnGetCorrectPhysicalMaterialForStaticMesh )
-		pFnGetCorrectPhysicalMaterialForStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37480 ];
+		pFnGetCorrectPhysicalMaterialForStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37497 ];
 
 	UPBPhysicsSynchronizer_execGetCorrectPhysicalMaterialForStaticMesh_Parms GetCorrectPhysicalMaterialForStaticMesh_Parms;
 	GetCorrectPhysicalMaterialForStaticMesh_Parms.SMC = SMC;
@@ -3767,7 +3767,7 @@ void UPBPhysicsSynchronizer::DrawPhysicsDebug ( class APBBasePlayerController* l
 	static UFunction* pFnDrawPhysicsDebug = NULL;
 
 	if ( ! pFnDrawPhysicsDebug )
-		pFnDrawPhysicsDebug = (UFunction*) UObject::GObjObjects()->Data[ 37477 ];
+		pFnDrawPhysicsDebug = (UFunction*) UObject::GObjObjects()->Data[ 37494 ];
 
 	UPBPhysicsSynchronizer_execDrawPhysicsDebug_Parms DrawPhysicsDebug_Parms;
 	DrawPhysicsDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -3793,7 +3793,7 @@ void UPBPhysicsSynchronizer::DrawDebugPoint ( struct FVector vPosition, unsigned
 	static UFunction* pFnDrawDebugPoint = NULL;
 
 	if ( ! pFnDrawDebugPoint )
-		pFnDrawDebugPoint = (UFunction*) UObject::GObjObjects()->Data[ 37472 ];
+		pFnDrawDebugPoint = (UFunction*) UObject::GObjObjects()->Data[ 37489 ];
 
 	UPBPhysicsSynchronizer_execDrawDebugPoint_Parms DrawDebugPoint_Parms;
 	memcpy ( &DrawDebugPoint_Parms.vPosition, &vPosition, 0xC );
@@ -3820,7 +3820,7 @@ void UPBPhysicsSynchronizer::DrawDebugLine ( struct FVector vStart, struct FVect
 	static UFunction* pFnDrawDebugLine = NULL;
 
 	if ( ! pFnDrawDebugLine )
-		pFnDrawDebugLine = (UFunction*) UObject::GObjObjects()->Data[ 36956 ];
+		pFnDrawDebugLine = (UFunction*) UObject::GObjObjects()->Data[ 36973 ];
 
 	UPBPhysicsSynchronizer_execDrawDebugLine_Parms DrawDebugLine_Parms;
 	memcpy ( &DrawDebugLine_Parms.vStart, &vStart, 0xC );
@@ -3846,7 +3846,7 @@ void UPBPhysicsSynchronizer::DrawDebugTraceLine ( struct FVector vStart, struct 
 	static UFunction* pFnDrawDebugTraceLine = NULL;
 
 	if ( ! pFnDrawDebugTraceLine )
-		pFnDrawDebugTraceLine = (UFunction*) UObject::GObjObjects()->Data[ 37465 ];
+		pFnDrawDebugTraceLine = (UFunction*) UObject::GObjObjects()->Data[ 37482 ];
 
 	UPBPhysicsSynchronizer_execDrawDebugTraceLine_Parms DrawDebugTraceLine_Parms;
 	memcpy ( &DrawDebugTraceLine_Parms.vStart, &vStart, 0xC );
@@ -3875,7 +3875,7 @@ void UPBPhysicsSynchronizer::DrawDebugDiamond ( struct FVector Position, float R
 	static UFunction* pFnDrawDebugDiamond = NULL;
 
 	if ( ! pFnDrawDebugDiamond )
-		pFnDrawDebugDiamond = (UFunction*) UObject::GObjObjects()->Data[ 36957 ];
+		pFnDrawDebugDiamond = (UFunction*) UObject::GObjObjects()->Data[ 36974 ];
 
 	UPBPhysicsSynchronizer_execDrawDebugDiamond_Parms DrawDebugDiamond_Parms;
 	memcpy ( &DrawDebugDiamond_Parms.Position, &Position, 0xC );
@@ -3903,7 +3903,7 @@ void UPBPhysicsSynchronizer::DrawDebug ( class APBBasePlayerController* localPla
 	static UFunction* pFnDrawDebug = NULL;
 
 	if ( ! pFnDrawDebug )
-		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37456 ];
+		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37473 ];
 
 	UPBPhysicsSynchronizer_execDrawDebug_Parms DrawDebug_Parms;
 	DrawDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -3927,7 +3927,7 @@ bool UPBPhysicsSynchronizer::HasPhysicsDebugFlag ( unsigned char eDebugFlag )
 	static UFunction* pFnHasPhysicsDebugFlag = NULL;
 
 	if ( ! pFnHasPhysicsDebugFlag )
-		pFnHasPhysicsDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37453 ];
+		pFnHasPhysicsDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37470 ];
 
 	UPBPhysicsSynchronizer_execHasPhysicsDebugFlag_Parms HasPhysicsDebugFlag_Parms;
 	HasPhysicsDebugFlag_Parms.eDebugFlag = eDebugFlag;
@@ -3951,7 +3951,7 @@ void UPBPhysicsSynchronizer::TogglePhysicsDebugFlag ( unsigned char eDebugFlag )
 	static UFunction* pFnTogglePhysicsDebugFlag = NULL;
 
 	if ( ! pFnTogglePhysicsDebugFlag )
-		pFnTogglePhysicsDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37451 ];
+		pFnTogglePhysicsDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37468 ];
 
 	UPBPhysicsSynchronizer_execTogglePhysicsDebugFlag_Parms TogglePhysicsDebugFlag_Parms;
 	TogglePhysicsDebugFlag_Parms.eDebugFlag = eDebugFlag;
@@ -3974,7 +3974,7 @@ bool UPBPhysicsSynchronizer::HasLineCheckDebugFlag ( unsigned char eDebugFlag )
 	static UFunction* pFnHasLineCheckDebugFlag = NULL;
 
 	if ( ! pFnHasLineCheckDebugFlag )
-		pFnHasLineCheckDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37448 ];
+		pFnHasLineCheckDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 37465 ];
 
 	UPBPhysicsSynchronizer_execHasLineCheckDebugFlag_Parms HasLineCheckDebugFlag_Parms;
 	HasLineCheckDebugFlag_Parms.eDebugFlag = eDebugFlag;
@@ -3998,7 +3998,7 @@ void UPBPhysicsSynchronizer::ToggleLineCheckDebugFlag ( unsigned char eDebugFlag
 	static UFunction* pFnToggleLineCheckDebugFlag = NULL;
 
 	if ( ! pFnToggleLineCheckDebugFlag )
-		pFnToggleLineCheckDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 36955 ];
+		pFnToggleLineCheckDebugFlag = (UFunction*) UObject::GObjObjects()->Data[ 36972 ];
 
 	UPBPhysicsSynchronizer_execToggleLineCheckDebugFlag_Parms ToggleLineCheckDebugFlag_Parms;
 	ToggleLineCheckDebugFlag_Parms.eDebugFlag = eDebugFlag;
@@ -4020,7 +4020,7 @@ void UPBPhysicsSynchronizer::EnableOnRigidBodyCollision ( unsigned long bValue )
 	static UFunction* pFnEnableOnRigidBodyCollision = NULL;
 
 	if ( ! pFnEnableOnRigidBodyCollision )
-		pFnEnableOnRigidBodyCollision = (UFunction*) UObject::GObjObjects()->Data[ 36818 ];
+		pFnEnableOnRigidBodyCollision = (UFunction*) UObject::GObjObjects()->Data[ 36835 ];
 
 	UPBPhysicsSynchronizer_execEnableOnRigidBodyCollision_Parms EnableOnRigidBodyCollision_Parms;
 	EnableOnRigidBodyCollision_Parms.bValue = bValue;
@@ -4042,7 +4042,7 @@ void UPBSkeletalMeshExtension::GetDebugInfo ( TArray< struct FString >* DebugInf
 	static UFunction* pFnGetDebugInfo = NULL;
 
 	if ( ! pFnGetDebugInfo )
-		pFnGetDebugInfo = (UFunction*) UObject::GObjObjects()->Data[ 37897 ];
+		pFnGetDebugInfo = (UFunction*) UObject::GObjObjects()->Data[ 37914 ];
 
 	UPBSkeletalMeshExtension_execGetDebugInfo_Parms GetDebugInfo_Parms;
 
@@ -4063,7 +4063,7 @@ bool UPBSkeletalMeshExtension::HasSocket ( struct FName SocketName )
 	static UFunction* pFnHasSocket = NULL;
 
 	if ( ! pFnHasSocket )
-		pFnHasSocket = (UFunction*) UObject::GObjObjects()->Data[ 37894 ];
+		pFnHasSocket = (UFunction*) UObject::GObjObjects()->Data[ 37911 ];
 
 	UPBSkeletalMeshExtension_execHasSocket_Parms HasSocket_Parms;
 	memcpy ( &HasSocket_Parms.SocketName, &SocketName, 0x8 );
@@ -4088,7 +4088,7 @@ bool UPBSkeletalMeshExtension::HasBone ( struct FName skelBoneName )
 	static UFunction* pFnHasBone = NULL;
 
 	if ( ! pFnHasBone )
-		pFnHasBone = (UFunction*) UObject::GObjObjects()->Data[ 37891 ];
+		pFnHasBone = (UFunction*) UObject::GObjObjects()->Data[ 37908 ];
 
 	UPBSkeletalMeshExtension_execHasBone_Parms HasBone_Parms;
 	memcpy ( &HasBone_Parms.skelBoneName, &skelBoneName, 0x8 );
@@ -4112,7 +4112,7 @@ class USkeletalMesh* UPBSkeletalMeshExtension::GetSkeletalMesh ( )
 	static UFunction* pFnGetSkeletalMesh = NULL;
 
 	if ( ! pFnGetSkeletalMesh )
-		pFnGetSkeletalMesh = (UFunction*) UObject::GObjObjects()->Data[ 37889 ];
+		pFnGetSkeletalMesh = (UFunction*) UObject::GObjObjects()->Data[ 37906 ];
 
 	UPBSkeletalMeshExtension_execGetSkeletalMesh_Parms GetSkeletalMesh_Parms;
 
@@ -4138,7 +4138,7 @@ bool UPBSkeletalMeshExtension::GetNamedMeshLocationAndRotation ( struct FName re
 	static UFunction* pFnGetNamedMeshLocationAndRotation = NULL;
 
 	if ( ! pFnGetNamedMeshLocationAndRotation )
-		pFnGetNamedMeshLocationAndRotation = (UFunction*) UObject::GObjObjects()->Data[ 37884 ];
+		pFnGetNamedMeshLocationAndRotation = (UFunction*) UObject::GObjObjects()->Data[ 37901 ];
 
 	UPBSkeletalMeshExtension_execGetNamedMeshLocationAndRotation_Parms GetNamedMeshLocationAndRotation_Parms;
 	memcpy ( &GetNamedMeshLocationAndRotation_Parms.refName, &refName, 0x8 );
@@ -4170,7 +4170,7 @@ bool UPBSkeletalMeshExtension::GetNamedMeshLocation ( struct FName refName, stru
 	static UFunction* pFnGetNamedMeshLocation = NULL;
 
 	if ( ! pFnGetNamedMeshLocation )
-		pFnGetNamedMeshLocation = (UFunction*) UObject::GObjObjects()->Data[ 37880 ];
+		pFnGetNamedMeshLocation = (UFunction*) UObject::GObjObjects()->Data[ 37897 ];
 
 	UPBSkeletalMeshExtension_execGetNamedMeshLocation_Parms GetNamedMeshLocation_Parms;
 	memcpy ( &GetNamedMeshLocation_Parms.refName, &refName, 0x8 );
@@ -4198,7 +4198,7 @@ int UPBSkeletalMeshExtension::GetMatchingBoneIndex ( struct FName skelBoneName )
 	static UFunction* pFnGetMatchingBoneIndex = NULL;
 
 	if ( ! pFnGetMatchingBoneIndex )
-		pFnGetMatchingBoneIndex = (UFunction*) UObject::GObjObjects()->Data[ 37877 ];
+		pFnGetMatchingBoneIndex = (UFunction*) UObject::GObjObjects()->Data[ 37894 ];
 
 	UPBSkeletalMeshExtension_execGetMatchingBoneIndex_Parms GetMatchingBoneIndex_Parms;
 	memcpy ( &GetMatchingBoneIndex_Parms.skelBoneName, &skelBoneName, 0x8 );
@@ -4224,7 +4224,7 @@ bool UPBSkeletalMeshExtension::GetCLODBoneName ( struct FName skelBoneNamePatter
 	static UFunction* pFnGetCLODBoneName = NULL;
 
 	if ( ! pFnGetCLODBoneName )
-		pFnGetCLODBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37873 ];
+		pFnGetCLODBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37890 ];
 
 	UPBSkeletalMeshExtension_execGetCLODBoneName_Parms GetCLODBoneName_Parms;
 	memcpy ( &GetCLODBoneName_Parms.skelBoneNamePattern, &skelBoneNamePattern, 0x8 );
@@ -4253,7 +4253,7 @@ bool UPBSkeletalMeshExtension::GetBoneName ( int BoneIndex, struct FName* skelBo
 	static UFunction* pFnGetBoneName = NULL;
 
 	if ( ! pFnGetBoneName )
-		pFnGetBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37869 ];
+		pFnGetBoneName = (UFunction*) UObject::GObjObjects()->Data[ 37886 ];
 
 	UPBSkeletalMeshExtension_execGetBoneName_Parms GetBoneName_Parms;
 	GetBoneName_Parms.BoneIndex = BoneIndex;
@@ -4281,7 +4281,7 @@ struct FVector UPBSkeletalMeshExtension::GetBoneLocation ( int BoneIndex )
 	static UFunction* pFnGetBoneLocation = NULL;
 
 	if ( ! pFnGetBoneLocation )
-		pFnGetBoneLocation = (UFunction*) UObject::GObjObjects()->Data[ 37866 ];
+		pFnGetBoneLocation = (UFunction*) UObject::GObjObjects()->Data[ 37883 ];
 
 	UPBSkeletalMeshExtension_execGetBoneLocation_Parms GetBoneLocation_Parms;
 	GetBoneLocation_Parms.BoneIndex = BoneIndex;
@@ -4306,7 +4306,7 @@ int UPBSkeletalMeshExtension::GetBoneIndex ( struct FName skelBoneName )
 	static UFunction* pFnGetBoneIndex = NULL;
 
 	if ( ! pFnGetBoneIndex )
-		pFnGetBoneIndex = (UFunction*) UObject::GObjObjects()->Data[ 37863 ];
+		pFnGetBoneIndex = (UFunction*) UObject::GObjObjects()->Data[ 37880 ];
 
 	UPBSkeletalMeshExtension_execGetBoneIndex_Parms GetBoneIndex_Parms;
 	memcpy ( &GetBoneIndex_Parms.skelBoneName, &skelBoneName, 0x8 );
@@ -4332,7 +4332,7 @@ bool UPBSkeletalMeshExtension::IsStringInName ( struct FString Str, struct FName
 	static UFunction* pFnIsStringInName = NULL;
 
 	if ( ! pFnIsStringInName )
-		pFnIsStringInName = (UFunction*) UObject::GObjObjects()->Data[ 37859 ];
+		pFnIsStringInName = (UFunction*) UObject::GObjObjects()->Data[ 37876 ];
 
 	UPBSkeletalMeshExtension_execIsStringInName_Parms IsStringInName_Parms;
 	memcpy ( &IsStringInName_Parms.Str, &Str, 0xC );
@@ -4359,7 +4359,7 @@ struct FName UPBBaseDamageType::GetCorrectDeathAnimationFromHitLoc ( struct FNam
 	static UFunction* pFnGetCorrectDeathAnimationFromHitLoc = NULL;
 
 	if ( ! pFnGetCorrectDeathAnimationFromHitLoc )
-		pFnGetCorrectDeathAnimationFromHitLoc = (UFunction*) UObject::GObjObjects()->Data[ 36804 ];
+		pFnGetCorrectDeathAnimationFromHitLoc = (UFunction*) UObject::GObjObjects()->Data[ 36821 ];
 
 	UPBBaseDamageType_execGetCorrectDeathAnimationFromHitLoc_Parms GetCorrectDeathAnimationFromHitLoc_Parms;
 	memcpy ( &GetCorrectDeathAnimationFromHitLoc_Parms.BoneName, &BoneName, 0x8 );
@@ -4382,7 +4382,7 @@ float UPBBaseDamageType::GetHitEffectDuration ( class APawn* P, float Damage )
 	static UFunction* pFnGetHitEffectDuration = NULL;
 
 	if ( ! pFnGetHitEffectDuration )
-		pFnGetHitEffectDuration = (UFunction*) UObject::GObjObjects()->Data[ 36800 ];
+		pFnGetHitEffectDuration = (UFunction*) UObject::GObjObjects()->Data[ 36817 ];
 
 	UPBBaseDamageType_execGetHitEffectDuration_Parms GetHitEffectDuration_Parms;
 	GetHitEffectDuration_Parms.P = P;
@@ -4407,7 +4407,7 @@ void UPBBaseDamageType::SpawnHitEffect ( class APawn* P, float Damage, struct FV
 	static UFunction* pFnSpawnHitEffect = NULL;
 
 	if ( ! pFnSpawnHitEffect )
-		pFnSpawnHitEffect = (UFunction*) UObject::GObjObjects()->Data[ 36794 ];
+		pFnSpawnHitEffect = (UFunction*) UObject::GObjObjects()->Data[ 36811 ];
 
 	UPBBaseDamageType_execSpawnHitEffect_Parms SpawnHitEffect_Parms;
 	SpawnHitEffect_Parms.P = P;
@@ -4431,7 +4431,7 @@ void APBCameraActionManager::SetCameraPosAndRot ( class APBBasePawn* pPawn, stru
 	static UFunction* pFnSetCameraPosAndRot = NULL;
 
 	if ( ! pFnSetCameraPosAndRot )
-		pFnSetCameraPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37336 ];
+		pFnSetCameraPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37353 ];
 
 	APBCameraActionManager_execSetCameraPosAndRot_Parms SetCameraPosAndRot_Parms;
 	SetCameraPosAndRot_Parms.pPawn = pPawn;
@@ -4456,7 +4456,7 @@ bool APBCameraActionManager::UpdateCamera ( float fDeltaTime, class AActor* Targ
 	static UFunction* pFnUpdateCamera = NULL;
 
 	if ( ! pFnUpdateCamera )
-		pFnUpdateCamera = (UFunction*) UObject::GObjObjects()->Data[ 37329 ];
+		pFnUpdateCamera = (UFunction*) UObject::GObjObjects()->Data[ 37346 ];
 
 	APBCameraActionManager_execUpdateCamera_Parms UpdateCamera_Parms;
 	UpdateCamera_Parms.fDeltaTime = fDeltaTime;
@@ -4487,7 +4487,7 @@ bool APBCameraActionManager::GetWeaponRotation ( struct FRotator* weaponRotator 
 	static UFunction* pFnGetWeaponRotation = NULL;
 
 	if ( ! pFnGetWeaponRotation )
-		pFnGetWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37326 ];
+		pFnGetWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37343 ];
 
 	APBCameraActionManager_execGetWeaponRotation_Parms GetWeaponRotation_Parms;
 
@@ -4509,7 +4509,7 @@ class APlayerController* APBCameraActionManager::GetPlayerController ( )
 	static UFunction* pFnGetPlayerController = NULL;
 
 	if ( ! pFnGetPlayerController )
-		pFnGetPlayerController = (UFunction*) UObject::GObjObjects()->Data[ 37324 ];
+		pFnGetPlayerController = (UFunction*) UObject::GObjObjects()->Data[ 37341 ];
 
 	APBCameraActionManager_execGetPlayerController_Parms GetPlayerController_Parms;
 
@@ -4528,7 +4528,7 @@ void APBCameraActionManager::DrawPostProcessEffect ( class UCanvas* Canvas )
 	static UFunction* pFnDrawPostProcessEffect = NULL;
 
 	if ( ! pFnDrawPostProcessEffect )
-		pFnDrawPostProcessEffect = (UFunction*) UObject::GObjObjects()->Data[ 37322 ];
+		pFnDrawPostProcessEffect = (UFunction*) UObject::GObjObjects()->Data[ 37339 ];
 
 	APBCameraActionManager_execDrawPostProcessEffect_Parms DrawPostProcessEffect_Parms;
 	DrawPostProcessEffect_Parms.Canvas = Canvas;
@@ -4546,7 +4546,7 @@ void APBCameraActionManager::DrawHUD ( class UCanvas* Canvas )
 	static UFunction* pFnDrawHUD = NULL;
 
 	if ( ! pFnDrawHUD )
-		pFnDrawHUD = (UFunction*) UObject::GObjObjects()->Data[ 37320 ];
+		pFnDrawHUD = (UFunction*) UObject::GObjObjects()->Data[ 37337 ];
 
 	APBCameraActionManager_execDrawHUD_Parms DrawHUD_Parms;
 	DrawHUD_Parms.Canvas = Canvas;
@@ -4565,7 +4565,7 @@ class APBCameraAction* APBCameraActionManager::InstallCameraAction ( class APBCa
 	static UFunction* pFnInstallCameraAction = NULL;
 
 	if ( ! pFnInstallCameraAction )
-		pFnInstallCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37197 ];
+		pFnInstallCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37214 ];
 
 	APBCameraActionManager_execInstallCameraAction_Parms InstallCameraAction_Parms;
 	InstallCameraAction_Parms.pCA = pCA;
@@ -4586,7 +4586,7 @@ class APBCameraAction* APBCameraActionManager::InstallCameraActionClass ( class 
 	static UFunction* pFnInstallCameraActionClass = NULL;
 
 	if ( ! pFnInstallCameraActionClass )
-		pFnInstallCameraActionClass = (UFunction*) UObject::GObjObjects()->Data[ 37314 ];
+		pFnInstallCameraActionClass = (UFunction*) UObject::GObjObjects()->Data[ 37331 ];
 
 	APBCameraActionManager_execInstallCameraActionClass_Parms InstallCameraActionClass_Parms;
 	InstallCameraActionClass_Parms.pCameraClass = pCameraClass;
@@ -4606,7 +4606,7 @@ bool APBCameraActionManager::ShouldInterpolateWeaponRotation ( )
 	static UFunction* pFnShouldInterpolateWeaponRotation = NULL;
 
 	if ( ! pFnShouldInterpolateWeaponRotation )
-		pFnShouldInterpolateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37201 ];
+		pFnShouldInterpolateWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37218 ];
 
 	APBCameraActionManager_execShouldInterpolateWeaponRotation_Parms ShouldInterpolateWeaponRotation_Parms;
 
@@ -4625,7 +4625,7 @@ void APBCameraActionManager::UninstallCameraAction ( class APBCameraAction* pCA 
 	static UFunction* pFnUninstallCameraAction = NULL;
 
 	if ( ! pFnUninstallCameraAction )
-		pFnUninstallCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37312 ];
+		pFnUninstallCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37329 ];
 
 	APBCameraActionManager_execUninstallCameraAction_Parms UninstallCameraAction_Parms;
 	UninstallCameraAction_Parms.pCA = pCA;
@@ -4642,7 +4642,7 @@ void APBCameraActionManager::ActivateHighestPriorityAction ( )
 	static UFunction* pFnActivateHighestPriorityAction = NULL;
 
 	if ( ! pFnActivateHighestPriorityAction )
-		pFnActivateHighestPriorityAction = (UFunction*) UObject::GObjObjects()->Data[ 37308 ];
+		pFnActivateHighestPriorityAction = (UFunction*) UObject::GObjObjects()->Data[ 37325 ];
 
 	APBCameraActionManager_execActivateHighestPriorityAction_Parms ActivateHighestPriorityAction_Parms;
 
@@ -4660,7 +4660,7 @@ int APBCameraActionManager::FindCameraActionIndex ( class APBCameraAction* pActi
 	static UFunction* pFnFindCameraActionIndex = NULL;
 
 	if ( ! pFnFindCameraActionIndex )
-		pFnFindCameraActionIndex = (UFunction*) UObject::GObjObjects()->Data[ 37304 ];
+		pFnFindCameraActionIndex = (UFunction*) UObject::GObjObjects()->Data[ 37321 ];
 
 	APBCameraActionManager_execFindCameraActionIndex_Parms FindCameraActionIndex_Parms;
 	FindCameraActionIndex_Parms.pAction = pAction;
@@ -4681,7 +4681,7 @@ bool APBCameraActionManager::IsCameraAction ( class UClass* pCameraActionClass )
 	static UFunction* pFnIsCameraAction = NULL;
 
 	if ( ! pFnIsCameraAction )
-		pFnIsCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37301 ];
+		pFnIsCameraAction = (UFunction*) UObject::GObjObjects()->Data[ 37318 ];
 
 	APBCameraActionManager_execIsCameraAction_Parms IsCameraAction_Parms;
 	IsCameraAction_Parms.pCameraActionClass = pCameraActionClass;
@@ -4700,7 +4700,7 @@ void APBCameraActionManager::ClearAllCameraActions ( )
 	static UFunction* pFnClearAllCameraActions = NULL;
 
 	if ( ! pFnClearAllCameraActions )
-		pFnClearAllCameraActions = (UFunction*) UObject::GObjObjects()->Data[ 37300 ];
+		pFnClearAllCameraActions = (UFunction*) UObject::GObjObjects()->Data[ 37317 ];
 
 	APBCameraActionManager_execClearAllCameraActions_Parms ClearAllCameraActions_Parms;
 
@@ -4717,7 +4717,7 @@ void APBCameraActionManager::RemoveActionFromStack ( class APBCameraAction* pToR
 	static UFunction* pFnRemoveActionFromStack = NULL;
 
 	if ( ! pFnRemoveActionFromStack )
-		pFnRemoveActionFromStack = (UFunction*) UObject::GObjObjects()->Data[ 37297 ];
+		pFnRemoveActionFromStack = (UFunction*) UObject::GObjObjects()->Data[ 37314 ];
 
 	APBCameraActionManager_execRemoveActionFromStack_Parms RemoveActionFromStack_Parms;
 	RemoveActionFromStack_Parms.pToRemove = pToRemove;
@@ -4735,7 +4735,7 @@ void APBCameraActionManager::AddActionToStack ( class APBCameraAction* pToAdd )
 	static UFunction* pFnAddActionToStack = NULL;
 
 	if ( ! pFnAddActionToStack )
-		pFnAddActionToStack = (UFunction*) UObject::GObjObjects()->Data[ 37293 ];
+		pFnAddActionToStack = (UFunction*) UObject::GObjObjects()->Data[ 37310 ];
 
 	APBCameraActionManager_execAddActionToStack_Parms AddActionToStack_Parms;
 	AddActionToStack_Parms.pToAdd = pToAdd;
@@ -4752,7 +4752,7 @@ void APBCameraActionManager::PostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37292 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 37309 ];
 
 	APBCameraActionManager_execPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -4772,7 +4772,7 @@ void APBCameraAction::SetCameraPosAndRot ( class APBBasePawn* pPawn, struct FVec
 	static UFunction* pFnSetCameraPosAndRot = NULL;
 
 	if ( ! pFnSetCameraPosAndRot )
-		pFnSetCameraPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37280 ];
+		pFnSetCameraPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37297 ];
 
 	APBCameraAction_execSetCameraPosAndRot_Parms SetCameraPosAndRot_Parms;
 	SetCameraPosAndRot_Parms.pPawn = pPawn;
@@ -4796,7 +4796,7 @@ void APBCameraAction::UpdateWeaponPosAndRot ( float fDeltaTime, class APlayerCon
 	static UFunction* pFnUpdateWeaponPosAndRot = NULL;
 
 	if ( ! pFnUpdateWeaponPosAndRot )
-		pFnUpdateWeaponPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37275 ];
+		pFnUpdateWeaponPosAndRot = (UFunction*) UObject::GObjObjects()->Data[ 37292 ];
 
 	APBCameraAction_execUpdateWeaponPosAndRot_Parms UpdateWeaponPosAndRot_Parms;
 	UpdateWeaponPosAndRot_Parms.fDeltaTime = fDeltaTime;
@@ -4826,7 +4826,7 @@ bool APBCameraAction::UpdateCamera ( float fDeltaTime, class AActor* Target, str
 	static UFunction* pFnUpdateCamera = NULL;
 
 	if ( ! pFnUpdateCamera )
-		pFnUpdateCamera = (UFunction*) UObject::GObjObjects()->Data[ 37268 ];
+		pFnUpdateCamera = (UFunction*) UObject::GObjObjects()->Data[ 37285 ];
 
 	APBCameraAction_execUpdateCamera_Parms UpdateCamera_Parms;
 	UpdateCamera_Parms.fDeltaTime = fDeltaTime;
@@ -4856,7 +4856,7 @@ bool APBCameraAction::IsDeactivationPossible ( )
 	static UFunction* pFnIsDeactivationPossible = NULL;
 
 	if ( ! pFnIsDeactivationPossible )
-		pFnIsDeactivationPossible = (UFunction*) UObject::GObjObjects()->Data[ 37266 ];
+		pFnIsDeactivationPossible = (UFunction*) UObject::GObjObjects()->Data[ 37283 ];
 
 	APBCameraAction_execIsDeactivationPossible_Parms IsDeactivationPossible_Parms;
 
@@ -4875,7 +4875,7 @@ void APBCameraAction::DrawPostProcessEffect ( class UCanvas* Canvas )
 	static UFunction* pFnDrawPostProcessEffect = NULL;
 
 	if ( ! pFnDrawPostProcessEffect )
-		pFnDrawPostProcessEffect = (UFunction*) UObject::GObjObjects()->Data[ 37264 ];
+		pFnDrawPostProcessEffect = (UFunction*) UObject::GObjObjects()->Data[ 37281 ];
 
 	APBCameraAction_execDrawPostProcessEffect_Parms DrawPostProcessEffect_Parms;
 	DrawPostProcessEffect_Parms.Canvas = Canvas;
@@ -4893,7 +4893,7 @@ void APBCameraAction::DrawHUD ( class UCanvas* Canvas )
 	static UFunction* pFnDrawHUD = NULL;
 
 	if ( ! pFnDrawHUD )
-		pFnDrawHUD = (UFunction*) UObject::GObjObjects()->Data[ 37262 ];
+		pFnDrawHUD = (UFunction*) UObject::GObjObjects()->Data[ 37279 ];
 
 	APBCameraAction_execDrawHUD_Parms DrawHUD_Parms;
 	DrawHUD_Parms.Canvas = Canvas;
@@ -4912,7 +4912,7 @@ bool APBCameraAction::GetWeaponRotation ( struct FRotator* weaponRotator )
 	static UFunction* pFnGetWeaponRotation = NULL;
 
 	if ( ! pFnGetWeaponRotation )
-		pFnGetWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37259 ];
+		pFnGetWeaponRotation = (UFunction*) UObject::GObjObjects()->Data[ 37276 ];
 
 	APBCameraAction_execGetWeaponRotation_Parms GetWeaponRotation_Parms;
 
@@ -4934,7 +4934,7 @@ float APBCameraAction::GetActionPriority ( )
 	static UFunction* pFnGetActionPriority = NULL;
 
 	if ( ! pFnGetActionPriority )
-		pFnGetActionPriority = (UFunction*) UObject::GObjObjects()->Data[ 37257 ];
+		pFnGetActionPriority = (UFunction*) UObject::GObjObjects()->Data[ 37274 ];
 
 	APBCameraAction_execGetActionPriority_Parms GetActionPriority_Parms;
 
@@ -4952,7 +4952,7 @@ void APBCameraAction::DeactivateAction ( )
 	static UFunction* pFnDeactivateAction = NULL;
 
 	if ( ! pFnDeactivateAction )
-		pFnDeactivateAction = (UFunction*) UObject::GObjObjects()->Data[ 37256 ];
+		pFnDeactivateAction = (UFunction*) UObject::GObjObjects()->Data[ 37273 ];
 
 	APBCameraAction_execDeactivateAction_Parms DeactivateAction_Parms;
 
@@ -4969,7 +4969,7 @@ void APBCameraAction::ActivateAction ( class APBCameraActionManager* pManager )
 	static UFunction* pFnActivateAction = NULL;
 
 	if ( ! pFnActivateAction )
-		pFnActivateAction = (UFunction*) UObject::GObjObjects()->Data[ 37254 ];
+		pFnActivateAction = (UFunction*) UObject::GObjObjects()->Data[ 37271 ];
 
 	APBCameraAction_execActivateAction_Parms ActivateAction_Parms;
 	ActivateAction_Parms.pManager = pManager;
@@ -4987,7 +4987,7 @@ void APBDebugActor::eventTick ( float DeltaTime )
 	static UFunction* pFnTick = NULL;
 
 	if ( ! pFnTick )
-		pFnTick = (UFunction*) UObject::GObjObjects()->Data[ 37368 ];
+		pFnTick = (UFunction*) UObject::GObjObjects()->Data[ 37385 ];
 
 	APBDebugActor_eventTick_Parms Tick_Parms;
 	Tick_Parms.DeltaTime = DeltaTime;
@@ -5008,7 +5008,7 @@ class APBDebugActor* APBDebugActor::SpawnStatic ( class AActor* creator, struct 
 	static UFunction* pFnSpawnStatic = NULL;
 
 	if ( ! pFnSpawnStatic )
-		pFnSpawnStatic = (UFunction*) UObject::GObjObjects()->Data[ 37362 ];
+		pFnSpawnStatic = (UFunction*) UObject::GObjObjects()->Data[ 37379 ];
 
 	APBDebugActor_execSpawnStatic_Parms SpawnStatic_Parms;
 	SpawnStatic_Parms.creator = creator;
@@ -5033,7 +5033,7 @@ bool APBDebugActor::ShouldDrawDebug ( class APBBasePlayerController* localPlayer
 	static UFunction* pFnShouldDrawDebug = NULL;
 
 	if ( ! pFnShouldDrawDebug )
-		pFnShouldDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37352 ];
+		pFnShouldDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37369 ];
 
 	APBDebugActor_execShouldDrawDebug_Parms ShouldDrawDebug_Parms;
 	ShouldDrawDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -5060,7 +5060,7 @@ void APBDebugActor::DrawDebug ( class APBBasePlayerController* localPlayerCtrl, 
 	static UFunction* pFnDrawDebug = NULL;
 
 	if ( ! pFnDrawDebug )
-		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37354 ];
+		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 37371 ];
 
 	APBDebugActor_execDrawDebug_Parms DrawDebug_Parms;
 	DrawDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -5080,7 +5080,7 @@ void APBDebugActor::DrawStaticDebug ( class APBBasePlayerController* localPlayer
 	static UFunction* pFnDrawStaticDebug = NULL;
 
 	if ( ! pFnDrawStaticDebug )
-		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 37346 ];
+		pFnDrawStaticDebug = (UFunction*) UObject::GObjObjects()->Data[ 37363 ];
 
 	APBDebugActor_execDrawStaticDebug_Parms DrawStaticDebug_Parms;
 	DrawStaticDebug_Parms.localPlayerCtrl = localPlayerCtrl;
@@ -5099,7 +5099,7 @@ void APBDebugActor::AddInfo ( struct FString Info )
 	static UFunction* pFnAddInfo = NULL;
 
 	if ( ! pFnAddInfo )
-		pFnAddInfo = (UFunction*) UObject::GObjObjects()->Data[ 37344 ];
+		pFnAddInfo = (UFunction*) UObject::GObjObjects()->Data[ 37361 ];
 
 	APBDebugActor_execAddInfo_Parms AddInfo_Parms;
 	memcpy ( &AddInfo_Parms.Info, &Info, 0xC );
@@ -5117,7 +5117,7 @@ struct FVector APBFlockable::GetAvoidance ( )
 	static UFunction* pFnGetAvoidance = NULL;
 
 	if ( ! pFnGetAvoidance )
-		pFnGetAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37435 ];
+		pFnGetAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37452 ];
 
 	APBFlockable_execGetAvoidance_Parms GetAvoidance_Parms;
 
@@ -5136,7 +5136,7 @@ void APBFlockable::AddAvoidance ( struct FVector V )
 	static UFunction* pFnAddAvoidance = NULL;
 
 	if ( ! pFnAddAvoidance )
-		pFnAddAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37433 ];
+		pFnAddAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37450 ];
 
 	APBFlockable_execAddAvoidance_Parms AddAvoidance_Parms;
 	memcpy ( &AddAvoidance_Parms.V, &V, 0xC );
@@ -5153,7 +5153,7 @@ void APBFlockable::ResetAvoidance ( )
 	static UFunction* pFnResetAvoidance = NULL;
 
 	if ( ! pFnResetAvoidance )
-		pFnResetAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37432 ];
+		pFnResetAvoidance = (UFunction*) UObject::GObjObjects()->Data[ 37449 ];
 
 	APBFlockable_execResetAvoidance_Parms ResetAvoidance_Parms;
 
@@ -5170,7 +5170,7 @@ void APBFlockable::SetTarget ( struct FVector* pos )
 	static UFunction* pFnSetTarget = NULL;
 
 	if ( ! pFnSetTarget )
-		pFnSetTarget = (UFunction*) UObject::GObjObjects()->Data[ 37430 ];
+		pFnSetTarget = (UFunction*) UObject::GObjObjects()->Data[ 37447 ];
 
 	APBFlockable_execSetTarget_Parms SetTarget_Parms;
 
@@ -5190,7 +5190,7 @@ void APBFlockable::SetVelocity ( float _speed )
 	static UFunction* pFnSetVelocity = NULL;
 
 	if ( ! pFnSetVelocity )
-		pFnSetVelocity = (UFunction*) UObject::GObjObjects()->Data[ 37428 ];
+		pFnSetVelocity = (UFunction*) UObject::GObjObjects()->Data[ 37445 ];
 
 	APBFlockable_execSetVelocity_Parms SetVelocity_Parms;
 	SetVelocity_Parms._speed = _speed;
@@ -5208,7 +5208,7 @@ void APBFlockable::SetVelocityRange ( struct FRange* _range )
 	static UFunction* pFnSetVelocityRange = NULL;
 
 	if ( ! pFnSetVelocityRange )
-		pFnSetVelocityRange = (UFunction*) UObject::GObjObjects()->Data[ 37426 ];
+		pFnSetVelocityRange = (UFunction*) UObject::GObjObjects()->Data[ 37443 ];
 
 	APBFlockable_execSetVelocityRange_Parms SetVelocityRange_Parms;
 
@@ -5228,7 +5228,7 @@ void APBFlockable::SetScaleRange ( struct FRange* _range )
 	static UFunction* pFnSetScaleRange = NULL;
 
 	if ( ! pFnSetScaleRange )
-		pFnSetScaleRange = (UFunction*) UObject::GObjObjects()->Data[ 37424 ];
+		pFnSetScaleRange = (UFunction*) UObject::GObjObjects()->Data[ 37441 ];
 
 	APBFlockable_execSetScaleRange_Parms SetScaleRange_Parms;
 
@@ -5248,7 +5248,7 @@ void APBFlockable::SetFlock ( class AActor* flock )
 	static UFunction* pFnSetFlock = NULL;
 
 	if ( ! pFnSetFlock )
-		pFnSetFlock = (UFunction*) UObject::GObjObjects()->Data[ 37422 ];
+		pFnSetFlock = (UFunction*) UObject::GObjObjects()->Data[ 37439 ];
 
 	APBFlockable_execSetFlock_Parms SetFlock_Parms;
 	SetFlock_Parms.flock = flock;
@@ -5266,7 +5266,7 @@ void APBFlockable::SetAvoidanceRadius ( float _radius )
 	static UFunction* pFnSetAvoidanceRadius = NULL;
 
 	if ( ! pFnSetAvoidanceRadius )
-		pFnSetAvoidanceRadius = (UFunction*) UObject::GObjObjects()->Data[ 37420 ];
+		pFnSetAvoidanceRadius = (UFunction*) UObject::GObjObjects()->Data[ 37437 ];
 
 	APBFlockable_execSetAvoidanceRadius_Parms SetAvoidanceRadius_Parms;
 	SetAvoidanceRadius_Parms._radius = _radius;
@@ -5284,7 +5284,7 @@ float APBFlockable::GetAvoidanceRadius ( )
 	static UFunction* pFnGetAvoidanceRadius = NULL;
 
 	if ( ! pFnGetAvoidanceRadius )
-		pFnGetAvoidanceRadius = (UFunction*) UObject::GObjObjects()->Data[ 37418 ];
+		pFnGetAvoidanceRadius = (UFunction*) UObject::GObjObjects()->Data[ 37435 ];
 
 	APBFlockable_execGetAvoidanceRadius_Parms GetAvoidanceRadius_Parms;
 
@@ -5303,7 +5303,7 @@ void APBFlockable::Animate ( struct FName movementType )
 	static UFunction* pFnAnimate = NULL;
 
 	if ( ! pFnAnimate )
-		pFnAnimate = (UFunction*) UObject::GObjObjects()->Data[ 37416 ];
+		pFnAnimate = (UFunction*) UObject::GObjObjects()->Data[ 37433 ];
 
 	APBFlockable_execAnimate_Parms Animate_Parms;
 	memcpy ( &Animate_Parms.movementType, &movementType, 0x8 );
@@ -5320,7 +5320,7 @@ void APBFlockable::Reset ( )
 	static UFunction* pFnReset = NULL;
 
 	if ( ! pFnReset )
-		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37415 ];
+		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37432 ];
 
 	APBFlockable_execReset_Parms Reset_Parms;
 
@@ -5339,7 +5339,7 @@ void UPBTexSwitchComponent::ApplyOffset ( class UMeshComponent* Comp, int iMaxHe
 	static UFunction* pFnApplyOffset = NULL;
 
 	if ( ! pFnApplyOffset )
-		pFnApplyOffset = (UFunction*) UObject::GObjObjects()->Data[ 37910 ];
+		pFnApplyOffset = (UFunction*) UObject::GObjObjects()->Data[ 37927 ];
 
 	UPBTexSwitchComponent_execApplyOffset_Parms ApplyOffset_Parms;
 	ApplyOffset_Parms.Comp = Comp;
@@ -5360,7 +5360,7 @@ bool UPBTexSwitchComponent::Initialize ( class UMeshComponent* Comp )
 	static UFunction* pFnInitialize = NULL;
 
 	if ( ! pFnInitialize )
-		pFnInitialize = (UFunction*) UObject::GObjObjects()->Data[ 37906 ];
+		pFnInitialize = (UFunction*) UObject::GObjObjects()->Data[ 37923 ];
 
 	UPBTexSwitchComponent_execInitialize_Parms Initialize_Parms;
 	Initialize_Parms.Comp = Comp;
@@ -5379,7 +5379,7 @@ void UPBTexSwitchComponent::Reset ( )
 	static UFunction* pFnReset = NULL;
 
 	if ( ! pFnReset )
-		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37905 ];
+		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37922 ];
 
 	UPBTexSwitchComponent_execReset_Parms Reset_Parms;
 
@@ -5398,7 +5398,7 @@ void UPBTextSingleSwitchComponent::ApplyOffset ( class UMeshComponent* Comp, int
 	static UFunction* pFnApplyOffset = NULL;
 
 	if ( ! pFnApplyOffset )
-		pFnApplyOffset = (UFunction*) UObject::GObjObjects()->Data[ 37918 ];
+		pFnApplyOffset = (UFunction*) UObject::GObjObjects()->Data[ 37935 ];
 
 	UPBTextSingleSwitchComponent_execApplyOffset_Parms ApplyOffset_Parms;
 	ApplyOffset_Parms.Comp = Comp;
@@ -5420,7 +5420,7 @@ void APBStaticMeshDestructible::ShiftToStaticMesh ( class UStaticMesh* NewMesh, 
 	static UFunction* pFnShiftToStaticMesh = NULL;
 
 	if ( ! pFnShiftToStaticMesh )
-		pFnShiftToStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37973 ];
+		pFnShiftToStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37990 ];
 
 	APBStaticMeshDestructible_execShiftToStaticMesh_Parms ShiftToStaticMesh_Parms;
 	ShiftToStaticMesh_Parms.NewMesh = NewMesh;
@@ -5439,7 +5439,7 @@ void APBStaticMeshDestructible::ShiftStaticMesh ( )
 	static UFunction* pFnShiftStaticMesh = NULL;
 
 	if ( ! pFnShiftStaticMesh )
-		pFnShiftStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37968 ];
+		pFnShiftStaticMesh = (UFunction*) UObject::GObjObjects()->Data[ 37985 ];
 
 	APBStaticMeshDestructible_execShiftStaticMesh_Parms ShiftStaticMesh_Parms;
 
@@ -5455,7 +5455,7 @@ void APBStaticMeshDestructible::StopPhysicsTimer ( )
 	static UFunction* pFnStopPhysicsTimer = NULL;
 
 	if ( ! pFnStopPhysicsTimer )
-		pFnStopPhysicsTimer = (UFunction*) UObject::GObjObjects()->Data[ 37967 ];
+		pFnStopPhysicsTimer = (UFunction*) UObject::GObjObjects()->Data[ 37984 ];
 
 	APBStaticMeshDestructible_execStopPhysicsTimer_Parms StopPhysicsTimer_Parms;
 
@@ -5472,7 +5472,7 @@ void APBStaticMeshDestructible::eventReplicatedEvent ( struct FName VarName )
 	static UFunction* pFnReplicatedEvent = NULL;
 
 	if ( ! pFnReplicatedEvent )
-		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37965 ];
+		pFnReplicatedEvent = (UFunction*) UObject::GObjObjects()->Data[ 37982 ];
 
 	APBStaticMeshDestructible_eventReplicatedEvent_Parms ReplicatedEvent_Parms;
 	memcpy ( &ReplicatedEvent_Parms.VarName, &VarName, 0x8 );
@@ -5490,7 +5490,7 @@ void APBStaticMeshDestructible::OnSetMaterial ( class USeqAct_SetMaterial* Actio
 	static UFunction* pFnOnSetMaterial = NULL;
 
 	if ( ! pFnOnSetMaterial )
-		pFnOnSetMaterial = (UFunction*) UObject::GObjObjects()->Data[ 37963 ];
+		pFnOnSetMaterial = (UFunction*) UObject::GObjObjects()->Data[ 37980 ];
 
 	APBStaticMeshDestructible_execOnSetMaterial_Parms OnSetMaterial_Parms;
 	OnSetMaterial_Parms.Action = Action;
@@ -5508,7 +5508,7 @@ void APBStaticMeshDestructible::OnTriggerDestructible ( class UPBSeqAct_TriggerD
 	static UFunction* pFnOnTriggerDestructible = NULL;
 
 	if ( ! pFnOnTriggerDestructible )
-		pFnOnTriggerDestructible = (UFunction*) UObject::GObjObjects()->Data[ 37961 ];
+		pFnOnTriggerDestructible = (UFunction*) UObject::GObjObjects()->Data[ 37978 ];
 
 	APBStaticMeshDestructible_execOnTriggerDestructible_Parms OnTriggerDestructible_Parms;
 	OnTriggerDestructible_Parms.seqAction = seqAction;
@@ -5525,7 +5525,7 @@ void APBStaticMeshDestructible::ClientTakeDamage ( )
 	static UFunction* pFnClientTakeDamage = NULL;
 
 	if ( ! pFnClientTakeDamage )
-		pFnClientTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37960 ];
+		pFnClientTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37977 ];
 
 	APBStaticMeshDestructible_execClientTakeDamage_Parms ClientTakeDamage_Parms;
 
@@ -5545,7 +5545,7 @@ void APBStaticMeshDestructible::ReliableHit ( class AController* EventInstigator
 	static UFunction* pFnReliableHit = NULL;
 
 	if ( ! pFnReliableHit )
-		pFnReliableHit = (UFunction*) UObject::GObjObjects()->Data[ 37955 ];
+		pFnReliableHit = (UFunction*) UObject::GObjObjects()->Data[ 37972 ];
 
 	APBStaticMeshDestructible_execReliableHit_Parms ReliableHit_Parms;
 	ReliableHit_Parms.EventInstigator = EventInstigator;
@@ -5569,7 +5569,7 @@ void APBStaticMeshDestructible::NonReliableHit ( class AController* EventInstiga
 	static UFunction* pFnNonReliableHit = NULL;
 
 	if ( ! pFnNonReliableHit )
-		pFnNonReliableHit = (UFunction*) UObject::GObjObjects()->Data[ 37950 ];
+		pFnNonReliableHit = (UFunction*) UObject::GObjObjects()->Data[ 37967 ];
 
 	APBStaticMeshDestructible_execNonReliableHit_Parms NonReliableHit_Parms;
 	NonReliableHit_Parms.EventInstigator = EventInstigator;
@@ -5596,7 +5596,7 @@ void APBStaticMeshDestructible::TakeDamage ( int DamageAmount, class AController
 	static UFunction* pFnTakeDamage = NULL;
 
 	if ( ! pFnTakeDamage )
-		pFnTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37940 ];
+		pFnTakeDamage = (UFunction*) UObject::GObjObjects()->Data[ 37957 ];
 
 	APBStaticMeshDestructible_execTakeDamage_Parms TakeDamage_Parms;
 	TakeDamage_Parms.DamageAmount = DamageAmount;
@@ -5619,7 +5619,7 @@ void APBStaticMeshDestructible::ClientReset ( )
 	static UFunction* pFnClientReset = NULL;
 
 	if ( ! pFnClientReset )
-		pFnClientReset = (UFunction*) UObject::GObjObjects()->Data[ 37939 ];
+		pFnClientReset = (UFunction*) UObject::GObjObjects()->Data[ 37956 ];
 
 	APBStaticMeshDestructible_execClientReset_Parms ClientReset_Parms;
 
@@ -5635,7 +5635,7 @@ void APBStaticMeshDestructible::Reset ( )
 	static UFunction* pFnReset = NULL;
 
 	if ( ! pFnReset )
-		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37938 ];
+		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 37955 ];
 
 	APBStaticMeshDestructible_execReset_Parms Reset_Parms;
 

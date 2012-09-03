@@ -219,7 +219,7 @@ public:
 UClass* UPBCachedOffersMap::pClassPointer = NULL;
 
 // Class PBItemShop.PBItemShopClient
-// 0x03E8 (0x0424 - 0x003C)
+// 0x03F4 (0x0430 - 0x003C)
 class UPBItemShopClient : public UObject
 {
 public:
@@ -309,6 +309,7 @@ public:
 	struct FScriptDelegate                             __OnFundWalletDone__Delegate;                     		// 0x0400 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 	struct FScriptDelegate                             __OnFinalizeSteamTransactionDone__Delegate;       		// 0x040C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 	struct FScriptDelegate                             __OnGetCasTicketDone__Delegate;                   		// 0x0418 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	struct FScriptDelegate                             __OnSetLastDisplayedCoolnessDone__Delegate;       		// 0x0424 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 
 private:
 	static UClass* pClassPointer;
@@ -323,6 +324,10 @@ public:
 	};
 
 	void debugPrintSetPreset ( TArray< struct FGuid >* serialNumber, TArray< int >* Preset );
+	int RemoveDelegate_OnSetLastDisplayedCoolnessDone ( struct FScriptDelegate func, class UObject* Parent );
+	int AddDelegate_OnSetLastDisplayedCoolnessDone ( struct FScriptDelegate func, class UObject* Parent );
+	void OnSetLastDisplayedCoolnessDone ( int requestId, int ErrorCode );
+	int eventSetLastDisplayedCoolness ( int lastDisplayedCoolness );
 	int RemoveDelegate_OnGetCasTicketDone ( struct FScriptDelegate func, class UObject* Parent );
 	int AddDelegate_OnGetCasTicketDone ( struct FScriptDelegate func, class UObject* Parent );
 	void OnGetCasTicketDone ( int requestId, int ErrorCode, struct FString casTicket, struct FString subscriptionURL );
@@ -733,7 +738,7 @@ public:
 	int GetPresetsServer ( struct FGuid ProfileId );
 	void OnUpdateProfileDetailsServerDone ( int requestId, int ErrorCode, struct FGuid ProfileId );
 	int UpdateProfileDetailsServer ( struct FGuid ProfileId, struct FString Field, int Value );
-	void OnGetProfileDetailsServerDone ( int requestId, int ErrorCode, struct FGuid ProfileId, struct FString CharacterName, struct FString UserId, struct FString SessionId, struct FGuid characterGender, struct FGuid characterHead, struct FGuid characterSkin, int avatarPicture, int Rank, int xp, float xpPercentage, int credits, int coolness, int profileReputation, unsigned char accountLevel );
+	void OnGetProfileDetailsServerDone ( int requestId, int ErrorCode, struct FGuid ProfileId, struct FString CharacterName, struct FString UserId, struct FString SessionId, struct FGuid characterGender, struct FGuid characterHead, struct FGuid characterSkin, int avatarPicture, int Rank, int xp, float xpPercentage, int credits, int coolness, int profileReputation, unsigned char accountLevel, int ProgressionSubmitCount );
 	int GetProfileDetailsServer ( struct FGuid ProfileId );
 	void OnLogoutServerDone ( int requestId, int ErrorCode );
 	int LogoutServer ( );

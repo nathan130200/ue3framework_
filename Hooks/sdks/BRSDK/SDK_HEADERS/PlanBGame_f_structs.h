@@ -9718,9 +9718,9 @@ struct UPBNotificationSystem_execProfileCharacterFetched_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
-	// struct FPBItem                                  pbi;                                              		// 0x00C0 (0x00BC) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// struct FsheduledNotification                    SN;                                               		// 0x017C (0x002C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	// struct FPBItem                                  pbi;                                              		// 0x00C4 (0x00BC) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// struct FsheduledNotification                    SN;                                               		// 0x0180 (0x002C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBNotificationSystem.InitializeProfileCreated
@@ -26565,8 +26565,8 @@ struct UPBGlobalBasket_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
-	// class APBCustomChar_Preview*                    pActor;                                           		// 0x00C0 (0x0004) [0x0000000000000000]              
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	// class APBCustomChar_Preview*                    pActor;                                           		// 0x00C4 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGlobalBasket._OnGetOfferDetailsDone
@@ -50157,12 +50157,12 @@ struct UPBGFxObject_CharacterSelection_execOnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
-	// class UPBItemShopClient*                        shop;                                             		// 0x00C0 (0x0004) [0x0000000000000000]              
-	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C4 (0x0004) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x00C8 (0x0004) [0x0000000000000000]              
-	// int                                             nLoadedProfiles;                                  		// 0x00CC (0x0004) [0x0000000000000000]              
-	// int                                             nLoadedIndex;                                     		// 0x00D0 (0x0004) [0x0000000000000000]              
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	// class UPBItemShopClient*                        shop;                                             		// 0x00C4 (0x0004) [0x0000000000000000]              
+	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C8 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x00CC (0x0004) [0x0000000000000000]              
+	// int                                             nLoadedProfiles;                                  		// 0x00D0 (0x0004) [0x0000000000000000]              
+	// int                                             nLoadedIndex;                                     		// 0x00D4 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGFxObject_CharacterSelection._LoadCharacter
@@ -50642,9 +50642,9 @@ struct UPBGFxObject_CharacterCreation_execOnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
-	// class UPBItemShopClient*                        shop;                                             		// 0x00C0 (0x0004) [0x0000000000000000]              
-	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C4 (0x0004) [0x0000000000000000]              
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	// class UPBItemShopClient*                        shop;                                             		// 0x00C4 (0x0004) [0x0000000000000000]              
+	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C8 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGFxObject_CharacterCreation._startGetCharacterProfile
@@ -50860,7 +50860,7 @@ struct UPBGFxObject_MainMenu_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_MainMenu.EnableGSServices
@@ -51694,7 +51694,7 @@ struct UPBGFxObject_CharacterShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_CharacterShop._NavigateToItem
@@ -52662,7 +52662,7 @@ struct UPBGFxObject_WeaponShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_WeaponShop._UpdateItemsFlags
@@ -53275,7 +53275,7 @@ struct UPBGFxObject_ServiceShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_ServiceShop._OnDeleteItemFromBasketDone
@@ -54459,7 +54459,7 @@ struct UPBGFxObject_SkillShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_SkillShop._OnGetBasketDone
@@ -54762,7 +54762,7 @@ struct UPBGFxObject_ControlBar_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_ControlBar._OnGetAmountDone
@@ -54927,7 +54927,7 @@ struct UPBGFxObject_TauntShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_TauntShop._OnGetBasketDone
@@ -55563,7 +55563,7 @@ struct UPBGFxObject_CommonShop_exec_OnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_CommonShop._OnDeleteItemFromBasketDone
@@ -57020,12 +57020,12 @@ struct UPBGFxObject_CharacterSelection_new_execOnGetCharacterProfileDone_Parms
 {
 	int                                                requestId;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                ErrorCode;                                        		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00B8) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
-	// class UPBItemShopClient*                        shop;                                             		// 0x00C0 (0x0004) [0x0000000000000000]              
-	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C4 (0x0004) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x00C8 (0x0004) [0x0000000000000000]              
-	// int                                             nLoadedProfiles;                                  		// 0x00CC (0x0004) [0x0000000000000000]              
-	// int                                             nLoadedIndex;                                     		// 0x00D0 (0x0004) [0x0000000000000000]              
+	struct FPBCharacterProfile                         CharacterProfile;                                 		// 0x0008 (0x00BC) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	// class UPBItemShopClient*                        shop;                                             		// 0x00C4 (0x0004) [0x0000000000000000]              
+	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x00C8 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x00CC (0x0004) [0x0000000000000000]              
+	// int                                             nLoadedProfiles;                                  		// 0x00D0 (0x0004) [0x0000000000000000]              
+	// int                                             nLoadedIndex;                                     		// 0x00D4 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGFxObject_CharacterSelection_new._LoadCharacter

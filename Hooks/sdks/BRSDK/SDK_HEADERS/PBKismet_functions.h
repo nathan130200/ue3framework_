@@ -30,7 +30,7 @@ void UPBSeqAct_ActivateOnScript::eventActionActivated ( )
 	static UFunction* pFnActionActivated = NULL;
 
 	if ( ! pFnActionActivated )
-		pFnActionActivated = (UFunction*) UObject::GObjObjects()->Data[ 36730 ];
+		pFnActionActivated = (UFunction*) UObject::GObjObjects()->Data[ 36747 ];
 
 	UPBSeqAct_ActivateOnScript_eventActionActivated_Parms ActionActivated_Parms;
 
@@ -50,7 +50,7 @@ float UPBSeqAct_CauseDamage::ComputePhysicalDamage ( class AActor* PhysInstigato
 	static UFunction* pFnComputePhysicalDamage = NULL;
 
 	if ( ! pFnComputePhysicalDamage )
-		pFnComputePhysicalDamage = (UFunction*) UObject::GObjObjects()->Data[ 36749 ];
+		pFnComputePhysicalDamage = (UFunction*) UObject::GObjObjects()->Data[ 36766 ];
 
 	UPBSeqAct_CauseDamage_execComputePhysicalDamage_Parms ComputePhysicalDamage_Parms;
 	ComputePhysicalDamage_Parms.PhysInstigator = PhysInstigator;
@@ -73,7 +73,7 @@ int UPBSeqAct_CauseDamage::ComputeDamage ( int nBaseDamage )
 	static UFunction* pFnComputeDamage = NULL;
 
 	if ( ! pFnComputeDamage )
-		pFnComputeDamage = (UFunction*) UObject::GObjObjects()->Data[ 36745 ];
+		pFnComputeDamage = (UFunction*) UObject::GObjObjects()->Data[ 36762 ];
 
 	UPBSeqAct_CauseDamage_execComputeDamage_Parms ComputeDamage_Parms;
 	ComputeDamage_Parms.nBaseDamage = nBaseDamage;
@@ -94,7 +94,7 @@ float UPBSeqAct_CauseDamage::GetUTVelocityFromKmh ( float fKmH )
 	static UFunction* pFnGetUTVelocityFromKmh = NULL;
 
 	if ( ! pFnGetUTVelocityFromKmh )
-		pFnGetUTVelocityFromKmh = (UFunction*) UObject::GObjObjects()->Data[ 36741 ];
+		pFnGetUTVelocityFromKmh = (UFunction*) UObject::GObjObjects()->Data[ 36758 ];
 
 	UPBSeqAct_CauseDamage_execGetUTVelocityFromKmh_Parms GetUTVelocityFromKmh_Parms;
 	GetUTVelocityFromKmh_Parms.fKmH = fKmH;

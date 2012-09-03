@@ -52,25 +52,20 @@ void Draw( UCanvas* Canvas, ATgPlayerController* Controller, FVector CameraLocat
 
 		if(CheckBoxes[5].Checked)
 		{
-			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
 		}
 
 		if(CheckBoxes[6].Checked)
 		{
-			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
+			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
 		}
 
 		if(CheckBoxes[7].Checked)
 		{
-			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
-		}
-
-		if(CheckBoxes[8].Checked)
-		{
 			Misc::DrawCossHair(Canvas, ColorGreen);
 		}
 
-		if(CheckBoxes[9].Checked)
+		if(CheckBoxes[8].Checked)
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
 		}

@@ -31,7 +31,7 @@ void UPBCachedOffersMap::ClearCachedCategory ( struct FString cached_category )
 	static UFunction* pFnClearCachedCategory = NULL;
 
 	if ( ! pFnClearCachedCategory )
-		pFnClearCachedCategory = (UFunction*) UObject::GObjObjects()->Data[ 36395 ];
+		pFnClearCachedCategory = (UFunction*) UObject::GObjObjects()->Data[ 36411 ];
 
 	UPBCachedOffersMap_execClearCachedCategory_Parms ClearCachedCategory_Parms;
 	memcpy ( &ClearCachedCategory_Parms.cached_category, &cached_category, 0xC );
@@ -52,7 +52,7 @@ void UPBCachedOffersMap::ClearCache ( )
 	static UFunction* pFnClearCache = NULL;
 
 	if ( ! pFnClearCache )
-		pFnClearCache = (UFunction*) UObject::GObjObjects()->Data[ 36394 ];
+		pFnClearCache = (UFunction*) UObject::GObjObjects()->Data[ 36410 ];
 
 	UPBCachedOffersMap_execClearCache_Parms ClearCache_Parms;
 
@@ -76,7 +76,7 @@ bool UPBCachedOffersMap::GetItemOffers ( struct FGuid itemId, int nMarketCategor
 	static UFunction* pFnGetItemOffers = NULL;
 
 	if ( ! pFnGetItemOffers )
-		pFnGetItemOffers = (UFunction*) UObject::GObjObjects()->Data[ 36388 ];
+		pFnGetItemOffers = (UFunction*) UObject::GObjObjects()->Data[ 36404 ];
 
 	UPBCachedOffersMap_execGetItemOffers_Parms GetItemOffers_Parms;
 	memcpy ( &GetItemOffers_Parms.itemId, &itemId, 0x10 );
@@ -245,7 +245,7 @@ void UPBItemShopClient::debugPrintSetPreset ( TArray< struct FGuid >* serialNumb
 	static UFunction* pFndebugPrintSetPreset = NULL;
 
 	if ( ! pFndebugPrintSetPreset )
-		pFndebugPrintSetPreset = (UFunction*) UObject::GObjObjects()->Data[ 36405 ];
+		pFndebugPrintSetPreset = (UFunction*) UObject::GObjObjects()->Data[ 36421 ];
 
 	UPBItemShopClient_execdebugPrintSetPreset_Parms debugPrintSetPreset_Parms;
 
@@ -256,6 +256,97 @@ void UPBItemShopClient::debugPrintSetPreset ( TArray< struct FGuid >* serialNumb
 
 	if ( Preset )
 		memcpy ( Preset, &debugPrintSetPreset_Parms.Preset, 0xC );
+};
+
+// Function PBItemShop.PBItemShopClient.RemoveDelegate_OnSetLastDisplayedCoolnessDone
+// [0x00020002] 
+// Parameters infos:
+// int                            ReturnValue                    ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+// struct FScriptDelegate         func                           ( CPF_Parm | CPF_NeedCtorLink )
+// class UObject*                 Parent                         ( CPF_Parm )
+
+int UPBItemShopClient::RemoveDelegate_OnSetLastDisplayedCoolnessDone ( struct FScriptDelegate func, class UObject* Parent )
+{
+	static UFunction* pFnRemoveDelegate_OnSetLastDisplayedCoolnessDone = NULL;
+
+	if ( ! pFnRemoveDelegate_OnSetLastDisplayedCoolnessDone )
+		pFnRemoveDelegate_OnSetLastDisplayedCoolnessDone = (UFunction*) UObject::GObjObjects()->Data[ 36417 ];
+
+	UPBItemShopClient_execRemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms RemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms;
+	memcpy ( &RemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms.func, &func, 0xC );
+	RemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms.Parent = Parent;
+
+	this->ProcessEvent ( pFnRemoveDelegate_OnSetLastDisplayedCoolnessDone, &RemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms, NULL );
+
+	return RemoveDelegate_OnSetLastDisplayedCoolnessDone_Parms.ReturnValue;
+};
+
+// Function PBItemShop.PBItemShopClient.AddDelegate_OnSetLastDisplayedCoolnessDone
+// [0x00020002] 
+// Parameters infos:
+// int                            ReturnValue                    ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+// struct FScriptDelegate         func                           ( CPF_Parm | CPF_NeedCtorLink )
+// class UObject*                 Parent                         ( CPF_Parm )
+
+int UPBItemShopClient::AddDelegate_OnSetLastDisplayedCoolnessDone ( struct FScriptDelegate func, class UObject* Parent )
+{
+	static UFunction* pFnAddDelegate_OnSetLastDisplayedCoolnessDone = NULL;
+
+	if ( ! pFnAddDelegate_OnSetLastDisplayedCoolnessDone )
+		pFnAddDelegate_OnSetLastDisplayedCoolnessDone = (UFunction*) UObject::GObjObjects()->Data[ 36413 ];
+
+	UPBItemShopClient_execAddDelegate_OnSetLastDisplayedCoolnessDone_Parms AddDelegate_OnSetLastDisplayedCoolnessDone_Parms;
+	memcpy ( &AddDelegate_OnSetLastDisplayedCoolnessDone_Parms.func, &func, 0xC );
+	AddDelegate_OnSetLastDisplayedCoolnessDone_Parms.Parent = Parent;
+
+	this->ProcessEvent ( pFnAddDelegate_OnSetLastDisplayedCoolnessDone, &AddDelegate_OnSetLastDisplayedCoolnessDone_Parms, NULL );
+
+	return AddDelegate_OnSetLastDisplayedCoolnessDone_Parms.ReturnValue;
+};
+
+// Function PBItemShop.PBItemShopClient.OnSetLastDisplayedCoolnessDone
+// [0x00120000] 
+// Parameters infos:
+// int                            requestId                      ( CPF_Parm )
+// int                            ErrorCode                      ( CPF_Parm )
+
+void UPBItemShopClient::OnSetLastDisplayedCoolnessDone ( int requestId, int ErrorCode )
+{
+	static UFunction* pFnOnSetLastDisplayedCoolnessDone = NULL;
+
+	if ( ! pFnOnSetLastDisplayedCoolnessDone )
+		pFnOnSetLastDisplayedCoolnessDone = (UFunction*) UObject::GObjObjects()->Data[ 36301 ];
+
+	UPBItemShopClient_execOnSetLastDisplayedCoolnessDone_Parms OnSetLastDisplayedCoolnessDone_Parms;
+	OnSetLastDisplayedCoolnessDone_Parms.requestId = requestId;
+	OnSetLastDisplayedCoolnessDone_Parms.ErrorCode = ErrorCode;
+
+	this->ProcessEvent ( pFnOnSetLastDisplayedCoolnessDone, &OnSetLastDisplayedCoolnessDone_Parms, NULL );
+};
+
+// Function PBItemShop.PBItemShopClient.SetLastDisplayedCoolness
+// [0x00020C00] ( FUNC_Event | FUNC_Native )
+// Parameters infos:
+// int                            ReturnValue                    ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+// int                            lastDisplayedCoolness          ( CPF_Parm )
+
+int UPBItemShopClient::eventSetLastDisplayedCoolness ( int lastDisplayedCoolness )
+{
+	static UFunction* pFnSetLastDisplayedCoolness = NULL;
+
+	if ( ! pFnSetLastDisplayedCoolness )
+		pFnSetLastDisplayedCoolness = (UFunction*) UObject::GObjObjects()->Data[ 36298 ];
+
+	UPBItemShopClient_eventSetLastDisplayedCoolness_Parms SetLastDisplayedCoolness_Parms;
+	SetLastDisplayedCoolness_Parms.lastDisplayedCoolness = lastDisplayedCoolness;
+
+	pFnSetLastDisplayedCoolness->FunctionFlags |= ~0x400;
+
+	this->ProcessEvent ( pFnSetLastDisplayedCoolness, &SetLastDisplayedCoolness_Parms, NULL );
+
+	pFnSetLastDisplayedCoolness->FunctionFlags |= 0x400;
+
+	return SetLastDisplayedCoolness_Parms.ReturnValue;
 };
 
 // Function PBItemShop.PBItemShopClient.RemoveDelegate_OnGetCasTicketDone
@@ -270,7 +361,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetCasTicketDone ( struct FScriptDelegat
 	static UFunction* pFnRemoveDelegate_OnGetCasTicketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetCasTicketDone )
-		pFnRemoveDelegate_OnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36401 ];
+		pFnRemoveDelegate_OnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36294 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetCasTicketDone_Parms RemoveDelegate_OnGetCasTicketDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetCasTicketDone_Parms.func, &func, 0xC );
@@ -293,7 +384,7 @@ int UPBItemShopClient::AddDelegate_OnGetCasTicketDone ( struct FScriptDelegate f
 	static UFunction* pFnAddDelegate_OnGetCasTicketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetCasTicketDone )
-		pFnAddDelegate_OnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36397 ];
+		pFnAddDelegate_OnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36290 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetCasTicketDone_Parms AddDelegate_OnGetCasTicketDone_Parms;
 	memcpy ( &AddDelegate_OnGetCasTicketDone_Parms.func, &func, 0xC );
@@ -317,7 +408,7 @@ void UPBItemShopClient::OnGetCasTicketDone ( int requestId, int ErrorCode, struc
 	static UFunction* pFnOnGetCasTicketDone = NULL;
 
 	if ( ! pFnOnGetCasTicketDone )
-		pFnOnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36284 ];
+		pFnOnGetCasTicketDone = (UFunction*) UObject::GObjObjects()->Data[ 36285 ];
 
 	UPBItemShopClient_execOnGetCasTicketDone_Parms OnGetCasTicketDone_Parms;
 	OnGetCasTicketDone_Parms.requestId = requestId;
@@ -338,7 +429,7 @@ int UPBItemShopClient::eventGetCasTicket ( )
 	static UFunction* pFnGetCasTicket = NULL;
 
 	if ( ! pFnGetCasTicket )
-		pFnGetCasTicket = (UFunction*) UObject::GObjObjects()->Data[ 36282 ];
+		pFnGetCasTicket = (UFunction*) UObject::GObjObjects()->Data[ 36283 ];
 
 	UPBItemShopClient_eventGetCasTicket_Parms GetCasTicket_Parms;
 
@@ -363,7 +454,7 @@ int UPBItemShopClient::RemoveDelegate_OnFinalizeSteamTransactionDone ( struct FS
 	static UFunction* pFnRemoveDelegate_OnFinalizeSteamTransactionDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnFinalizeSteamTransactionDone )
-		pFnRemoveDelegate_OnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36278 ];
+		pFnRemoveDelegate_OnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36279 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnFinalizeSteamTransactionDone_Parms RemoveDelegate_OnFinalizeSteamTransactionDone_Parms;
 	memcpy ( &RemoveDelegate_OnFinalizeSteamTransactionDone_Parms.func, &func, 0xC );
@@ -386,7 +477,7 @@ int UPBItemShopClient::AddDelegate_OnFinalizeSteamTransactionDone ( struct FScri
 	static UFunction* pFnAddDelegate_OnFinalizeSteamTransactionDone = NULL;
 
 	if ( ! pFnAddDelegate_OnFinalizeSteamTransactionDone )
-		pFnAddDelegate_OnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36274 ];
+		pFnAddDelegate_OnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36275 ];
 
 	UPBItemShopClient_execAddDelegate_OnFinalizeSteamTransactionDone_Parms AddDelegate_OnFinalizeSteamTransactionDone_Parms;
 	memcpy ( &AddDelegate_OnFinalizeSteamTransactionDone_Parms.func, &func, 0xC );
@@ -409,7 +500,7 @@ void UPBItemShopClient::OnFinalizeSteamTransactionDone ( int requestId, int Erro
 	static UFunction* pFnOnFinalizeSteamTransactionDone = NULL;
 
 	if ( ! pFnOnFinalizeSteamTransactionDone )
-		pFnOnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36270 ];
+		pFnOnFinalizeSteamTransactionDone = (UFunction*) UObject::GObjObjects()->Data[ 36271 ];
 
 	UPBItemShopClient_execOnFinalizeSteamTransactionDone_Parms OnFinalizeSteamTransactionDone_Parms;
 	OnFinalizeSteamTransactionDone_Parms.requestId = requestId;
@@ -431,7 +522,7 @@ int UPBItemShopClient::eventFinalizeSteamTransaction ( struct FString orderId, u
 	static UFunction* pFnFinalizeSteamTransaction = NULL;
 
 	if ( ! pFnFinalizeSteamTransaction )
-		pFnFinalizeSteamTransaction = (UFunction*) UObject::GObjObjects()->Data[ 36266 ];
+		pFnFinalizeSteamTransaction = (UFunction*) UObject::GObjObjects()->Data[ 36267 ];
 
 	UPBItemShopClient_eventFinalizeSteamTransaction_Parms FinalizeSteamTransaction_Parms;
 	memcpy ( &FinalizeSteamTransaction_Parms.orderId, &orderId, 0xC );
@@ -458,7 +549,7 @@ int UPBItemShopClient::RemoveDelegate_OnFundWalletDone ( struct FScriptDelegate 
 	static UFunction* pFnRemoveDelegate_OnFundWalletDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnFundWalletDone )
-		pFnRemoveDelegate_OnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36262 ];
+		pFnRemoveDelegate_OnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36263 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnFundWalletDone_Parms RemoveDelegate_OnFundWalletDone_Parms;
 	memcpy ( &RemoveDelegate_OnFundWalletDone_Parms.func, &func, 0xC );
@@ -481,7 +572,7 @@ int UPBItemShopClient::AddDelegate_OnFundWalletDone ( struct FScriptDelegate fun
 	static UFunction* pFnAddDelegate_OnFundWalletDone = NULL;
 
 	if ( ! pFnAddDelegate_OnFundWalletDone )
-		pFnAddDelegate_OnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36258 ];
+		pFnAddDelegate_OnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36259 ];
 
 	UPBItemShopClient_execAddDelegate_OnFundWalletDone_Parms AddDelegate_OnFundWalletDone_Parms;
 	memcpy ( &AddDelegate_OnFundWalletDone_Parms.func, &func, 0xC );
@@ -510,7 +601,7 @@ void UPBItemShopClient::OnFundWalletDone ( int requestId, int ErrorCode, struct 
 	static UFunction* pFnOnFundWalletDone = NULL;
 
 	if ( ! pFnOnFundWalletDone )
-		pFnOnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36248 ];
+		pFnOnFundWalletDone = (UFunction*) UObject::GObjObjects()->Data[ 36249 ];
 
 	UPBItemShopClient_execOnFundWalletDone_Parms OnFundWalletDone_Parms;
 	OnFundWalletDone_Parms.requestId = requestId;
@@ -540,7 +631,7 @@ int UPBItemShopClient::eventFundWallet ( int paymentSourceId, struct FString cur
 	static UFunction* pFnFundWallet = NULL;
 
 	if ( ! pFnFundWallet )
-		pFnFundWallet = (UFunction*) UObject::GObjObjects()->Data[ 36242 ];
+		pFnFundWallet = (UFunction*) UObject::GObjObjects()->Data[ 36243 ];
 
 	UPBItemShopClient_eventFundWallet_Parms FundWallet_Parms;
 	FundWallet_Parms.paymentSourceId = paymentSourceId;
@@ -569,7 +660,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetStationCashProductsDone ( struct FScr
 	static UFunction* pFnRemoveDelegate_OnGetStationCashProductsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetStationCashProductsDone )
-		pFnRemoveDelegate_OnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36238 ];
+		pFnRemoveDelegate_OnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36239 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetStationCashProductsDone_Parms RemoveDelegate_OnGetStationCashProductsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetStationCashProductsDone_Parms.func, &func, 0xC );
@@ -592,7 +683,7 @@ int UPBItemShopClient::AddDelegate_OnGetStationCashProductsDone ( struct FScript
 	static UFunction* pFnAddDelegate_OnGetStationCashProductsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetStationCashProductsDone )
-		pFnAddDelegate_OnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36234 ];
+		pFnAddDelegate_OnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36235 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetStationCashProductsDone_Parms AddDelegate_OnGetStationCashProductsDone_Parms;
 	memcpy ( &AddDelegate_OnGetStationCashProductsDone_Parms.func, &func, 0xC );
@@ -616,7 +707,7 @@ void UPBItemShopClient::OnGetStationCashProductsDone ( int requestId, int ErrorC
 	static UFunction* pFnOnGetStationCashProductsDone = NULL;
 
 	if ( ! pFnOnGetStationCashProductsDone )
-		pFnOnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36228 ];
+		pFnOnGetStationCashProductsDone = (UFunction*) UObject::GObjObjects()->Data[ 36229 ];
 
 	UPBItemShopClient_execOnGetStationCashProductsDone_Parms OnGetStationCashProductsDone_Parms;
 	OnGetStationCashProductsDone_Parms.requestId = requestId;
@@ -638,7 +729,7 @@ int UPBItemShopClient::eventGetStationCashProducts ( struct FString currency )
 	static UFunction* pFnGetStationCashProducts = NULL;
 
 	if ( ! pFnGetStationCashProducts )
-		pFnGetStationCashProducts = (UFunction*) UObject::GObjObjects()->Data[ 36225 ];
+		pFnGetStationCashProducts = (UFunction*) UObject::GObjObjects()->Data[ 36226 ];
 
 	UPBItemShopClient_eventGetStationCashProducts_Parms GetStationCashProducts_Parms;
 	memcpy ( &GetStationCashProducts_Parms.currency, &currency, 0xC );
@@ -664,7 +755,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetPaymentSourcesDone ( struct FScriptDe
 	static UFunction* pFnRemoveDelegate_OnGetPaymentSourcesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetPaymentSourcesDone )
-		pFnRemoveDelegate_OnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36221 ];
+		pFnRemoveDelegate_OnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36222 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetPaymentSourcesDone_Parms RemoveDelegate_OnGetPaymentSourcesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetPaymentSourcesDone_Parms.func, &func, 0xC );
@@ -687,7 +778,7 @@ int UPBItemShopClient::AddDelegate_OnGetPaymentSourcesDone ( struct FScriptDeleg
 	static UFunction* pFnAddDelegate_OnGetPaymentSourcesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetPaymentSourcesDone )
-		pFnAddDelegate_OnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36217 ];
+		pFnAddDelegate_OnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36218 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetPaymentSourcesDone_Parms AddDelegate_OnGetPaymentSourcesDone_Parms;
 	memcpy ( &AddDelegate_OnGetPaymentSourcesDone_Parms.func, &func, 0xC );
@@ -713,7 +804,7 @@ void UPBItemShopClient::OnGetPaymentSourcesDone ( int requestId, int ErrorCode, 
 	static UFunction* pFnOnGetPaymentSourcesDone = NULL;
 
 	if ( ! pFnOnGetPaymentSourcesDone )
-		pFnOnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36210 ];
+		pFnOnGetPaymentSourcesDone = (UFunction*) UObject::GObjObjects()->Data[ 36211 ];
 
 	UPBItemShopClient_execOnGetPaymentSourcesDone_Parms OnGetPaymentSourcesDone_Parms;
 	OnGetPaymentSourcesDone_Parms.requestId = requestId;
@@ -736,7 +827,7 @@ int UPBItemShopClient::eventGetPaymentSources ( )
 	static UFunction* pFnGetPaymentSources = NULL;
 
 	if ( ! pFnGetPaymentSources )
-		pFnGetPaymentSources = (UFunction*) UObject::GObjObjects()->Data[ 36208 ];
+		pFnGetPaymentSources = (UFunction*) UObject::GObjObjects()->Data[ 36209 ];
 
 	UPBItemShopClient_eventGetPaymentSources_Parms GetPaymentSources_Parms;
 
@@ -761,7 +852,7 @@ int UPBItemShopClient::RemoveDelegate_OnIsSteamCustomerDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnIsSteamCustomerDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnIsSteamCustomerDone )
-		pFnRemoveDelegate_OnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36204 ];
+		pFnRemoveDelegate_OnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36205 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnIsSteamCustomerDone_Parms RemoveDelegate_OnIsSteamCustomerDone_Parms;
 	memcpy ( &RemoveDelegate_OnIsSteamCustomerDone_Parms.func, &func, 0xC );
@@ -784,7 +875,7 @@ int UPBItemShopClient::AddDelegate_OnIsSteamCustomerDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnIsSteamCustomerDone = NULL;
 
 	if ( ! pFnAddDelegate_OnIsSteamCustomerDone )
-		pFnAddDelegate_OnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36200 ];
+		pFnAddDelegate_OnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36201 ];
 
 	UPBItemShopClient_execAddDelegate_OnIsSteamCustomerDone_Parms AddDelegate_OnIsSteamCustomerDone_Parms;
 	memcpy ( &AddDelegate_OnIsSteamCustomerDone_Parms.func, &func, 0xC );
@@ -808,7 +899,7 @@ void UPBItemShopClient::OnIsSteamCustomerDone ( int requestId, int ErrorCode, st
 	static UFunction* pFnOnIsSteamCustomerDone = NULL;
 
 	if ( ! pFnOnIsSteamCustomerDone )
-		pFnOnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36195 ];
+		pFnOnIsSteamCustomerDone = (UFunction*) UObject::GObjObjects()->Data[ 36196 ];
 
 	UPBItemShopClient_execOnIsSteamCustomerDone_Parms OnIsSteamCustomerDone_Parms;
 	OnIsSteamCustomerDone_Parms.requestId = requestId;
@@ -829,7 +920,7 @@ int UPBItemShopClient::eventIsSteamCustomer ( )
 	static UFunction* pFnIsSteamCustomer = NULL;
 
 	if ( ! pFnIsSteamCustomer )
-		pFnIsSteamCustomer = (UFunction*) UObject::GObjObjects()->Data[ 36193 ];
+		pFnIsSteamCustomer = (UFunction*) UObject::GObjObjects()->Data[ 36194 ];
 
 	UPBItemShopClient_eventIsSteamCustomer_Parms IsSteamCustomer_Parms;
 
@@ -854,7 +945,7 @@ int UPBItemShopClient::RemoveDelegate_OnCreateStationHandleDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnCreateStationHandleDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnCreateStationHandleDone )
-		pFnRemoveDelegate_OnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36189 ];
+		pFnRemoveDelegate_OnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36190 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnCreateStationHandleDone_Parms RemoveDelegate_OnCreateStationHandleDone_Parms;
 	memcpy ( &RemoveDelegate_OnCreateStationHandleDone_Parms.func, &func, 0xC );
@@ -877,7 +968,7 @@ int UPBItemShopClient::AddDelegate_OnCreateStationHandleDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnCreateStationHandleDone = NULL;
 
 	if ( ! pFnAddDelegate_OnCreateStationHandleDone )
-		pFnAddDelegate_OnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36185 ];
+		pFnAddDelegate_OnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36186 ];
 
 	UPBItemShopClient_execAddDelegate_OnCreateStationHandleDone_Parms AddDelegate_OnCreateStationHandleDone_Parms;
 	memcpy ( &AddDelegate_OnCreateStationHandleDone_Parms.func, &func, 0xC );
@@ -899,7 +990,7 @@ void UPBItemShopClient::OnCreateStationHandleDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnCreateStationHandleDone = NULL;
 
 	if ( ! pFnOnCreateStationHandleDone )
-		pFnOnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36182 ];
+		pFnOnCreateStationHandleDone = (UFunction*) UObject::GObjObjects()->Data[ 36183 ];
 
 	UPBItemShopClient_execOnCreateStationHandleDone_Parms OnCreateStationHandleDone_Parms;
 	OnCreateStationHandleDone_Parms.requestId = requestId;
@@ -919,7 +1010,7 @@ int UPBItemShopClient::eventCreateStationHandle ( struct FString StationHandle )
 	static UFunction* pFnCreateStationHandle = NULL;
 
 	if ( ! pFnCreateStationHandle )
-		pFnCreateStationHandle = (UFunction*) UObject::GObjObjects()->Data[ 36179 ];
+		pFnCreateStationHandle = (UFunction*) UObject::GObjObjects()->Data[ 36180 ];
 
 	UPBItemShopClient_eventCreateStationHandle_Parms CreateStationHandle_Parms;
 	memcpy ( &CreateStationHandle_Parms.StationHandle, &StationHandle, 0xC );
@@ -945,7 +1036,7 @@ int UPBItemShopClient::RemoveDelegate_OnCheckStationHandleAvailabilityDone ( str
 	static UFunction* pFnRemoveDelegate_OnCheckStationHandleAvailabilityDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnCheckStationHandleAvailabilityDone )
-		pFnRemoveDelegate_OnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36175 ];
+		pFnRemoveDelegate_OnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36176 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnCheckStationHandleAvailabilityDone_Parms RemoveDelegate_OnCheckStationHandleAvailabilityDone_Parms;
 	memcpy ( &RemoveDelegate_OnCheckStationHandleAvailabilityDone_Parms.func, &func, 0xC );
@@ -968,7 +1059,7 @@ int UPBItemShopClient::AddDelegate_OnCheckStationHandleAvailabilityDone ( struct
 	static UFunction* pFnAddDelegate_OnCheckStationHandleAvailabilityDone = NULL;
 
 	if ( ! pFnAddDelegate_OnCheckStationHandleAvailabilityDone )
-		pFnAddDelegate_OnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36171 ];
+		pFnAddDelegate_OnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36172 ];
 
 	UPBItemShopClient_execAddDelegate_OnCheckStationHandleAvailabilityDone_Parms AddDelegate_OnCheckStationHandleAvailabilityDone_Parms;
 	memcpy ( &AddDelegate_OnCheckStationHandleAvailabilityDone_Parms.func, &func, 0xC );
@@ -991,7 +1082,7 @@ void UPBItemShopClient::OnCheckStationHandleAvailabilityDone ( int requestId, in
 	static UFunction* pFnOnCheckStationHandleAvailabilityDone = NULL;
 
 	if ( ! pFnOnCheckStationHandleAvailabilityDone )
-		pFnOnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36167 ];
+		pFnOnCheckStationHandleAvailabilityDone = (UFunction*) UObject::GObjObjects()->Data[ 36168 ];
 
 	UPBItemShopClient_execOnCheckStationHandleAvailabilityDone_Parms OnCheckStationHandleAvailabilityDone_Parms;
 	OnCheckStationHandleAvailabilityDone_Parms.requestId = requestId;
@@ -1012,7 +1103,7 @@ int UPBItemShopClient::eventCheckStationHandleAvailability ( struct FString Stat
 	static UFunction* pFnCheckStationHandleAvailability = NULL;
 
 	if ( ! pFnCheckStationHandleAvailability )
-		pFnCheckStationHandleAvailability = (UFunction*) UObject::GObjObjects()->Data[ 36164 ];
+		pFnCheckStationHandleAvailability = (UFunction*) UObject::GObjObjects()->Data[ 36165 ];
 
 	UPBItemShopClient_eventCheckStationHandleAvailability_Parms CheckStationHandleAvailability_Parms;
 	memcpy ( &CheckStationHandleAvailability_Parms.StationHandle, &StationHandle, 0xC );
@@ -1038,7 +1129,7 @@ void UPBItemShopClient::_OnGetUnlockedOffersAtRankDone ( int requestId, int Erro
 	static UFunction* pFn_OnGetUnlockedOffersAtRankDone = NULL;
 
 	if ( ! pFn_OnGetUnlockedOffersAtRankDone )
-		pFn_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36151 ];
+		pFn_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36152 ];
 
 	UPBItemShopClient_exec_OnGetUnlockedOffersAtRankDone_Parms _OnGetUnlockedOffersAtRankDone_Parms;
 	_OnGetUnlockedOffersAtRankDone_Parms.requestId = requestId;
@@ -1060,7 +1151,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetUnlockedOffersAtRankDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnGetUnlockedOffersAtRankDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetUnlockedOffersAtRankDone )
-		pFnRemoveDelegate_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36156 ];
+		pFnRemoveDelegate_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36157 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetUnlockedOffersAtRankDone_Parms RemoveDelegate_OnGetUnlockedOffersAtRankDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetUnlockedOffersAtRankDone_Parms.func, &func, 0xC );
@@ -1083,7 +1174,7 @@ int UPBItemShopClient::AddDelegate_OnGetUnlockedOffersAtRankDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnGetUnlockedOffersAtRankDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetUnlockedOffersAtRankDone )
-		pFnAddDelegate_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36152 ];
+		pFnAddDelegate_OnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36153 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetUnlockedOffersAtRankDone_Parms AddDelegate_OnGetUnlockedOffersAtRankDone_Parms;
 	memcpy ( &AddDelegate_OnGetUnlockedOffersAtRankDone_Parms.func, &func, 0xC );
@@ -1106,7 +1197,7 @@ void UPBItemShopClient::OnGetUnlockedOffersAtRankDone ( int requestId, int Error
 	static UFunction* pFnOnGetUnlockedOffersAtRankDone = NULL;
 
 	if ( ! pFnOnGetUnlockedOffersAtRankDone )
-		pFnOnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36146 ];
+		pFnOnGetUnlockedOffersAtRankDone = (UFunction*) UObject::GObjObjects()->Data[ 36147 ];
 
 	UPBItemShopClient_execOnGetUnlockedOffersAtRankDone_Parms OnGetUnlockedOffersAtRankDone_Parms;
 	OnGetUnlockedOffersAtRankDone_Parms.requestId = requestId;
@@ -1128,7 +1219,7 @@ int UPBItemShopClient::eventGetUnlockedOffersAtRank ( int OldRank, int NewRank )
 	static UFunction* pFnGetUnlockedOffersAtRank = NULL;
 
 	if ( ! pFnGetUnlockedOffersAtRank )
-		pFnGetUnlockedOffersAtRank = (UFunction*) UObject::GObjObjects()->Data[ 36142 ];
+		pFnGetUnlockedOffersAtRank = (UFunction*) UObject::GObjObjects()->Data[ 36143 ];
 
 	UPBItemShopClient_eventGetUnlockedOffersAtRank_Parms GetUnlockedOffersAtRank_Parms;
 	GetUnlockedOffersAtRank_Parms.OldRank = OldRank;
@@ -1155,7 +1246,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetClientProfileDetails ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetClientProfileDetails = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetClientProfileDetails )
-		pFnRemoveDelegate_OnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36138 ];
+		pFnRemoveDelegate_OnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36139 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetClientProfileDetails_Parms RemoveDelegate_OnGetClientProfileDetails_Parms;
 	memcpy ( &RemoveDelegate_OnGetClientProfileDetails_Parms.func, &func, 0xC );
@@ -1178,7 +1269,7 @@ int UPBItemShopClient::AddDelegate_OnGetClientProfileDetails ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetClientProfileDetails = NULL;
 
 	if ( ! pFnAddDelegate_OnGetClientProfileDetails )
-		pFnAddDelegate_OnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36134 ];
+		pFnAddDelegate_OnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36135 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetClientProfileDetails_Parms AddDelegate_OnGetClientProfileDetails_Parms;
 	memcpy ( &AddDelegate_OnGetClientProfileDetails_Parms.func, &func, 0xC );
@@ -1202,7 +1293,7 @@ void UPBItemShopClient::OnGetClientProfileDetails ( int requestId, int ErrorCode
 	static UFunction* pFnOnGetClientProfileDetails = NULL;
 
 	if ( ! pFnOnGetClientProfileDetails )
-		pFnOnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36128 ];
+		pFnOnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36129 ];
 
 	UPBItemShopClient_execOnGetClientProfileDetails_Parms OnGetClientProfileDetails_Parms;
 	OnGetClientProfileDetails_Parms.requestId = requestId;
@@ -1225,7 +1316,7 @@ int UPBItemShopClient::eventGetClientProfileDetails ( int AmountAccountNick, TAr
 	static UFunction* pFnGetClientProfileDetails = NULL;
 
 	if ( ! pFnGetClientProfileDetails )
-		pFnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36123 ];
+		pFnGetClientProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 36124 ];
 
 	UPBItemShopClient_eventGetClientProfileDetails_Parms GetClientProfileDetails_Parms;
 	GetClientProfileDetails_Parms.AmountAccountNick = AmountAccountNick;
@@ -1252,7 +1343,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetAccountAndProfilesForName ( struct FS
 	static UFunction* pFnRemoveDelegate_OnGetAccountAndProfilesForName = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetAccountAndProfilesForName )
-		pFnRemoveDelegate_OnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36119 ];
+		pFnRemoveDelegate_OnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36120 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetAccountAndProfilesForName_Parms RemoveDelegate_OnGetAccountAndProfilesForName_Parms;
 	memcpy ( &RemoveDelegate_OnGetAccountAndProfilesForName_Parms.func, &func, 0xC );
@@ -1275,7 +1366,7 @@ int UPBItemShopClient::AddDelegate_OnGetAccountAndProfilesForName ( struct FScri
 	static UFunction* pFnAddDelegate_OnGetAccountAndProfilesForName = NULL;
 
 	if ( ! pFnAddDelegate_OnGetAccountAndProfilesForName )
-		pFnAddDelegate_OnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36115 ];
+		pFnAddDelegate_OnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36116 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetAccountAndProfilesForName_Parms AddDelegate_OnGetAccountAndProfilesForName_Parms;
 	memcpy ( &AddDelegate_OnGetAccountAndProfilesForName_Parms.func, &func, 0xC );
@@ -1299,7 +1390,7 @@ void UPBItemShopClient::OnGetAccountAndProfilesForName ( int requestId, int Erro
 	static UFunction* pFnOnGetAccountAndProfilesForName = NULL;
 
 	if ( ! pFnOnGetAccountAndProfilesForName )
-		pFnOnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36109 ];
+		pFnOnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36110 ];
 
 	UPBItemShopClient_execOnGetAccountAndProfilesForName_Parms OnGetAccountAndProfilesForName_Parms;
 	OnGetAccountAndProfilesForName_Parms.requestId = requestId;
@@ -1321,7 +1412,7 @@ int UPBItemShopClient::eventGetAccountAndProfilesForName ( struct FString Search
 	static UFunction* pFnGetAccountAndProfilesForName = NULL;
 
 	if ( ! pFnGetAccountAndProfilesForName )
-		pFnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36106 ];
+		pFnGetAccountAndProfilesForName = (UFunction*) UObject::GObjObjects()->Data[ 36107 ];
 
 	UPBItemShopClient_eventGetAccountAndProfilesForName_Parms GetAccountAndProfilesForName_Parms;
 	memcpy ( &GetAccountAndProfilesForName_Parms.SearchName, &SearchName, 0xC );
@@ -1347,7 +1438,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetUniqueCategoriesDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetUniqueCategoriesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetUniqueCategoriesDone )
-		pFnRemoveDelegate_OnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36102 ];
+		pFnRemoveDelegate_OnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36103 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetUniqueCategoriesDone_Parms RemoveDelegate_OnGetUniqueCategoriesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetUniqueCategoriesDone_Parms.func, &func, 0xC );
@@ -1370,7 +1461,7 @@ int UPBItemShopClient::AddDelegate_OnGetUniqueCategoriesDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetUniqueCategoriesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetUniqueCategoriesDone )
-		pFnAddDelegate_OnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36098 ];
+		pFnAddDelegate_OnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36099 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetUniqueCategoriesDone_Parms AddDelegate_OnGetUniqueCategoriesDone_Parms;
 	memcpy ( &AddDelegate_OnGetUniqueCategoriesDone_Parms.func, &func, 0xC );
@@ -1393,7 +1484,7 @@ void UPBItemShopClient::OnGetUniqueCategoriesDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnGetUniqueCategoriesDone = NULL;
 
 	if ( ! pFnOnGetUniqueCategoriesDone )
-		pFnOnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36093 ];
+		pFnOnGetUniqueCategoriesDone = (UFunction*) UObject::GObjObjects()->Data[ 36094 ];
 
 	UPBItemShopClient_execOnGetUniqueCategoriesDone_Parms OnGetUniqueCategoriesDone_Parms;
 	OnGetUniqueCategoriesDone_Parms.requestId = requestId;
@@ -1413,7 +1504,7 @@ int UPBItemShopClient::eventGetUniqueCategories ( )
 	static UFunction* pFnGetUniqueCategories = NULL;
 
 	if ( ! pFnGetUniqueCategories )
-		pFnGetUniqueCategories = (UFunction*) UObject::GObjObjects()->Data[ 36091 ];
+		pFnGetUniqueCategories = (UFunction*) UObject::GObjObjects()->Data[ 36092 ];
 
 	UPBItemShopClient_eventGetUniqueCategories_Parms GetUniqueCategories_Parms;
 
@@ -1438,7 +1529,7 @@ int UPBItemShopClient::RemoveDelegate_OnReportAbuseDone ( struct FScriptDelegate
 	static UFunction* pFnRemoveDelegate_OnReportAbuseDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnReportAbuseDone )
-		pFnRemoveDelegate_OnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36087 ];
+		pFnRemoveDelegate_OnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36088 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnReportAbuseDone_Parms RemoveDelegate_OnReportAbuseDone_Parms;
 	memcpy ( &RemoveDelegate_OnReportAbuseDone_Parms.func, &func, 0xC );
@@ -1461,7 +1552,7 @@ int UPBItemShopClient::AddDelegate_OnReportAbuseDone ( struct FScriptDelegate fu
 	static UFunction* pFnAddDelegate_OnReportAbuseDone = NULL;
 
 	if ( ! pFnAddDelegate_OnReportAbuseDone )
-		pFnAddDelegate_OnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36083 ];
+		pFnAddDelegate_OnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36084 ];
 
 	UPBItemShopClient_execAddDelegate_OnReportAbuseDone_Parms AddDelegate_OnReportAbuseDone_Parms;
 	memcpy ( &AddDelegate_OnReportAbuseDone_Parms.func, &func, 0xC );
@@ -1483,7 +1574,7 @@ void UPBItemShopClient::OnReportAbuseDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnReportAbuseDone = NULL;
 
 	if ( ! pFnOnReportAbuseDone )
-		pFnOnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36080 ];
+		pFnOnReportAbuseDone = (UFunction*) UObject::GObjObjects()->Data[ 36081 ];
 
 	UPBItemShopClient_execOnReportAbuseDone_Parms OnReportAbuseDone_Parms;
 	OnReportAbuseDone_Parms.requestId = requestId;
@@ -1503,7 +1594,7 @@ int UPBItemShopClient::eventReportAbuse ( struct FPBReportInfo abuseReport )
 	static UFunction* pFnReportAbuse = NULL;
 
 	if ( ! pFnReportAbuse )
-		pFnReportAbuse = (UFunction*) UObject::GObjObjects()->Data[ 36077 ];
+		pFnReportAbuse = (UFunction*) UObject::GObjObjects()->Data[ 36078 ];
 
 	UPBItemShopClient_eventReportAbuse_Parms ReportAbuse_Parms;
 	memcpy ( &ReportAbuse_Parms.abuseReport, &abuseReport, 0x50 );
@@ -1529,7 +1620,7 @@ int UPBItemShopClient::RemoveDelegate_OnCheckoutBasketDone ( struct FScriptDeleg
 	static UFunction* pFnRemoveDelegate_OnCheckoutBasketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnCheckoutBasketDone )
-		pFnRemoveDelegate_OnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36073 ];
+		pFnRemoveDelegate_OnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36074 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnCheckoutBasketDone_Parms RemoveDelegate_OnCheckoutBasketDone_Parms;
 	memcpy ( &RemoveDelegate_OnCheckoutBasketDone_Parms.func, &func, 0xC );
@@ -1552,7 +1643,7 @@ int UPBItemShopClient::AddDelegate_OnCheckoutBasketDone ( struct FScriptDelegate
 	static UFunction* pFnAddDelegate_OnCheckoutBasketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnCheckoutBasketDone )
-		pFnAddDelegate_OnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36069 ];
+		pFnAddDelegate_OnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36070 ];
 
 	UPBItemShopClient_execAddDelegate_OnCheckoutBasketDone_Parms AddDelegate_OnCheckoutBasketDone_Parms;
 	memcpy ( &AddDelegate_OnCheckoutBasketDone_Parms.func, &func, 0xC );
@@ -1574,7 +1665,7 @@ void UPBItemShopClient::OnCheckoutBasketDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnCheckoutBasketDone = NULL;
 
 	if ( ! pFnOnCheckoutBasketDone )
-		pFnOnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36066 ];
+		pFnOnCheckoutBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36067 ];
 
 	UPBItemShopClient_execOnCheckoutBasketDone_Parms OnCheckoutBasketDone_Parms;
 	OnCheckoutBasketDone_Parms.requestId = requestId;
@@ -1593,7 +1684,7 @@ int UPBItemShopClient::eventCheckoutBasket ( )
 	static UFunction* pFnCheckoutBasket = NULL;
 
 	if ( ! pFnCheckoutBasket )
-		pFnCheckoutBasket = (UFunction*) UObject::GObjObjects()->Data[ 36064 ];
+		pFnCheckoutBasket = (UFunction*) UObject::GObjObjects()->Data[ 36065 ];
 
 	UPBItemShopClient_eventCheckoutBasket_Parms CheckoutBasket_Parms;
 
@@ -1617,7 +1708,7 @@ int UPBItemShopClient::eventCheckoutBasketPartial ( TArray< struct FGuid > baske
 	static UFunction* pFnCheckoutBasketPartial = NULL;
 
 	if ( ! pFnCheckoutBasketPartial )
-		pFnCheckoutBasketPartial = (UFunction*) UObject::GObjObjects()->Data[ 36060 ];
+		pFnCheckoutBasketPartial = (UFunction*) UObject::GObjObjects()->Data[ 36061 ];
 
 	UPBItemShopClient_eventCheckoutBasketPartial_Parms CheckoutBasketPartial_Parms;
 	memcpy ( &CheckoutBasketPartial_Parms.basketItems, &basketItems, 0xC );
@@ -1643,7 +1734,7 @@ int UPBItemShopClient::RemoveDelegate_OnSetPaymentForBasketItemDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnSetPaymentForBasketItemDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSetPaymentForBasketItemDone )
-		pFnRemoveDelegate_OnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36056 ];
+		pFnRemoveDelegate_OnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36057 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSetPaymentForBasketItemDone_Parms RemoveDelegate_OnSetPaymentForBasketItemDone_Parms;
 	memcpy ( &RemoveDelegate_OnSetPaymentForBasketItemDone_Parms.func, &func, 0xC );
@@ -1666,7 +1757,7 @@ int UPBItemShopClient::AddDelegate_OnSetPaymentForBasketItemDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnSetPaymentForBasketItemDone = NULL;
 
 	if ( ! pFnAddDelegate_OnSetPaymentForBasketItemDone )
-		pFnAddDelegate_OnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36052 ];
+		pFnAddDelegate_OnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36053 ];
 
 	UPBItemShopClient_execAddDelegate_OnSetPaymentForBasketItemDone_Parms AddDelegate_OnSetPaymentForBasketItemDone_Parms;
 	memcpy ( &AddDelegate_OnSetPaymentForBasketItemDone_Parms.func, &func, 0xC );
@@ -1688,7 +1779,7 @@ void UPBItemShopClient::OnSetPaymentForBasketItemDone ( int requestId, int Error
 	static UFunction* pFnOnSetPaymentForBasketItemDone = NULL;
 
 	if ( ! pFnOnSetPaymentForBasketItemDone )
-		pFnOnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36049 ];
+		pFnOnSetPaymentForBasketItemDone = (UFunction*) UObject::GObjObjects()->Data[ 36050 ];
 
 	UPBItemShopClient_execOnSetPaymentForBasketItemDone_Parms OnSetPaymentForBasketItemDone_Parms;
 	OnSetPaymentForBasketItemDone_Parms.requestId = requestId;
@@ -1709,7 +1800,7 @@ int UPBItemShopClient::eventSetPaymentForBasketItem ( TArray< struct FGuid > bas
 	static UFunction* pFnSetPaymentForBasketItem = NULL;
 
 	if ( ! pFnSetPaymentForBasketItem )
-		pFnSetPaymentForBasketItem = (UFunction*) UObject::GObjObjects()->Data[ 36043 ];
+		pFnSetPaymentForBasketItem = (UFunction*) UObject::GObjObjects()->Data[ 36044 ];
 
 	UPBItemShopClient_eventSetPaymentForBasketItem_Parms SetPaymentForBasketItem_Parms;
 	memcpy ( &SetPaymentForBasketItem_Parms.basketItemId, &basketItemId, 0xC );
@@ -1736,7 +1827,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeleteAllItemsFromBasketDone ( struct FS
 	static UFunction* pFnRemoveDelegate_OnDeleteAllItemsFromBasketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeleteAllItemsFromBasketDone )
-		pFnRemoveDelegate_OnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36039 ];
+		pFnRemoveDelegate_OnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36040 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeleteAllItemsFromBasketDone_Parms RemoveDelegate_OnDeleteAllItemsFromBasketDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeleteAllItemsFromBasketDone_Parms.func, &func, 0xC );
@@ -1759,7 +1850,7 @@ int UPBItemShopClient::AddDelegate_OnDeleteAllItemsFromBasketDone ( struct FScri
 	static UFunction* pFnAddDelegate_OnDeleteAllItemsFromBasketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeleteAllItemsFromBasketDone )
-		pFnAddDelegate_OnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36035 ];
+		pFnAddDelegate_OnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36036 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeleteAllItemsFromBasketDone_Parms AddDelegate_OnDeleteAllItemsFromBasketDone_Parms;
 	memcpy ( &AddDelegate_OnDeleteAllItemsFromBasketDone_Parms.func, &func, 0xC );
@@ -1781,7 +1872,7 @@ void UPBItemShopClient::OnDeleteAllItemsFromBasketDone ( int requestId, int Erro
 	static UFunction* pFnOnDeleteAllItemsFromBasketDone = NULL;
 
 	if ( ! pFnOnDeleteAllItemsFromBasketDone )
-		pFnOnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36032 ];
+		pFnOnDeleteAllItemsFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36033 ];
 
 	UPBItemShopClient_execOnDeleteAllItemsFromBasketDone_Parms OnDeleteAllItemsFromBasketDone_Parms;
 	OnDeleteAllItemsFromBasketDone_Parms.requestId = requestId;
@@ -1800,7 +1891,7 @@ int UPBItemShopClient::eventDeleteAllItemsFromBasket ( )
 	static UFunction* pFnDeleteAllItemsFromBasket = NULL;
 
 	if ( ! pFnDeleteAllItemsFromBasket )
-		pFnDeleteAllItemsFromBasket = (UFunction*) UObject::GObjObjects()->Data[ 36030 ];
+		pFnDeleteAllItemsFromBasket = (UFunction*) UObject::GObjObjects()->Data[ 36031 ];
 
 	UPBItemShopClient_eventDeleteAllItemsFromBasket_Parms DeleteAllItemsFromBasket_Parms;
 
@@ -1825,7 +1916,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeleteItemFromBasketDone ( struct FScrip
 	static UFunction* pFnRemoveDelegate_OnDeleteItemFromBasketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeleteItemFromBasketDone )
-		pFnRemoveDelegate_OnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36026 ];
+		pFnRemoveDelegate_OnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36027 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeleteItemFromBasketDone_Parms RemoveDelegate_OnDeleteItemFromBasketDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeleteItemFromBasketDone_Parms.func, &func, 0xC );
@@ -1848,7 +1939,7 @@ int UPBItemShopClient::AddDelegate_OnDeleteItemFromBasketDone ( struct FScriptDe
 	static UFunction* pFnAddDelegate_OnDeleteItemFromBasketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeleteItemFromBasketDone )
-		pFnAddDelegate_OnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36022 ];
+		pFnAddDelegate_OnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36023 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeleteItemFromBasketDone_Parms AddDelegate_OnDeleteItemFromBasketDone_Parms;
 	memcpy ( &AddDelegate_OnDeleteItemFromBasketDone_Parms.func, &func, 0xC );
@@ -1870,7 +1961,7 @@ void UPBItemShopClient::OnDeleteItemFromBasketDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnDeleteItemFromBasketDone = NULL;
 
 	if ( ! pFnOnDeleteItemFromBasketDone )
-		pFnOnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36019 ];
+		pFnOnDeleteItemFromBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36020 ];
 
 	UPBItemShopClient_execOnDeleteItemFromBasketDone_Parms OnDeleteItemFromBasketDone_Parms;
 	OnDeleteItemFromBasketDone_Parms.requestId = requestId;
@@ -1891,7 +1982,7 @@ int UPBItemShopClient::eventDeleteItemFromBasket ( int amountBasketItems, TArray
 	static UFunction* pFnDeleteItemFromBasket = NULL;
 
 	if ( ! pFnDeleteItemFromBasket )
-		pFnDeleteItemFromBasket = (UFunction*) UObject::GObjObjects()->Data[ 36014 ];
+		pFnDeleteItemFromBasket = (UFunction*) UObject::GObjObjects()->Data[ 36015 ];
 
 	UPBItemShopClient_eventDeleteItemFromBasket_Parms DeleteItemFromBasket_Parms;
 	DeleteItemFromBasket_Parms.amountBasketItems = amountBasketItems;
@@ -1918,7 +2009,7 @@ int UPBItemShopClient::RemoveDelegate_OnAddItemToBasketDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnAddItemToBasketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnAddItemToBasketDone )
-		pFnRemoveDelegate_OnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36010 ];
+		pFnRemoveDelegate_OnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36011 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnAddItemToBasketDone_Parms RemoveDelegate_OnAddItemToBasketDone_Parms;
 	memcpy ( &RemoveDelegate_OnAddItemToBasketDone_Parms.func, &func, 0xC );
@@ -1941,7 +2032,7 @@ int UPBItemShopClient::AddDelegate_OnAddItemToBasketDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnAddItemToBasketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnAddItemToBasketDone )
-		pFnAddDelegate_OnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36006 ];
+		pFnAddDelegate_OnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36007 ];
 
 	UPBItemShopClient_execAddDelegate_OnAddItemToBasketDone_Parms AddDelegate_OnAddItemToBasketDone_Parms;
 	memcpy ( &AddDelegate_OnAddItemToBasketDone_Parms.func, &func, 0xC );
@@ -1964,7 +2055,7 @@ void UPBItemShopClient::OnAddItemToBasketDone ( int requestId, int ErrorCode, st
 	static UFunction* pFnOnAddItemToBasketDone = NULL;
 
 	if ( ! pFnOnAddItemToBasketDone )
-		pFnOnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36002 ];
+		pFnOnAddItemToBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 36003 ];
 
 	UPBItemShopClient_execOnAddItemToBasketDone_Parms OnAddItemToBasketDone_Parms;
 	OnAddItemToBasketDone_Parms.requestId = requestId;
@@ -1987,7 +2078,7 @@ int UPBItemShopClient::eventAddItemToBasket ( struct FGuid OfferId, int quantity
 	static UFunction* pFnAddItemToBasket = NULL;
 
 	if ( ! pFnAddItemToBasket )
-		pFnAddItemToBasket = (UFunction*) UObject::GObjObjects()->Data[ 35997 ];
+		pFnAddItemToBasket = (UFunction*) UObject::GObjObjects()->Data[ 35998 ];
 
 	UPBItemShopClient_eventAddItemToBasket_Parms AddItemToBasket_Parms;
 	memcpy ( &AddItemToBasket_Parms.OfferId, &OfferId, 0x10 );
@@ -2015,7 +2106,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetBasketDone ( struct FScriptDelegate f
 	static UFunction* pFnRemoveDelegate_OnGetBasketDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetBasketDone )
-		pFnRemoveDelegate_OnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35993 ];
+		pFnRemoveDelegate_OnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35994 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetBasketDone_Parms RemoveDelegate_OnGetBasketDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetBasketDone_Parms.func, &func, 0xC );
@@ -2038,7 +2129,7 @@ int UPBItemShopClient::AddDelegate_OnGetBasketDone ( struct FScriptDelegate func
 	static UFunction* pFnAddDelegate_OnGetBasketDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetBasketDone )
-		pFnAddDelegate_OnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35989 ];
+		pFnAddDelegate_OnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35990 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetBasketDone_Parms AddDelegate_OnGetBasketDone_Parms;
 	memcpy ( &AddDelegate_OnGetBasketDone_Parms.func, &func, 0xC );
@@ -2062,7 +2153,7 @@ void UPBItemShopClient::OnGetBasketDone ( int requestId, int ErrorCode, int amou
 	static UFunction* pFnOnGetBasketDone = NULL;
 
 	if ( ! pFnOnGetBasketDone )
-		pFnOnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35983 ];
+		pFnOnGetBasketDone = (UFunction*) UObject::GObjObjects()->Data[ 35984 ];
 
 	UPBItemShopClient_execOnGetBasketDone_Parms OnGetBasketDone_Parms;
 	OnGetBasketDone_Parms.requestId = requestId;
@@ -2083,7 +2174,7 @@ int UPBItemShopClient::eventGetBasket ( )
 	static UFunction* pFnGetBasket = NULL;
 
 	if ( ! pFnGetBasket )
-		pFnGetBasket = (UFunction*) UObject::GObjObjects()->Data[ 35981 ];
+		pFnGetBasket = (UFunction*) UObject::GObjObjects()->Data[ 35982 ];
 
 	UPBItemShopClient_eventGetBasket_Parms GetBasket_Parms;
 
@@ -2108,7 +2199,7 @@ int UPBItemShopClient::RemoveDelegate_OnClearNameReservedDone ( struct FScriptDe
 	static UFunction* pFnRemoveDelegate_OnClearNameReservedDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnClearNameReservedDone )
-		pFnRemoveDelegate_OnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35977 ];
+		pFnRemoveDelegate_OnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35978 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnClearNameReservedDone_Parms RemoveDelegate_OnClearNameReservedDone_Parms;
 	memcpy ( &RemoveDelegate_OnClearNameReservedDone_Parms.func, &func, 0xC );
@@ -2131,7 +2222,7 @@ int UPBItemShopClient::AddDelegate_OnClearNameReservedDone ( struct FScriptDeleg
 	static UFunction* pFnAddDelegate_OnClearNameReservedDone = NULL;
 
 	if ( ! pFnAddDelegate_OnClearNameReservedDone )
-		pFnAddDelegate_OnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35973 ];
+		pFnAddDelegate_OnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35974 ];
 
 	UPBItemShopClient_execAddDelegate_OnClearNameReservedDone_Parms AddDelegate_OnClearNameReservedDone_Parms;
 	memcpy ( &AddDelegate_OnClearNameReservedDone_Parms.func, &func, 0xC );
@@ -2153,7 +2244,7 @@ void UPBItemShopClient::OnClearNameReservedDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnClearNameReservedDone = NULL;
 
 	if ( ! pFnOnClearNameReservedDone )
-		pFnOnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35970 ];
+		pFnOnClearNameReservedDone = (UFunction*) UObject::GObjObjects()->Data[ 35971 ];
 
 	UPBItemShopClient_execOnClearNameReservedDone_Parms OnClearNameReservedDone_Parms;
 	OnClearNameReservedDone_Parms.requestId = requestId;
@@ -2172,7 +2263,7 @@ int UPBItemShopClient::eventClearNameReserved ( )
 	static UFunction* pFnClearNameReserved = NULL;
 
 	if ( ! pFnClearNameReserved )
-		pFnClearNameReserved = (UFunction*) UObject::GObjObjects()->Data[ 35968 ];
+		pFnClearNameReserved = (UFunction*) UObject::GObjObjects()->Data[ 35969 ];
 
 	UPBItemShopClient_eventClearNameReserved_Parms ClearNameReserved_Parms;
 
@@ -2197,7 +2288,7 @@ int UPBItemShopClient::RemoveDelegate_OnReserveNameDone ( struct FScriptDelegate
 	static UFunction* pFnRemoveDelegate_OnReserveNameDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnReserveNameDone )
-		pFnRemoveDelegate_OnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35964 ];
+		pFnRemoveDelegate_OnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35965 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnReserveNameDone_Parms RemoveDelegate_OnReserveNameDone_Parms;
 	memcpy ( &RemoveDelegate_OnReserveNameDone_Parms.func, &func, 0xC );
@@ -2220,7 +2311,7 @@ int UPBItemShopClient::AddDelegate_OnReserveNameDone ( struct FScriptDelegate fu
 	static UFunction* pFnAddDelegate_OnReserveNameDone = NULL;
 
 	if ( ! pFnAddDelegate_OnReserveNameDone )
-		pFnAddDelegate_OnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35960 ];
+		pFnAddDelegate_OnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35961 ];
 
 	UPBItemShopClient_execAddDelegate_OnReserveNameDone_Parms AddDelegate_OnReserveNameDone_Parms;
 	memcpy ( &AddDelegate_OnReserveNameDone_Parms.func, &func, 0xC );
@@ -2242,7 +2333,7 @@ void UPBItemShopClient::OnReserveNameDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnReserveNameDone = NULL;
 
 	if ( ! pFnOnReserveNameDone )
-		pFnOnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35957 ];
+		pFnOnReserveNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35958 ];
 
 	UPBItemShopClient_execOnReserveNameDone_Parms OnReserveNameDone_Parms;
 	OnReserveNameDone_Parms.requestId = requestId;
@@ -2262,7 +2353,7 @@ int UPBItemShopClient::eventReserveName ( struct FString newCharacterName )
 	static UFunction* pFnReserveName = NULL;
 
 	if ( ! pFnReserveName )
-		pFnReserveName = (UFunction*) UObject::GObjObjects()->Data[ 35954 ];
+		pFnReserveName = (UFunction*) UObject::GObjObjects()->Data[ 35955 ];
 
 	UPBItemShopClient_eventReserveName_Parms ReserveName_Parms;
 	memcpy ( &ReserveName_Parms.newCharacterName, &newCharacterName, 0xC );
@@ -2288,7 +2379,7 @@ int UPBItemShopClient::RemoveDelegate_OnIsGameAvailableDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnIsGameAvailableDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnIsGameAvailableDone )
-		pFnRemoveDelegate_OnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35950 ];
+		pFnRemoveDelegate_OnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35951 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnIsGameAvailableDone_Parms RemoveDelegate_OnIsGameAvailableDone_Parms;
 	memcpy ( &RemoveDelegate_OnIsGameAvailableDone_Parms.func, &func, 0xC );
@@ -2311,7 +2402,7 @@ int UPBItemShopClient::AddDelegate_OnIsGameAvailableDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnIsGameAvailableDone = NULL;
 
 	if ( ! pFnAddDelegate_OnIsGameAvailableDone )
-		pFnAddDelegate_OnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35946 ];
+		pFnAddDelegate_OnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35947 ];
 
 	UPBItemShopClient_execAddDelegate_OnIsGameAvailableDone_Parms AddDelegate_OnIsGameAvailableDone_Parms;
 	memcpy ( &AddDelegate_OnIsGameAvailableDone_Parms.func, &func, 0xC );
@@ -2334,7 +2425,7 @@ void UPBItemShopClient::OnIsGameAvailableDone ( int requestId, int ErrorCode, un
 	static UFunction* pFnOnIsGameAvailableDone = NULL;
 
 	if ( ! pFnOnIsGameAvailableDone )
-		pFnOnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35942 ];
+		pFnOnIsGameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35943 ];
 
 	UPBItemShopClient_execOnIsGameAvailableDone_Parms OnIsGameAvailableDone_Parms;
 	OnIsGameAvailableDone_Parms.requestId = requestId;
@@ -2354,7 +2445,7 @@ int UPBItemShopClient::eventIsGameAvailable ( )
 	static UFunction* pFnIsGameAvailable = NULL;
 
 	if ( ! pFnIsGameAvailable )
-		pFnIsGameAvailable = (UFunction*) UObject::GObjObjects()->Data[ 35940 ];
+		pFnIsGameAvailable = (UFunction*) UObject::GObjObjects()->Data[ 35941 ];
 
 	UPBItemShopClient_eventIsGameAvailable_Parms IsGameAvailable_Parms;
 
@@ -2379,7 +2470,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetLatestNewsDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnGetLatestNewsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetLatestNewsDone )
-		pFnRemoveDelegate_OnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35936 ];
+		pFnRemoveDelegate_OnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35937 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetLatestNewsDone_Parms RemoveDelegate_OnGetLatestNewsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetLatestNewsDone_Parms.func, &func, 0xC );
@@ -2402,7 +2493,7 @@ int UPBItemShopClient::AddDelegate_OnGetLatestNewsDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnGetLatestNewsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetLatestNewsDone )
-		pFnAddDelegate_OnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35932 ];
+		pFnAddDelegate_OnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35933 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetLatestNewsDone_Parms AddDelegate_OnGetLatestNewsDone_Parms;
 	memcpy ( &AddDelegate_OnGetLatestNewsDone_Parms.func, &func, 0xC );
@@ -2425,7 +2516,7 @@ void UPBItemShopClient::OnGetLatestNewsDone ( int requestId, int ErrorCode, TArr
 	static UFunction* pFnOnGetLatestNewsDone = NULL;
 
 	if ( ! pFnOnGetLatestNewsDone )
-		pFnOnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35927 ];
+		pFnOnGetLatestNewsDone = (UFunction*) UObject::GObjObjects()->Data[ 35928 ];
 
 	UPBItemShopClient_execOnGetLatestNewsDone_Parms OnGetLatestNewsDone_Parms;
 	OnGetLatestNewsDone_Parms.requestId = requestId;
@@ -2446,7 +2537,7 @@ int UPBItemShopClient::eventGetLatestNews ( struct FString locale )
 	static UFunction* pFnGetLatestNews = NULL;
 
 	if ( ! pFnGetLatestNews )
-		pFnGetLatestNews = (UFunction*) UObject::GObjObjects()->Data[ 35924 ];
+		pFnGetLatestNews = (UFunction*) UObject::GObjObjects()->Data[ 35925 ];
 
 	UPBItemShopClient_eventGetLatestNews_Parms GetLatestNews_Parms;
 	memcpy ( &GetLatestNews_Parms.locale, &locale, 0xC );
@@ -2471,7 +2562,7 @@ bool UPBItemShopClient::IsCriticalError ( int ErrorCode )
 	static UFunction* pFnIsCriticalError = NULL;
 
 	if ( ! pFnIsCriticalError )
-		pFnIsCriticalError = (UFunction*) UObject::GObjObjects()->Data[ 35921 ];
+		pFnIsCriticalError = (UFunction*) UObject::GObjObjects()->Data[ 35922 ];
 
 	UPBItemShopClient_execIsCriticalError_Parms IsCriticalError_Parms;
 	IsCriticalError_Parms.ErrorCode = ErrorCode;
@@ -2497,7 +2588,7 @@ int UPBItemShopClient::RemoveDelegate_OnLogError ( struct FScriptDelegate func, 
 	static UFunction* pFnRemoveDelegate_OnLogError = NULL;
 
 	if ( ! pFnRemoveDelegate_OnLogError )
-		pFnRemoveDelegate_OnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35917 ];
+		pFnRemoveDelegate_OnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35918 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnLogError_Parms RemoveDelegate_OnLogError_Parms;
 	memcpy ( &RemoveDelegate_OnLogError_Parms.func, &func, 0xC );
@@ -2520,7 +2611,7 @@ int UPBItemShopClient::AddDelegate_OnLogError ( struct FScriptDelegate func, cla
 	static UFunction* pFnAddDelegate_OnLogError = NULL;
 
 	if ( ! pFnAddDelegate_OnLogError )
-		pFnAddDelegate_OnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35913 ];
+		pFnAddDelegate_OnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35914 ];
 
 	UPBItemShopClient_execAddDelegate_OnLogError_Parms AddDelegate_OnLogError_Parms;
 	memcpy ( &AddDelegate_OnLogError_Parms.func, &func, 0xC );
@@ -2542,7 +2633,7 @@ void UPBItemShopClient::OnLogError ( int requestId, int ErrorCode )
 	static UFunction* pFnOnLogError = NULL;
 
 	if ( ! pFnOnLogError )
-		pFnOnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35910 ];
+		pFnOnLogError = (UFunction*) UObject::GObjObjects()->Data[ 35911 ];
 
 	UPBItemShopClient_execOnLogError_Parms OnLogError_Parms;
 	OnLogError_Parms.requestId = requestId;
@@ -2563,7 +2654,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetAnsweredSurveyIDListDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnGetAnsweredSurveyIDListDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetAnsweredSurveyIDListDone )
-		pFnRemoveDelegate_OnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35906 ];
+		pFnRemoveDelegate_OnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35907 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetAnsweredSurveyIDListDone_Parms RemoveDelegate_OnGetAnsweredSurveyIDListDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetAnsweredSurveyIDListDone_Parms.func, &func, 0xC );
@@ -2586,7 +2677,7 @@ int UPBItemShopClient::AddDelegate_OnGetAnsweredSurveyIDListDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnGetAnsweredSurveyIDListDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetAnsweredSurveyIDListDone )
-		pFnAddDelegate_OnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35902 ];
+		pFnAddDelegate_OnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35903 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetAnsweredSurveyIDListDone_Parms AddDelegate_OnGetAnsweredSurveyIDListDone_Parms;
 	memcpy ( &AddDelegate_OnGetAnsweredSurveyIDListDone_Parms.func, &func, 0xC );
@@ -2609,7 +2700,7 @@ void UPBItemShopClient::OnGetAnsweredSurveyIDListDone ( int requestId, int Error
 	static UFunction* pFnOnGetAnsweredSurveyIDListDone = NULL;
 
 	if ( ! pFnOnGetAnsweredSurveyIDListDone )
-		pFnOnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35897 ];
+		pFnOnGetAnsweredSurveyIDListDone = (UFunction*) UObject::GObjObjects()->Data[ 35898 ];
 
 	UPBItemShopClient_execOnGetAnsweredSurveyIDListDone_Parms OnGetAnsweredSurveyIDListDone_Parms;
 	OnGetAnsweredSurveyIDListDone_Parms.requestId = requestId;
@@ -2629,7 +2720,7 @@ int UPBItemShopClient::eventGetAnsweredSurveyIDList ( )
 	static UFunction* pFnGetAnsweredSurveyIDList = NULL;
 
 	if ( ! pFnGetAnsweredSurveyIDList )
-		pFnGetAnsweredSurveyIDList = (UFunction*) UObject::GObjObjects()->Data[ 35895 ];
+		pFnGetAnsweredSurveyIDList = (UFunction*) UObject::GObjObjects()->Data[ 35896 ];
 
 	UPBItemShopClient_eventGetAnsweredSurveyIDList_Parms GetAnsweredSurveyIDList_Parms;
 
@@ -2654,7 +2745,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetSurveyListDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnGetSurveyListDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetSurveyListDone )
-		pFnRemoveDelegate_OnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35891 ];
+		pFnRemoveDelegate_OnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35892 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetSurveyListDone_Parms RemoveDelegate_OnGetSurveyListDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetSurveyListDone_Parms.func, &func, 0xC );
@@ -2677,7 +2768,7 @@ int UPBItemShopClient::AddDelegate_OnGetSurveyListDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnGetSurveyListDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetSurveyListDone )
-		pFnAddDelegate_OnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35887 ];
+		pFnAddDelegate_OnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35888 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetSurveyListDone_Parms AddDelegate_OnGetSurveyListDone_Parms;
 	memcpy ( &AddDelegate_OnGetSurveyListDone_Parms.func, &func, 0xC );
@@ -2700,7 +2791,7 @@ void UPBItemShopClient::OnGetSurveyListDone ( int requestId, int ErrorCode, TArr
 	static UFunction* pFnOnGetSurveyListDone = NULL;
 
 	if ( ! pFnOnGetSurveyListDone )
-		pFnOnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35882 ];
+		pFnOnGetSurveyListDone = (UFunction*) UObject::GObjObjects()->Data[ 35883 ];
 
 	UPBItemShopClient_execOnGetSurveyListDone_Parms OnGetSurveyListDone_Parms;
 	OnGetSurveyListDone_Parms.requestId = requestId;
@@ -2721,7 +2812,7 @@ int UPBItemShopClient::eventGetSurveyList ( unsigned long GetAnswered )
 	static UFunction* pFnGetSurveyList = NULL;
 
 	if ( ! pFnGetSurveyList )
-		pFnGetSurveyList = (UFunction*) UObject::GObjObjects()->Data[ 35879 ];
+		pFnGetSurveyList = (UFunction*) UObject::GObjObjects()->Data[ 35880 ];
 
 	UPBItemShopClient_eventGetSurveyList_Parms GetSurveyList_Parms;
 	GetSurveyList_Parms.GetAnswered = GetAnswered;
@@ -2747,7 +2838,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetSurveyDone ( struct FScriptDelegate f
 	static UFunction* pFnRemoveDelegate_OnGetSurveyDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetSurveyDone )
-		pFnRemoveDelegate_OnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35875 ];
+		pFnRemoveDelegate_OnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35876 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetSurveyDone_Parms RemoveDelegate_OnGetSurveyDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetSurveyDone_Parms.func, &func, 0xC );
@@ -2770,7 +2861,7 @@ int UPBItemShopClient::AddDelegate_OnGetSurveyDone ( struct FScriptDelegate func
 	static UFunction* pFnAddDelegate_OnGetSurveyDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetSurveyDone )
-		pFnAddDelegate_OnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35871 ];
+		pFnAddDelegate_OnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35872 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetSurveyDone_Parms AddDelegate_OnGetSurveyDone_Parms;
 	memcpy ( &AddDelegate_OnGetSurveyDone_Parms.func, &func, 0xC );
@@ -2793,7 +2884,7 @@ void UPBItemShopClient::OnGetSurveyDone ( int requestId, int ErrorCode, struct F
 	static UFunction* pFnOnGetSurveyDone = NULL;
 
 	if ( ! pFnOnGetSurveyDone )
-		pFnOnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35867 ];
+		pFnOnGetSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35868 ];
 
 	UPBItemShopClient_execOnGetSurveyDone_Parms OnGetSurveyDone_Parms;
 	OnGetSurveyDone_Parms.requestId = requestId;
@@ -2814,7 +2905,7 @@ int UPBItemShopClient::eventGetSurvey ( int SurveyID )
 	static UFunction* pFnGetSurvey = NULL;
 
 	if ( ! pFnGetSurvey )
-		pFnGetSurvey = (UFunction*) UObject::GObjObjects()->Data[ 35864 ];
+		pFnGetSurvey = (UFunction*) UObject::GObjObjects()->Data[ 35865 ];
 
 	UPBItemShopClient_eventGetSurvey_Parms GetSurvey_Parms;
 	GetSurvey_Parms.SurveyID = SurveyID;
@@ -2840,7 +2931,7 @@ int UPBItemShopClient::RemoveDelegate_OnSubmitSurveyDone ( struct FScriptDelegat
 	static UFunction* pFnRemoveDelegate_OnSubmitSurveyDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSubmitSurveyDone )
-		pFnRemoveDelegate_OnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35860 ];
+		pFnRemoveDelegate_OnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35861 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSubmitSurveyDone_Parms RemoveDelegate_OnSubmitSurveyDone_Parms;
 	memcpy ( &RemoveDelegate_OnSubmitSurveyDone_Parms.func, &func, 0xC );
@@ -2863,7 +2954,7 @@ int UPBItemShopClient::AddDelegate_OnSubmitSurveyDone ( struct FScriptDelegate f
 	static UFunction* pFnAddDelegate_OnSubmitSurveyDone = NULL;
 
 	if ( ! pFnAddDelegate_OnSubmitSurveyDone )
-		pFnAddDelegate_OnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35856 ];
+		pFnAddDelegate_OnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35857 ];
 
 	UPBItemShopClient_execAddDelegate_OnSubmitSurveyDone_Parms AddDelegate_OnSubmitSurveyDone_Parms;
 	memcpy ( &AddDelegate_OnSubmitSurveyDone_Parms.func, &func, 0xC );
@@ -2885,7 +2976,7 @@ void UPBItemShopClient::OnSubmitSurveyDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnSubmitSurveyDone = NULL;
 
 	if ( ! pFnOnSubmitSurveyDone )
-		pFnOnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35853 ];
+		pFnOnSubmitSurveyDone = (UFunction*) UObject::GObjObjects()->Data[ 35854 ];
 
 	UPBItemShopClient_execOnSubmitSurveyDone_Parms OnSubmitSurveyDone_Parms;
 	OnSubmitSurveyDone_Parms.requestId = requestId;
@@ -2906,7 +2997,7 @@ int UPBItemShopClient::eventSubmitSurvey ( int SurveyID, TArray< struct FPBSurve
 	static UFunction* pFnSubmitSurvey = NULL;
 
 	if ( ! pFnSubmitSurvey )
-		pFnSubmitSurvey = (UFunction*) UObject::GObjObjects()->Data[ 35848 ];
+		pFnSubmitSurvey = (UFunction*) UObject::GObjObjects()->Data[ 35849 ];
 
 	UPBItemShopClient_eventSubmitSurvey_Parms SubmitSurvey_Parms;
 	SubmitSurvey_Parms.SurveyID = SurveyID;
@@ -2933,7 +3024,7 @@ int UPBItemShopClient::RemoveDelegate_OnSubmitBugDone ( struct FScriptDelegate f
 	static UFunction* pFnRemoveDelegate_OnSubmitBugDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSubmitBugDone )
-		pFnRemoveDelegate_OnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35844 ];
+		pFnRemoveDelegate_OnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35845 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSubmitBugDone_Parms RemoveDelegate_OnSubmitBugDone_Parms;
 	memcpy ( &RemoveDelegate_OnSubmitBugDone_Parms.func, &func, 0xC );
@@ -2956,7 +3047,7 @@ int UPBItemShopClient::AddDelegate_OnSubmitBugDone ( struct FScriptDelegate func
 	static UFunction* pFnAddDelegate_OnSubmitBugDone = NULL;
 
 	if ( ! pFnAddDelegate_OnSubmitBugDone )
-		pFnAddDelegate_OnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35840 ];
+		pFnAddDelegate_OnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35841 ];
 
 	UPBItemShopClient_execAddDelegate_OnSubmitBugDone_Parms AddDelegate_OnSubmitBugDone_Parms;
 	memcpy ( &AddDelegate_OnSubmitBugDone_Parms.func, &func, 0xC );
@@ -2978,7 +3069,7 @@ void UPBItemShopClient::OnSubmitBugDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnSubmitBugDone = NULL;
 
 	if ( ! pFnOnSubmitBugDone )
-		pFnOnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35837 ];
+		pFnOnSubmitBugDone = (UFunction*) UObject::GObjObjects()->Data[ 35838 ];
 
 	UPBItemShopClient_execOnSubmitBugDone_Parms OnSubmitBugDone_Parms;
 	OnSubmitBugDone_Parms.requestId = requestId;
@@ -2998,7 +3089,7 @@ int UPBItemShopClient::eventSubmitBug ( struct FPBDefaultBugInfo BugInfo )
 	static UFunction* pFnSubmitBug = NULL;
 
 	if ( ! pFnSubmitBug )
-		pFnSubmitBug = (UFunction*) UObject::GObjObjects()->Data[ 35834 ];
+		pFnSubmitBug = (UFunction*) UObject::GObjObjects()->Data[ 35835 ];
 
 	UPBItemShopClient_eventSubmitBug_Parms SubmitBug_Parms;
 	memcpy ( &SubmitBug_Parms.BugInfo, &BugInfo, 0xE8 );
@@ -3024,7 +3115,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetMinimumClientVersionDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnGetMinimumClientVersionDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetMinimumClientVersionDone )
-		pFnRemoveDelegate_OnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35830 ];
+		pFnRemoveDelegate_OnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35831 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetMinimumClientVersionDone_Parms RemoveDelegate_OnGetMinimumClientVersionDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetMinimumClientVersionDone_Parms.func, &func, 0xC );
@@ -3047,7 +3138,7 @@ int UPBItemShopClient::AddDelegate_OnGetMinimumClientVersionDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnGetMinimumClientVersionDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetMinimumClientVersionDone )
-		pFnAddDelegate_OnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35826 ];
+		pFnAddDelegate_OnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35827 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetMinimumClientVersionDone_Parms AddDelegate_OnGetMinimumClientVersionDone_Parms;
 	memcpy ( &AddDelegate_OnGetMinimumClientVersionDone_Parms.func, &func, 0xC );
@@ -3070,7 +3161,7 @@ void UPBItemShopClient::OnGetMinimumClientVersionDone ( int requestId, int Error
 	static UFunction* pFnOnGetMinimumClientVersionDone = NULL;
 
 	if ( ! pFnOnGetMinimumClientVersionDone )
-		pFnOnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35822 ];
+		pFnOnGetMinimumClientVersionDone = (UFunction*) UObject::GObjObjects()->Data[ 35823 ];
 
 	UPBItemShopClient_execOnGetMinimumClientVersionDone_Parms OnGetMinimumClientVersionDone_Parms;
 	OnGetMinimumClientVersionDone_Parms.requestId = requestId;
@@ -3090,7 +3181,7 @@ int UPBItemShopClient::eventGetMinimumClientVersion ( )
 	static UFunction* pFnGetMinimumClientVersion = NULL;
 
 	if ( ! pFnGetMinimumClientVersion )
-		pFnGetMinimumClientVersion = (UFunction*) UObject::GObjObjects()->Data[ 35820 ];
+		pFnGetMinimumClientVersion = (UFunction*) UObject::GObjObjects()->Data[ 35821 ];
 
 	UPBItemShopClient_eventGetMinimumClientVersion_Parms GetMinimumClientVersion_Parms;
 
@@ -3115,7 +3206,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeleteEventByBackendDone ( struct FScrip
 	static UFunction* pFnRemoveDelegate_OnDeleteEventByBackendDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeleteEventByBackendDone )
-		pFnRemoveDelegate_OnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35816 ];
+		pFnRemoveDelegate_OnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35817 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeleteEventByBackendDone_Parms RemoveDelegate_OnDeleteEventByBackendDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeleteEventByBackendDone_Parms.func, &func, 0xC );
@@ -3138,7 +3229,7 @@ int UPBItemShopClient::AddDelegate_OnDeleteEventByBackendDone ( struct FScriptDe
 	static UFunction* pFnAddDelegate_OnDeleteEventByBackendDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeleteEventByBackendDone )
-		pFnAddDelegate_OnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35812 ];
+		pFnAddDelegate_OnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35813 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeleteEventByBackendDone_Parms AddDelegate_OnDeleteEventByBackendDone_Parms;
 	memcpy ( &AddDelegate_OnDeleteEventByBackendDone_Parms.func, &func, 0xC );
@@ -3161,7 +3252,7 @@ void UPBItemShopClient::OnDeleteEventByBackendDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnDeleteEventByBackendDone = NULL;
 
 	if ( ! pFnOnDeleteEventByBackendDone )
-		pFnOnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35808 ];
+		pFnOnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35809 ];
 
 	UPBItemShopClient_execOnDeleteEventByBackendDone_Parms OnDeleteEventByBackendDone_Parms;
 	OnDeleteEventByBackendDone_Parms.requestId = requestId;
@@ -3182,7 +3273,7 @@ int UPBItemShopClient::eventDeleteEventByBackend ( int EventCode )
 	static UFunction* pFnDeleteEventByBackend = NULL;
 
 	if ( ! pFnDeleteEventByBackend )
-		pFnDeleteEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35805 ];
+		pFnDeleteEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35806 ];
 
 	UPBItemShopClient_eventDeleteEventByBackend_Parms DeleteEventByBackend_Parms;
 	DeleteEventByBackend_Parms.EventCode = EventCode;
@@ -3208,7 +3299,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetEventByBackendDone ( struct FScriptDe
 	static UFunction* pFnRemoveDelegate_OnGetEventByBackendDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetEventByBackendDone )
-		pFnRemoveDelegate_OnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35801 ];
+		pFnRemoveDelegate_OnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35802 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetEventByBackendDone_Parms RemoveDelegate_OnGetEventByBackendDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetEventByBackendDone_Parms.func, &func, 0xC );
@@ -3231,7 +3322,7 @@ int UPBItemShopClient::AddDelegate_OnGetEventByBackendDone ( struct FScriptDeleg
 	static UFunction* pFnAddDelegate_OnGetEventByBackendDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetEventByBackendDone )
-		pFnAddDelegate_OnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35797 ];
+		pFnAddDelegate_OnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35798 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetEventByBackendDone_Parms AddDelegate_OnGetEventByBackendDone_Parms;
 	memcpy ( &AddDelegate_OnGetEventByBackendDone_Parms.func, &func, 0xC );
@@ -3254,7 +3345,7 @@ void UPBItemShopClient::OnGetEventByBackendDone ( int requestId, int ErrorCode, 
 	static UFunction* pFnOnGetEventByBackendDone = NULL;
 
 	if ( ! pFnOnGetEventByBackendDone )
-		pFnOnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35793 ];
+		pFnOnGetEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 35794 ];
 
 	UPBItemShopClient_execOnGetEventByBackendDone_Parms OnGetEventByBackendDone_Parms;
 	OnGetEventByBackendDone_Parms.requestId = requestId;
@@ -3275,7 +3366,7 @@ int UPBItemShopClient::eventGetEventByBackend ( int EventCode )
 	static UFunction* pFnGetEventByBackend = NULL;
 
 	if ( ! pFnGetEventByBackend )
-		pFnGetEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35790 ];
+		pFnGetEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35791 ];
 
 	UPBItemShopClient_eventGetEventByBackend_Parms GetEventByBackend_Parms;
 	GetEventByBackend_Parms.EventCode = EventCode;
@@ -3301,7 +3392,7 @@ int UPBItemShopClient::RemoveDelegate_OnEventsByBackend ( struct FScriptDelegate
 	static UFunction* pFnRemoveDelegate_OnEventsByBackend = NULL;
 
 	if ( ! pFnRemoveDelegate_OnEventsByBackend )
-		pFnRemoveDelegate_OnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35786 ];
+		pFnRemoveDelegate_OnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35787 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnEventsByBackend_Parms RemoveDelegate_OnEventsByBackend_Parms;
 	memcpy ( &RemoveDelegate_OnEventsByBackend_Parms.func, &func, 0xC );
@@ -3324,7 +3415,7 @@ int UPBItemShopClient::AddDelegate_OnEventsByBackend ( struct FScriptDelegate fu
 	static UFunction* pFnAddDelegate_OnEventsByBackend = NULL;
 
 	if ( ! pFnAddDelegate_OnEventsByBackend )
-		pFnAddDelegate_OnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35782 ];
+		pFnAddDelegate_OnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35783 ];
 
 	UPBItemShopClient_execAddDelegate_OnEventsByBackend_Parms AddDelegate_OnEventsByBackend_Parms;
 	memcpy ( &AddDelegate_OnEventsByBackend_Parms.func, &func, 0xC );
@@ -3348,7 +3439,7 @@ void UPBItemShopClient::OnEventsByBackend ( int requestId, int ErrorCode, TArray
 	static UFunction* pFnOnEventsByBackend = NULL;
 
 	if ( ! pFnOnEventsByBackend )
-		pFnOnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35775 ];
+		pFnOnEventsByBackend = (UFunction*) UObject::GObjObjects()->Data[ 35776 ];
 
 	UPBItemShopClient_execOnEventsByBackend_Parms OnEventsByBackend_Parms;
 	OnEventsByBackend_Parms.requestId = requestId;
@@ -3371,7 +3462,7 @@ int UPBItemShopClient::RemoveDelegate_OnVerifyPromoCodeDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnVerifyPromoCodeDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnVerifyPromoCodeDone )
-		pFnRemoveDelegate_OnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35771 ];
+		pFnRemoveDelegate_OnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35772 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnVerifyPromoCodeDone_Parms RemoveDelegate_OnVerifyPromoCodeDone_Parms;
 	memcpy ( &RemoveDelegate_OnVerifyPromoCodeDone_Parms.func, &func, 0xC );
@@ -3394,7 +3485,7 @@ int UPBItemShopClient::AddDelegate_OnVerifyPromoCodeDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnVerifyPromoCodeDone = NULL;
 
 	if ( ! pFnAddDelegate_OnVerifyPromoCodeDone )
-		pFnAddDelegate_OnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35767 ];
+		pFnAddDelegate_OnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35768 ];
 
 	UPBItemShopClient_execAddDelegate_OnVerifyPromoCodeDone_Parms AddDelegate_OnVerifyPromoCodeDone_Parms;
 	memcpy ( &AddDelegate_OnVerifyPromoCodeDone_Parms.func, &func, 0xC );
@@ -3418,7 +3509,7 @@ void UPBItemShopClient::OnVerifyPromoCodeDone ( int requestId, int Error, TArray
 	static UFunction* pFnOnVerifyPromoCodeDone = NULL;
 
 	if ( ! pFnOnVerifyPromoCodeDone )
-		pFnOnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35761 ];
+		pFnOnVerifyPromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35762 ];
 
 	UPBItemShopClient_execOnVerifyPromoCodeDone_Parms OnVerifyPromoCodeDone_Parms;
 	OnVerifyPromoCodeDone_Parms.requestId = requestId;
@@ -3440,7 +3531,7 @@ int UPBItemShopClient::eventVerifyPromoCode ( struct FString Code )
 	static UFunction* pFnVerifyPromoCode = NULL;
 
 	if ( ! pFnVerifyPromoCode )
-		pFnVerifyPromoCode = (UFunction*) UObject::GObjObjects()->Data[ 35758 ];
+		pFnVerifyPromoCode = (UFunction*) UObject::GObjObjects()->Data[ 35759 ];
 
 	UPBItemShopClient_eventVerifyPromoCode_Parms VerifyPromoCode_Parms;
 	memcpy ( &VerifyPromoCode_Parms.Code, &Code, 0xC );
@@ -3466,7 +3557,7 @@ int UPBItemShopClient::RemoveDelegate_OnUsePromoCodeDone ( struct FScriptDelegat
 	static UFunction* pFnRemoveDelegate_OnUsePromoCodeDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnUsePromoCodeDone )
-		pFnRemoveDelegate_OnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35754 ];
+		pFnRemoveDelegate_OnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35755 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnUsePromoCodeDone_Parms RemoveDelegate_OnUsePromoCodeDone_Parms;
 	memcpy ( &RemoveDelegate_OnUsePromoCodeDone_Parms.func, &func, 0xC );
@@ -3489,7 +3580,7 @@ int UPBItemShopClient::AddDelegate_OnUsePromoCodeDone ( struct FScriptDelegate f
 	static UFunction* pFnAddDelegate_OnUsePromoCodeDone = NULL;
 
 	if ( ! pFnAddDelegate_OnUsePromoCodeDone )
-		pFnAddDelegate_OnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35750 ];
+		pFnAddDelegate_OnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35751 ];
 
 	UPBItemShopClient_execAddDelegate_OnUsePromoCodeDone_Parms AddDelegate_OnUsePromoCodeDone_Parms;
 	memcpy ( &AddDelegate_OnUsePromoCodeDone_Parms.func, &func, 0xC );
@@ -3511,7 +3602,7 @@ void UPBItemShopClient::OnUsePromoCodeDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnUsePromoCodeDone = NULL;
 
 	if ( ! pFnOnUsePromoCodeDone )
-		pFnOnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35747 ];
+		pFnOnUsePromoCodeDone = (UFunction*) UObject::GObjObjects()->Data[ 35748 ];
 
 	UPBItemShopClient_execOnUsePromoCodeDone_Parms OnUsePromoCodeDone_Parms;
 	OnUsePromoCodeDone_Parms.requestId = requestId;
@@ -3531,7 +3622,7 @@ int UPBItemShopClient::eventUsePromoCode ( struct FString Code )
 	static UFunction* pFnUsePromoCode = NULL;
 
 	if ( ! pFnUsePromoCode )
-		pFnUsePromoCode = (UFunction*) UObject::GObjObjects()->Data[ 35744 ];
+		pFnUsePromoCode = (UFunction*) UObject::GObjObjects()->Data[ 35745 ];
 
 	UPBItemShopClient_eventUsePromoCode_Parms UsePromoCode_Parms;
 	memcpy ( &UsePromoCode_Parms.Code, &Code, 0xC );
@@ -3557,7 +3648,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetGameServerStatusDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetGameServerStatusDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetGameServerStatusDone )
-		pFnRemoveDelegate_OnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35740 ];
+		pFnRemoveDelegate_OnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35741 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetGameServerStatusDone_Parms RemoveDelegate_OnGetGameServerStatusDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetGameServerStatusDone_Parms.func, &func, 0xC );
@@ -3580,7 +3671,7 @@ int UPBItemShopClient::AddDelegate_OnGetGameServerStatusDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetGameServerStatusDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetGameServerStatusDone )
-		pFnAddDelegate_OnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35736 ];
+		pFnAddDelegate_OnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35737 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetGameServerStatusDone_Parms AddDelegate_OnGetGameServerStatusDone_Parms;
 	memcpy ( &AddDelegate_OnGetGameServerStatusDone_Parms.func, &func, 0xC );
@@ -3605,7 +3696,7 @@ void UPBItemShopClient::OnGetGameServerStatusDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnGetGameServerStatusDone = NULL;
 
 	if ( ! pFnOnGetGameServerStatusDone )
-		pFnOnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35730 ];
+		pFnOnGetGameServerStatusDone = (UFunction*) UObject::GObjObjects()->Data[ 35731 ];
 
 	UPBItemShopClient_execOnGetGameServerStatusDone_Parms OnGetGameServerStatusDone_Parms;
 	OnGetGameServerStatusDone_Parms.requestId = requestId;
@@ -3628,7 +3719,7 @@ int UPBItemShopClient::eventGetGameServerStatus ( struct FGuid gameServerId )
 	static UFunction* pFnGetGameServerStatus = NULL;
 
 	if ( ! pFnGetGameServerStatus )
-		pFnGetGameServerStatus = (UFunction*) UObject::GObjObjects()->Data[ 35727 ];
+		pFnGetGameServerStatus = (UFunction*) UObject::GObjObjects()->Data[ 35728 ];
 
 	UPBItemShopClient_eventGetGameServerStatus_Parms GetGameServerStatus_Parms;
 	memcpy ( &GetGameServerStatus_Parms.gameServerId, &gameServerId, 0x10 );
@@ -3654,7 +3745,7 @@ int UPBItemShopClient::RemoveDelegate_OnCancelGameServerRequestDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnCancelGameServerRequestDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnCancelGameServerRequestDone )
-		pFnRemoveDelegate_OnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35723 ];
+		pFnRemoveDelegate_OnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35724 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnCancelGameServerRequestDone_Parms RemoveDelegate_OnCancelGameServerRequestDone_Parms;
 	memcpy ( &RemoveDelegate_OnCancelGameServerRequestDone_Parms.func, &func, 0xC );
@@ -3677,7 +3768,7 @@ int UPBItemShopClient::AddDelegate_OnCancelGameServerRequestDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnCancelGameServerRequestDone = NULL;
 
 	if ( ! pFnAddDelegate_OnCancelGameServerRequestDone )
-		pFnAddDelegate_OnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35719 ];
+		pFnAddDelegate_OnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35720 ];
 
 	UPBItemShopClient_execAddDelegate_OnCancelGameServerRequestDone_Parms AddDelegate_OnCancelGameServerRequestDone_Parms;
 	memcpy ( &AddDelegate_OnCancelGameServerRequestDone_Parms.func, &func, 0xC );
@@ -3699,7 +3790,7 @@ void UPBItemShopClient::OnCancelGameServerRequestDone ( int requestId, int Error
 	static UFunction* pFnOnCancelGameServerRequestDone = NULL;
 
 	if ( ! pFnOnCancelGameServerRequestDone )
-		pFnOnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35716 ];
+		pFnOnCancelGameServerRequestDone = (UFunction*) UObject::GObjObjects()->Data[ 35717 ];
 
 	UPBItemShopClient_execOnCancelGameServerRequestDone_Parms OnCancelGameServerRequestDone_Parms;
 	OnCancelGameServerRequestDone_Parms.requestId = requestId;
@@ -3719,7 +3810,7 @@ int UPBItemShopClient::eventCancelGameServerRequest ( struct FGuid gameServerId 
 	static UFunction* pFnCancelGameServerRequest = NULL;
 
 	if ( ! pFnCancelGameServerRequest )
-		pFnCancelGameServerRequest = (UFunction*) UObject::GObjObjects()->Data[ 35713 ];
+		pFnCancelGameServerRequest = (UFunction*) UObject::GObjObjects()->Data[ 35714 ];
 
 	UPBItemShopClient_eventCancelGameServerRequest_Parms CancelGameServerRequest_Parms;
 	memcpy ( &CancelGameServerRequest_Parms.gameServerId, &gameServerId, 0x10 );
@@ -3745,7 +3836,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetGameRegionsDone ( struct FScriptDeleg
 	static UFunction* pFnRemoveDelegate_OnGetGameRegionsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetGameRegionsDone )
-		pFnRemoveDelegate_OnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35709 ];
+		pFnRemoveDelegate_OnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35710 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetGameRegionsDone_Parms RemoveDelegate_OnGetGameRegionsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetGameRegionsDone_Parms.func, &func, 0xC );
@@ -3768,7 +3859,7 @@ int UPBItemShopClient::AddDelegate_OnGetGameRegionsDone ( struct FScriptDelegate
 	static UFunction* pFnAddDelegate_OnGetGameRegionsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetGameRegionsDone )
-		pFnAddDelegate_OnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35705 ];
+		pFnAddDelegate_OnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35706 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetGameRegionsDone_Parms AddDelegate_OnGetGameRegionsDone_Parms;
 	memcpy ( &AddDelegate_OnGetGameRegionsDone_Parms.func, &func, 0xC );
@@ -3790,7 +3881,7 @@ void UPBItemShopClient::OnGetGameRegionsDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnGetGameRegionsDone = NULL;
 
 	if ( ! pFnOnGetGameRegionsDone )
-		pFnOnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35702 ];
+		pFnOnGetGameRegionsDone = (UFunction*) UObject::GObjObjects()->Data[ 35703 ];
 
 	UPBItemShopClient_execOnGetGameRegionsDone_Parms OnGetGameRegionsDone_Parms;
 	OnGetGameRegionsDone_Parms.requestId = requestId;
@@ -3809,7 +3900,7 @@ int UPBItemShopClient::eventGetGameRegions ( )
 	static UFunction* pFnGetGameRegions = NULL;
 
 	if ( ! pFnGetGameRegions )
-		pFnGetGameRegions = (UFunction*) UObject::GObjObjects()->Data[ 35700 ];
+		pFnGetGameRegions = (UFunction*) UObject::GObjObjects()->Data[ 35701 ];
 
 	UPBItemShopClient_eventGetGameRegions_Parms GetGameRegions_Parms;
 
@@ -3834,7 +3925,7 @@ int UPBItemShopClient::RemoveDelegate_OnRequestGameServerDone ( struct FScriptDe
 	static UFunction* pFnRemoveDelegate_OnRequestGameServerDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnRequestGameServerDone )
-		pFnRemoveDelegate_OnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35696 ];
+		pFnRemoveDelegate_OnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35697 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnRequestGameServerDone_Parms RemoveDelegate_OnRequestGameServerDone_Parms;
 	memcpy ( &RemoveDelegate_OnRequestGameServerDone_Parms.func, &func, 0xC );
@@ -3857,7 +3948,7 @@ int UPBItemShopClient::AddDelegate_OnRequestGameServerDone ( struct FScriptDeleg
 	static UFunction* pFnAddDelegate_OnRequestGameServerDone = NULL;
 
 	if ( ! pFnAddDelegate_OnRequestGameServerDone )
-		pFnAddDelegate_OnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35692 ];
+		pFnAddDelegate_OnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35693 ];
 
 	UPBItemShopClient_execAddDelegate_OnRequestGameServerDone_Parms AddDelegate_OnRequestGameServerDone_Parms;
 	memcpy ( &AddDelegate_OnRequestGameServerDone_Parms.func, &func, 0xC );
@@ -3880,7 +3971,7 @@ void UPBItemShopClient::OnRequestGameServerDone ( int requestId, int ErrorCode, 
 	static UFunction* pFnOnRequestGameServerDone = NULL;
 
 	if ( ! pFnOnRequestGameServerDone )
-		pFnOnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35688 ];
+		pFnOnRequestGameServerDone = (UFunction*) UObject::GObjObjects()->Data[ 35689 ];
 
 	UPBItemShopClient_execOnRequestGameServerDone_Parms OnRequestGameServerDone_Parms;
 	OnRequestGameServerDone_Parms.requestId = requestId;
@@ -3902,7 +3993,7 @@ int UPBItemShopClient::eventRequestGameServer ( struct FString URL, int regionco
 	static UFunction* pFnRequestGameServer = NULL;
 
 	if ( ! pFnRequestGameServer )
-		pFnRequestGameServer = (UFunction*) UObject::GObjObjects()->Data[ 35684 ];
+		pFnRequestGameServer = (UFunction*) UObject::GObjObjects()->Data[ 35685 ];
 
 	UPBItemShopClient_eventRequestGameServer_Parms RequestGameServer_Parms;
 	memcpy ( &RequestGameServer_Parms.URL, &URL, 0xC );
@@ -3929,7 +4020,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetDefaultInventoryDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetDefaultInventoryDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetDefaultInventoryDone )
-		pFnRemoveDelegate_OnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35680 ];
+		pFnRemoveDelegate_OnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35681 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetDefaultInventoryDone_Parms RemoveDelegate_OnGetDefaultInventoryDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetDefaultInventoryDone_Parms.func, &func, 0xC );
@@ -3952,7 +4043,7 @@ int UPBItemShopClient::AddDelegate_OnGetDefaultInventoryDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetDefaultInventoryDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetDefaultInventoryDone )
-		pFnAddDelegate_OnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35676 ];
+		pFnAddDelegate_OnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35677 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetDefaultInventoryDone_Parms AddDelegate_OnGetDefaultInventoryDone_Parms;
 	memcpy ( &AddDelegate_OnGetDefaultInventoryDone_Parms.func, &func, 0xC );
@@ -3975,7 +4066,7 @@ void UPBItemShopClient::OnGetDefaultInventoryDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnGetDefaultInventoryDone = NULL;
 
 	if ( ! pFnOnGetDefaultInventoryDone )
-		pFnOnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35671 ];
+		pFnOnGetDefaultInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35672 ];
 
 	UPBItemShopClient_execOnGetDefaultInventoryDone_Parms OnGetDefaultInventoryDone_Parms;
 	OnGetDefaultInventoryDone_Parms.requestId = requestId;
@@ -3996,7 +4087,7 @@ int UPBItemShopClient::eventGetDefaultInventory ( struct FGuid characterGender )
 	static UFunction* pFnGetDefaultInventory = NULL;
 
 	if ( ! pFnGetDefaultInventory )
-		pFnGetDefaultInventory = (UFunction*) UObject::GObjObjects()->Data[ 35668 ];
+		pFnGetDefaultInventory = (UFunction*) UObject::GObjObjects()->Data[ 35669 ];
 
 	UPBItemShopClient_eventGetDefaultInventory_Parms GetDefaultInventory_Parms;
 	memcpy ( &GetDefaultInventory_Parms.characterGender, &characterGender, 0x10 );
@@ -4022,7 +4113,7 @@ int UPBItemShopClient::RemoveDelegate_OnUpdateWeaponPresetNameDone ( struct FScr
 	static UFunction* pFnRemoveDelegate_OnUpdateWeaponPresetNameDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnUpdateWeaponPresetNameDone )
-		pFnRemoveDelegate_OnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35664 ];
+		pFnRemoveDelegate_OnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35665 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnUpdateWeaponPresetNameDone_Parms RemoveDelegate_OnUpdateWeaponPresetNameDone_Parms;
 	memcpy ( &RemoveDelegate_OnUpdateWeaponPresetNameDone_Parms.func, &func, 0xC );
@@ -4045,7 +4136,7 @@ int UPBItemShopClient::AddDelegate_OnUpdateWeaponPresetNameDone ( struct FScript
 	static UFunction* pFnAddDelegate_OnUpdateWeaponPresetNameDone = NULL;
 
 	if ( ! pFnAddDelegate_OnUpdateWeaponPresetNameDone )
-		pFnAddDelegate_OnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35660 ];
+		pFnAddDelegate_OnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35661 ];
 
 	UPBItemShopClient_execAddDelegate_OnUpdateWeaponPresetNameDone_Parms AddDelegate_OnUpdateWeaponPresetNameDone_Parms;
 	memcpy ( &AddDelegate_OnUpdateWeaponPresetNameDone_Parms.func, &func, 0xC );
@@ -4067,7 +4158,7 @@ void UPBItemShopClient::OnUpdateWeaponPresetNameDone ( int requestId, int ErrorC
 	static UFunction* pFnOnUpdateWeaponPresetNameDone = NULL;
 
 	if ( ! pFnOnUpdateWeaponPresetNameDone )
-		pFnOnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35657 ];
+		pFnOnUpdateWeaponPresetNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35658 ];
 
 	UPBItemShopClient_execOnUpdateWeaponPresetNameDone_Parms OnUpdateWeaponPresetNameDone_Parms;
 	OnUpdateWeaponPresetNameDone_Parms.requestId = requestId;
@@ -4088,7 +4179,7 @@ int UPBItemShopClient::eventUpdateWeaponPresetName ( int indexOfPreset, struct F
 	static UFunction* pFnUpdateWeaponPresetName = NULL;
 
 	if ( ! pFnUpdateWeaponPresetName )
-		pFnUpdateWeaponPresetName = (UFunction*) UObject::GObjObjects()->Data[ 35653 ];
+		pFnUpdateWeaponPresetName = (UFunction*) UObject::GObjObjects()->Data[ 35654 ];
 
 	UPBItemShopClient_eventUpdateWeaponPresetName_Parms UpdateWeaponPresetName_Parms;
 	UpdateWeaponPresetName_Parms.indexOfPreset = indexOfPreset;
@@ -4115,7 +4206,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetWeaponPresetNamesDone ( struct FScrip
 	static UFunction* pFnRemoveDelegate_OnGetWeaponPresetNamesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetWeaponPresetNamesDone )
-		pFnRemoveDelegate_OnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35649 ];
+		pFnRemoveDelegate_OnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35650 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetWeaponPresetNamesDone_Parms RemoveDelegate_OnGetWeaponPresetNamesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetWeaponPresetNamesDone_Parms.func, &func, 0xC );
@@ -4138,7 +4229,7 @@ int UPBItemShopClient::AddDelegate_OnGetWeaponPresetNamesDone ( struct FScriptDe
 	static UFunction* pFnAddDelegate_OnGetWeaponPresetNamesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetWeaponPresetNamesDone )
-		pFnAddDelegate_OnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35645 ];
+		pFnAddDelegate_OnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35646 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetWeaponPresetNamesDone_Parms AddDelegate_OnGetWeaponPresetNamesDone_Parms;
 	memcpy ( &AddDelegate_OnGetWeaponPresetNamesDone_Parms.func, &func, 0xC );
@@ -4161,7 +4252,7 @@ void UPBItemShopClient::OnGetWeaponPresetNamesDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnGetWeaponPresetNamesDone = NULL;
 
 	if ( ! pFnOnGetWeaponPresetNamesDone )
-		pFnOnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35640 ];
+		pFnOnGetWeaponPresetNamesDone = (UFunction*) UObject::GObjObjects()->Data[ 35641 ];
 
 	UPBItemShopClient_execOnGetWeaponPresetNamesDone_Parms OnGetWeaponPresetNamesDone_Parms;
 	OnGetWeaponPresetNamesDone_Parms.requestId = requestId;
@@ -4181,7 +4272,7 @@ int UPBItemShopClient::eventGetWeaponPresetNames ( )
 	static UFunction* pFnGetWeaponPresetNames = NULL;
 
 	if ( ! pFnGetWeaponPresetNames )
-		pFnGetWeaponPresetNames = (UFunction*) UObject::GObjObjects()->Data[ 35638 ];
+		pFnGetWeaponPresetNames = (UFunction*) UObject::GObjObjects()->Data[ 35639 ];
 
 	UPBItemShopClient_eventGetWeaponPresetNames_Parms GetWeaponPresetNames_Parms;
 
@@ -4206,7 +4297,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetMaxNumberProfilesDone ( struct FScrip
 	static UFunction* pFnRemoveDelegate_OnGetMaxNumberProfilesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetMaxNumberProfilesDone )
-		pFnRemoveDelegate_OnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35634 ];
+		pFnRemoveDelegate_OnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35635 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetMaxNumberProfilesDone_Parms RemoveDelegate_OnGetMaxNumberProfilesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetMaxNumberProfilesDone_Parms.func, &func, 0xC );
@@ -4229,7 +4320,7 @@ int UPBItemShopClient::AddDelegate_OnGetMaxNumberProfilesDone ( struct FScriptDe
 	static UFunction* pFnAddDelegate_OnGetMaxNumberProfilesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetMaxNumberProfilesDone )
-		pFnAddDelegate_OnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35630 ];
+		pFnAddDelegate_OnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35631 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetMaxNumberProfilesDone_Parms AddDelegate_OnGetMaxNumberProfilesDone_Parms;
 	memcpy ( &AddDelegate_OnGetMaxNumberProfilesDone_Parms.func, &func, 0xC );
@@ -4252,7 +4343,7 @@ void UPBItemShopClient::OnGetMaxNumberProfilesDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnGetMaxNumberProfilesDone = NULL;
 
 	if ( ! pFnOnGetMaxNumberProfilesDone )
-		pFnOnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35626 ];
+		pFnOnGetMaxNumberProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35627 ];
 
 	UPBItemShopClient_execOnGetMaxNumberProfilesDone_Parms OnGetMaxNumberProfilesDone_Parms;
 	OnGetMaxNumberProfilesDone_Parms.requestId = requestId;
@@ -4272,7 +4363,7 @@ int UPBItemShopClient::eventGetMaxNumberProfiles ( )
 	static UFunction* pFnGetMaxNumberProfiles = NULL;
 
 	if ( ! pFnGetMaxNumberProfiles )
-		pFnGetMaxNumberProfiles = (UFunction*) UObject::GObjObjects()->Data[ 35624 ];
+		pFnGetMaxNumberProfiles = (UFunction*) UObject::GObjObjects()->Data[ 35625 ];
 
 	UPBItemShopClient_eventGetMaxNumberProfiles_Parms GetMaxNumberProfiles_Parms;
 
@@ -4297,7 +4388,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeleteProfileDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnDeleteProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeleteProfileDone )
-		pFnRemoveDelegate_OnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35620 ];
+		pFnRemoveDelegate_OnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35621 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeleteProfileDone_Parms RemoveDelegate_OnDeleteProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeleteProfileDone_Parms.func, &func, 0xC );
@@ -4320,7 +4411,7 @@ int UPBItemShopClient::AddDelegate_OnDeleteProfileDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnDeleteProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeleteProfileDone )
-		pFnAddDelegate_OnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35616 ];
+		pFnAddDelegate_OnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35617 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeleteProfileDone_Parms AddDelegate_OnDeleteProfileDone_Parms;
 	memcpy ( &AddDelegate_OnDeleteProfileDone_Parms.func, &func, 0xC );
@@ -4343,7 +4434,7 @@ void UPBItemShopClient::OnDeleteProfileDone ( int requestId, int ErrorCode, stru
 	static UFunction* pFnOnDeleteProfileDone = NULL;
 
 	if ( ! pFnOnDeleteProfileDone )
-		pFnOnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35612 ];
+		pFnOnDeleteProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35613 ];
 
 	UPBItemShopClient_execOnDeleteProfileDone_Parms OnDeleteProfileDone_Parms;
 	OnDeleteProfileDone_Parms.requestId = requestId;
@@ -4364,7 +4455,7 @@ int UPBItemShopClient::eventDeleteProfile ( struct FGuid ProfileId )
 	static UFunction* pFnDeleteProfile = NULL;
 
 	if ( ! pFnDeleteProfile )
-		pFnDeleteProfile = (UFunction*) UObject::GObjObjects()->Data[ 35609 ];
+		pFnDeleteProfile = (UFunction*) UObject::GObjObjects()->Data[ 35610 ];
 
 	UPBItemShopClient_eventDeleteProfile_Parms DeleteProfile_Parms;
 	memcpy ( &DeleteProfile_Parms.ProfileId, &ProfileId, 0x10 );
@@ -4390,7 +4481,7 @@ void UPBItemShopClient::_OnDeselectProfileDone ( int requestId, int ErrorCode, s
 	static UFunction* pFn_OnDeselectProfileDone = NULL;
 
 	if ( ! pFn_OnDeselectProfileDone )
-		pFn_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35596 ];
+		pFn_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35597 ];
 
 	UPBItemShopClient_exec_OnDeselectProfileDone_Parms _OnDeselectProfileDone_Parms;
 	_OnDeselectProfileDone_Parms.requestId = requestId;
@@ -4412,7 +4503,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeselectProfileDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnDeselectProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeselectProfileDone )
-		pFnRemoveDelegate_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35601 ];
+		pFnRemoveDelegate_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35602 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeselectProfileDone_Parms RemoveDelegate_OnDeselectProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeselectProfileDone_Parms.func, &func, 0xC );
@@ -4435,7 +4526,7 @@ int UPBItemShopClient::AddDelegate_OnDeselectProfileDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnDeselectProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeselectProfileDone )
-		pFnAddDelegate_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35597 ];
+		pFnAddDelegate_OnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35598 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeselectProfileDone_Parms AddDelegate_OnDeselectProfileDone_Parms;
 	memcpy ( &AddDelegate_OnDeselectProfileDone_Parms.func, &func, 0xC );
@@ -4458,7 +4549,7 @@ void UPBItemShopClient::OnDeselectProfileDone ( int requestId, int ErrorCode, st
 	static UFunction* pFnOnDeselectProfileDone = NULL;
 
 	if ( ! pFnOnDeselectProfileDone )
-		pFnOnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35592 ];
+		pFnOnDeselectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35593 ];
 
 	UPBItemShopClient_execOnDeselectProfileDone_Parms OnDeselectProfileDone_Parms;
 	OnDeselectProfileDone_Parms.requestId = requestId;
@@ -4478,7 +4569,7 @@ int UPBItemShopClient::eventDeselectProfile ( )
 	static UFunction* pFnDeselectProfile = NULL;
 
 	if ( ! pFnDeselectProfile )
-		pFnDeselectProfile = (UFunction*) UObject::GObjObjects()->Data[ 35590 ];
+		pFnDeselectProfile = (UFunction*) UObject::GObjObjects()->Data[ 35591 ];
 
 	UPBItemShopClient_eventDeselectProfile_Parms DeselectProfile_Parms;
 
@@ -4503,7 +4594,7 @@ int UPBItemShopClient::RemoveDelegate_OnGenerateGameSpyTokenDone ( struct FScrip
 	static UFunction* pFnRemoveDelegate_OnGenerateGameSpyTokenDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGenerateGameSpyTokenDone )
-		pFnRemoveDelegate_OnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35586 ];
+		pFnRemoveDelegate_OnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35587 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGenerateGameSpyTokenDone_Parms RemoveDelegate_OnGenerateGameSpyTokenDone_Parms;
 	memcpy ( &RemoveDelegate_OnGenerateGameSpyTokenDone_Parms.func, &func, 0xC );
@@ -4526,7 +4617,7 @@ int UPBItemShopClient::AddDelegate_OnGenerateGameSpyTokenDone ( struct FScriptDe
 	static UFunction* pFnAddDelegate_OnGenerateGameSpyTokenDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGenerateGameSpyTokenDone )
-		pFnAddDelegate_OnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35582 ];
+		pFnAddDelegate_OnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35583 ];
 
 	UPBItemShopClient_execAddDelegate_OnGenerateGameSpyTokenDone_Parms AddDelegate_OnGenerateGameSpyTokenDone_Parms;
 	memcpy ( &AddDelegate_OnGenerateGameSpyTokenDone_Parms.func, &func, 0xC );
@@ -4551,7 +4642,7 @@ void UPBItemShopClient::OnGenerateGameSpyTokenDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnGenerateGameSpyTokenDone = NULL;
 
 	if ( ! pFnOnGenerateGameSpyTokenDone )
-		pFnOnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35576 ];
+		pFnOnGenerateGameSpyTokenDone = (UFunction*) UObject::GObjObjects()->Data[ 35577 ];
 
 	UPBItemShopClient_execOnGenerateGameSpyTokenDone_Parms OnGenerateGameSpyTokenDone_Parms;
 	OnGenerateGameSpyTokenDone_Parms.requestId = requestId;
@@ -4574,7 +4665,7 @@ int UPBItemShopClient::eventGenerateGameSpyToken ( struct FGuid ProfileId )
 	static UFunction* pFnGenerateGameSpyToken = NULL;
 
 	if ( ! pFnGenerateGameSpyToken )
-		pFnGenerateGameSpyToken = (UFunction*) UObject::GObjObjects()->Data[ 35573 ];
+		pFnGenerateGameSpyToken = (UFunction*) UObject::GObjObjects()->Data[ 35574 ];
 
 	UPBItemShopClient_eventGenerateGameSpyToken_Parms GenerateGameSpyToken_Parms;
 	memcpy ( &GenerateGameSpyToken_Parms.ProfileId, &ProfileId, 0x10 );
@@ -4600,7 +4691,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetCharacterProfileDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetCharacterProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetCharacterProfileDone )
-		pFnRemoveDelegate_OnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35569 ];
+		pFnRemoveDelegate_OnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35570 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetCharacterProfileDone_Parms RemoveDelegate_OnGetCharacterProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetCharacterProfileDone_Parms.func, &func, 0xC );
@@ -4623,7 +4714,7 @@ int UPBItemShopClient::AddDelegate_OnGetCharacterProfileDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetCharacterProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetCharacterProfileDone )
-		pFnAddDelegate_OnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35565 ];
+		pFnAddDelegate_OnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35566 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetCharacterProfileDone_Parms AddDelegate_OnGetCharacterProfileDone_Parms;
 	memcpy ( &AddDelegate_OnGetCharacterProfileDone_Parms.func, &func, 0xC );
@@ -4646,12 +4737,12 @@ void UPBItemShopClient::OnGetCharacterProfileDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnGetCharacterProfileDone = NULL;
 
 	if ( ! pFnOnGetCharacterProfileDone )
-		pFnOnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35561 ];
+		pFnOnGetCharacterProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35562 ];
 
 	UPBItemShopClient_execOnGetCharacterProfileDone_Parms OnGetCharacterProfileDone_Parms;
 	OnGetCharacterProfileDone_Parms.requestId = requestId;
 	OnGetCharacterProfileDone_Parms.ErrorCode = ErrorCode;
-	memcpy ( &OnGetCharacterProfileDone_Parms.CharacterProfile, &CharacterProfile, 0xB8 );
+	memcpy ( &OnGetCharacterProfileDone_Parms.CharacterProfile, &CharacterProfile, 0xBC );
 
 	this->ProcessEvent ( pFnOnGetCharacterProfileDone, &OnGetCharacterProfileDone_Parms, NULL );
 };
@@ -4668,7 +4759,7 @@ int UPBItemShopClient::eventGetCharacterProfile ( struct FGuid ProfileId, int La
 	static UFunction* pFnGetCharacterProfile = NULL;
 
 	if ( ! pFnGetCharacterProfile )
-		pFnGetCharacterProfile = (UFunction*) UObject::GObjObjects()->Data[ 35557 ];
+		pFnGetCharacterProfile = (UFunction*) UObject::GObjObjects()->Data[ 35558 ];
 
 	UPBItemShopClient_eventGetCharacterProfile_Parms GetCharacterProfile_Parms;
 	memcpy ( &GetCharacterProfile_Parms.ProfileId, &ProfileId, 0x10 );
@@ -4697,7 +4788,7 @@ void UPBItemShopClient::_OnSelectProfileDone ( int requestId, int ErrorCode, str
 	static UFunction* pFn_OnSelectProfileDone = NULL;
 
 	if ( ! pFn_OnSelectProfileDone )
-		pFn_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35543 ];
+		pFn_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35544 ];
 
 	UPBItemShopClient_exec_OnSelectProfileDone_Parms _OnSelectProfileDone_Parms;
 	_OnSelectProfileDone_Parms.requestId = requestId;
@@ -4721,7 +4812,7 @@ int UPBItemShopClient::RemoveDelegate_OnSelectProfileDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnSelectProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSelectProfileDone )
-		pFnRemoveDelegate_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35548 ];
+		pFnRemoveDelegate_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35549 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSelectProfileDone_Parms RemoveDelegate_OnSelectProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnSelectProfileDone_Parms.func, &func, 0xC );
@@ -4744,7 +4835,7 @@ int UPBItemShopClient::AddDelegate_OnSelectProfileDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnSelectProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnSelectProfileDone )
-		pFnAddDelegate_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35544 ];
+		pFnAddDelegate_OnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35545 ];
 
 	UPBItemShopClient_execAddDelegate_OnSelectProfileDone_Parms AddDelegate_OnSelectProfileDone_Parms;
 	memcpy ( &AddDelegate_OnSelectProfileDone_Parms.func, &func, 0xC );
@@ -4769,7 +4860,7 @@ void UPBItemShopClient::OnSelectProfileDone ( int requestId, int ErrorCode, stru
 	static UFunction* pFnOnSelectProfileDone = NULL;
 
 	if ( ! pFnOnSelectProfileDone )
-		pFnOnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35537 ];
+		pFnOnSelectProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35538 ];
 
 	UPBItemShopClient_execOnSelectProfileDone_Parms OnSelectProfileDone_Parms;
 	OnSelectProfileDone_Parms.requestId = requestId;
@@ -4792,7 +4883,7 @@ int UPBItemShopClient::eventSelectProfile ( struct FGuid ProfileId )
 	static UFunction* pFnSelectProfile = NULL;
 
 	if ( ! pFnSelectProfile )
-		pFnSelectProfile = (UFunction*) UObject::GObjObjects()->Data[ 35534 ];
+		pFnSelectProfile = (UFunction*) UObject::GObjObjects()->Data[ 35535 ];
 
 	UPBItemShopClient_eventSelectProfile_Parms SelectProfile_Parms;
 	memcpy ( &SelectProfile_Parms.ProfileId, &ProfileId, 0x10 );
@@ -4818,7 +4909,7 @@ int UPBItemShopClient::RemoveDelegate_OnUpdateProfileDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnUpdateProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnUpdateProfileDone )
-		pFnRemoveDelegate_OnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35530 ];
+		pFnRemoveDelegate_OnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35531 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnUpdateProfileDone_Parms RemoveDelegate_OnUpdateProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnUpdateProfileDone_Parms.func, &func, 0xC );
@@ -4841,7 +4932,7 @@ int UPBItemShopClient::AddDelegate_OnUpdateProfileDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnUpdateProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnUpdateProfileDone )
-		pFnAddDelegate_OnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35526 ];
+		pFnAddDelegate_OnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35527 ];
 
 	UPBItemShopClient_execAddDelegate_OnUpdateProfileDone_Parms AddDelegate_OnUpdateProfileDone_Parms;
 	memcpy ( &AddDelegate_OnUpdateProfileDone_Parms.func, &func, 0xC );
@@ -4864,7 +4955,7 @@ void UPBItemShopClient::OnUpdateProfileDone ( int requestId, int ErrorCode, stru
 	static UFunction* pFnOnUpdateProfileDone = NULL;
 
 	if ( ! pFnOnUpdateProfileDone )
-		pFnOnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35522 ];
+		pFnOnUpdateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35523 ];
 
 	UPBItemShopClient_execOnUpdateProfileDone_Parms OnUpdateProfileDone_Parms;
 	OnUpdateProfileDone_Parms.requestId = requestId;
@@ -4886,7 +4977,7 @@ int UPBItemShopClient::eventUpdateProfile ( struct FGuid ProfileId, int avatarPi
 	static UFunction* pFnUpdateProfile = NULL;
 
 	if ( ! pFnUpdateProfile )
-		pFnUpdateProfile = (UFunction*) UObject::GObjObjects()->Data[ 35518 ];
+		pFnUpdateProfile = (UFunction*) UObject::GObjObjects()->Data[ 35519 ];
 
 	UPBItemShopClient_eventUpdateProfile_Parms UpdateProfile_Parms;
 	memcpy ( &UpdateProfile_Parms.ProfileId, &ProfileId, 0x10 );
@@ -4913,7 +5004,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetProfileDetailsDone ( struct FScriptDe
 	static UFunction* pFnRemoveDelegate_OnGetProfileDetailsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetProfileDetailsDone )
-		pFnRemoveDelegate_OnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35514 ];
+		pFnRemoveDelegate_OnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35515 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetProfileDetailsDone_Parms RemoveDelegate_OnGetProfileDetailsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetProfileDetailsDone_Parms.func, &func, 0xC );
@@ -4936,7 +5027,7 @@ int UPBItemShopClient::AddDelegate_OnGetProfileDetailsDone ( struct FScriptDeleg
 	static UFunction* pFnAddDelegate_OnGetProfileDetailsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetProfileDetailsDone )
-		pFnAddDelegate_OnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35510 ];
+		pFnAddDelegate_OnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35511 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetProfileDetailsDone_Parms AddDelegate_OnGetProfileDetailsDone_Parms;
 	memcpy ( &AddDelegate_OnGetProfileDetailsDone_Parms.func, &func, 0xC );
@@ -4971,7 +5062,7 @@ void UPBItemShopClient::OnGetProfileDetailsDone ( int requestId, int ErrorCode, 
 	static UFunction* pFnOnGetProfileDetailsDone = NULL;
 
 	if ( ! pFnOnGetProfileDetailsDone )
-		pFnOnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35494 ];
+		pFnOnGetProfileDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35495 ];
 
 	UPBItemShopClient_execOnGetProfileDetailsDone_Parms OnGetProfileDetailsDone_Parms;
 	OnGetProfileDetailsDone_Parms.requestId = requestId;
@@ -5004,7 +5095,7 @@ int UPBItemShopClient::eventGetProfileDetails ( struct FGuid ProfileId )
 	static UFunction* pFnGetProfileDetails = NULL;
 
 	if ( ! pFnGetProfileDetails )
-		pFnGetProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 35491 ];
+		pFnGetProfileDetails = (UFunction*) UObject::GObjObjects()->Data[ 35492 ];
 
 	UPBItemShopClient_eventGetProfileDetails_Parms GetProfileDetails_Parms;
 	memcpy ( &GetProfileDetails_Parms.ProfileId, &ProfileId, 0x10 );
@@ -5030,7 +5121,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetProfilesDone ( struct FScriptDelegate
 	static UFunction* pFnRemoveDelegate_OnGetProfilesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetProfilesDone )
-		pFnRemoveDelegate_OnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35487 ];
+		pFnRemoveDelegate_OnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35488 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetProfilesDone_Parms RemoveDelegate_OnGetProfilesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetProfilesDone_Parms.func, &func, 0xC );
@@ -5053,7 +5144,7 @@ int UPBItemShopClient::AddDelegate_OnGetProfilesDone ( struct FScriptDelegate fu
 	static UFunction* pFnAddDelegate_OnGetProfilesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetProfilesDone )
-		pFnAddDelegate_OnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35483 ];
+		pFnAddDelegate_OnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35484 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetProfilesDone_Parms AddDelegate_OnGetProfilesDone_Parms;
 	memcpy ( &AddDelegate_OnGetProfilesDone_Parms.func, &func, 0xC );
@@ -5076,7 +5167,7 @@ void UPBItemShopClient::OnGetProfilesDone ( int requestId, int ErrorCode, TArray
 	static UFunction* pFnOnGetProfilesDone = NULL;
 
 	if ( ! pFnOnGetProfilesDone )
-		pFnOnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35478 ];
+		pFnOnGetProfilesDone = (UFunction*) UObject::GObjObjects()->Data[ 35479 ];
 
 	UPBItemShopClient_execOnGetProfilesDone_Parms OnGetProfilesDone_Parms;
 	OnGetProfilesDone_Parms.requestId = requestId;
@@ -5096,7 +5187,7 @@ int UPBItemShopClient::eventGetProfiles ( )
 	static UFunction* pFnGetProfiles = NULL;
 
 	if ( ! pFnGetProfiles )
-		pFnGetProfiles = (UFunction*) UObject::GObjObjects()->Data[ 35476 ];
+		pFnGetProfiles = (UFunction*) UObject::GObjObjects()->Data[ 35477 ];
 
 	UPBItemShopClient_eventGetProfiles_Parms GetProfiles_Parms;
 
@@ -5121,7 +5212,7 @@ int UPBItemShopClient::RemoveDelegate_OnCreateProfileDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnCreateProfileDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnCreateProfileDone )
-		pFnRemoveDelegate_OnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35472 ];
+		pFnRemoveDelegate_OnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35473 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnCreateProfileDone_Parms RemoveDelegate_OnCreateProfileDone_Parms;
 	memcpy ( &RemoveDelegate_OnCreateProfileDone_Parms.func, &func, 0xC );
@@ -5144,7 +5235,7 @@ int UPBItemShopClient::AddDelegate_OnCreateProfileDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnCreateProfileDone = NULL;
 
 	if ( ! pFnAddDelegate_OnCreateProfileDone )
-		pFnAddDelegate_OnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35468 ];
+		pFnAddDelegate_OnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35469 ];
 
 	UPBItemShopClient_execAddDelegate_OnCreateProfileDone_Parms AddDelegate_OnCreateProfileDone_Parms;
 	memcpy ( &AddDelegate_OnCreateProfileDone_Parms.func, &func, 0xC );
@@ -5167,7 +5258,7 @@ void UPBItemShopClient::OnCreateProfileDone ( int requestId, int ErrorCode, stru
 	static UFunction* pFnOnCreateProfileDone = NULL;
 
 	if ( ! pFnOnCreateProfileDone )
-		pFnOnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35464 ];
+		pFnOnCreateProfileDone = (UFunction*) UObject::GObjObjects()->Data[ 35465 ];
 
 	UPBItemShopClient_execOnCreateProfileDone_Parms OnCreateProfileDone_Parms;
 	OnCreateProfileDone_Parms.requestId = requestId;
@@ -5192,7 +5283,7 @@ int UPBItemShopClient::eventCreateProfile ( struct FString CharacterName, struct
 	static UFunction* pFnCreateProfile = NULL;
 
 	if ( ! pFnCreateProfile )
-		pFnCreateProfile = (UFunction*) UObject::GObjObjects()->Data[ 35457 ];
+		pFnCreateProfile = (UFunction*) UObject::GObjObjects()->Data[ 35458 ];
 
 	UPBItemShopClient_eventCreateProfile_Parms CreateProfile_Parms;
 	memcpy ( &CreateProfile_Parms.CharacterName, &CharacterName, 0xC );
@@ -5222,7 +5313,7 @@ int UPBItemShopClient::RemoveDelegate_OnIsValidNameDone ( struct FScriptDelegate
 	static UFunction* pFnRemoveDelegate_OnIsValidNameDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnIsValidNameDone )
-		pFnRemoveDelegate_OnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35453 ];
+		pFnRemoveDelegate_OnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35454 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnIsValidNameDone_Parms RemoveDelegate_OnIsValidNameDone_Parms;
 	memcpy ( &RemoveDelegate_OnIsValidNameDone_Parms.func, &func, 0xC );
@@ -5245,7 +5336,7 @@ int UPBItemShopClient::AddDelegate_OnIsValidNameDone ( struct FScriptDelegate fu
 	static UFunction* pFnAddDelegate_OnIsValidNameDone = NULL;
 
 	if ( ! pFnAddDelegate_OnIsValidNameDone )
-		pFnAddDelegate_OnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35449 ];
+		pFnAddDelegate_OnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35450 ];
 
 	UPBItemShopClient_execAddDelegate_OnIsValidNameDone_Parms AddDelegate_OnIsValidNameDone_Parms;
 	memcpy ( &AddDelegate_OnIsValidNameDone_Parms.func, &func, 0xC );
@@ -5268,7 +5359,7 @@ void UPBItemShopClient::OnIsValidNameDone ( int requestId, int ErrorCode, unsign
 	static UFunction* pFnOnIsValidNameDone = NULL;
 
 	if ( ! pFnOnIsValidNameDone )
-		pFnOnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35445 ];
+		pFnOnIsValidNameDone = (UFunction*) UObject::GObjObjects()->Data[ 35446 ];
 
 	UPBItemShopClient_execOnIsValidNameDone_Parms OnIsValidNameDone_Parms;
 	OnIsValidNameDone_Parms.requestId = requestId;
@@ -5289,7 +5380,7 @@ int UPBItemShopClient::eventIsValidName ( struct FString checkName )
 	static UFunction* pFnIsValidName = NULL;
 
 	if ( ! pFnIsValidName )
-		pFnIsValidName = (UFunction*) UObject::GObjObjects()->Data[ 35442 ];
+		pFnIsValidName = (UFunction*) UObject::GObjObjects()->Data[ 35443 ];
 
 	UPBItemShopClient_eventIsValidName_Parms IsValidName_Parms;
 	memcpy ( &IsValidName_Parms.checkName, &checkName, 0xC );
@@ -5315,7 +5406,7 @@ int UPBItemShopClient::RemoveDelegate_OnIsCharacterNameAvailableDone ( struct FS
 	static UFunction* pFnRemoveDelegate_OnIsCharacterNameAvailableDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnIsCharacterNameAvailableDone )
-		pFnRemoveDelegate_OnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35438 ];
+		pFnRemoveDelegate_OnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35439 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnIsCharacterNameAvailableDone_Parms RemoveDelegate_OnIsCharacterNameAvailableDone_Parms;
 	memcpy ( &RemoveDelegate_OnIsCharacterNameAvailableDone_Parms.func, &func, 0xC );
@@ -5338,7 +5429,7 @@ int UPBItemShopClient::AddDelegate_OnIsCharacterNameAvailableDone ( struct FScri
 	static UFunction* pFnAddDelegate_OnIsCharacterNameAvailableDone = NULL;
 
 	if ( ! pFnAddDelegate_OnIsCharacterNameAvailableDone )
-		pFnAddDelegate_OnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35434 ];
+		pFnAddDelegate_OnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35435 ];
 
 	UPBItemShopClient_execAddDelegate_OnIsCharacterNameAvailableDone_Parms AddDelegate_OnIsCharacterNameAvailableDone_Parms;
 	memcpy ( &AddDelegate_OnIsCharacterNameAvailableDone_Parms.func, &func, 0xC );
@@ -5361,7 +5452,7 @@ void UPBItemShopClient::OnIsCharacterNameAvailableDone ( int requestId, int Erro
 	static UFunction* pFnOnIsCharacterNameAvailableDone = NULL;
 
 	if ( ! pFnOnIsCharacterNameAvailableDone )
-		pFnOnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35430 ];
+		pFnOnIsCharacterNameAvailableDone = (UFunction*) UObject::GObjObjects()->Data[ 35431 ];
 
 	UPBItemShopClient_execOnIsCharacterNameAvailableDone_Parms OnIsCharacterNameAvailableDone_Parms;
 	OnIsCharacterNameAvailableDone_Parms.requestId = requestId;
@@ -5382,7 +5473,7 @@ int UPBItemShopClient::eventIsCharacterNameAvailable ( struct FString CharacterN
 	static UFunction* pFnIsCharacterNameAvailable = NULL;
 
 	if ( ! pFnIsCharacterNameAvailable )
-		pFnIsCharacterNameAvailable = (UFunction*) UObject::GObjObjects()->Data[ 35427 ];
+		pFnIsCharacterNameAvailable = (UFunction*) UObject::GObjObjects()->Data[ 35428 ];
 
 	UPBItemShopClient_eventIsCharacterNameAvailable_Parms IsCharacterNameAvailable_Parms;
 	memcpy ( &IsCharacterNameAvailable_Parms.CharacterName, &CharacterName, 0xC );
@@ -5408,7 +5499,7 @@ int UPBItemShopClient::RemoveDelegate_OnSetPresetItemDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnSetPresetItemDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSetPresetItemDone )
-		pFnRemoveDelegate_OnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35423 ];
+		pFnRemoveDelegate_OnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35424 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSetPresetItemDone_Parms RemoveDelegate_OnSetPresetItemDone_Parms;
 	memcpy ( &RemoveDelegate_OnSetPresetItemDone_Parms.func, &func, 0xC );
@@ -5431,7 +5522,7 @@ int UPBItemShopClient::AddDelegate_OnSetPresetItemDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnSetPresetItemDone = NULL;
 
 	if ( ! pFnAddDelegate_OnSetPresetItemDone )
-		pFnAddDelegate_OnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35419 ];
+		pFnAddDelegate_OnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35420 ];
 
 	UPBItemShopClient_execAddDelegate_OnSetPresetItemDone_Parms AddDelegate_OnSetPresetItemDone_Parms;
 	memcpy ( &AddDelegate_OnSetPresetItemDone_Parms.func, &func, 0xC );
@@ -5453,7 +5544,7 @@ void UPBItemShopClient::OnSetPresetItemDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnSetPresetItemDone = NULL;
 
 	if ( ! pFnOnSetPresetItemDone )
-		pFnOnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35416 ];
+		pFnOnSetPresetItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35417 ];
 
 	UPBItemShopClient_execOnSetPresetItemDone_Parms OnSetPresetItemDone_Parms;
 	OnSetPresetItemDone_Parms.requestId = requestId;
@@ -5474,7 +5565,7 @@ int UPBItemShopClient::eventSetPresetItem ( TArray< struct FGuid > serialNumber,
 	static UFunction* pFnSetPresetItem = NULL;
 
 	if ( ! pFnSetPresetItem )
-		pFnSetPresetItem = (UFunction*) UObject::GObjObjects()->Data[ 35410 ];
+		pFnSetPresetItem = (UFunction*) UObject::GObjObjects()->Data[ 35411 ];
 
 	UPBItemShopClient_eventSetPresetItem_Parms SetPresetItem_Parms;
 	memcpy ( &SetPresetItem_Parms.serialNumber, &serialNumber, 0xC );
@@ -5501,7 +5592,7 @@ int UPBItemShopClient::RemoveDelegate_OnRepairInventoryItemDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnRepairInventoryItemDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnRepairInventoryItemDone )
-		pFnRemoveDelegate_OnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35406 ];
+		pFnRemoveDelegate_OnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35407 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnRepairInventoryItemDone_Parms RemoveDelegate_OnRepairInventoryItemDone_Parms;
 	memcpy ( &RemoveDelegate_OnRepairInventoryItemDone_Parms.func, &func, 0xC );
@@ -5524,7 +5615,7 @@ int UPBItemShopClient::AddDelegate_OnRepairInventoryItemDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnRepairInventoryItemDone = NULL;
 
 	if ( ! pFnAddDelegate_OnRepairInventoryItemDone )
-		pFnAddDelegate_OnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35402 ];
+		pFnAddDelegate_OnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35403 ];
 
 	UPBItemShopClient_execAddDelegate_OnRepairInventoryItemDone_Parms AddDelegate_OnRepairInventoryItemDone_Parms;
 	memcpy ( &AddDelegate_OnRepairInventoryItemDone_Parms.func, &func, 0xC );
@@ -5547,7 +5638,7 @@ void UPBItemShopClient::OnRepairInventoryItemDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnRepairInventoryItemDone = NULL;
 
 	if ( ! pFnOnRepairInventoryItemDone )
-		pFnOnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35398 ];
+		pFnOnRepairInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35399 ];
 
 	UPBItemShopClient_execOnRepairInventoryItemDone_Parms OnRepairInventoryItemDone_Parms;
 	OnRepairInventoryItemDone_Parms.requestId = requestId;
@@ -5569,7 +5660,7 @@ int UPBItemShopClient::eventRepairInventoryItem ( struct FGuid serialNumber, str
 	static UFunction* pFnRepairInventoryItem = NULL;
 
 	if ( ! pFnRepairInventoryItem )
-		pFnRepairInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 35394 ];
+		pFnRepairInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 35395 ];
 
 	UPBItemShopClient_eventRepairInventoryItem_Parms RepairInventoryItem_Parms;
 	memcpy ( &RepairInventoryItem_Parms.serialNumber, &serialNumber, 0x10 );
@@ -5596,7 +5687,7 @@ int UPBItemShopClient::RemoveDelegate_OnDeleteInventoryItemDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnDeleteInventoryItemDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDeleteInventoryItemDone )
-		pFnRemoveDelegate_OnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35390 ];
+		pFnRemoveDelegate_OnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35391 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDeleteInventoryItemDone_Parms RemoveDelegate_OnDeleteInventoryItemDone_Parms;
 	memcpy ( &RemoveDelegate_OnDeleteInventoryItemDone_Parms.func, &func, 0xC );
@@ -5619,7 +5710,7 @@ int UPBItemShopClient::AddDelegate_OnDeleteInventoryItemDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnDeleteInventoryItemDone = NULL;
 
 	if ( ! pFnAddDelegate_OnDeleteInventoryItemDone )
-		pFnAddDelegate_OnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35386 ];
+		pFnAddDelegate_OnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35387 ];
 
 	UPBItemShopClient_execAddDelegate_OnDeleteInventoryItemDone_Parms AddDelegate_OnDeleteInventoryItemDone_Parms;
 	memcpy ( &AddDelegate_OnDeleteInventoryItemDone_Parms.func, &func, 0xC );
@@ -5642,7 +5733,7 @@ void UPBItemShopClient::OnDeleteInventoryItemDone ( int requestId, int ErrorCode
 	static UFunction* pFnOnDeleteInventoryItemDone = NULL;
 
 	if ( ! pFnOnDeleteInventoryItemDone )
-		pFnOnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35382 ];
+		pFnOnDeleteInventoryItemDone = (UFunction*) UObject::GObjObjects()->Data[ 35383 ];
 
 	UPBItemShopClient_execOnDeleteInventoryItemDone_Parms OnDeleteInventoryItemDone_Parms;
 	OnDeleteInventoryItemDone_Parms.requestId = requestId;
@@ -5663,7 +5754,7 @@ int UPBItemShopClient::eventDeleteInventoryItem ( struct FGuid serialNumber )
 	static UFunction* pFnDeleteInventoryItem = NULL;
 
 	if ( ! pFnDeleteInventoryItem )
-		pFnDeleteInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 35379 ];
+		pFnDeleteInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 35380 ];
 
 	UPBItemShopClient_eventDeleteInventoryItem_Parms DeleteInventoryItem_Parms;
 	memcpy ( &DeleteInventoryItem_Parms.serialNumber, &serialNumber, 0x10 );
@@ -5689,7 +5780,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetInventoryItemDetailsDone ( struct FSc
 	static UFunction* pFnRemoveDelegate_OnGetInventoryItemDetailsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetInventoryItemDetailsDone )
-		pFnRemoveDelegate_OnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35375 ];
+		pFnRemoveDelegate_OnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35376 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetInventoryItemDetailsDone_Parms RemoveDelegate_OnGetInventoryItemDetailsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetInventoryItemDetailsDone_Parms.func, &func, 0xC );
@@ -5712,7 +5803,7 @@ int UPBItemShopClient::AddDelegate_OnGetInventoryItemDetailsDone ( struct FScrip
 	static UFunction* pFnAddDelegate_OnGetInventoryItemDetailsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetInventoryItemDetailsDone )
-		pFnAddDelegate_OnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35371 ];
+		pFnAddDelegate_OnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35372 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetInventoryItemDetailsDone_Parms AddDelegate_OnGetInventoryItemDetailsDone_Parms;
 	memcpy ( &AddDelegate_OnGetInventoryItemDetailsDone_Parms.func, &func, 0xC );
@@ -5748,7 +5839,7 @@ void UPBItemShopClient::OnGetInventoryItemDetailsDone ( int requestId, int Error
 	static UFunction* pFnOnGetInventoryItemDetailsDone = NULL;
 
 	if ( ! pFnOnGetInventoryItemDetailsDone )
-		pFnOnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35354 ];
+		pFnOnGetInventoryItemDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35355 ];
 
 	UPBItemShopClient_execOnGetInventoryItemDetailsDone_Parms OnGetInventoryItemDetailsDone_Parms;
 	OnGetInventoryItemDetailsDone_Parms.requestId = requestId;
@@ -5782,7 +5873,7 @@ int UPBItemShopClient::eventGetInventoryItemDetails ( struct FGuid serialNumber 
 	static UFunction* pFnGetInventoryItemDetails = NULL;
 
 	if ( ! pFnGetInventoryItemDetails )
-		pFnGetInventoryItemDetails = (UFunction*) UObject::GObjObjects()->Data[ 35351 ];
+		pFnGetInventoryItemDetails = (UFunction*) UObject::GObjObjects()->Data[ 35352 ];
 
 	UPBItemShopClient_eventGetInventoryItemDetails_Parms GetInventoryItemDetails_Parms;
 	memcpy ( &GetInventoryItemDetails_Parms.serialNumber, &serialNumber, 0x10 );
@@ -5808,7 +5899,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetLatestInventoryEntriesDone ( struct F
 	static UFunction* pFnRemoveDelegate_OnGetLatestInventoryEntriesDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetLatestInventoryEntriesDone )
-		pFnRemoveDelegate_OnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35347 ];
+		pFnRemoveDelegate_OnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35348 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetLatestInventoryEntriesDone_Parms RemoveDelegate_OnGetLatestInventoryEntriesDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetLatestInventoryEntriesDone_Parms.func, &func, 0xC );
@@ -5831,7 +5922,7 @@ int UPBItemShopClient::AddDelegate_OnGetLatestInventoryEntriesDone ( struct FScr
 	static UFunction* pFnAddDelegate_OnGetLatestInventoryEntriesDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetLatestInventoryEntriesDone )
-		pFnAddDelegate_OnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35343 ];
+		pFnAddDelegate_OnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35344 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetLatestInventoryEntriesDone_Parms AddDelegate_OnGetLatestInventoryEntriesDone_Parms;
 	memcpy ( &AddDelegate_OnGetLatestInventoryEntriesDone_Parms.func, &func, 0xC );
@@ -5854,7 +5945,7 @@ void UPBItemShopClient::OnGetLatestInventoryEntriesDone ( int requestId, int Err
 	static UFunction* pFnOnGetLatestInventoryEntriesDone = NULL;
 
 	if ( ! pFnOnGetLatestInventoryEntriesDone )
-		pFnOnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35338 ];
+		pFnOnGetLatestInventoryEntriesDone = (UFunction*) UObject::GObjObjects()->Data[ 35339 ];
 
 	UPBItemShopClient_execOnGetLatestInventoryEntriesDone_Parms OnGetLatestInventoryEntriesDone_Parms;
 	OnGetLatestInventoryEntriesDone_Parms.requestId = requestId;
@@ -5875,7 +5966,7 @@ int UPBItemShopClient::eventGetLatestInventoryEntries ( int Amount )
 	static UFunction* pFnGetLatestInventoryEntries = NULL;
 
 	if ( ! pFnGetLatestInventoryEntries )
-		pFnGetLatestInventoryEntries = (UFunction*) UObject::GObjObjects()->Data[ 35335 ];
+		pFnGetLatestInventoryEntries = (UFunction*) UObject::GObjObjects()->Data[ 35336 ];
 
 	UPBItemShopClient_eventGetLatestInventoryEntries_Parms GetLatestInventoryEntries_Parms;
 	GetLatestInventoryEntries_Parms.Amount = Amount;
@@ -5901,7 +5992,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetInventoryDone ( struct FScriptDelegat
 	static UFunction* pFnRemoveDelegate_OnGetInventoryDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetInventoryDone )
-		pFnRemoveDelegate_OnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35331 ];
+		pFnRemoveDelegate_OnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35332 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetInventoryDone_Parms RemoveDelegate_OnGetInventoryDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetInventoryDone_Parms.func, &func, 0xC );
@@ -5924,7 +6015,7 @@ int UPBItemShopClient::AddDelegate_OnGetInventoryDone ( struct FScriptDelegate f
 	static UFunction* pFnAddDelegate_OnGetInventoryDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetInventoryDone )
-		pFnAddDelegate_OnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35327 ];
+		pFnAddDelegate_OnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35328 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetInventoryDone_Parms AddDelegate_OnGetInventoryDone_Parms;
 	memcpy ( &AddDelegate_OnGetInventoryDone_Parms.func, &func, 0xC );
@@ -5947,7 +6038,7 @@ void UPBItemShopClient::OnGetInventoryDone ( int requestId, int ErrorCode, TArra
 	static UFunction* pFnOnGetInventoryDone = NULL;
 
 	if ( ! pFnOnGetInventoryDone )
-		pFnOnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35322 ];
+		pFnOnGetInventoryDone = (UFunction*) UObject::GObjObjects()->Data[ 35323 ];
 
 	UPBItemShopClient_execOnGetInventoryDone_Parms OnGetInventoryDone_Parms;
 	OnGetInventoryDone_Parms.requestId = requestId;
@@ -5968,7 +6059,7 @@ int UPBItemShopClient::eventGetInventory ( struct FString Category )
 	static UFunction* pFnGetInventory = NULL;
 
 	if ( ! pFnGetInventory )
-		pFnGetInventory = (UFunction*) UObject::GObjObjects()->Data[ 35319 ];
+		pFnGetInventory = (UFunction*) UObject::GObjObjects()->Data[ 35320 ];
 
 	UPBItemShopClient_eventGetInventory_Parms GetInventory_Parms;
 	memcpy ( &GetInventory_Parms.Category, &Category, 0xC );
@@ -5994,7 +6085,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetAmountDone ( struct FScriptDelegate f
 	static UFunction* pFnRemoveDelegate_OnGetAmountDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetAmountDone )
-		pFnRemoveDelegate_OnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35315 ];
+		pFnRemoveDelegate_OnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35316 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetAmountDone_Parms RemoveDelegate_OnGetAmountDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetAmountDone_Parms.func, &func, 0xC );
@@ -6017,7 +6108,7 @@ int UPBItemShopClient::AddDelegate_OnGetAmountDone ( struct FScriptDelegate func
 	static UFunction* pFnAddDelegate_OnGetAmountDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetAmountDone )
-		pFnAddDelegate_OnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35311 ];
+		pFnAddDelegate_OnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35312 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetAmountDone_Parms AddDelegate_OnGetAmountDone_Parms;
 	memcpy ( &AddDelegate_OnGetAmountDone_Parms.func, &func, 0xC );
@@ -6040,7 +6131,7 @@ void UPBItemShopClient::OnGetAmountDone ( int requestId, int ErrorCode, int Amou
 	static UFunction* pFnOnGetAmountDone = NULL;
 
 	if ( ! pFnOnGetAmountDone )
-		pFnOnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35307 ];
+		pFnOnGetAmountDone = (UFunction*) UObject::GObjObjects()->Data[ 35308 ];
 
 	UPBItemShopClient_execOnGetAmountDone_Parms OnGetAmountDone_Parms;
 	OnGetAmountDone_Parms.requestId = requestId;
@@ -6061,7 +6152,7 @@ int UPBItemShopClient::eventGetAmount ( struct FString currency )
 	static UFunction* pFnGetAmount = NULL;
 
 	if ( ! pFnGetAmount )
-		pFnGetAmount = (UFunction*) UObject::GObjObjects()->Data[ 35304 ];
+		pFnGetAmount = (UFunction*) UObject::GObjObjects()->Data[ 35305 ];
 
 	UPBItemShopClient_eventGetAmount_Parms GetAmount_Parms;
 	memcpy ( &GetAmount_Parms.currency, &currency, 0xC );
@@ -6087,7 +6178,7 @@ int UPBItemShopClient::RemoveDelegate_OnBuyOfferDone ( struct FScriptDelegate fu
 	static UFunction* pFnRemoveDelegate_OnBuyOfferDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnBuyOfferDone )
-		pFnRemoveDelegate_OnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35300 ];
+		pFnRemoveDelegate_OnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35301 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnBuyOfferDone_Parms RemoveDelegate_OnBuyOfferDone_Parms;
 	memcpy ( &RemoveDelegate_OnBuyOfferDone_Parms.func, &func, 0xC );
@@ -6110,7 +6201,7 @@ int UPBItemShopClient::AddDelegate_OnBuyOfferDone ( struct FScriptDelegate func,
 	static UFunction* pFnAddDelegate_OnBuyOfferDone = NULL;
 
 	if ( ! pFnAddDelegate_OnBuyOfferDone )
-		pFnAddDelegate_OnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35296 ];
+		pFnAddDelegate_OnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35297 ];
 
 	UPBItemShopClient_execAddDelegate_OnBuyOfferDone_Parms AddDelegate_OnBuyOfferDone_Parms;
 	memcpy ( &AddDelegate_OnBuyOfferDone_Parms.func, &func, 0xC );
@@ -6132,7 +6223,7 @@ void UPBItemShopClient::OnBuyOfferDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnBuyOfferDone = NULL;
 
 	if ( ! pFnOnBuyOfferDone )
-		pFnOnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35293 ];
+		pFnOnBuyOfferDone = (UFunction*) UObject::GObjObjects()->Data[ 35294 ];
 
 	UPBItemShopClient_execOnBuyOfferDone_Parms OnBuyOfferDone_Parms;
 	OnBuyOfferDone_Parms.requestId = requestId;
@@ -6154,7 +6245,7 @@ int UPBItemShopClient::eventBuyOffer ( struct FGuid OfferId, int quantity, int p
 	static UFunction* pFnBuyOffer = NULL;
 
 	if ( ! pFnBuyOffer )
-		pFnBuyOffer = (UFunction*) UObject::GObjObjects()->Data[ 35288 ];
+		pFnBuyOffer = (UFunction*) UObject::GObjObjects()->Data[ 35289 ];
 
 	UPBItemShopClient_eventBuyOffer_Parms BuyOffer_Parms;
 	memcpy ( &BuyOffer_Parms.OfferId, &OfferId, 0x10 );
@@ -6182,7 +6273,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetOfferDetailsDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnGetOfferDetailsDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetOfferDetailsDone )
-		pFnRemoveDelegate_OnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35284 ];
+		pFnRemoveDelegate_OnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35285 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetOfferDetailsDone_Parms RemoveDelegate_OnGetOfferDetailsDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetOfferDetailsDone_Parms.func, &func, 0xC );
@@ -6205,7 +6296,7 @@ int UPBItemShopClient::AddDelegate_OnGetOfferDetailsDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnGetOfferDetailsDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetOfferDetailsDone )
-		pFnAddDelegate_OnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35280 ];
+		pFnAddDelegate_OnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35281 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetOfferDetailsDone_Parms AddDelegate_OnGetOfferDetailsDone_Parms;
 	memcpy ( &AddDelegate_OnGetOfferDetailsDone_Parms.func, &func, 0xC );
@@ -6235,7 +6326,7 @@ void UPBItemShopClient::OnGetOfferDetailsDone ( int requestId, int ErrorCode, st
 	static UFunction* pFnOnGetOfferDetailsDone = NULL;
 
 	if ( ! pFnOnGetOfferDetailsDone )
-		pFnOnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35269 ];
+		pFnOnGetOfferDetailsDone = (UFunction*) UObject::GObjObjects()->Data[ 35270 ];
 
 	UPBItemShopClient_execOnGetOfferDetailsDone_Parms OnGetOfferDetailsDone_Parms;
 	OnGetOfferDetailsDone_Parms.requestId = requestId;
@@ -6263,7 +6354,7 @@ int UPBItemShopClient::eventGetOfferDetails ( struct FGuid OfferId )
 	static UFunction* pFnGetOfferDetails = NULL;
 
 	if ( ! pFnGetOfferDetails )
-		pFnGetOfferDetails = (UFunction*) UObject::GObjObjects()->Data[ 35266 ];
+		pFnGetOfferDetails = (UFunction*) UObject::GObjObjects()->Data[ 35267 ];
 
 	UPBItemShopClient_eventGetOfferDetails_Parms GetOfferDetails_Parms;
 	memcpy ( &GetOfferDetails_Parms.OfferId, &OfferId, 0x10 );
@@ -6289,7 +6380,7 @@ void UPBItemShopClient::_onGetItemOffersDone ( int requestId, int ErrorCode, TAr
 	static UFunction* pFn_onGetItemOffersDone = NULL;
 
 	if ( ! pFn_onGetItemOffersDone )
-		pFn_onGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35253 ];
+		pFn_onGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35254 ];
 
 	UPBItemShopClient_exec_onGetItemOffersDone_Parms _onGetItemOffersDone_Parms;
 	_onGetItemOffersDone_Parms.requestId = requestId;
@@ -6313,7 +6404,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetItemOffersDone ( struct FScriptDelega
 	static UFunction* pFnRemoveDelegate_OnGetItemOffersDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetItemOffersDone )
-		pFnRemoveDelegate_OnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35258 ];
+		pFnRemoveDelegate_OnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35259 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetItemOffersDone_Parms RemoveDelegate_OnGetItemOffersDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetItemOffersDone_Parms.func, &func, 0xC );
@@ -6336,7 +6427,7 @@ int UPBItemShopClient::AddDelegate_OnGetItemOffersDone ( struct FScriptDelegate 
 	static UFunction* pFnAddDelegate_OnGetItemOffersDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetItemOffersDone )
-		pFnAddDelegate_OnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35254 ];
+		pFnAddDelegate_OnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35255 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetItemOffersDone_Parms AddDelegate_OnGetItemOffersDone_Parms;
 	memcpy ( &AddDelegate_OnGetItemOffersDone_Parms.func, &func, 0xC );
@@ -6359,7 +6450,7 @@ void UPBItemShopClient::OnGetItemOffersDone ( int requestId, int ErrorCode, TArr
 	static UFunction* pFnOnGetItemOffersDone = NULL;
 
 	if ( ! pFnOnGetItemOffersDone )
-		pFnOnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35248 ];
+		pFnOnGetItemOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35249 ];
 
 	UPBItemShopClient_execOnGetItemOffersDone_Parms OnGetItemOffersDone_Parms;
 	OnGetItemOffersDone_Parms.requestId = requestId;
@@ -6381,7 +6472,7 @@ int UPBItemShopClient::eventGetItemOffers ( struct FGuid itemId, int marketCateg
 	static UFunction* pFnGetItemOffers = NULL;
 
 	if ( ! pFnGetItemOffers )
-		pFnGetItemOffers = (UFunction*) UObject::GObjObjects()->Data[ 35244 ];
+		pFnGetItemOffers = (UFunction*) UObject::GObjObjects()->Data[ 35245 ];
 
 	UPBItemShopClient_eventGetItemOffers_Parms GetItemOffers_Parms;
 	memcpy ( &GetItemOffers_Parms.itemId, &itemId, 0x10 );
@@ -6408,7 +6499,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetUniqueOffersOldDone ( struct FScriptD
 	static UFunction* pFnRemoveDelegate_OnGetUniqueOffersOldDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetUniqueOffersOldDone )
-		pFnRemoveDelegate_OnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35240 ];
+		pFnRemoveDelegate_OnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35241 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetUniqueOffersOldDone_Parms RemoveDelegate_OnGetUniqueOffersOldDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetUniqueOffersOldDone_Parms.func, &func, 0xC );
@@ -6431,7 +6522,7 @@ int UPBItemShopClient::AddDelegate_OnGetUniqueOffersOldDone ( struct FScriptDele
 	static UFunction* pFnAddDelegate_OnGetUniqueOffersOldDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetUniqueOffersOldDone )
-		pFnAddDelegate_OnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35236 ];
+		pFnAddDelegate_OnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35237 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetUniqueOffersOldDone_Parms AddDelegate_OnGetUniqueOffersOldDone_Parms;
 	memcpy ( &AddDelegate_OnGetUniqueOffersOldDone_Parms.func, &func, 0xC );
@@ -6454,7 +6545,7 @@ void UPBItemShopClient::OnGetUniqueOffersOldDone ( int requestId, int ErrorCode,
 	static UFunction* pFnOnGetUniqueOffersOldDone = NULL;
 
 	if ( ! pFnOnGetUniqueOffersOldDone )
-		pFnOnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35231 ];
+		pFnOnGetUniqueOffersOldDone = (UFunction*) UObject::GObjObjects()->Data[ 35232 ];
 
 	UPBItemShopClient_execOnGetUniqueOffersOldDone_Parms OnGetUniqueOffersOldDone_Parms;
 	OnGetUniqueOffersOldDone_Parms.requestId = requestId;
@@ -6475,7 +6566,7 @@ int UPBItemShopClient::eventGetUniqueOffersOld ( struct FString Category )
 	static UFunction* pFnGetUniqueOffersOld = NULL;
 
 	if ( ! pFnGetUniqueOffersOld )
-		pFnGetUniqueOffersOld = (UFunction*) UObject::GObjObjects()->Data[ 35228 ];
+		pFnGetUniqueOffersOld = (UFunction*) UObject::GObjObjects()->Data[ 35229 ];
 
 	UPBItemShopClient_eventGetUniqueOffersOld_Parms GetUniqueOffersOld_Parms;
 	memcpy ( &GetUniqueOffersOld_Parms.Category, &Category, 0xC );
@@ -6501,7 +6592,7 @@ void UPBItemShopClient::_onGetUniqueOffersDone ( int requestId, int ErrorCode, T
 	static UFunction* pFn_onGetUniqueOffersDone = NULL;
 
 	if ( ! pFn_onGetUniqueOffersDone )
-		pFn_onGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35215 ];
+		pFn_onGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35216 ];
 
 	UPBItemShopClient_exec_onGetUniqueOffersDone_Parms _onGetUniqueOffersDone_Parms;
 	_onGetUniqueOffersDone_Parms.requestId = requestId;
@@ -6525,7 +6616,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetUniqueOffersDone ( struct FScriptDele
 	static UFunction* pFnRemoveDelegate_OnGetUniqueOffersDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetUniqueOffersDone )
-		pFnRemoveDelegate_OnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35220 ];
+		pFnRemoveDelegate_OnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35221 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetUniqueOffersDone_Parms RemoveDelegate_OnGetUniqueOffersDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetUniqueOffersDone_Parms.func, &func, 0xC );
@@ -6548,7 +6639,7 @@ int UPBItemShopClient::AddDelegate_OnGetUniqueOffersDone ( struct FScriptDelegat
 	static UFunction* pFnAddDelegate_OnGetUniqueOffersDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetUniqueOffersDone )
-		pFnAddDelegate_OnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35216 ];
+		pFnAddDelegate_OnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35217 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetUniqueOffersDone_Parms AddDelegate_OnGetUniqueOffersDone_Parms;
 	memcpy ( &AddDelegate_OnGetUniqueOffersDone_Parms.func, &func, 0xC );
@@ -6571,7 +6662,7 @@ void UPBItemShopClient::OnGetUniqueOffersDone ( int requestId, int ErrorCode, TA
 	static UFunction* pFnOnGetUniqueOffersDone = NULL;
 
 	if ( ! pFnOnGetUniqueOffersDone )
-		pFnOnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35210 ];
+		pFnOnGetUniqueOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35211 ];
 
 	UPBItemShopClient_execOnGetUniqueOffersDone_Parms OnGetUniqueOffersDone_Parms;
 	OnGetUniqueOffersDone_Parms.requestId = requestId;
@@ -6593,7 +6684,7 @@ int UPBItemShopClient::eventGetUniqueOffers ( TArray< struct FString > categorie
 	static UFunction* pFnGetUniqueOffers = NULL;
 
 	if ( ! pFnGetUniqueOffers )
-		pFnGetUniqueOffers = (UFunction*) UObject::GObjObjects()->Data[ 35205 ];
+		pFnGetUniqueOffers = (UFunction*) UObject::GObjObjects()->Data[ 35206 ];
 
 	UPBItemShopClient_eventGetUniqueOffers_Parms GetUniqueOffers_Parms;
 	memcpy ( &GetUniqueOffers_Parms.categories, &categories, 0xC );
@@ -6618,7 +6709,7 @@ void UPBItemShopClient::_onGetOffersDone ( struct FTPBItemShopResult_OnGetOffers
 	static UFunction* pFn_onGetOffersDone = NULL;
 
 	if ( ! pFn_onGetOffersDone )
-		pFn_onGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35192 ];
+		pFn_onGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35193 ];
 
 	UPBItemShopClient_exec_onGetOffersDone_Parms _onGetOffersDone_Parms;
 
@@ -6640,7 +6731,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetOffersDone ( struct FScriptDelegate f
 	static UFunction* pFnRemoveDelegate_OnGetOffersDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetOffersDone )
-		pFnRemoveDelegate_OnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35199 ];
+		pFnRemoveDelegate_OnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35200 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetOffersDone_Parms RemoveDelegate_OnGetOffersDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetOffersDone_Parms.func, &func, 0xC );
@@ -6663,7 +6754,7 @@ int UPBItemShopClient::AddDelegate_OnGetOffersDone ( struct FScriptDelegate func
 	static UFunction* pFnAddDelegate_OnGetOffersDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetOffersDone )
-		pFnAddDelegate_OnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35195 ];
+		pFnAddDelegate_OnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35196 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetOffersDone_Parms AddDelegate_OnGetOffersDone_Parms;
 	memcpy ( &AddDelegate_OnGetOffersDone_Parms.func, &func, 0xC );
@@ -6684,7 +6775,7 @@ void UPBItemShopClient::OnGetOffersDone ( struct FTPBItemShopResult_OnGetOffersD
 	static UFunction* pFnOnGetOffersDone = NULL;
 
 	if ( ! pFnOnGetOffersDone )
-		pFnOnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35189 ];
+		pFnOnGetOffersDone = (UFunction*) UObject::GObjObjects()->Data[ 35190 ];
 
 	UPBItemShopClient_execOnGetOffersDone_Parms OnGetOffersDone_Parms;
 
@@ -6706,7 +6797,7 @@ int UPBItemShopClient::eventGetOffers ( TArray< struct FString > categories, int
 	static UFunction* pFnGetOffers = NULL;
 
 	if ( ! pFnGetOffers )
-		pFnGetOffers = (UFunction*) UObject::GObjObjects()->Data[ 35184 ];
+		pFnGetOffers = (UFunction*) UObject::GObjObjects()->Data[ 35185 ];
 
 	UPBItemShopClient_eventGetOffers_Parms GetOffers_Parms;
 	memcpy ( &GetOffers_Parms.categories, &categories, 0xC );
@@ -6733,7 +6824,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetSubscriptionModeDone ( struct FScript
 	static UFunction* pFnRemoveDelegate_OnGetSubscriptionModeDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetSubscriptionModeDone )
-		pFnRemoveDelegate_OnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35180 ];
+		pFnRemoveDelegate_OnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35181 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetSubscriptionModeDone_Parms RemoveDelegate_OnGetSubscriptionModeDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetSubscriptionModeDone_Parms.func, &func, 0xC );
@@ -6756,7 +6847,7 @@ int UPBItemShopClient::AddDelegate_OnGetSubscriptionModeDone ( struct FScriptDel
 	static UFunction* pFnAddDelegate_OnGetSubscriptionModeDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetSubscriptionModeDone )
-		pFnAddDelegate_OnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35176 ];
+		pFnAddDelegate_OnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35177 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetSubscriptionModeDone_Parms AddDelegate_OnGetSubscriptionModeDone_Parms;
 	memcpy ( &AddDelegate_OnGetSubscriptionModeDone_Parms.func, &func, 0xC );
@@ -6777,7 +6868,7 @@ void UPBItemShopClient::OnGetSubscriptionModeDone ( struct FTPBItemShopResult_On
 	static UFunction* pFnOnGetSubscriptionModeDone = NULL;
 
 	if ( ! pFnOnGetSubscriptionModeDone )
-		pFnOnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35162 ];
+		pFnOnGetSubscriptionModeDone = (UFunction*) UObject::GObjObjects()->Data[ 35163 ];
 
 	UPBItemShopClient_execOnGetSubscriptionModeDone_Parms OnGetSubscriptionModeDone_Parms;
 
@@ -6797,7 +6888,7 @@ int UPBItemShopClient::eventGetSubscriptionMode ( )
 	static UFunction* pFnGetSubscriptionMode = NULL;
 
 	if ( ! pFnGetSubscriptionMode )
-		pFnGetSubscriptionMode = (UFunction*) UObject::GObjObjects()->Data[ 35160 ];
+		pFnGetSubscriptionMode = (UFunction*) UObject::GObjObjects()->Data[ 35161 ];
 
 	UPBItemShopClient_eventGetSubscriptionMode_Parms GetSubscriptionMode_Parms;
 
@@ -6822,7 +6913,7 @@ int UPBItemShopClient::RemoveDelegate_OnGetProgressionDone ( struct FScriptDeleg
 	static UFunction* pFnRemoveDelegate_OnGetProgressionDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnGetProgressionDone )
-		pFnRemoveDelegate_OnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35156 ];
+		pFnRemoveDelegate_OnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35157 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnGetProgressionDone_Parms RemoveDelegate_OnGetProgressionDone_Parms;
 	memcpy ( &RemoveDelegate_OnGetProgressionDone_Parms.func, &func, 0xC );
@@ -6845,7 +6936,7 @@ int UPBItemShopClient::AddDelegate_OnGetProgressionDone ( struct FScriptDelegate
 	static UFunction* pFnAddDelegate_OnGetProgressionDone = NULL;
 
 	if ( ! pFnAddDelegate_OnGetProgressionDone )
-		pFnAddDelegate_OnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35152 ];
+		pFnAddDelegate_OnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35153 ];
 
 	UPBItemShopClient_execAddDelegate_OnGetProgressionDone_Parms AddDelegate_OnGetProgressionDone_Parms;
 	memcpy ( &AddDelegate_OnGetProgressionDone_Parms.func, &func, 0xC );
@@ -6866,7 +6957,7 @@ void UPBItemShopClient::OnGetProgressionDone ( struct FTPBItemShopResult_OnGetPr
 	static UFunction* pFnOnGetProgressionDone = NULL;
 
 	if ( ! pFnOnGetProgressionDone )
-		pFnOnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35143 ];
+		pFnOnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 35144 ];
 
 	UPBItemShopClient_execOnGetProgressionDone_Parms OnGetProgressionDone_Parms;
 
@@ -6886,7 +6977,7 @@ int UPBItemShopClient::eventGetProgression ( )
 	static UFunction* pFnGetProgression = NULL;
 
 	if ( ! pFnGetProgression )
-		pFnGetProgression = (UFunction*) UObject::GObjObjects()->Data[ 35141 ];
+		pFnGetProgression = (UFunction*) UObject::GObjObjects()->Data[ 35142 ];
 
 	UPBItemShopClient_eventGetProgression_Parms GetProgression_Parms;
 
@@ -6911,7 +7002,7 @@ int UPBItemShopClient::RemoveDelegate_OnLogoutDone ( struct FScriptDelegate func
 	static UFunction* pFnRemoveDelegate_OnLogoutDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnLogoutDone )
-		pFnRemoveDelegate_OnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35137 ];
+		pFnRemoveDelegate_OnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35138 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnLogoutDone_Parms RemoveDelegate_OnLogoutDone_Parms;
 	memcpy ( &RemoveDelegate_OnLogoutDone_Parms.func, &func, 0xC );
@@ -6934,7 +7025,7 @@ int UPBItemShopClient::AddDelegate_OnLogoutDone ( struct FScriptDelegate func, c
 	static UFunction* pFnAddDelegate_OnLogoutDone = NULL;
 
 	if ( ! pFnAddDelegate_OnLogoutDone )
-		pFnAddDelegate_OnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35133 ];
+		pFnAddDelegate_OnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35134 ];
 
 	UPBItemShopClient_execAddDelegate_OnLogoutDone_Parms AddDelegate_OnLogoutDone_Parms;
 	memcpy ( &AddDelegate_OnLogoutDone_Parms.func, &func, 0xC );
@@ -6955,7 +7046,7 @@ void UPBItemShopClient::OnLogoutDone ( struct FTPBItemShopResult_OnLogoutDone* R
 	static UFunction* pFnOnLogoutDone = NULL;
 
 	if ( ! pFnOnLogoutDone )
-		pFnOnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35130 ];
+		pFnOnLogoutDone = (UFunction*) UObject::GObjObjects()->Data[ 35131 ];
 
 	UPBItemShopClient_execOnLogoutDone_Parms OnLogoutDone_Parms;
 
@@ -6975,7 +7066,7 @@ int UPBItemShopClient::eventLogout ( )
 	static UFunction* pFnLogout = NULL;
 
 	if ( ! pFnLogout )
-		pFnLogout = (UFunction*) UObject::GObjObjects()->Data[ 35128 ];
+		pFnLogout = (UFunction*) UObject::GObjObjects()->Data[ 35129 ];
 
 	UPBItemShopClient_eventLogout_Parms Logout_Parms;
 
@@ -7000,7 +7091,7 @@ int UPBItemShopClient::RemoveDelegate_OnLoginDone ( struct FScriptDelegate func,
 	static UFunction* pFnRemoveDelegate_OnLoginDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnLoginDone )
-		pFnRemoveDelegate_OnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35124 ];
+		pFnRemoveDelegate_OnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35125 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnLoginDone_Parms RemoveDelegate_OnLoginDone_Parms;
 	memcpy ( &RemoveDelegate_OnLoginDone_Parms.func, &func, 0xC );
@@ -7023,7 +7114,7 @@ int UPBItemShopClient::AddDelegate_OnLoginDone ( struct FScriptDelegate func, cl
 	static UFunction* pFnAddDelegate_OnLoginDone = NULL;
 
 	if ( ! pFnAddDelegate_OnLoginDone )
-		pFnAddDelegate_OnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35120 ];
+		pFnAddDelegate_OnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35121 ];
 
 	UPBItemShopClient_execAddDelegate_OnLoginDone_Parms AddDelegate_OnLoginDone_Parms;
 	memcpy ( &AddDelegate_OnLoginDone_Parms.func, &func, 0xC );
@@ -7044,7 +7135,7 @@ void UPBItemShopClient::OnLoginDone ( struct FTPBItemShopResult_OnLoginDone* Res
 	static UFunction* pFnOnLoginDone = NULL;
 
 	if ( ! pFnOnLoginDone )
-		pFnOnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35115 ];
+		pFnOnLoginDone = (UFunction*) UObject::GObjObjects()->Data[ 35116 ];
 
 	UPBItemShopClient_execOnLoginDone_Parms OnLoginDone_Parms;
 
@@ -7068,7 +7159,7 @@ int UPBItemShopClient::eventLoginWithKey ( struct FString UserName, struct FStri
 	static UFunction* pFnLoginWithKey = NULL;
 
 	if ( ! pFnLoginWithKey )
-		pFnLoginWithKey = (UFunction*) UObject::GObjObjects()->Data[ 35109 ];
+		pFnLoginWithKey = (UFunction*) UObject::GObjObjects()->Data[ 35110 ];
 
 	UPBItemShopClient_eventLoginWithKey_Parms LoginWithKey_Parms;
 	memcpy ( &LoginWithKey_Parms.UserName, &UserName, 0xC );
@@ -7096,7 +7187,7 @@ int UPBItemShopClient::eventLoginWithSession ( struct FString SessionId )
 	static UFunction* pFnLoginWithSession = NULL;
 
 	if ( ! pFnLoginWithSession )
-		pFnLoginWithSession = (UFunction*) UObject::GObjObjects()->Data[ 35106 ];
+		pFnLoginWithSession = (UFunction*) UObject::GObjObjects()->Data[ 35107 ];
 
 	UPBItemShopClient_eventLoginWithSession_Parms LoginWithSession_Parms;
 	memcpy ( &LoginWithSession_Parms.SessionId, &SessionId, 0xC );
@@ -7122,7 +7213,7 @@ int UPBItemShopClient::eventLogin ( struct FString UserName, struct FString Pass
 	static UFunction* pFnLogin = NULL;
 
 	if ( ! pFnLogin )
-		pFnLogin = (UFunction*) UObject::GObjObjects()->Data[ 35102 ];
+		pFnLogin = (UFunction*) UObject::GObjObjects()->Data[ 35103 ];
 
 	UPBItemShopClient_eventLogin_Parms Login_Parms;
 	memcpy ( &Login_Parms.UserName, &UserName, 0xC );
@@ -7149,7 +7240,7 @@ int UPBItemShopClient::RemoveDelegate_OnPingDone ( struct FScriptDelegate func, 
 	static UFunction* pFnRemoveDelegate_OnPingDone = NULL;
 
 	if ( ! pFnRemoveDelegate_OnPingDone )
-		pFnRemoveDelegate_OnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35098 ];
+		pFnRemoveDelegate_OnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35099 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnPingDone_Parms RemoveDelegate_OnPingDone_Parms;
 	memcpy ( &RemoveDelegate_OnPingDone_Parms.func, &func, 0xC );
@@ -7172,7 +7263,7 @@ int UPBItemShopClient::AddDelegate_OnPingDone ( struct FScriptDelegate func, cla
 	static UFunction* pFnAddDelegate_OnPingDone = NULL;
 
 	if ( ! pFnAddDelegate_OnPingDone )
-		pFnAddDelegate_OnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35094 ];
+		pFnAddDelegate_OnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35095 ];
 
 	UPBItemShopClient_execAddDelegate_OnPingDone_Parms AddDelegate_OnPingDone_Parms;
 	memcpy ( &AddDelegate_OnPingDone_Parms.func, &func, 0xC );
@@ -7193,7 +7284,7 @@ void UPBItemShopClient::OnPingDone ( struct FTPBItemShopResult_OnPingDone* Resul
 	static UFunction* pFnOnPingDone = NULL;
 
 	if ( ! pFnOnPingDone )
-		pFnOnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35091 ];
+		pFnOnPingDone = (UFunction*) UObject::GObjObjects()->Data[ 35092 ];
 
 	UPBItemShopClient_execOnPingDone_Parms OnPingDone_Parms;
 
@@ -7213,7 +7304,7 @@ int UPBItemShopClient::eventPing ( )
 	static UFunction* pFnPing = NULL;
 
 	if ( ! pFnPing )
-		pFnPing = (UFunction*) UObject::GObjObjects()->Data[ 35089 ];
+		pFnPing = (UFunction*) UObject::GObjObjects()->Data[ 35090 ];
 
 	UPBItemShopClient_eventPing_Parms Ping_Parms;
 
@@ -7238,7 +7329,7 @@ int UPBItemShopClient::RemoveDelegate_OnSessionEnded ( struct FScriptDelegate fu
 	static UFunction* pFnRemoveDelegate_OnSessionEnded = NULL;
 
 	if ( ! pFnRemoveDelegate_OnSessionEnded )
-		pFnRemoveDelegate_OnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35085 ];
+		pFnRemoveDelegate_OnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35086 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnSessionEnded_Parms RemoveDelegate_OnSessionEnded_Parms;
 	memcpy ( &RemoveDelegate_OnSessionEnded_Parms.func, &func, 0xC );
@@ -7261,7 +7352,7 @@ int UPBItemShopClient::AddDelegate_OnSessionEnded ( struct FScriptDelegate func,
 	static UFunction* pFnAddDelegate_OnSessionEnded = NULL;
 
 	if ( ! pFnAddDelegate_OnSessionEnded )
-		pFnAddDelegate_OnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35081 ];
+		pFnAddDelegate_OnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35082 ];
 
 	UPBItemShopClient_execAddDelegate_OnSessionEnded_Parms AddDelegate_OnSessionEnded_Parms;
 	memcpy ( &AddDelegate_OnSessionEnded_Parms.func, &func, 0xC );
@@ -7282,7 +7373,7 @@ void UPBItemShopClient::OnSessionEnded ( struct FTPBItemShopResult_OnSessionEnde
 	static UFunction* pFnOnSessionEnded = NULL;
 
 	if ( ! pFnOnSessionEnded )
-		pFnOnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35075 ];
+		pFnOnSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 35076 ];
 
 	UPBItemShopClient_execOnSessionEnded_Parms OnSessionEnded_Parms;
 
@@ -7304,7 +7395,7 @@ int UPBItemShopClient::RemoveDelegate_OnDisconnect ( struct FScriptDelegate func
 	static UFunction* pFnRemoveDelegate_OnDisconnect = NULL;
 
 	if ( ! pFnRemoveDelegate_OnDisconnect )
-		pFnRemoveDelegate_OnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35071 ];
+		pFnRemoveDelegate_OnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35072 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnDisconnect_Parms RemoveDelegate_OnDisconnect_Parms;
 	memcpy ( &RemoveDelegate_OnDisconnect_Parms.func, &func, 0xC );
@@ -7327,7 +7418,7 @@ int UPBItemShopClient::AddDelegate_OnDisconnect ( struct FScriptDelegate func, c
 	static UFunction* pFnAddDelegate_OnDisconnect = NULL;
 
 	if ( ! pFnAddDelegate_OnDisconnect )
-		pFnAddDelegate_OnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35067 ];
+		pFnAddDelegate_OnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35068 ];
 
 	UPBItemShopClient_execAddDelegate_OnDisconnect_Parms AddDelegate_OnDisconnect_Parms;
 	memcpy ( &AddDelegate_OnDisconnect_Parms.func, &func, 0xC );
@@ -7348,7 +7439,7 @@ void UPBItemShopClient::OnDisconnect ( struct FTPBItemShopResult_OnDisconnect* R
 	static UFunction* pFnOnDisconnect = NULL;
 
 	if ( ! pFnOnDisconnect )
-		pFnOnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35064 ];
+		pFnOnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 35065 ];
 
 	UPBItemShopClient_execOnDisconnect_Parms OnDisconnect_Parms;
 
@@ -7370,7 +7461,7 @@ int UPBItemShopClient::RemoveDelegate_OnQueueChanged ( struct FScriptDelegate fu
 	static UFunction* pFnRemoveDelegate_OnQueueChanged = NULL;
 
 	if ( ! pFnRemoveDelegate_OnQueueChanged )
-		pFnRemoveDelegate_OnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35060 ];
+		pFnRemoveDelegate_OnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35061 ];
 
 	UPBItemShopClient_execRemoveDelegate_OnQueueChanged_Parms RemoveDelegate_OnQueueChanged_Parms;
 	memcpy ( &RemoveDelegate_OnQueueChanged_Parms.func, &func, 0xC );
@@ -7393,7 +7484,7 @@ int UPBItemShopClient::AddDelegate_OnQueueChanged ( struct FScriptDelegate func,
 	static UFunction* pFnAddDelegate_OnQueueChanged = NULL;
 
 	if ( ! pFnAddDelegate_OnQueueChanged )
-		pFnAddDelegate_OnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35056 ];
+		pFnAddDelegate_OnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35057 ];
 
 	UPBItemShopClient_execAddDelegate_OnQueueChanged_Parms AddDelegate_OnQueueChanged_Parms;
 	memcpy ( &AddDelegate_OnQueueChanged_Parms.func, &func, 0xC );
@@ -7414,7 +7505,7 @@ void UPBItemShopClient::OnQueueChanged ( struct FTPBItemShopResult_OnQueueChange
 	static UFunction* pFnOnQueueChanged = NULL;
 
 	if ( ! pFnOnQueueChanged )
-		pFnOnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35052 ];
+		pFnOnQueueChanged = (UFunction*) UObject::GObjObjects()->Data[ 35053 ];
 
 	UPBItemShopClient_execOnQueueChanged_Parms OnQueueChanged_Parms;
 
@@ -7434,7 +7525,7 @@ void UPBItemShopClient::RemoveAllDelegatesForParent ( class UObject* Parent )
 	static UFunction* pFnRemoveAllDelegatesForParent = NULL;
 
 	if ( ! pFnRemoveAllDelegatesForParent )
-		pFnRemoveAllDelegatesForParent = (UFunction*) UObject::GObjObjects()->Data[ 35050 ];
+		pFnRemoveAllDelegatesForParent = (UFunction*) UObject::GObjObjects()->Data[ 35051 ];
 
 	UPBItemShopClient_execRemoveAllDelegatesForParent_Parms RemoveAllDelegatesForParent_Parms;
 	RemoveAllDelegatesForParent_Parms.Parent = Parent;
@@ -7455,7 +7546,7 @@ int UPBItemShopClient::RemoveDelegate ( struct FString DelegateName, class UObje
 	static UFunction* pFnRemoveDelegate = NULL;
 
 	if ( ! pFnRemoveDelegate )
-		pFnRemoveDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35045 ];
+		pFnRemoveDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35046 ];
 
 	UPBItemShopClient_execRemoveDelegate_Parms RemoveDelegate_Parms;
 	memcpy ( &RemoveDelegate_Parms.DelegateName, &DelegateName, 0xC );
@@ -7484,7 +7575,7 @@ int UPBItemShopClient::AddDelegate ( struct FString DelegateName, class UObject*
 	static UFunction* pFnAddDelegate = NULL;
 
 	if ( ! pFnAddDelegate )
-		pFnAddDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35040 ];
+		pFnAddDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35041 ];
 
 	UPBItemShopClient_execAddDelegate_Parms AddDelegate_Parms;
 	memcpy ( &AddDelegate_Parms.DelegateName, &DelegateName, 0xC );
@@ -7510,7 +7601,7 @@ void UPBItemShopClient::SetResponseDelay ( int milliseconds )
 	static UFunction* pFnSetResponseDelay = NULL;
 
 	if ( ! pFnSetResponseDelay )
-		pFnSetResponseDelay = (UFunction*) UObject::GObjObjects()->Data[ 35038 ];
+		pFnSetResponseDelay = (UFunction*) UObject::GObjObjects()->Data[ 35039 ];
 
 	UPBItemShopClient_execSetResponseDelay_Parms SetResponseDelay_Parms;
 	SetResponseDelay_Parms.milliseconds = milliseconds;
@@ -7532,7 +7623,7 @@ void UPBItemShopClient::SetPingInterval ( int Seconds )
 	static UFunction* pFnSetPingInterval = NULL;
 
 	if ( ! pFnSetPingInterval )
-		pFnSetPingInterval = (UFunction*) UObject::GObjObjects()->Data[ 35036 ];
+		pFnSetPingInterval = (UFunction*) UObject::GObjObjects()->Data[ 35037 ];
 
 	UPBItemShopClient_execSetPingInterval_Parms SetPingInterval_Parms;
 	SetPingInterval_Parms.Seconds = Seconds;
@@ -7554,7 +7645,7 @@ struct FString UPBItemShopClient::GetSessionString ( )
 	static UFunction* pFnGetSessionString = NULL;
 
 	if ( ! pFnGetSessionString )
-		pFnGetSessionString = (UFunction*) UObject::GObjObjects()->Data[ 35034 ];
+		pFnGetSessionString = (UFunction*) UObject::GObjObjects()->Data[ 35035 ];
 
 	UPBItemShopClient_execGetSessionString_Parms GetSessionString_Parms;
 
@@ -7577,7 +7668,7 @@ struct FGuid UPBItemShopClient::GetProfileId ( )
 	static UFunction* pFnGetProfileId = NULL;
 
 	if ( ! pFnGetProfileId )
-		pFnGetProfileId = (UFunction*) UObject::GObjObjects()->Data[ 35032 ];
+		pFnGetProfileId = (UFunction*) UObject::GObjObjects()->Data[ 35033 ];
 
 	UPBItemShopClient_execGetProfileId_Parms GetProfileId_Parms;
 
@@ -7600,7 +7691,7 @@ struct FGuid UPBItemShopClient::GetUserId ( )
 	static UFunction* pFnGetUserId = NULL;
 
 	if ( ! pFnGetUserId )
-		pFnGetUserId = (UFunction*) UObject::GObjObjects()->Data[ 35030 ];
+		pFnGetUserId = (UFunction*) UObject::GObjObjects()->Data[ 35031 ];
 
 	UPBItemShopClient_execGetUserId_Parms GetUserId_Parms;
 
@@ -7624,7 +7715,7 @@ bool UPBItemShopClient::ClientVersion ( struct FString* Version )
 	static UFunction* pFnClientVersion = NULL;
 
 	if ( ! pFnClientVersion )
-		pFnClientVersion = (UFunction*) UObject::GObjObjects()->Data[ 35027 ];
+		pFnClientVersion = (UFunction*) UObject::GObjObjects()->Data[ 35028 ];
 
 	UPBItemShopClient_execClientVersion_Parms ClientVersion_Parms;
 
@@ -7650,7 +7741,7 @@ bool UPBItemShopClient::ClientAPIReady ( )
 	static UFunction* pFnClientAPIReady = NULL;
 
 	if ( ! pFnClientAPIReady )
-		pFnClientAPIReady = (UFunction*) UObject::GObjObjects()->Data[ 35025 ];
+		pFnClientAPIReady = (UFunction*) UObject::GObjObjects()->Data[ 35026 ];
 
 	UPBItemShopClient_execClientAPIReady_Parms ClientAPIReady_Parms;
 
@@ -7674,7 +7765,7 @@ bool UPBItemShopClient::ClientCancelRequest ( int requestId )
 	static UFunction* pFnClientCancelRequest = NULL;
 
 	if ( ! pFnClientCancelRequest )
-		pFnClientCancelRequest = (UFunction*) UObject::GObjObjects()->Data[ 35022 ];
+		pFnClientCancelRequest = (UFunction*) UObject::GObjObjects()->Data[ 35023 ];
 
 	UPBItemShopClient_execClientCancelRequest_Parms ClientCancelRequest_Parms;
 	ClientCancelRequest_Parms.requestId = requestId;
@@ -7698,7 +7789,7 @@ bool UPBItemShopClient::ClientCancelAllRequests ( )
 	static UFunction* pFnClientCancelAllRequests = NULL;
 
 	if ( ! pFnClientCancelAllRequests )
-		pFnClientCancelAllRequests = (UFunction*) UObject::GObjObjects()->Data[ 35020 ];
+		pFnClientCancelAllRequests = (UFunction*) UObject::GObjObjects()->Data[ 35021 ];
 
 	UPBItemShopClient_execClientCancelAllRequests_Parms ClientCancelAllRequests_Parms;
 
@@ -7721,7 +7812,7 @@ bool UPBItemShopClient::IsBusy ( )
 	static UFunction* pFnIsBusy = NULL;
 
 	if ( ! pFnIsBusy )
-		pFnIsBusy = (UFunction*) UObject::GObjObjects()->Data[ 35018 ];
+		pFnIsBusy = (UFunction*) UObject::GObjObjects()->Data[ 35019 ];
 
 	UPBItemShopClient_execIsBusy_Parms IsBusy_Parms;
 
@@ -7744,7 +7835,7 @@ void UPBItemShopClient::ClearCachedCategory ( struct FString cached_category )
 	static UFunction* pFnClearCachedCategory = NULL;
 
 	if ( ! pFnClearCachedCategory )
-		pFnClearCachedCategory = (UFunction*) UObject::GObjObjects()->Data[ 35016 ];
+		pFnClearCachedCategory = (UFunction*) UObject::GObjObjects()->Data[ 35017 ];
 
 	UPBItemShopClient_execClearCachedCategory_Parms ClearCachedCategory_Parms;
 	memcpy ( &ClearCachedCategory_Parms.cached_category, &cached_category, 0xC );
@@ -7761,7 +7852,7 @@ void UPBItemShopClient::ClearCache ( )
 	static UFunction* pFnClearCache = NULL;
 
 	if ( ! pFnClearCache )
-		pFnClearCache = (UFunction*) UObject::GObjObjects()->Data[ 35015 ];
+		pFnClearCache = (UFunction*) UObject::GObjObjects()->Data[ 35016 ];
 
 	UPBItemShopClient_execClearCache_Parms ClearCache_Parms;
 
@@ -7778,7 +7869,7 @@ void UPBItemShopClient::GetUnlockedOffers ( TArray< struct FPBOffer >* unlocked_
 	static UFunction* pFnGetUnlockedOffers = NULL;
 
 	if ( ! pFnGetUnlockedOffers )
-		pFnGetUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35011 ];
+		pFnGetUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35012 ];
 
 	UPBItemShopClient_execGetUnlockedOffers_Parms GetUnlockedOffers_Parms;
 
@@ -7798,7 +7889,7 @@ void UPBItemShopClient::AddUnlockedOffers ( TArray< struct FPBOffer >* unlocked_
 	static UFunction* pFnAddUnlockedOffers = NULL;
 
 	if ( ! pFnAddUnlockedOffers )
-		pFnAddUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35004 ];
+		pFnAddUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35005 ];
 
 	UPBItemShopClient_execAddUnlockedOffers_Parms AddUnlockedOffers_Parms;
 
@@ -7817,7 +7908,7 @@ void UPBItemShopClient::ClearUnlockedOffers ( )
 	static UFunction* pFnClearUnlockedOffers = NULL;
 
 	if ( ! pFnClearUnlockedOffers )
-		pFnClearUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35003 ];
+		pFnClearUnlockedOffers = (UFunction*) UObject::GObjObjects()->Data[ 35004 ];
 
 	UPBItemShopClient_execClearUnlockedOffers_Parms ClearUnlockedOffers_Parms;
 
@@ -7833,7 +7924,7 @@ void UPBItemShopClient::ScriptInitializeDelegate ( )
 	static UFunction* pFnScriptInitializeDelegate = NULL;
 
 	if ( ! pFnScriptInitializeDelegate )
-		pFnScriptInitializeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35001 ];
+		pFnScriptInitializeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 35002 ];
 
 	UPBItemShopClient_execScriptInitializeDelegate_Parms ScriptInitializeDelegate_Parms;
 
@@ -7849,7 +7940,7 @@ void UPBItemShopClient::Initialize ( )
 	static UFunction* pFnInitialize = NULL;
 
 	if ( ! pFnInitialize )
-		pFnInitialize = (UFunction*) UObject::GObjObjects()->Data[ 35000 ];
+		pFnInitialize = (UFunction*) UObject::GObjObjects()->Data[ 35001 ];
 
 	UPBItemShopClient_execInitialize_Parms Initialize_Parms;
 
@@ -7870,7 +7961,7 @@ void UPBItemShopClient::CallTick ( float DeltaTime )
 	static UFunction* pFnCallTick = NULL;
 
 	if ( ! pFnCallTick )
-		pFnCallTick = (UFunction*) UObject::GObjObjects()->Data[ 34998 ];
+		pFnCallTick = (UFunction*) UObject::GObjObjects()->Data[ 34999 ];
 
 	UPBItemShopClient_execCallTick_Parms CallTick_Parms;
 	CallTick_Parms.DeltaTime = DeltaTime;
@@ -7892,7 +7983,7 @@ class UPBItemShopClient* UPBItemShopClient::GetInstance ( )
 	static UFunction* pFnGetInstance = NULL;
 
 	if ( ! pFnGetInstance )
-		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 34996 ];
+		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 34997 ];
 
 	UPBItemShopClient_execGetInstance_Parms GetInstance_Parms;
 
@@ -7916,7 +8007,7 @@ void UPBItemShopServer::OnSubmitMapVoteDone ( int requestId, int errocode )
 	static UFunction* pFnOnSubmitMapVoteDone = NULL;
 
 	if ( ! pFnOnSubmitMapVoteDone )
-		pFnOnSubmitMapVoteDone = (UFunction*) UObject::GObjObjects()->Data[ 36567 ];
+		pFnOnSubmitMapVoteDone = (UFunction*) UObject::GObjObjects()->Data[ 36583 ];
 
 	UPBItemShopServer_execOnSubmitMapVoteDone_Parms OnSubmitMapVoteDone_Parms;
 	OnSubmitMapVoteDone_Parms.requestId = requestId;
@@ -7936,7 +8027,7 @@ int UPBItemShopServer::SubmitMapVote ( struct FPBMapVoteData Data )
 	static UFunction* pFnSubmitMapVote = NULL;
 
 	if ( ! pFnSubmitMapVote )
-		pFnSubmitMapVote = (UFunction*) UObject::GObjObjects()->Data[ 36722 ];
+		pFnSubmitMapVote = (UFunction*) UObject::GObjObjects()->Data[ 36739 ];
 
 	UPBItemShopServer_execSubmitMapVote_Parms SubmitMapVote_Parms;
 	memcpy ( &SubmitMapVote_Parms.Data, &Data, 0x24 );
@@ -7961,7 +8052,7 @@ void UPBItemShopServer::OnSubmitMatchStatsDone ( int requestId, int errocode )
 	static UFunction* pFnOnSubmitMatchStatsDone = NULL;
 
 	if ( ! pFnOnSubmitMatchStatsDone )
-		pFnOnSubmitMatchStatsDone = (UFunction*) UObject::GObjObjects()->Data[ 36569 ];
+		pFnOnSubmitMatchStatsDone = (UFunction*) UObject::GObjObjects()->Data[ 36585 ];
 
 	UPBItemShopServer_execOnSubmitMatchStatsDone_Parms OnSubmitMatchStatsDone_Parms;
 	OnSubmitMatchStatsDone_Parms.requestId = requestId;
@@ -7981,7 +8072,7 @@ int UPBItemShopServer::SubmitMatchStats ( struct FPBMatchStatsData Data )
 	static UFunction* pFnSubmitMatchStats = NULL;
 
 	if ( ! pFnSubmitMatchStats )
-		pFnSubmitMatchStats = (UFunction*) UObject::GObjObjects()->Data[ 36717 ];
+		pFnSubmitMatchStats = (UFunction*) UObject::GObjObjects()->Data[ 36734 ];
 
 	UPBItemShopServer_execSubmitMatchStats_Parms SubmitMatchStats_Parms;
 	memcpy ( &SubmitMatchStats_Parms.Data, &Data, 0x5C );
@@ -8009,7 +8100,7 @@ void UPBItemShopServer::OnGetBoostersServerDone ( int requestId, int errocode, i
 	static UFunction* pFnOnGetBoostersServerDone = NULL;
 
 	if ( ! pFnOnGetBoostersServerDone )
-		pFnOnGetBoostersServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36571 ];
+		pFnOnGetBoostersServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36587 ];
 
 	UPBItemShopServer_execOnGetBoostersServerDone_Parms OnGetBoostersServerDone_Parms;
 	OnGetBoostersServerDone_Parms.requestId = requestId;
@@ -8031,7 +8122,7 @@ int UPBItemShopServer::GetBoostersServer ( )
 	static UFunction* pFnGetBoostersServer = NULL;
 
 	if ( ! pFnGetBoostersServer )
-		pFnGetBoostersServer = (UFunction*) UObject::GObjObjects()->Data[ 36709 ];
+		pFnGetBoostersServer = (UFunction*) UObject::GObjObjects()->Data[ 36726 ];
 
 	UPBItemShopServer_execGetBoostersServer_Parms GetBoostersServer_Parms;
 
@@ -8056,7 +8147,7 @@ void UPBItemShopServer::OnDeleteEventByBackendDone ( int requestId, int ErrorCod
 	static UFunction* pFnOnDeleteEventByBackendDone = NULL;
 
 	if ( ! pFnOnDeleteEventByBackendDone )
-		pFnOnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 36573 ];
+		pFnOnDeleteEventByBackendDone = (UFunction*) UObject::GObjObjects()->Data[ 36589 ];
 
 	UPBItemShopServer_execOnDeleteEventByBackendDone_Parms OnDeleteEventByBackendDone_Parms;
 	OnDeleteEventByBackendDone_Parms.requestId = requestId;
@@ -8077,7 +8168,7 @@ int UPBItemShopServer::eventDeleteEventByBackend ( int EventCode )
 	static UFunction* pFnDeleteEventByBackend = NULL;
 
 	if ( ! pFnDeleteEventByBackend )
-		pFnDeleteEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 36703 ];
+		pFnDeleteEventByBackend = (UFunction*) UObject::GObjObjects()->Data[ 36720 ];
 
 	UPBItemShopServer_eventDeleteEventByBackend_Parms DeleteEventByBackend_Parms;
 	DeleteEventByBackend_Parms.EventCode = EventCode;
@@ -8102,7 +8193,7 @@ void UPBItemShopServer::OnSubmitProgressionServerDone ( int requestId, int Error
 	static UFunction* pFnOnSubmitProgressionServerDone = NULL;
 
 	if ( ! pFnOnSubmitProgressionServerDone )
-		pFnOnSubmitProgressionServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36575 ];
+		pFnOnSubmitProgressionServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36591 ];
 
 	UPBItemShopServer_execOnSubmitProgressionServerDone_Parms OnSubmitProgressionServerDone_Parms;
 	OnSubmitProgressionServerDone_Parms.requestId = requestId;
@@ -8122,7 +8213,7 @@ int UPBItemShopServer::SubmitProgression ( TArray< struct FPBSubmitProgressionPr
 	static UFunction* pFnSubmitProgression = NULL;
 
 	if ( ! pFnSubmitProgression )
-		pFnSubmitProgression = (UFunction*) UObject::GObjObjects()->Data[ 36697 ];
+		pFnSubmitProgression = (UFunction*) UObject::GObjObjects()->Data[ 36714 ];
 
 	UPBItemShopServer_execSubmitProgression_Parms SubmitProgression_Parms;
 	memcpy ( &SubmitProgression_Parms.ProfileData, &ProfileData, 0xC );
@@ -8157,7 +8248,7 @@ void UPBItemShopServer::OnGetProgressionDone ( int requestId, int ErrorCode, flo
 	static UFunction* pFnOnGetProgressionDone = NULL;
 
 	if ( ! pFnOnGetProgressionDone )
-		pFnOnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 36577 ];
+		pFnOnGetProgressionDone = (UFunction*) UObject::GObjObjects()->Data[ 36593 ];
 
 	UPBItemShopServer_execOnGetProgressionDone_Parms OnGetProgressionDone_Parms;
 	OnGetProgressionDone_Parms.requestId = requestId;
@@ -8186,7 +8277,7 @@ int UPBItemShopServer::GetProgression ( )
 	static UFunction* pFnGetProgression = NULL;
 
 	if ( ! pFnGetProgression )
-		pFnGetProgression = (UFunction*) UObject::GObjObjects()->Data[ 36683 ];
+		pFnGetProgression = (UFunction*) UObject::GObjObjects()->Data[ 36700 ];
 
 	UPBItemShopServer_execGetProgression_Parms GetProgression_Parms;
 
@@ -8210,7 +8301,7 @@ void UPBItemShopServer::OnIncrementCoolnessServerDone ( int requestId, int Error
 	static UFunction* pFnOnIncrementCoolnessServerDone = NULL;
 
 	if ( ! pFnOnIncrementCoolnessServerDone )
-		pFnOnIncrementCoolnessServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36579 ];
+		pFnOnIncrementCoolnessServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36595 ];
 
 	UPBItemShopServer_execOnIncrementCoolnessServerDone_Parms OnIncrementCoolnessServerDone_Parms;
 	OnIncrementCoolnessServerDone_Parms.requestId = requestId;
@@ -8231,7 +8322,7 @@ int UPBItemShopServer::IncrementCoolnessServer ( struct FGuid ProfileId, int inc
 	static UFunction* pFnIncrementCoolnessServer = NULL;
 
 	if ( ! pFnIncrementCoolnessServer )
-		pFnIncrementCoolnessServer = (UFunction*) UObject::GObjObjects()->Data[ 36677 ];
+		pFnIncrementCoolnessServer = (UFunction*) UObject::GObjObjects()->Data[ 36694 ];
 
 	UPBItemShopServer_execIncrementCoolnessServer_Parms IncrementCoolnessServer_Parms;
 	memcpy ( &IncrementCoolnessServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8258,7 +8349,7 @@ void UPBItemShopServer::OnSendPlayerStatusServerDone ( int requestId, int ErrorC
 	static UFunction* pFnOnSendPlayerStatusServerDone = NULL;
 
 	if ( ! pFnOnSendPlayerStatusServerDone )
-		pFnOnSendPlayerStatusServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36581 ];
+		pFnOnSendPlayerStatusServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36597 ];
 
 	UPBItemShopServer_execOnSendPlayerStatusServerDone_Parms OnSendPlayerStatusServerDone_Parms;
 	OnSendPlayerStatusServerDone_Parms.requestId = requestId;
@@ -8281,7 +8372,7 @@ int UPBItemShopServer::SendPlayerStatusServer ( struct FGuid ProfileId, int Stat
 	static UFunction* pFnSendPlayerStatusServer = NULL;
 
 	if ( ! pFnSendPlayerStatusServer )
-		pFnSendPlayerStatusServer = (UFunction*) UObject::GObjObjects()->Data[ 36669 ];
+		pFnSendPlayerStatusServer = (UFunction*) UObject::GObjObjects()->Data[ 36686 ];
 
 	UPBItemShopServer_execSendPlayerStatusServer_Parms SendPlayerStatusServer_Parms;
 	memcpy ( &SendPlayerStatusServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8315,7 +8406,7 @@ void UPBItemShopServer::OnGetSubscriptionModeServerDone ( int requestId, int Err
 	static UFunction* pFnOnGetSubscriptionModeServerDone = NULL;
 
 	if ( ! pFnOnGetSubscriptionModeServerDone )
-		pFnOnGetSubscriptionModeServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36583 ];
+		pFnOnGetSubscriptionModeServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36599 ];
 
 	UPBItemShopServer_execOnGetSubscriptionModeServerDone_Parms OnGetSubscriptionModeServerDone_Parms;
 	OnGetSubscriptionModeServerDone_Parms.requestId = requestId;
@@ -8342,7 +8433,7 @@ int UPBItemShopServer::GetSubscriptionModeServer ( struct FGuid ProfileId )
 	static UFunction* pFnGetSubscriptionModeServer = NULL;
 
 	if ( ! pFnGetSubscriptionModeServer )
-		pFnGetSubscriptionModeServer = (UFunction*) UObject::GObjObjects()->Data[ 36657 ];
+		pFnGetSubscriptionModeServer = (UFunction*) UObject::GObjObjects()->Data[ 36674 ];
 
 	UPBItemShopServer_execGetSubscriptionModeServer_Parms GetSubscriptionModeServer_Parms;
 	memcpy ( &GetSubscriptionModeServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8369,7 +8460,7 @@ void UPBItemShopServer::OnGetPresetsServerDone ( int requestId, int errocode, st
 	static UFunction* pFnOnGetPresetsServerDone = NULL;
 
 	if ( ! pFnOnGetPresetsServerDone )
-		pFnOnGetPresetsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36585 ];
+		pFnOnGetPresetsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36601 ];
 
 	UPBItemShopServer_execOnGetPresetsServerDone_Parms OnGetPresetsServerDone_Parms;
 	OnGetPresetsServerDone_Parms.requestId = requestId;
@@ -8391,7 +8482,7 @@ int UPBItemShopServer::GetPresetsServer ( struct FGuid ProfileId )
 	static UFunction* pFnGetPresetsServer = NULL;
 
 	if ( ! pFnGetPresetsServer )
-		pFnGetPresetsServer = (UFunction*) UObject::GObjObjects()->Data[ 36649 ];
+		pFnGetPresetsServer = (UFunction*) UObject::GObjObjects()->Data[ 36666 ];
 
 	UPBItemShopServer_execGetPresetsServer_Parms GetPresetsServer_Parms;
 	memcpy ( &GetPresetsServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8417,7 +8508,7 @@ void UPBItemShopServer::OnUpdateProfileDetailsServerDone ( int requestId, int Er
 	static UFunction* pFnOnUpdateProfileDetailsServerDone = NULL;
 
 	if ( ! pFnOnUpdateProfileDetailsServerDone )
-		pFnOnUpdateProfileDetailsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36587 ];
+		pFnOnUpdateProfileDetailsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36603 ];
 
 	UPBItemShopServer_execOnUpdateProfileDetailsServerDone_Parms OnUpdateProfileDetailsServerDone_Parms;
 	OnUpdateProfileDetailsServerDone_Parms.requestId = requestId;
@@ -8440,7 +8531,7 @@ int UPBItemShopServer::UpdateProfileDetailsServer ( struct FGuid ProfileId, stru
 	static UFunction* pFnUpdateProfileDetailsServer = NULL;
 
 	if ( ! pFnUpdateProfileDetailsServer )
-		pFnUpdateProfileDetailsServer = (UFunction*) UObject::GObjObjects()->Data[ 36641 ];
+		pFnUpdateProfileDetailsServer = (UFunction*) UObject::GObjObjects()->Data[ 36658 ];
 
 	UPBItemShopServer_execUpdateProfileDetailsServer_Parms UpdateProfileDetailsServer_Parms;
 	memcpy ( &UpdateProfileDetailsServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8476,13 +8567,14 @@ int UPBItemShopServer::UpdateProfileDetailsServer ( struct FGuid ProfileId, stru
 // int                            coolness                       ( CPF_Parm )
 // int                            profileReputation              ( CPF_Parm )
 // unsigned char                  accountLevel                   ( CPF_Parm )
+// int                            ProgressionSubmitCount         ( CPF_Parm )
 
-void UPBItemShopServer::OnGetProfileDetailsServerDone ( int requestId, int ErrorCode, struct FGuid ProfileId, struct FString CharacterName, struct FString UserId, struct FString SessionId, struct FGuid characterGender, struct FGuid characterHead, struct FGuid characterSkin, int avatarPicture, int Rank, int xp, float xpPercentage, int credits, int coolness, int profileReputation, unsigned char accountLevel )
+void UPBItemShopServer::OnGetProfileDetailsServerDone ( int requestId, int ErrorCode, struct FGuid ProfileId, struct FString CharacterName, struct FString UserId, struct FString SessionId, struct FGuid characterGender, struct FGuid characterHead, struct FGuid characterSkin, int avatarPicture, int Rank, int xp, float xpPercentage, int credits, int coolness, int profileReputation, unsigned char accountLevel, int ProgressionSubmitCount )
 {
 	static UFunction* pFnOnGetProfileDetailsServerDone = NULL;
 
 	if ( ! pFnOnGetProfileDetailsServerDone )
-		pFnOnGetProfileDetailsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36589 ];
+		pFnOnGetProfileDetailsServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36605 ];
 
 	UPBItemShopServer_execOnGetProfileDetailsServerDone_Parms OnGetProfileDetailsServerDone_Parms;
 	OnGetProfileDetailsServerDone_Parms.requestId = requestId;
@@ -8502,6 +8594,7 @@ void UPBItemShopServer::OnGetProfileDetailsServerDone ( int requestId, int Error
 	OnGetProfileDetailsServerDone_Parms.coolness = coolness;
 	OnGetProfileDetailsServerDone_Parms.profileReputation = profileReputation;
 	OnGetProfileDetailsServerDone_Parms.accountLevel = accountLevel;
+	OnGetProfileDetailsServerDone_Parms.ProgressionSubmitCount = ProgressionSubmitCount;
 
 	this->ProcessEvent ( pFnOnGetProfileDetailsServerDone, &OnGetProfileDetailsServerDone_Parms, NULL );
 };
@@ -8517,7 +8610,7 @@ int UPBItemShopServer::GetProfileDetailsServer ( struct FGuid ProfileId )
 	static UFunction* pFnGetProfileDetailsServer = NULL;
 
 	if ( ! pFnGetProfileDetailsServer )
-		pFnGetProfileDetailsServer = (UFunction*) UObject::GObjObjects()->Data[ 36621 ];
+		pFnGetProfileDetailsServer = (UFunction*) UObject::GObjObjects()->Data[ 36637 ];
 
 	UPBItemShopServer_execGetProfileDetailsServer_Parms GetProfileDetailsServer_Parms;
 	memcpy ( &GetProfileDetailsServer_Parms.ProfileId, &ProfileId, 0x10 );
@@ -8542,7 +8635,7 @@ void UPBItemShopServer::OnLogoutServerDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnLogoutServerDone = NULL;
 
 	if ( ! pFnOnLogoutServerDone )
-		pFnOnLogoutServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36591 ];
+		pFnOnLogoutServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36607 ];
 
 	UPBItemShopServer_execOnLogoutServerDone_Parms OnLogoutServerDone_Parms;
 	OnLogoutServerDone_Parms.requestId = requestId;
@@ -8561,7 +8654,7 @@ int UPBItemShopServer::LogoutServer ( )
 	static UFunction* pFnLogoutServer = NULL;
 
 	if ( ! pFnLogoutServer )
-		pFnLogoutServer = (UFunction*) UObject::GObjObjects()->Data[ 36617 ];
+		pFnLogoutServer = (UFunction*) UObject::GObjObjects()->Data[ 36633 ];
 
 	UPBItemShopServer_execLogoutServer_Parms LogoutServer_Parms;
 
@@ -8587,7 +8680,7 @@ void UPBItemShopServer::OnLoginServerDone ( int requestId, int ErrorCode, struct
 	static UFunction* pFnOnLoginServerDone = NULL;
 
 	if ( ! pFnOnLoginServerDone )
-		pFnOnLoginServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36593 ];
+		pFnOnLoginServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36609 ];
 
 	UPBItemShopServer_execOnLoginServerDone_Parms OnLoginServerDone_Parms;
 	OnLoginServerDone_Parms.requestId = requestId;
@@ -8611,7 +8704,7 @@ int UPBItemShopServer::LoginServer ( struct FString ServerName, struct FString P
 	static UFunction* pFnLoginServer = NULL;
 
 	if ( ! pFnLoginServer )
-		pFnLoginServer = (UFunction*) UObject::GObjObjects()->Data[ 36608 ];
+		pFnLoginServer = (UFunction*) UObject::GObjObjects()->Data[ 36624 ];
 
 	UPBItemShopServer_execLoginServer_Parms LoginServer_Parms;
 	memcpy ( &LoginServer_Parms.ServerName, &ServerName, 0xC );
@@ -8638,7 +8731,7 @@ void UPBItemShopServer::OnPingServerDone ( int requestId, int ErrorCode )
 	static UFunction* pFnOnPingServerDone = NULL;
 
 	if ( ! pFnOnPingServerDone )
-		pFnOnPingServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36595 ];
+		pFnOnPingServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36611 ];
 
 	UPBItemShopServer_execOnPingServerDone_Parms OnPingServerDone_Parms;
 	OnPingServerDone_Parms.requestId = requestId;
@@ -8657,7 +8750,7 @@ int UPBItemShopServer::PingServer ( )
 	static UFunction* pFnPingServer = NULL;
 
 	if ( ! pFnPingServer )
-		pFnPingServer = (UFunction*) UObject::GObjObjects()->Data[ 36604 ];
+		pFnPingServer = (UFunction*) UObject::GObjObjects()->Data[ 36620 ];
 
 	UPBItemShopServer_execPingServer_Parms PingServer_Parms;
 
@@ -8682,7 +8775,7 @@ void UPBItemShopServer::OnGetEventsByBackendServerDone ( int ErrorCode, TArray< 
 	static UFunction* pFnOnGetEventsByBackendServerDone = NULL;
 
 	if ( ! pFnOnGetEventsByBackendServerDone )
-		pFnOnGetEventsByBackendServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36597 ];
+		pFnOnGetEventsByBackendServerDone = (UFunction*) UObject::GObjObjects()->Data[ 36613 ];
 
 	UPBItemShopServer_execOnGetEventsByBackendServerDone_Parms OnGetEventsByBackendServerDone_Parms;
 	OnGetEventsByBackendServerDone_Parms.ErrorCode = ErrorCode;
@@ -8701,7 +8794,7 @@ void UPBItemShopServer::OnDisconnect ( )
 	static UFunction* pFnOnDisconnect = NULL;
 
 	if ( ! pFnOnDisconnect )
-		pFnOnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 36565 ];
+		pFnOnDisconnect = (UFunction*) UObject::GObjObjects()->Data[ 36581 ];
 
 	UPBItemShopServer_execOnDisconnect_Parms OnDisconnect_Parms;
 
@@ -8718,7 +8811,7 @@ void UPBItemShopServer::SetServerResponseDelay ( int milliseconds )
 	static UFunction* pFnSetServerResponseDelay = NULL;
 
 	if ( ! pFnSetServerResponseDelay )
-		pFnSetServerResponseDelay = (UFunction*) UObject::GObjObjects()->Data[ 36563 ];
+		pFnSetServerResponseDelay = (UFunction*) UObject::GObjObjects()->Data[ 36579 ];
 
 	UPBItemShopServer_execSetServerResponseDelay_Parms SetServerResponseDelay_Parms;
 	SetServerResponseDelay_Parms.milliseconds = milliseconds;
@@ -8740,7 +8833,7 @@ bool UPBItemShopServer::ServerAPIReady ( )
 	static UFunction* pFnServerAPIReady = NULL;
 
 	if ( ! pFnServerAPIReady )
-		pFnServerAPIReady = (UFunction*) UObject::GObjObjects()->Data[ 36561 ];
+		pFnServerAPIReady = (UFunction*) UObject::GObjObjects()->Data[ 36577 ];
 
 	UPBItemShopServer_execServerAPIReady_Parms ServerAPIReady_Parms;
 
@@ -8764,7 +8857,7 @@ bool UPBItemShopServer::ServerCancelRequest ( int requestId )
 	static UFunction* pFnServerCancelRequest = NULL;
 
 	if ( ! pFnServerCancelRequest )
-		pFnServerCancelRequest = (UFunction*) UObject::GObjObjects()->Data[ 36558 ];
+		pFnServerCancelRequest = (UFunction*) UObject::GObjObjects()->Data[ 36574 ];
 
 	UPBItemShopServer_execServerCancelRequest_Parms ServerCancelRequest_Parms;
 	ServerCancelRequest_Parms.requestId = requestId;
@@ -8789,7 +8882,7 @@ void UPBItemShopServer::PBServerItemToClient ( struct FPBItemServer pServerItem,
 	static UFunction* pFnPBServerItemToClient = NULL;
 
 	if ( ! pFnPBServerItemToClient )
-		pFnPBServerItemToClient = (UFunction*) UObject::GObjObjects()->Data[ 36555 ];
+		pFnPBServerItemToClient = (UFunction*) UObject::GObjObjects()->Data[ 36571 ];
 
 	UPBItemShopServer_execPBServerItemToClient_Parms PBServerItemToClient_Parms;
 	memcpy ( &PBServerItemToClient_Parms.pServerItem, &pServerItem, 0x94 );
@@ -8811,7 +8904,7 @@ struct FString UPBItemShopServer::ServerItemTypeToClientItemType ( unsigned char
 	static UFunction* pFnServerItemTypeToClientItemType = NULL;
 
 	if ( ! pFnServerItemTypeToClientItemType )
-		pFnServerItemTypeToClientItemType = (UFunction*) UObject::GObjObjects()->Data[ 36552 ];
+		pFnServerItemTypeToClientItemType = (UFunction*) UObject::GObjObjects()->Data[ 36568 ];
 
 	UPBItemShopServer_execServerItemTypeToClientItemType_Parms ServerItemTypeToClientItemType_Parms;
 	ServerItemTypeToClientItemType_Parms.serverItemType = serverItemType;
@@ -8831,7 +8924,7 @@ class UPBItemShopServer* UPBItemShopServer::GetInstance ( )
 	static UFunction* pFnGetInstance = NULL;
 
 	if ( ! pFnGetInstance )
-		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 36550 ];
+		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 36566 ];
 
 	UPBItemShopServer_execGetInstance_Parms GetInstance_Parms;
 

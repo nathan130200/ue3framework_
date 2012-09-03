@@ -44,7 +44,7 @@ void PostRender ( UCanvas* pCanvas )
 
 	TgController->eventGetPlayerViewPoint(&CameraLocation, &CameraRotation);
 
-	CRender::DrawStringEx( pCanvas, 10, 10, ColorGreen, 0, L"Location %0.2f %0.2f %0.2f", CameraLocation.X, CameraLocation.Y, CameraLocation.Z );
+	//CRender::DrawStringEx( pCanvas, 10, 10, ColorGreen, 0, L"Location %0.2f %0.2f %0.2f", CameraLocation.X, CameraLocation.Y, CameraLocation.Z );
 
 	Draw( pCanvas, TgController, CameraLocation, CameraRotation, Pawn );
 }
@@ -106,13 +106,12 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	60,		0,	L"Name ESP");
 	CMenuManager::AddCheckBox(20,	80,		0,	L"Health ESP");
 	CMenuManager::AddCheckBox(20,	100,	0,	L"Distance ESP");
-	CMenuManager::AddCheckBox(20,	140,	0,	L"Box ESP");
+	CMenuManager::AddCheckBox(20,	120,	0,	L"Box ESP");
 
 	//===========================
 	CMenuManager::AddTab(70,	0,	L"Aimbot");
 	//===========================
 	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
-	CMenuManager::AddCheckBox(20,	80,		1,	L"AutoFireBot");
 
 	//===========================
 	CMenuManager::AddTab(130,	0,	L"Misc");

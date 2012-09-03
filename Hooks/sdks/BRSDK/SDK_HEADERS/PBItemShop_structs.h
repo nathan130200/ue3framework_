@@ -200,7 +200,7 @@ struct FPBProfile
 };
 
 // ScriptStruct PBItemShop.PBItemShopClient.PBCharacterProfile
-// 0x00B5
+// 0x00B9
 struct FPBCharacterProfile
 {
 	struct FString                                     CharacterName;                                    		// 0x0000 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
@@ -214,21 +214,22 @@ struct FPBCharacterProfile
 	int                                                credits;                                          		// 0x004C (0x0004) [0x0000000000000000]              
 	int                                                coins;                                            		// 0x0050 (0x0004) [0x0000000000000000]              
 	int                                                coolness;                                         		// 0x0054 (0x0004) [0x0000000000000000]              
-	int                                                profileReputation;                                		// 0x0058 (0x0004) [0x0000000000000000]              
-	TArray< struct FPBItem >                           inventoryItems;                                   		// 0x005C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	TArray< struct FString >                           weaponPresetNames;                                		// 0x0068 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	struct FGuid                                       subscriptionId;                                   		// 0x0074 (0x0010) [0x0000000000000000]              
-	int                                                subscriptionCreditsBoost;                         		// 0x0084 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionXpBoost;                              		// 0x0088 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionSlowWeaponDamage;                     		// 0x008C (0x0004) [0x0000000000000000]              
-	int                                                subscriptionSlowStyleLoss;                        		// 0x0090 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionGroupXpBoost;                         		// 0x0094 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionGroupCreditsBoost;                    		// 0x0098 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionItemShopRankBonus;                    		// 0x009C (0x0004) [0x0000000000000000]              
-	int                                                subscriptionDuration;                             		// 0x00A0 (0x0004) [0x0000000000000000]              
-	int                                                subscriptionDiscount;                             		// 0x00A4 (0x0004) [0x0000000000000000]              
-	TArray< struct FPBItem >                           latestInventoryEntries;                           		// 0x00A8 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	unsigned char                                      accountLevel;                                     		// 0x00B4 (0x0001) [0x0000000000000000]              
+	int                                                lastDisplayedCoolness;                            		// 0x0058 (0x0004) [0x0000000000000000]              
+	int                                                profileReputation;                                		// 0x005C (0x0004) [0x0000000000000000]              
+	TArray< struct FPBItem >                           inventoryItems;                                   		// 0x0060 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	TArray< struct FString >                           weaponPresetNames;                                		// 0x006C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	struct FGuid                                       subscriptionId;                                   		// 0x0078 (0x0010) [0x0000000000000000]              
+	int                                                subscriptionCreditsBoost;                         		// 0x0088 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionXpBoost;                              		// 0x008C (0x0004) [0x0000000000000000]              
+	int                                                subscriptionSlowWeaponDamage;                     		// 0x0090 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionSlowStyleLoss;                        		// 0x0094 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionGroupXpBoost;                         		// 0x0098 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionGroupCreditsBoost;                    		// 0x009C (0x0004) [0x0000000000000000]              
+	int                                                subscriptionItemShopRankBonus;                    		// 0x00A0 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionDuration;                             		// 0x00A4 (0x0004) [0x0000000000000000]              
+	int                                                subscriptionDiscount;                             		// 0x00A8 (0x0004) [0x0000000000000000]              
+	TArray< struct FPBItem >                           latestInventoryEntries;                           		// 0x00AC (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	unsigned char                                      accountLevel;                                     		// 0x00B8 (0x0001) [0x0000000000000000]              
 };
 
 // ScriptStruct PBItemShop.PBItemShopClient.PBShopEvent

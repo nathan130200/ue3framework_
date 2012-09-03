@@ -121,9 +121,9 @@ using namespace std;
 ////#include "UE3BasicCore\TA\PiecesOfCode.h"
 
 // Bullet Run
-//#include "UE3BasicCore\BR\GameDefines.h"
-//#include "UE3BasicCore\BR\ObjectFunctions.h"
-//#include "UE3BasicCore\BR\PiecesOfCode.h"
+#include "UE3BasicCore\BR\GameDefines.h"
+#include "UE3BasicCore\BR\ObjectFunctions.h"
+#include "UE3BasicCore\BR\PiecesOfCode.h"
 
 /*
 # ========================================================================================= #
