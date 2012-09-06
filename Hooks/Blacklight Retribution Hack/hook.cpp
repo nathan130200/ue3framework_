@@ -73,8 +73,8 @@ void __declspec(naked) hkProcessEvent ()
 
 	if ( pFunction ) //make sure pfunc is valid
     {
-		Utils::add_log("c:\\lol.txt", pFunction->GetFullName());
-        strcpy( FunctionName, pFunction->GetFullName() ); //get function name
+		Utils::add_log("c:\\lol99.txt", pFunction->GetName());
+        //strcpy( FunctionName, pFunction->GetFullName() ); //get function name
         //if ( !strcmp( FunctionName, "Function FoxGame.FoxGameViewportClient.DrawTransition" ) ) //If its a postrender call
 		//	PostRender(((UFoxGameViewportClient_execDrawTransition_Parms*)pParms)->Canvas); // call a hooked postrender method
     }
@@ -139,7 +139,9 @@ HMODULE Entry::g_hMainModule;
 DWORD Entry::dwCodeSize;
 DWORD Entry::dwCodeOffset;
 DWORD Entry::dwEntryPoint;
+
 UObject* VFT_ViewPort = NULL;
+UClass* FoxHUD = NULL;
 
 unsigned long ModuleThread( void* )
 {
@@ -153,7 +155,7 @@ unsigned long ModuleThread( void* )
 			Sleep( 100 );
 		}
 
-		while ( !(VFT_ViewPort = UObject::FindObject<UGameEngine>("FoxGameViewportClient Transient.GameEngine.FoxGameViewportClient")))
+		while ( !(FoxHUD = UObject::FindObject<UClass>("Class FoxGame.FoxHUD")))
 		{
 			Sleep( 100 );
 		}
@@ -162,7 +164,7 @@ unsigned long ModuleThread( void* )
 
 		MenuInit();
 
-		toolkit::VMTHook* hook = new toolkit::VMTHook(VFT_ViewPort); 
+		toolkit::VMTHook* hook = new toolkit::VMTHook(FoxHUD); 
 		pProcessEvent = hook->GetMethod<tProcessEvent>(67); 
 		hook->HookMethod(&hkProcessEvent, 67);
 	}

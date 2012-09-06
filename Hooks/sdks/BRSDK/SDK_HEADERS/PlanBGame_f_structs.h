@@ -3818,10 +3818,11 @@ struct UPBCustomChar_MenuData_execProcessProfileDetails_Parms
 	float                                              charXpPercentage;                                 		// 0x004C (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                charCredits;                                      		// 0x0050 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                charCoolness;                                     		// 0x0054 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	int                                                profileReputation;                                		// 0x0058 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	unsigned long                                      bIsGameMaster : 1;                                		// 0x005C (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
-	unsigned char                                      charAccountLevel;                                 		// 0x0060 (0x0001) [0x0000000000000080]              ( CPF_Parm )
-	// class APBCustomChar_AssetStore*                 AssetStore;                                       		// 0x0064 (0x0004) [0x0000000000000000]              
+	int                                                charLastDisplayedCoolness;                        		// 0x0058 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                profileReputation;                                		// 0x005C (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	unsigned long                                      bIsGameMaster : 1;                                		// 0x0060 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
+	unsigned char                                      charAccountLevel;                                 		// 0x0064 (0x0001) [0x0000000000000080]              ( CPF_Parm )
+	// class APBCustomChar_AssetStore*                 AssetStore;                                       		// 0x0068 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBCustomChar_MenuData.GetDefaultStore
@@ -5019,7 +5020,7 @@ struct APBGameInfo_execNotifyTeamSizeChanged_Parms
 struct APBGameInfo_execCalculatePlayerProgression_Parms
 {
 	class APBPlayerController*                         PC;                                               		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	unsigned long                                      bSkipEndOfMatchReward : 1;                        		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
+	unsigned long                                      bLeavingEarly : 1;                                		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
 	struct FPBSubmitProgressionProfileData             BackEndProgressionData;                           		// 0x0008 (0x002C) [0x0000000000400180]              ( CPF_Parm | CPF_OutParm | CPF_NeedCtorLink )
 	unsigned long                                      ReturnValue : 1;                                  		// 0x0034 (0x0004) [0x0000000000000580] [0x00000001] ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
 	// int                                             iStartHeat;                                       		// 0x0038 (0x0004) [0x0000000000000000]              
@@ -5083,7 +5084,7 @@ struct APBGameInfo_execPrepareWeaponConditionSubmition_Parms
 // [0x00824002] 
 struct APBGameInfo_execSubmitPlayersProgression_Parms
 {
-	unsigned long                                      bSkipEndOfMatchReward : 1;                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
+	unsigned long                                      bLeavingEarly : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
 	class APBPlayerController*                         OnlyForSpecificPlayer;                            		// 0x0004 (0x0004) [0x0000000000000090]              ( CPF_OptionalParm | CPF_Parm )
 	// class APBPlayerController*                      PC;                                               		// 0x0008 (0x0004) [0x0000000000000000]              
 	// struct FPBSubmitProgressionProfileData          currentProfile;                                   		// 0x000C (0x002C) [0x0000000000400000]              ( CPF_NeedCtorLink )
@@ -5222,15 +5223,16 @@ struct APBGameInfo_execOnGetProfileDetailsServerDone_Parms
 	int                                                coolness;                                         		// 0x007C (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                profileReputation;                                		// 0x0080 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	unsigned char                                      accountLevel;                                     		// 0x0084 (0x0001) [0x0000000000000080]              ( CPF_Parm )
-	// class APBPlayerController*                      PC;                                               		// 0x0088 (0x0004) [0x0000000000000000]              
-	// class APBPlayerReplicationInfo*                 pPlayerInfo;                                      		// 0x008C (0x0004) [0x0000000000000000]              
-	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x0090 (0x0004) [0x0000000000000000]              
-	// struct FString                                  OutError;                                         		// 0x0094 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// unsigned long                                   bVerificationOk : 1;                              		// 0x00A0 (0x0004) [0x0000000000000000] [0x00000001] 
-	// struct FString                                  strUserId;                                        		// 0x00A4 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// struct FString                                  strSessionId;                                     		// 0x00B0 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// struct FString                                  strTmpSessionHash;                                		// 0x00BC (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// struct FString                                  strChallenge;                                     		// 0x00C8 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	int                                                ProgressionSubmitCount;                           		// 0x0088 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	// class APBPlayerController*                      PC;                                               		// 0x008C (0x0004) [0x0000000000000000]              
+	// class APBPlayerReplicationInfo*                 pPlayerInfo;                                      		// 0x0090 (0x0004) [0x0000000000000000]              
+	// class UPBCustomChar_MenuData*                   pCharData;                                        		// 0x0094 (0x0004) [0x0000000000000000]              
+	// struct FString                                  OutError;                                         		// 0x0098 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// unsigned long                                   bVerificationOk : 1;                              		// 0x00A4 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FString                                  strUserId;                                        		// 0x00A8 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// struct FString                                  strSessionId;                                     		// 0x00B4 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// struct FString                                  strTmpSessionHash;                                		// 0x00C0 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// struct FString                                  strChallenge;                                     		// 0x00CC (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGameInfo.FindPRIFromProfileId
@@ -7448,10 +7450,11 @@ struct APBHeatEventManager_execAddBonusEvent_Parms
 };
 
 // Function PlanBGame.PBHeatEventManager.SetNextPrimaryEvent
-// [0x00020002] 
+// [0x00024002] 
 struct APBHeatEventManager_execSetNextPrimaryEvent_Parms
 {
 	unsigned char                                      primaryEvent;                                     		// 0x0000 (0x0001) [0x0000000000000080]              ( CPF_Parm )
+	float                                              multiplyer;                                       		// 0x0004 (0x0004) [0x0000000000000090]              ( CPF_OptionalParm | CPF_Parm )
 };
 
 // Function PlanBGame.PBHeatEventManager.SchedulePrimaryEvent
@@ -7618,30 +7621,33 @@ struct APBHeatEventManager_execClientRaiseHeatEvent_Parms
 {
 	unsigned char                                      iPrimaryEvent;                                    		// 0x0000 (0x0001) [0x0000000000000080]              ( CPF_Parm )
 	int                                                iBonusEvents;                                     		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	// TArray< int >                                   rBonusEventIndeces;                               		// 0x0008 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// unsigned long                                   bPenalty : 1;                                     		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-	// int                                             I;                                                		// 0x0018 (0x0004) [0x0000000000000000]              
-	// int                                             iHeatOrPenalty;                                   		// 0x001C (0x0004) [0x0000000000000000]              
-	// int                                             iTotalHeat;                                       		// 0x0020 (0x0004) [0x0000000000000000]              
-	// float                                           PlaySoundChangePercentTotal;                      		// 0x0024 (0x0004) [0x0000000000000000]              
-	// float                                           PlayProbability;                                  		// 0x0028 (0x0004) [0x0000000000000000]              
-	// TArray< struct FCommentatorTrackInfo >          bonusEventTracks;                                 		// 0x002C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// TArray< struct FCommentatorTrackInfo >          HeatEventTracks;                                  		// 0x0038 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// class USoundCue*                                CrowdSound;                                       		// 0x0044 (0x0004) [0x0000000000000000]              
-	// struct FBonusEventInfo                          BonusEvent;                                       		// 0x0048 (0x0038) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	float                                              fPrimaryEventMultiplyer;                          		// 0x0008 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	// TArray< int >                                   rBonusEventIndeces;                               		// 0x000C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// unsigned long                                   bPenalty : 1;                                     		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// int                                             I;                                                		// 0x001C (0x0004) [0x0000000000000000]              
+	// int                                             iHeatOrPenalty;                                   		// 0x0020 (0x0004) [0x0000000000000000]              
+	// int                                             iTotalHeat;                                       		// 0x0024 (0x0004) [0x0000000000000000]              
+	// int                                             iPrimaryHeat;                                     		// 0x0028 (0x0004) [0x0000000000000000]              
+	// float                                           PlaySoundChangePercentTotal;                      		// 0x002C (0x0004) [0x0000000000000000]              
+	// float                                           PlayProbability;                                  		// 0x0030 (0x0004) [0x0000000000000000]              
+	// TArray< struct FCommentatorTrackInfo >          bonusEventTracks;                                 		// 0x0034 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// TArray< struct FCommentatorTrackInfo >          HeatEventTracks;                                  		// 0x0040 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// class USoundCue*                                CrowdSound;                                       		// 0x004C (0x0004) [0x0000000000000000]              
+	// struct FBonusEventInfo                          BonusEvent;                                       		// 0x0050 (0x0038) [0x0000000000400000]              ( CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBHeatEventManager.RaiseHeatEvent
-// [0x00020002] 
+// [0x00024002] 
 struct APBHeatEventManager_execRaiseHeatEvent_Parms
 {
 	unsigned char                                      iPrimaryEvent;                                    		// 0x0000 (0x0001) [0x0000000000000080]              ( CPF_Parm )
 	int                                                iBonusEvents;                                     		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
-	// TArray< int >                                   rBonusEventIndeces;                               		// 0x0008 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
-	// int                                             I;                                                		// 0x0014 (0x0004) [0x0000000000000000]              
-	// int                                             iTotalHeat;                                       		// 0x0018 (0x0004) [0x0000000000000000]              
-	// int                                             iPreviousBuffer;                                  		// 0x001C (0x0004) [0x0000000000000000]              
-	// int                                             iPenalty;                                         		// 0x0020 (0x0004) [0x0000000000000000]              
+	float                                              fPrimaryEventMultiplyer;                          		// 0x0008 (0x0004) [0x0000000000000090]              ( CPF_OptionalParm | CPF_Parm )
+	// TArray< int >                                   rBonusEventIndeces;                               		// 0x000C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// int                                             I;                                                		// 0x0018 (0x0004) [0x0000000000000000]              
+	// int                                             iTotalHeat;                                       		// 0x001C (0x0004) [0x0000000000000000]              
+	// int                                             iPreviousBuffer;                                  		// 0x0020 (0x0004) [0x0000000000000000]              
+	// int                                             iPenalty;                                         		// 0x0024 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBHeatEventManager.EndTaunt
@@ -20130,7 +20136,7 @@ struct APBEntryPlayerController_execIsAutoCharacterSelectEnabled_Parms
 // [0x00020002] 
 struct APBPlayerReplicationInfo_execSetStyle_Parms
 {
-	int                                                NewStyle;                                         		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                newStyle;                                         		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
 // Function PlanBGame.PBPlayerReplicationInfo.SetSkillLevel
@@ -21489,6 +21495,7 @@ struct UPBServerRequestHandlerParent_exectmpOnGetProfileDetailsServerDone_Parms
 	int                                                coolness;                                         		// 0x007C (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                profileReputation;                                		// 0x0080 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	unsigned char                                      accountLevel;                                     		// 0x0084 (0x0001) [0x0000000000000080]              ( CPF_Parm )
+	int                                                ProgressionSubmitCount;                           		// 0x0088 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
 // Function PlanBGame.PBServerRequestHandlerParent.tmpOnLoginServerDone
@@ -29949,6 +29956,7 @@ struct APBPersistentLobby_execRemoveWeaponPickups_Parms
 struct APBPersistentLobby_execRestartPlayer_Parms
 {
 	class AController*                                 tController;                                      		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	// class APBPlayerController*                      PC;                                               		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBPersistentLobby.AddDefaultInventory
@@ -30253,6 +30261,20 @@ struct APBGameRules_execSetCommentatorEvent_Parms
 struct APBGameRules_execGetTeamHighestScore_Parms
 {
 	int                                                ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+};
+
+// Function PlanBGame.PBGameRules.Logout
+// [0x00020000] 
+struct APBGameRules_execLogout_Parms
+{
+	class APlayerController*                           Player;                                           		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+};
+
+// Function PlanBGame.PBGameRules.PostLogin
+// [0x00020000] 
+struct APBGameRules_execPostLogin_Parms
+{
+	class APlayerController*                           NewPlayer;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
 // Function PlanBGame.PBGameRules.IsLastRound
@@ -30672,6 +30694,7 @@ struct APBGameRules_execReset_Parms
 struct APBGameRules_execResetDestructables_Parms
 {
 	// class APBDestructibleStaticActor*               dsa;                                              		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AFracturedStaticMeshActor*                fsma;                                             		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGameRules.RemoveWeaponPickups
@@ -32384,6 +32407,17 @@ struct APBHeatSystemHandler_eventNotifyTeamPlaceC4_Parms
 	class APBPlayerController*                         PC;                                               		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	// class APBPlayerReplicationInfo*                 pPlayerInfo;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
 	// class APBHeatEventManager*                      pPlayerHeatManager;                               		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function PlanBGame.PBHeatSystemHandler.NotifyStyle
+// [0x00020802] ( FUNC_Event )
+struct APBHeatSystemHandler_eventNotifyStyle_Parms
+{
+	class APBPlayerController*                         PC;                                               		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	unsigned long                                      ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] ( CPF_Parm | CPF_OutParm | CPF_ReturnParm )
+	// class APBPlayerReplicationInfo*                 pPlayerInfo;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class APBHeatEventManager*                      pPlayerHeatManager;                               		// 0x000C (0x0004) [0x0000000000000000]              
+	// float                                           Mult;                                             		// 0x0010 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBHeatSystemHandler.NotifyGreatDefence
@@ -36896,6 +36930,13 @@ struct APBGameRules_TDM_execNotifyTeamScored_Parms
 struct APBGameRules_TDM_execNotifyRoundRemainingTimeChanged_Parms
 {
 	int                                                iRemainingTime;                                   		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+};
+
+// Function PlanBGame.PBGameRules_TDM.PostLogin
+// [0x00020002] 
+struct APBGameRules_TDM_execPostLogin_Parms
+{
+	class APlayerController*                           NewPlayer;                                        		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
 // Function PlanBGame.PBGameRules_TDM.ChoosePlayerStart
@@ -46514,7 +46555,8 @@ struct UPBOperatorServerRequestHandler_execdelegateOnGetProfileDetailsServerDone
 	int                                                coolness;                                         		// 0x0080 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	int                                                profileReputation;                                		// 0x0084 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	unsigned char                                      accountLevel;                                     		// 0x0088 (0x0001) [0x0000000000000080]              ( CPF_Parm )
-	// struct FPBItemShopServerRequest                 pRequest;                                         		// 0x008C (0x0140) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	int                                                ProgressionSubmitCount;                           		// 0x008C (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	// struct FPBItemShopServerRequest                 pRequest;                                         		// 0x0090 (0x0140) [0x0000000000400000]              ( CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBOperatorServerRequestHandler.delegateOnLoginServerDone
@@ -50797,6 +50839,28 @@ struct UPBGFxObject_AvatarSelection_execonClickItem_Parms
 	int                                                nIndex;                                           		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
+// Function PlanBGame.PBGFxObject_MainMenu.UpdateStyleInfo
+// [0x00020002] 
+struct UPBGFxObject_MainMenu_execUpdateStyleInfo_Parms
+{
+	int                                                inCoolness;                                       		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	// int                                             newCoolness;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             newEndOfMatchBonus;                               		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             newBonusHeat;                                     		// 0x000C (0x0004) [0x0000000000000000]              
+	// class APBCharacterProgression*                  pCharProgression;                                 		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           fStyleMod;                                        		// 0x0014 (0x0004) [0x0000000000000000]              
+	// float                                           Mult;                                             		// 0x0018 (0x0004) [0x0000000000000000]              
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu.Call_UpdateStyleValues
+// [0x00020002] 
+struct UPBGFxObject_MainMenu_execCall_UpdateStyleValues_Parms
+{
+	int                                                newStyle;                                         		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                newEndOfMatchBonus;                               		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+	int                                                newBonusHeat;                                     		// 0x0008 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+};
+
 // Function PlanBGame.PBGFxObject_MainMenu.Call_setPresets
 // [0x00020002] 
 struct UPBGFxObject_MainMenu_execCall_setPresets_Parms
@@ -50893,6 +50957,53 @@ struct UPBGFxObject_MainMenu_exec_Initialize_Parms
 	// class UPBItemShopClient*                        shop;                                             		// 0x0004 (0x0004) [0x0000000000000000]              
 	// class UOnlineSubsystem*                         OnlineSub;                                        		// 0x0008 (0x0004) [0x0000000000000000]              
 	// class UPBGlobalBasket*                          pBasket;                                          		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu._getStyleStartHeat
+// [0x00040003] ( FUNC_Final )
+struct UPBGFxObject_MainMenu_exec_getStyleStartHeat_Parms
+{
+	struct FString                                     ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000400580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink )
+	// struct FString                                  RetVal;                                           		// 0x000C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu.Set_getStyleStartHeat_Delegate
+// [0x00020002] 
+struct UPBGFxObject_MainMenu_execSet_getStyleStartHeat_Delegate_Parms
+{
+	struct FScriptDelegate                             F;                                                		// 0x0000 (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu.Unreal_getStyleStartHeat
+// [0x00120002] 
+struct UPBGFxObject_MainMenu_execUnreal_getStyleStartHeat_Parms
+{
+	struct FString                                     ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000400580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink )
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu._getStyleBonusBoost
+// [0x00040003] ( FUNC_Final )
+struct UPBGFxObject_MainMenu_exec_getStyleBonusBoost_Parms
+{
+	struct FString                                     ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000400580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink )
+	// struct FString                                  RetVal;                                           		// 0x000C (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// float                                           fStyleMod;                                        		// 0x0018 (0x0004) [0x0000000000000000]              
+	// int                                             newEndOfMatchBonus;                               		// 0x001C (0x0004) [0x0000000000000000]              
+	// class APBCharacterProgression*                  pCharProgression;                                 		// 0x0020 (0x0004) [0x0000000000000000]              
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu.Set_getStyleBonusBoost_Delegate
+// [0x00020002] 
+struct UPBGFxObject_MainMenu_execSet_getStyleBonusBoost_Delegate_Parms
+{
+	struct FScriptDelegate                             F;                                                		// 0x0000 (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+};
+
+// Function PlanBGame.PBGFxObject_MainMenu.Unreal_getStyleBonusBoost
+// [0x00120002] 
+struct UPBGFxObject_MainMenu_execUnreal_getStyleBonusBoost_Parms
+{
+	struct FString                                     ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000400580]              ( CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink )
 };
 
 // Function PlanBGame.PBGFxObject_MainMenu._onHideForeground
@@ -54677,6 +54788,14 @@ struct UPBGFxObject_SkillShop_execUnreal_onClickAdd_Parms
 	int                                                skillIndex;                                       		// 0x0004 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 };
 
+// Function PlanBGame.PBGFxObject_ControlBar.Call_ShowStylePopup
+// [0x00040003] ( FUNC_Final )
+struct UPBGFxObject_ControlBar_execCall_ShowStylePopup_Parms
+{
+	struct FString                                     styleDelta;                                       		// 0x0000 (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+	struct FString                                     Message;                                          		// 0x000C (0x000C) [0x0000000000400080]              ( CPF_Parm | CPF_NeedCtorLink )
+};
+
 // Function PlanBGame.PBGFxObject_ControlBar.Call_UpdateCharacterStats
 // [0x00040003] ( FUNC_Final )
 struct UPBGFxObject_ControlBar_execCall_UpdateCharacterStats_Parms
@@ -54708,6 +54827,13 @@ struct UPBGFxObject_ControlBar_execCall_SetCharacterDetails_Parms
 	unsigned long                                      bIsPremium : 1;                                   		// 0x0024 (0x0004) [0x0000000000000080] [0x00000001] ( CPF_Parm )
 };
 
+// Function PlanBGame.PBGFxObject_ControlBar.UpdateStyleInfoInMainMenu
+// [0x00020002] 
+struct UPBGFxObject_ControlBar_execUpdateStyleInfoInMainMenu_Parms
+{
+	// class UPBGFxObject_MainMenu*                    menu;                                             		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
 // Function PlanBGame.PBGFxObject_ControlBar._UpdateCharacterDetails
 // [0x00820002] 
 struct UPBGFxObject_ControlBar_exec_UpdateCharacterDetails_Parms
@@ -54722,7 +54848,12 @@ struct UPBGFxObject_ControlBar_exec_UpdateCharacterDetails_Parms
 	// class APBCharacterProgression*                  pCharProgression;                                 		// 0x02B4 (0x0004) [0x0000000000000000]              
 	// struct FFameLevelData                           tmpData;                                          		// 0x02B8 (0x0010) [0x0000000000000000]              
 	// unsigned long                                   bShowWidget : 1;                                  		// 0x02C8 (0x0004) [0x0000000000000000] [0x00000001] 
-	// int                                             currentXP;                                        		// 0x02CC (0x0004) [0x0000000000000000]              
+	// int                                             styleDelta;                                       		// 0x02CC (0x0004) [0x0000000000000000]              
+	// struct FString                                  styleDeltaString;                                 		// 0x02D0 (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// struct FString                                  MessageString;                                    		// 0x02DC (0x000C) [0x0000000000400000]              ( CPF_NeedCtorLink )
+	// class UPBItemShopClient*                        shop;                                             		// 0x02E8 (0x0004) [0x0000000000000000]              
+	// class UPBGFxObject_GlobalBasket*                basket;                                           		// 0x02EC (0x0004) [0x0000000000000000]              
+	// int                                             currentXP;                                        		// 0x02F0 (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGFxObject_ControlBar.Tick
@@ -54731,6 +54862,8 @@ struct UPBGFxObject_ControlBar_eventTick_Parms
 {
 	float                                              fDelta;                                           		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
 	// class UPBCustomChar_MenuData*                   CharData;                                         		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UPBGFxObject_MainMenu*                    menu;                                             		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class UPBGFxObject_GlobalBasket*                basket;                                           		// 0x000C (0x0004) [0x0000000000000000]              
 };
 
 // Function PlanBGame.PBGFxObject_ControlBar._Release

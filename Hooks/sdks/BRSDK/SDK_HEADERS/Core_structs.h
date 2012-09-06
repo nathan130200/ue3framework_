@@ -1,4 +1,3 @@
-#pragma once
 /*
 #############################################################################################
 # Bullet Run (Unknown) SDK
@@ -15,8 +14,6 @@
 #ifdef _MSC_VER
 	#pragma pack ( push, 0x4 )
 #endif
-
-#include <math.h>
 
 /*
 # ========================================================================================= #
@@ -57,6 +54,7 @@ struct FInlinePointerArray_Mirror
 	struct FPointer                                    InlineData;                                       		// 0x0000 (0x0004) [0x0000000000000002]              ( CPF_Const )
 	struct FArray_Mirror                               SecondaryData;                                    		// 0x0004 (0x000C) [0x0000000000000002]              ( CPF_Const )
 };
+
 
 // ScriptStruct Core.Object.Rotator
 // 0x000C

@@ -112,6 +112,8 @@ void MenuInit()
 	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
 	CMenuManager::AddCheckBox(20,	80,		1,	L"Auto Fire Bot");
 
+	CMenuManager::AddCheckBox(200, 60, 80, 30, 1, L"Select Key");
+
 	//===========================
 	CMenuManager::AddTab(130,	0,	L"Misc");
 	//===========================
@@ -132,10 +134,6 @@ DWORD Entry::dwEntryPoint;
 
 unsigned long ModuleThread( void* )
 {
-	Entry::dwCodeSize = Utils::GetSizeOfCode( Entry::g_hMainModule );
-	Entry::dwCodeOffset = Utils::OffsetToCode( Entry::g_hMainModule );
-	Entry::dwEntryPoint = (DWORD)Entry::g_hMainModule + Entry::dwCodeOffset;
-
 	while ( !GetAsyncKeyState( VK_HOME ) )
         Sleep( 100 );
 

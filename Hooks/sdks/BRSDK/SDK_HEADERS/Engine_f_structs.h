@@ -9502,7 +9502,7 @@ struct UCanvas_execDrawTextureLine_Parms
 };
 
 // Function Engine.Canvas.Draw2DLine
-// [0x00020401] ( FUNC_Final | FUNC_Native )
+// [0xFFFFFFFF] ( FUNC_Final | FUNC_Exec | FUNC_Event | FUNC_Native )
 struct UCanvas_execDraw2DLine_Parms
 {
 	float                                              X1;                                               		// 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )

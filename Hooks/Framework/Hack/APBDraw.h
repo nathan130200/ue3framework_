@@ -43,8 +43,8 @@ void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLoc
 
 		if (CheckBoxes[1].Checked)
 		{
-			//ESP::Health(Canvas, Screen, Pawn, DrawColor);
-			//Screen.Y += 15;
+			ESP::Health(Canvas, Screen, Pawn, DrawColor);
+			Screen.Y += 15;
 		}
 		
 		if(CheckBoxes[2].Checked)

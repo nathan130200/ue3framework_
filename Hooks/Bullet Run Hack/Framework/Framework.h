@@ -48,6 +48,7 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "Renders\CRender.h"
 
 #include "UE3\Color.h"
+#include "Menu\MenuManager.h"
 
 #ifndef test
 #include "UE3\UE3Math.h"
@@ -59,7 +60,6 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "UE3\Misc.h"
 #endif
 
-#include "Menu\MenuManager.h"
 
 #include "Hack\BRDraw.h"
 

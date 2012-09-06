@@ -9,7 +9,7 @@ public:
 	{
 		APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
 
-		if(GetAsyncKeyState( 'F' ))
+		if(GetAsyncKeyState( CurrentAimbotKey ))
 		{
 			FVector vHeadBone;
 
@@ -61,7 +61,7 @@ public:
 
 	static void Aim::AutoKnife(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
 	{
-		if( GetAsyncKeyState( 'F' ) )
+		if( GetAsyncKeyState( CurrentAimbotKey ) )
 		{
 			//CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
 
@@ -101,7 +101,7 @@ public:
 				FRotator AimRotation = AimForward.Rotator();
 					
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				//APBPController->ClientSetCtrlRotation(AimRotation);
+				APBPController->ClientSetCtrlRotation(AimRotation);
 
 				APBPController->StartFire(0);
 
@@ -145,7 +145,7 @@ public:
 
 	static void Aim::AimBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
 	{
-		if( GetAsyncKeyState( 'F' ) )
+		if( GetAsyncKeyState( CurrentAimbotKey ) )
 		{
 			FVector vHeadBone;
 
@@ -176,10 +176,7 @@ public:
 				FRotator AimRotation = AimForward.Rotator();
 
 				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				APBPController->SetRotation(AimRotation);
-				APBPController->SetRelativeRotation(AimRotation);
-				APBPController->SetLocation(CurrentLocation);
-				APBPController->SetRelativeLocation(CurrentLocation);
+				APBPController->ClientSetCtrlRotation(AimRotation);
 			}
 		}
 	}

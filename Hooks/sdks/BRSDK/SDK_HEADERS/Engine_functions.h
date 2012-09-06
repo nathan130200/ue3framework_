@@ -25073,7 +25073,7 @@ void UCanvas::DrawTextureLine ( struct FVector StartPoint, struct FVector EndPoi
 };
 
 // Function Engine.Canvas.Draw2DLine
-// [0x00020401] ( FUNC_Final | FUNC_Native )
+// [0xFFFFFFFF] ( FUNC_Final | FUNC_Exec | FUNC_Event | FUNC_Native )
 // Parameters infos:
 // float                          X1                             ( CPF_Parm )
 // float                          Y1                             ( CPF_Parm )
