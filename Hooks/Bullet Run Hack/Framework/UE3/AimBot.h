@@ -119,58 +119,36 @@ public:
 		}
 	}
 
-	static void LockOn(UCanvas* pCanvas, int x, int y)
-	{
-		INPUT inInput; 
-
-		int iHalfWidth     = pCanvas->ClipX;
-		int iHalfHeight    = pCanvas->ClipY; 
-
-		x -= iHalfWidth; 
-		y -= iHalfHeight; 
-
-		inInput.mi.dx = 0;
-
-		inInput.mi.dx               = (long)x; 
-		inInput.mi.dy               = (long)y; 
-		inInput.mi.mouseData        = 0; 
-		inInput.mi.dwFlags          = 0; 
-		inInput.mi.time             = 0; 
-		inInput.mi.dwExtraInfo      = GetMessageExtraInfo(); 
-		inInput.type                = 0; 
-
-		if(x > -iHalfWidth     &&    x < iHalfWidth && y > -iHalfHeight     &&     y < iHalfHeight) 
-			SendInput(1, &inInput, sizeof(inInput)); 
-	}
-
 	static void Aim::AimBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
 	{
 		if( GetAsyncKeyState( CurrentAimbotKey ) )
 		{
 			FVector vHeadBone;
 
-			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-			vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
-
 			if( IsEnemy && IsVisible )
 			{
-				float Distance = (vHeadBone - CameraLocation).Length();
-				if (Distance <= CurrentBest)
+				if ( CurrentTargetedPawn && CurrentTargetedPawn->Health > 0 )
 				{
-					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
-					{
-						CurrentBest = Distance;
-						CurrentTarget = Pawn;
-						CurrentLocation = vHeadBone;
-					}
-					else
+					vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
+					vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+
+					CurrentTarget = CurrentTargetedPawn;
+					CurrentLocation = vHeadBone;
+				}
+				else
+				{
+					vHeadBone = WorldToScreen::BRBones(Location, Pawn);
+					vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+
+					float Distance = (vHeadBone - CameraLocation).Length();
+					if (Distance <= CurrentBest)
 					{
 						CurrentTargetedPawn = Pawn;
 					}
 				}
 			}
 
-			if( CurrentTarget)
+			if( CurrentTargetedPawn && CurrentTarget )
 			{
 				FVector AimForward = (CurrentLocation - CameraLocation);
 				FRotator AimRotation = AimForward.Rotator();
