@@ -2,92 +2,100 @@ static char weap = 0;
 
 void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, APawn* you )
 {
+	//wprintf(TEXT("draw function\n"));
+
 	if ( Canvas == NULL || Controller == NULL || Controller->WorldInfo == NULL || Controller->WorldInfo->PawnList == NULL || you == NULL )
 		return;
 
-	CurrentBest = 999999.0f;
-	CurrentTarget = NULL;
-	VisiblePlayerCount = 0;
-	
-	for ( APawn* Pawn = Controller->WorldInfo->PawnList; Pawn; Pawn = Pawn->NextPawn)
+	memset(&CurrentPawns, 0, sizeof(CurrentPawns));
+
+	int i = 0, iMax = -1;
+
+	APawn* Pawn = Controller->WorldInfo->PawnList;
+	do
 	{
-		if ( Controller == NULL || Pawn == NULL || Pawn->PlayerReplicationInfo == NULL || Pawn->bDeleteMe || Pawn == Controller->Pawn )
+		if( Pawn == NULL || Pawn->PlayerReplicationInfo == NULL || Pawn->bDeleteMe || Pawn == Controller->Pawn )
 			continue;
 
-		FVector Location = Pawn->Location;
-		bool IsPlayer = ( Pawn->PlayerReplicationInfo != NULL );
-		bool IsVisible = IsVisible::Visible( Controller, Pawn, CameraLocation, Location );
-		bool IsEnemy = IsPlayer ? ( Pawn->PlayerReplicationInfo->Team != Controller->PlayerReplicationInfo->Team ) : true;
+		CurrentPawns[i].Location = Pawn->Location;
+		CurrentPawns[i].Pawn = Pawn;
+		CurrentPawns[i].Rpi = Pawn->PlayerReplicationInfo;	
+		CurrentPawns[i].IsVisible = IsVisible::Visible(Controller, CurrentPawns[i].Pawn, CameraLocation, CurrentPawns[i].Location);
+		CurrentPawns[i].ScreenPos = WorldToScreen::World( Canvas, WorldToScreen::BRBones(CurrentPawns[i].Location, CurrentPawns[i].Pawn));
+		CurrentPawns[i].WorldPos = WorldToScreen::BRBones(CurrentPawns[i].Location, CurrentPawns[i].Pawn);
+		CurrentPawns[i].Distance = (CurrentPawns[i].Location - CameraLocation).Length();
+		CurrentPawns[i].IsEnemy = Pawn->PlayerReplicationInfo->Team != Controller->PlayerReplicationInfo->Team;
+		//wprintf(L"Pawn %d - %s\n", i, Pawn->PlayerReplicationInfo->PlayerName.Data);
+		i++;
+	}while(Pawn = Pawn->NextPawn);
 
-		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
+	TotalPlayers = iMax = i;
 
-		FVector Screen = WorldToScreen::World( Canvas, Location );
-		
-		if(CheckBoxes[11].Checked)
+ 	for (i = 0; i < iMax; i++)
+ 	{
+ 		if( !CurrentPawns[i].Pawn )
+ 			continue;
+ 
+ 		PawnInfo Pawn = CurrentPawns[i];
+
+		FColor DrawColor = Misc::GetTeamColor( TRUE, Pawn.IsVisible, Pawn.IsEnemy );
+
+		if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Name ESP")].Checked)
 		{
-			//CRender::DrawStringEx( Canvas, 100, 140, ColorGreen, 0, L"AutoKnifeIsChecked");
-			Aim::AutoKnife(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
+			ESP::Name(Canvas, Pawn, DrawColor);
+			Pawn.ScreenPos.Y += 15;
 		}
 
-		if ( Pawn->Health < 1 )
-			continue;
-
-		if (CheckBoxes[0].Checked)
+		if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Health ESP")].Checked)
 		{
-			ESP::Name(Canvas, Screen, Pawn, DrawColor);
-			Screen.Y += 15;
+			ESP::Health(Canvas, Pawn, DrawColor);
+			Pawn.ScreenPos.Y += 15;
 		}
 
-		if (CheckBoxes[1].Checked)
+		if(CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Distance ESP")].Checked)
 		{
-			ESP::Health(Canvas, Screen, Pawn, DrawColor);
-			Screen.Y += 15;
-		}
-		
-		if(CheckBoxes[2].Checked)
-		{
-			ESP::Distance(Canvas, Screen, Location, Pawn, DrawColor);
-			Screen.Y += 15;
+			ESP::Distance(Canvas, Pawn, DrawColor);
+			Pawn.ScreenPos.Y += 15;
 		}
 
-		if(CheckBoxes[3].Checked)
-		{
-			ESP::BoneESP(Canvas, Pawn, DrawColor);
-		}
-
-		if(CheckBoxes[4].Checked)
+		if(CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Box ESP")].Checked)
 		{
 			ESP::Boxes( Canvas, Pawn, DrawColor );
 		}
 
-		if(CheckBoxes[5].Checked)
+		if(CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Visible Enemy Info")].Checked)
 		{
-			Aim::AimBot(IsVisible, IsEnemy, Location, Pawn, Canvas, DrawColor);
+			Misc::info(Canvas, Pawn, DrawColor);
 		}
 
-		if(CheckBoxes[6].Checked)
+		if(CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Line To Target")].Checked)
 		{
-			Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+			Misc::LineToTarget(Canvas, Pawn, DrawColor);
 		}
 
-		if(CheckBoxes[7].Checked)
-		{
-			Misc::info(Canvas, Pawn, DrawColor, Location, IsEnemy, IsVisible);
-		}
-
-		if(CheckBoxes[8].Checked)
-		{
-			Misc::LineToTarget( Canvas, Pawn, DrawColor, IsEnemy, IsVisible);
-		}
-
-		if(CheckBoxes[9].Checked)
-		{
-			Misc::DrawCossHair(Canvas, ColorGreen);
-		}
-
-		if(CheckBoxes[10].Checked)
+		if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Radar")].Checked)
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
 		}
+ 	}
+
+	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"AimBot")].Checked)
+	{
+		Aim::AimBot();
+	}
+
+	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Auto Fire Bot")].Checked)
+	{
+		//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+	}
+
+	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"CossHair")].Checked)
+	{
+		Misc::DrawCossHair(Canvas, ColorGreen);
+	}
+
+	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Auto Knife")].Checked)
+	{
+		Aim::AutoKnife();
 	}
 }

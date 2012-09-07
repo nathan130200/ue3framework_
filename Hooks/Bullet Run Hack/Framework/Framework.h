@@ -4,6 +4,9 @@
 #pragma warning(disable:4996)
 #pragma warning(disable:4244)
 
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32")
+
 #include <windows.h>
 #include <stdio.h>
 #include <time.h>
@@ -13,19 +16,46 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <ctype.h>
+#include <time.h>
+#include <sys/stat.h>
+#include <iostream>
+#include <list>
+#include <map>
+#include <vector>
+#include <wincred.h>
+#include <Shlwapi.h>
+#include <shlobj.h>
+#include <dbghelp.h>
+#include <random>
+#include <algorithm>
+#include <functional>
 
 #include "ragekings.h"
 
 #include "..\sdks\BRSDK\SdkHeaders.h"
 
-float CurrentBest = 999999.0f;
-APawn *CurrentTarget = NULL;
-FVector CurrentLocation;
-APawn *CurrentTargetedPawn = NULL;
+typedef struct _PawnInfo
+{
+	APawn *Pawn;
+	APlayerReplicationInfo *Rpi;
 
+	BOOL IsVisible;
+	BOOL IsEnemy;
+
+	FVector Location;
+	float Distance;
+	FVector WorldPos;
+	FVector ScreenPos;
+} PawnInfo;
+
+PawnInfo    CurrentPawns[500];
 FVector		CameraLocation;
 FRotator	CameraRotation;
 
+int TotalPlayers = 0;
+
+APBPlayerController		*APBPController			= NULL;
 UGameEngine				*GameEngine				= NULL;
 ULocalPlayer			*LocalPlayer			= NULL;
 APlayerController		*Controller				= NULL;
@@ -38,9 +68,8 @@ void					*pResult				= NULL;
 const FVector VectorZero;
 const FRotator RotatorZero;
 
-int VisiblePlayerCount = 0;
-BOOL AutoFireKeyIsPressed = FALSE;
-
+#include "Utils\base64.h"
+#include "Utils\web.h"
 #include "Utils\vmthooks.h"
 #include "Utils\Utils.h"
 #include "Utils\Entry.h"
@@ -49,6 +78,8 @@ BOOL AutoFireKeyIsPressed = FALSE;
 
 #include "UE3\Color.h"
 #include "Menu\MenuManager.h"
+
+vector<WCHAR*> AimbotPlayerWhitelist;
 
 #ifndef test
 #include "UE3\UE3Math.h"

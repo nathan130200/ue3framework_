@@ -47,25 +47,25 @@ public:
 		}
 	}
 
-	static void  Misc::LineToTarget( UCanvas* pCanvas, APawn* Target, FColor cColor, bool IsTarget, bool IsVisible )
+	static void  Misc::LineToTarget( UCanvas* pCanvas, PawnInfo Pawn, FColor cColor )
 	{
-			if(IsTarget && IsVisible)
+			if(Pawn.IsEnemy && Pawn.IsVisible)
 			{
 				FVector top, tyou;
-				top = Target->Location;
+				top = Pawn.Location;
 				top = WorldToScreen::World(pCanvas, top);
 			
 				pCanvas->Draw2DLine(pCanvas->ClipX/2 ,pCanvas->ClipY/2, top.X, top.Y, cColor);
 			}
 	}
 
-	static void Misc::info(UCanvas* Canvas, APawn* Target, FColor DrawColor, FVector Location, bool IsTarget, bool IsVisible)
+	static void Misc::info(UCanvas* Canvas, PawnInfo Pawn, FColor DrawColor)
 	{
-		if(IsTarget && IsVisible)
+	/*	if(IsTarget && IsVisible)
 		{
 			float PawnDistance = Radar::calcdist(CameraLocation,Location) /100;
 			CRender::DrawStringEx( Canvas, 10, 10 + (VisiblePlayerCount * 15), DrawColor, 0, L"Name: %s Health: (%i) Distance: (%0.2f)", Target->PlayerReplicationInfo->PlayerName.Data, Target->Health, PawnDistance );
 			VisiblePlayerCount++;
-		}
+		}*/
 	}
 };

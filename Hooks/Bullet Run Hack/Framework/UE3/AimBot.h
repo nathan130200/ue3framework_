@@ -1,171 +1,70 @@
 bool AutoKnifeKeyIsPressed = NULL;
 bool AutoKnifeWeaponOut = FALSE;
 BOOL AutoFireAimed = FALSE;
+float BestDistance = INT_MAX;
+
+bool bLocked = false;
+int ToTarget = -1;
 
 class Aim
 {
 public:
-	static void Aim::AutoFireBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* pCanvas)
+	static int GetClosestPawn()
 	{
-		APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
+		float Best = INT_MAX;
+		int ret = -1;
 
-		if(GetAsyncKeyState( CurrentAimbotKey ))
+		for (int i = 0; i < TotalPlayers; i++)
 		{
-			FVector vHeadBone;
+			if (!CurrentPawns[i].Pawn || !CurrentPawns[i].IsVisible || !CurrentPawns[i].IsEnemy )
+				continue;
 
-			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-
-			if( IsEnemy && IsVisible )
+			if (CurrentPawns[i].Distance < Best)
 			{
-				float Distance = (vHeadBone - CameraLocation).Length();
-
-				if (Distance <= CurrentBest)
-				{
-					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
-					{
-						CurrentBest = Distance;
-						CurrentTarget = Pawn;
-						CurrentLocation = vHeadBone;
-					}
-					else
-					{
-						CurrentTargetedPawn = Pawn;
-					}
-				}
-			}
-
-			if(CurrentTarget && !AutoFireKeyIsPressed)
-			{
-				if (!AutoFireAimed)
-				{
-					AutoFireAimed = TRUE;
-					//APBPController->StartFire(2);
-				}
-
-				APBPController->StartFire(0);
-				AutoFireKeyIsPressed = TRUE;
-			}
-			else
-			{
-				APBPController->StopFire(0);
-				AutoFireKeyIsPressed = FALSE;
+				Best = CurrentPawns[i].Distance;
+				ret = i;
 			}
 		}
-		else
+
+		return ret;
+	}
+
+	static void Aim::AutoKnife()
+	{
+		if( GetAsyncKeyState( CurrentAimbotKey ) )
 		{
+		}
+	}
+
+	static void Aim::AimBot()
+	{
+		BOOL AutoFire = CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Auto Fire Bot")].Checked;
+
+		if( GetAsyncKeyState( CurrentAimbotKey ))
+		{
+			if( !bLocked || ToTarget == -1 )
+				ToTarget = GetClosestPawn();
+
+			if (ToTarget == -1 || !CurrentPawns[ToTarget].Pawn || !CurrentPawns[ToTarget].IsVisible || !CurrentPawns[ToTarget].IsEnemy)
+				_asm{jmp niggers};
+
+			FVector AimVelocity = CurrentPawns[ToTarget].Pawn->Velocity;
+			AimVelocity -= Controller->Pawn->Velocity;
+			FVector AimLocation = CurrentPawns[ToTarget].WorldPos + AimVelocity * Controller->PlayerReplicationInfo->ExactPing;
+
+			APBPController->ClientSetCtrlRotation((AimLocation - CameraLocation).Rotator());
+			bLocked = true;
+
+			if (AutoFire)
+				APBPController->StartFire(0);
+
+			return;
+		}
+niggers:
+		if (AutoFire)
 			APBPController->StopFire(0);
-			AutoFireKeyIsPressed = FALSE;
-			AutoFireAimed = FALSE;
-		}
-	}
 
-	static void Aim::AutoKnife(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
-	{
-		if( GetAsyncKeyState( CurrentAimbotKey ) )
-		{
-			//CRender::DrawStringEx( Canvas, 100, 180, ColorGreen, 0, L"Pressing F");
-
-
-			FVector vHeadBone;
-
-			APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-			vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-
-			float Distance = (vHeadBone - CameraLocation).Length();
-
-			if( IsEnemy && IsVisible )
-			{
-				if (Distance <= CurrentBest)
-				{
-					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
-					{
-						CurrentBest = Distance;
-						CurrentTarget = Pawn;
-						CurrentLocation = vHeadBone;
-					}
-					else
-					{
-						CurrentTargetedPawn = Pawn;
-					}
-				}
-			}
-
-			float PawnDistance = Radar::calcdist(CameraLocation, Location) / 100;
-			//CRender::DrawStringEx( Canvas, 100, 160, ColorGreen, 0, L"Current Target %d Distance %f", CurrentTarget, PawnDistance);
-
-			if(CurrentTarget && PawnDistance < 1.0f)
-			{
-				APBPController->SwitchWeapon(0);
-
-				FVector AimForward = (CurrentLocation - CameraLocation);
-				FRotator AimRotation = AimForward.Rotator();
-					
-				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				APBPController->ClientSetCtrlRotation(AimRotation);
-
-				APBPController->StartFire(0);
-
-				AutoKnifeWeaponOut = true;
-			}
-
-			if (PawnDistance > 1.0f)
-			{
-				if(AutoKnifeWeaponOut)
-				{
-					APBPController->SwitchWeapon(1);
-					AutoKnifeWeaponOut = false;
-				}
-			}
-		}
-	}
-
-	static void Aim::AimBot(bool IsVisible, bool IsEnemy, FVector Location, APawn* Pawn, UCanvas* Canvas, FColor DrawColor )
-	{
-		if( GetAsyncKeyState( CurrentAimbotKey ) )
-		{
-			FVector vHeadBone;
-
-			if( IsEnemy && IsVisible )
-			{
-				if ( CurrentTargetedPawn && CurrentTargetedPawn->Health > 0 )
-				{
-					if(CheckBoxes[12].Checked)
-					{
-						vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
-						vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
-					}else{
-						vHeadBone = Location;
-					}
-
-					CurrentTarget = CurrentTargetedPawn;
-					CurrentLocation = vHeadBone;
-				}
-				else
-				{
-					if(CheckBoxes[12].Checked)
-					{
-						vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
-						vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
-					}else{
-						vHeadBone = Location;
-					}
-
-					float Distance = (vHeadBone - CameraLocation).Length();
-					if (Distance <= CurrentBest)
-					{
-						CurrentTargetedPawn = Pawn;
-					}
-				}
-			}
-
-			if( CurrentTargetedPawn && CurrentTarget )
-			{
-				FVector AimForward = (CurrentLocation - CameraLocation);
-				FRotator AimRotation = AimForward.Rotator();
-
-				APBPlayerController* APBPController = reinterpret_cast<APBPlayerController*>( LocalPlayer->Actor );
-				APBPController->ClientSetCtrlRotation(AimRotation);
-			}
-		}
+		bLocked = false;
+		ToTarget = -1;
 	}
 };

@@ -199,6 +199,14 @@ public:
 		MenuButtons.push_back(Item);
 	}
 
+	static int GetCheckBoxIndexByName(WCHAR* Label)
+	{
+		for(int i = 0; i <= CheckBoxes.size(); i++)
+			if(wcscmp(CheckBoxes[i].Label, Label) == 0)
+				return i;
+		return -1;
+	}
+
 	static void DrawMenu(UCanvas *Canvas)
 	{
 		if(!(GetAsyncKeyState( VK_LBUTTON ) < 0))

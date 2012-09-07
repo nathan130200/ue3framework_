@@ -39,9 +39,9 @@ public:
 		return Return;
 	}
 
-	static void inline Radar::DrawRadar( APawn* Target, UCanvas* Canvas, FColor Color ) 
+	static void inline Radar::DrawRadar( PawnInfo Pawn, UCanvas* Canvas, FColor Color ) 
 	{
-			FVector2D Location2D = CalculateRadarCoordinate( Target->Location, 90.0f, 240.0f );
+			FVector2D Location2D = CalculateRadarCoordinate( Pawn.Location, 90.0f, 240.0f );
 
 			Canvas->DrawColor = Color;
 			Canvas->CurX = Location2D.X;

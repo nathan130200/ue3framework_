@@ -33,6 +33,12 @@
     <ClCompile Include="hook.cpp">
       <Filter>Hook</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Utils\Base64.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utils\web.cpp">
+      <Filter>Framework\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Framework.h">
@@ -82,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="Framework\Hack\BRDraw.h">
       <Filter>Framework\Hack</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utils\Base64.h">
+      <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utils\web.h">
+      <Filter>Framework\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

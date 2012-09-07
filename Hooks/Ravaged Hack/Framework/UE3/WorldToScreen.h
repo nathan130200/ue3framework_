@@ -1,7 +1,7 @@
 class WorldToScreen
 {
 public:
-	static void WorldToScreen::GetAxes( FRotator Angles, FVector& vRight, FVector& vUp, FVector& vForward )
+	static void WorldToScreen::GetAxis( FRotator Angles, FVector& vRight, FVector& vUp, FVector& vForward )
 	{
 		float        angle;
                 
@@ -49,7 +49,7 @@ public:
 	{
 		FVector X,Y,Z,D,Out,Delta,Transformed;
 
-		GetAxes(CameraRotation,X,Y,Z);
+		GetAxis(CameraRotation,X,Y,Z);
 
 		Delta = Controller->Subtract_VectorVector( WorldLocation, CameraLocation );
 		Transformed.X = Controller->Dot_VectorVector( Delta, Y );
