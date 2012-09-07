@@ -6,6 +6,8 @@ float BestDistance = INT_MAX;
 bool bLocked = false;
 int ToTarget = -1;
 
+BOOL FireStarted = FALSE;
+
 class Aim
 {
 public:
@@ -48,6 +50,7 @@ public:
 			if (ToTarget == -1 || !CurrentPawns[ToTarget].Pawn || !CurrentPawns[ToTarget].IsVisible || !CurrentPawns[ToTarget].IsEnemy)
 				_asm{jmp niggers};
 
+			// Prediction currentoly works but we miss if the player is standing still :P
 			FVector AimVelocity = CurrentPawns[ToTarget].Pawn->Velocity;
 			AimVelocity -= Controller->Pawn->Velocity;
 			FVector AimLocation = CurrentPawns[ToTarget].WorldPos + AimVelocity * Controller->PlayerReplicationInfo->ExactPing;
@@ -56,13 +59,19 @@ public:
 			bLocked = true;
 
 			if (AutoFire)
+			{
 				APBPController->StartFire(0);
+				FireStarted = TRUE;
+			}
 
 			return;
 		}
 niggers:
-		if (AutoFire)
+		if (AutoFire && FireStarted)
+		{
 			APBPController->StopFire(0);
+			FireStarted = FALSE;
+		}
 
 		bLocked = false;
 		ToTarget = -1;
