@@ -129,16 +129,26 @@ public:
 			{
 				if ( CurrentTargetedPawn && CurrentTargetedPawn->Health > 0 )
 				{
-					vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
-					vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+					if(CheckBoxes[12].Checked)
+					{
+						vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
+						vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+					}else{
+						vHeadBone = Location;
+					}
 
 					CurrentTarget = CurrentTargetedPawn;
 					CurrentLocation = vHeadBone;
 				}
 				else
 				{
-					vHeadBone = WorldToScreen::BRBones(Location, Pawn);
-					vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+					if(CheckBoxes[12].Checked)
+					{
+						vHeadBone = WorldToScreen::BRBones(Location, CurrentTargetedPawn);
+						vHeadBone = WorldToScreen::World(Canvas, vHeadBone);
+					}else{
+						vHeadBone = Location;
+					}
 
 					float Distance = (vHeadBone - CameraLocation).Length();
 					if (Distance <= CurrentBest)

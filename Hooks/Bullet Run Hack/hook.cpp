@@ -125,6 +125,7 @@ void MenuInit()
 	//===========================
 
 	CMenuManager::AddCheckBox(20,	100,	1,	L"Auto Knife");
+	CMenuManager::AddCheckBox(20,	120,	1,	L"headshots");
 }
 
 HMODULE Entry::g_hMainModule;
