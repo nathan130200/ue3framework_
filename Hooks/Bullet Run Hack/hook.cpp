@@ -15,7 +15,9 @@ tProcessEvent pProcessEvent;
 
 unsigned long PostRender_Name = NULL;
 
-bool menu = FALSE;
+bool	menu = FALSE;
+bool	GetinGameName = FALSE;
+wstring	currentName;
 
 void PostRender ( UCanvas* pCanvas )
 {
@@ -41,6 +43,17 @@ void PostRender ( UCanvas* pCanvas )
 	if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL || Char == NULL )
 		return;
 
+	wstring strs(Controller->PlayerReplicationInfo->PlayerName.Data);
+	if(currentName != strs)
+	{
+		currentName = strs;
+		string ws;
+		ws.assign(strs.begin(), strs.end());
+
+		GetLoginGameName(ws);
+		GetinGameName = true;
+	}
+	
 	if(Char->pCurrentWeaponInfo && Char->pCurrentWeaponInfo->pCachedWeapon && Char->pCurrentWeaponInfo->pCachedWeapon->bReloadInPerfectPos )
 	{
 		APBPController->ReloadWeapon(0);
@@ -49,29 +62,7 @@ void PostRender ( UCanvas* pCanvas )
 	if(Char->pCurrentWeaponInfo && Char->pCurrentWeaponInfo->pCachedWeapon )
 	{
 		if( Char->pCurrentWeaponInfo->pCachedWeapon->pWeaponSettings )
-		{
-			//CRender::DrawStringEx( pCanvas,  20, 20, ColorGreen, 0, L"TotalAmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetTotalAmmoCount() );
-			//CRender::DrawStringEx( pCanvas,  20, 40, ColorGreen, 0, L"AmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetAmmoCount() );
-			//CRender::DrawStringEx( pCanvas,  20, 60, ColorGreen, 0, L"BaseWeaponCode %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetBaseWeaponCode());
-			//CRender::DrawStringEx( pCanvas,  20, 80,  ColorGreen,  0, L"fCurrentSpreadRadius %f", Char->pCurrentWeaponInfo->pCachedWeapon->fCurrentSpreadRadius);
-			//CRender::DrawStringEx( pCanvas,  20, 100, ColorGreen,  0, L"vCurrentRecoil.X %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.X);
-			//CRender::DrawStringEx( pCanvas,  20, 120,  ColorGreen, 0, L"vCurrentRecoil.Y %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Y);
-			//CRender::DrawStringEx( pCanvas,  20, 140, ColorGreen,  0, L"vCurrentRecoil.Z %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Z);
-			//CRender::DrawStringEx( pCanvas,  20, 480,  ColorGreen, 0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 500, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 520, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 540, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 560, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 580,  ColorGreen, 0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 600, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 620, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 640, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-			//CRender::DrawStringEx( pCanvas,  20, 660, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
-
-
-			//struct FSpreadCache                                CachedSpread;
-			//struct FRecoilCache                                CachedRecoil;
-			
+		{			
 			if( Char->pCurrentWeaponInfo->WeaponParams )
 			{
 				Char->pCurrentWeaponInfo->WeaponParams->bEnableBobbing = FALSE;

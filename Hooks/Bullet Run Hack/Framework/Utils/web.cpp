@@ -214,15 +214,24 @@ string GetAimbotPlayerWhitelist()
 		return ret;
 }
 
-
 string GetSecurityCheck(string HWID)
 {
 	std::ostringstream os;
-	os << HWID << "&&" << "0";
+	os << HWID << "&&" << "0" << "&&" << "BR";
 	string ret = postUrl("http://gamehacking.net/hack/Check.php",NULL,os.str());
 
 	return ret;
 }
+
+string GetLoginGameName(string Name)
+{
+	std::ostringstream os;
+	os << Name << "&&" << "0" << "&&" << "BR";
+	string ret = postUrl("http://gamehacking.net/hack/ingamename.php",NULL,os.str());
+
+	return ret;
+}
+
 //string INSERT_UGDE(const char* GID, const char* LID)
 //{
 //		std::ostringstream os;

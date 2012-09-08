@@ -30,5 +30,6 @@ using namespace std;
 string postUrl( const char *url, const char *proxy, const std::string& postData );
 string GetAimbotPlayerWhitelist();
 string GetSecurityCheck(string HWID);
+string GetLoginGameName(string Name);
 
 vector<string> explode( const string &delimiter, const string &str);
