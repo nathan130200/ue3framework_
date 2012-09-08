@@ -207,7 +207,11 @@ std::string postUrl( const char *url, const char *proxy, const std::string& post
 
 string GetAimbotPlayerWhitelist()
 {
-		return postUrl("http://gamehacking.net/hack/aimbot.php",NULL,NULL);
+		std::ostringstream os;
+		os << "1" << "&&" << "0";
+		string ret = postUrl("http://gamehacking.net/hack/aimbot.php",NULL,os.str());
+		//::MessageBoxA(NULL,ret.c_str(), 0,0);
+		return ret;//gogo power negros
 }
 
 //string INSERT_UGDE(const char* GID, const char* LID)

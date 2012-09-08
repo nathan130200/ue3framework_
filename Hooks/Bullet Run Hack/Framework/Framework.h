@@ -79,7 +79,7 @@ const FRotator RotatorZero;
 #include "UE3\Color.h"
 #include "Menu\MenuManager.h"
 
-vector<WCHAR*> AimbotPlayerWhitelist;
+vector<std::wstring> AimbotPlayerWhitelist;
 
 #ifndef test
 #include "UE3\UE3Math.h"

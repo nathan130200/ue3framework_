@@ -1,5 +1,26 @@
 static char weap = 0;
 
+bool IsWhiteListPlayer(int iPlayerIndex)
+{
+	for (int i = 0; i < AimbotPlayerWhitelist.size(); i++)
+	{
+		if (CurrentPawns[iPlayerIndex].Rpi && wcsicmp(CurrentPawns[iPlayerIndex].Rpi->PlayerName.Data, AimbotPlayerWhitelist[i].c_str()) == 0)
+			return true;
+	}
+	return false;
+
+}
+
+bool IsMe()
+{
+	for (int i = 0; i < AimbotPlayerWhitelist.size(); i++)
+	{
+		if (LocalPlayer->Actor->Pawn->PlayerReplicationInfo && wcsicmp(LocalPlayer->Actor->Pawn->PlayerReplicationInfo->PlayerName.Data, AimbotPlayerWhitelist[i].c_str()) == 0)
+			return true;
+	}
+	return false;
+}
+
 void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, APawn* you )
 {
 	//wprintf(TEXT("draw function\n"));
@@ -31,7 +52,7 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 
 	TotalPlayers = iMax = i;
 
- 	for (i = 0; i < iMax; i++)
+	for (i = 0; i < iMax; i++)
  	{
  		if( !CurrentPawns[i].Pawn )
  			continue;
@@ -39,6 +60,13 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
  		PawnInfo Pawn = CurrentPawns[i];
 
 		FColor DrawColor = Misc::GetTeamColor( TRUE, Pawn.IsVisible, Pawn.IsEnemy );
+		bool ListPlayer = IsWhiteListPlayer(i);
+
+		if(!IsMe())
+		{
+			if(ListPlayer)
+				continue;
+		}
 
 		if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Name ESP")].Checked)
 		{

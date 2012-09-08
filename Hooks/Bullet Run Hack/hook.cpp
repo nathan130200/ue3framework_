@@ -50,13 +50,13 @@ void PostRender ( UCanvas* pCanvas )
 	{
 		if( Char->pCurrentWeaponInfo->pCachedWeapon->pWeaponSettings )
 		{
-			CRender::DrawStringEx( pCanvas,  20, 20, ColorGreen, 0, L"TotalAmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetTotalAmmoCount() );
-			CRender::DrawStringEx( pCanvas,  20, 40, ColorGreen, 0, L"AmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetAmmoCount() );
-			CRender::DrawStringEx( pCanvas,  20, 60, ColorGreen, 0, L"BaseWeaponCode %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetBaseWeaponCode());
-			CRender::DrawStringEx( pCanvas,  20, 80,  ColorGreen,  0, L"fCurrentSpreadRadius %f", Char->pCurrentWeaponInfo->pCachedWeapon->fCurrentSpreadRadius);
-			CRender::DrawStringEx( pCanvas,  20, 100, ColorGreen,  0, L"vCurrentRecoil.X %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.X);
-			CRender::DrawStringEx( pCanvas,  20, 120,  ColorGreen, 0, L"vCurrentRecoil.Y %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Y);
-			CRender::DrawStringEx( pCanvas,  20, 140, ColorGreen,  0, L"vCurrentRecoil.Z %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Z);
+			//CRender::DrawStringEx( pCanvas,  20, 20, ColorGreen, 0, L"TotalAmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetTotalAmmoCount() );
+			//CRender::DrawStringEx( pCanvas,  20, 40, ColorGreen, 0, L"AmmoCount %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetAmmoCount() );
+			//CRender::DrawStringEx( pCanvas,  20, 60, ColorGreen, 0, L"BaseWeaponCode %d", Char->pCurrentWeaponInfo->pCachedWeapon->GetBaseWeaponCode());
+			//CRender::DrawStringEx( pCanvas,  20, 80,  ColorGreen,  0, L"fCurrentSpreadRadius %f", Char->pCurrentWeaponInfo->pCachedWeapon->fCurrentSpreadRadius);
+			//CRender::DrawStringEx( pCanvas,  20, 100, ColorGreen,  0, L"vCurrentRecoil.X %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.X);
+			//CRender::DrawStringEx( pCanvas,  20, 120,  ColorGreen, 0, L"vCurrentRecoil.Y %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Y);
+			//CRender::DrawStringEx( pCanvas,  20, 140, ColorGreen,  0, L"vCurrentRecoil.Z %f", Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil.Z);
 			//CRender::DrawStringEx( pCanvas,  20, 480,  ColorGreen, 0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
 			//CRender::DrawStringEx( pCanvas,  20, 500, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
 			//CRender::DrawStringEx( pCanvas,  20, 520, ColorGreen,  0, L" %f", Char->pCurrentWeaponInfo->pCachedWeapon->);
@@ -172,24 +172,19 @@ DWORD Entry::dwCodeSize;
 DWORD Entry::dwCodeOffset;
 DWORD Entry::dwEntryPoint;
 
-//void SetAimbotPlayerWhitelist()
-//{
-//	string str = GetAimbotPlayerWhitelist();
-//	vector<string> strs = explode( "|", str);
-//
-//	for (int i = 0; i < strs.size(); i++)
-//	{
-//		wstring ws = L"";
-//		const char *cstr = strs[i].c_str();
-//
-//		for (int j = 0; j < strlen(cstr); i++)
-//		{
-//			ws += (WCHAR)(cstr[j]);
-//		}
-//
-//		AimbotPlayerWhitelist.push_back((WCHAR*)ws.c_str());
-//	}
-//}
+void SetAimbotPlayerWhitelist()
+{
+	string str = GetAimbotPlayerWhitelist();
+	vector<string> strs = explode( "|", str);
+
+	for (int i = 1; i < strs.size(); i++)
+	{
+		wstring ws;
+		ws.assign(strs[i].begin(), strs[i].end());
+		//wprintf(L"unicode - %s\n",ws.c_str());
+		AimbotPlayerWhitelist.push_back(ws);
+	}
+}
 
 unsigned long ModuleThread( void* )
 {
@@ -214,7 +209,7 @@ unsigned long ModuleThread( void* )
 
 		MenuInit();
 
-		//SetAimbotPlayerWhitelist();
+		SetAimbotPlayerWhitelist();
 
 		toolkit::VMTHook* hook = new toolkit::VMTHook(GameEngine->GameViewport); 
 		pProcessEvent = hook->GetMethod<tProcessEvent>(68); 

@@ -11,6 +11,26 @@ BOOL FireStarted = FALSE;
 class Aim
 {
 public:
+	static bool IsWhiteListPlayer(int iPlayerIndex)
+	{
+		for (int i = 0; i < AimbotPlayerWhitelist.size(); i++)
+		{
+			if (CurrentPawns[iPlayerIndex].Rpi && wcsicmp(CurrentPawns[iPlayerIndex].Rpi->PlayerName.Data, AimbotPlayerWhitelist[i].c_str()) == 0)
+				return true;
+		}
+		return false;
+	}
+
+	static bool IsMe()
+	{
+		for (int i = 0; i < AimbotPlayerWhitelist.size(); i++)
+		{
+			if (LocalPlayer->Actor->Pawn->PlayerReplicationInfo && wcsicmp(LocalPlayer->Actor->Pawn->PlayerReplicationInfo->PlayerName.Data, AimbotPlayerWhitelist[i].c_str()) == 0)
+				return true;
+		}
+		return false;
+	}
+
 	static int GetClosestPawn()
 	{
 		float Best = INT_MAX;
@@ -18,8 +38,15 @@ public:
 
 		for (int i = 0; i < TotalPlayers; i++)
 		{
-			if (!CurrentPawns[i].Pawn || !CurrentPawns[i].IsVisible || !CurrentPawns[i].IsEnemy )
+			if (!CurrentPawns[i].Pawn || !CurrentPawns[i].IsVisible || !CurrentPawns[i].IsEnemy)
 				continue;
+
+			bool ListPlayer = IsWhiteListPlayer(i);
+			if(!IsMe())
+			{
+				if(ListPlayer)
+					continue;
+			}
 
 			if (CurrentPawns[i].Distance < Best)
 			{
@@ -50,8 +77,16 @@ public:
 			if (ToTarget == -1 || !CurrentPawns[ToTarget].Pawn || !CurrentPawns[ToTarget].IsVisible || !CurrentPawns[ToTarget].IsEnemy)
 				_asm{ jmp niggers };
 
+			bool ListPlayer = IsWhiteListPlayer(ToTarget);
+			if(!IsMe())
+			{
+				if(ListPlayer)
+					_asm{ jmp niggers };
+			}
+
+
 			FVector AimVelocity = CurrentPawns[ToTarget].Pawn->Velocity;
-			//AimVelocity -= Controller->Pawn->Velocity;
+			AimVelocity -= Controller->Pawn->Velocity;
 
 			FVector AimLocation = CurrentPawns[ToTarget].WorldPos + AimVelocity * Controller->PlayerReplicationInfo->ExactPing;
 
@@ -60,7 +95,7 @@ public:
 				APBCharacter* Char = reinterpret_cast<APBCharacter*>(LocalPlayer->Actor->Pawn);
 
 				if( Char && Char->pCurrentWeaponInfo && Char->pCurrentWeaponInfo->pCachedWeapon )
-					AimLocation += Char->pCurrentWeaponInfo->pCachedWeapon->vCurrentRecoil;
+					AimLocation += Char->pCurrentWeaponInfo->pCachedWeapon->vRemainingRecoil;
 			}
 
 			APBPController->ClientSetCtrlRotation((AimLocation - CameraLocation).Rotator());
