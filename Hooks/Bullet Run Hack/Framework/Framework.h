@@ -68,6 +68,9 @@ void					*pResult				= NULL;
 const FVector VectorZero;
 const FRotator RotatorZero;
 
+BOOL AutorizedUser = FALSE;
+
+#include "Utils\diskinfo.h"
 #include "Utils\base64.h"
 #include "Utils\web.h"
 #include "Utils\vmthooks.h"

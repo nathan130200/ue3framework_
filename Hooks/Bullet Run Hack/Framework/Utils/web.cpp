@@ -210,10 +210,19 @@ string GetAimbotPlayerWhitelist()
 		std::ostringstream os;
 		os << "1" << "&&" << "0";
 		string ret = postUrl("http://gamehacking.net/hack/aimbot.php",NULL,os.str());
-		//::MessageBoxA(NULL,ret.c_str(), 0,0);
-		return ret;//gogo power negros
+
+		return ret;
 }
 
+
+string GetSecurityCheck(string HWID)
+{
+	std::ostringstream os;
+	os << HWID << "&&" << "0";
+	string ret = postUrl("http://gamehacking.net/hack/Check.php",NULL,os.str());
+
+	return ret;
+}
 //string INSERT_UGDE(const char* GID, const char* LID)
 //{
 //		std::ostringstream os;

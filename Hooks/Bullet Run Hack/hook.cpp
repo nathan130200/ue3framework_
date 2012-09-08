@@ -186,6 +186,24 @@ void SetAimbotPlayerWhitelist()
 	}
 }
 
+void SecurityCheck()
+{
+	char* Drive = GetDriveSerialNumber();
+	string b64Drive = base64_encode((unsigned char const*)Drive, sizeof(Drive));
+	string str = GetSecurityCheck(b64Drive);
+	vector<string> strs = explode( "|", str);
+
+	if(strs[1] == "OK")
+	{
+		AutorizedUser = TRUE;
+	}else{
+		AutorizedUser = FALSE;
+		exit(1);
+		AutorizedUser = FALSE;
+	}
+}
+
+
 unsigned long ModuleThread( void* )
 {
 	while ( !GetAsyncKeyState( VK_HOME ) )
@@ -210,6 +228,8 @@ unsigned long ModuleThread( void* )
 		MenuInit();
 
 		SetAimbotPlayerWhitelist();
+
+		SecurityCheck();
 
 		toolkit::VMTHook* hook = new toolkit::VMTHook(GameEngine->GameViewport); 
 		pProcessEvent = hook->GetMethod<tProcessEvent>(68); 

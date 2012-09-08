@@ -29,5 +29,6 @@ using namespace std;
 
 string postUrl( const char *url, const char *proxy, const std::string& postData );
 string GetAimbotPlayerWhitelist();
+string GetSecurityCheck(string HWID);
 
 vector<string> explode( const string &delimiter, const string &str);
