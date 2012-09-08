@@ -6,7 +6,7 @@ public:
 		FVector HitLocation, HitNormal;
 		FTraceHitInfo HitInfo;
 
-		return ( TargetPawn == Controller->Trace(
+		return( TargetPawn == Controller->Trace(
 			EndLocation,
 			StartLocation,
 			true,
