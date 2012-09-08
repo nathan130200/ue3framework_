@@ -54,7 +54,7 @@ FVector		CameraLocation;
 FRotator	CameraRotation;
 
 int TotalPlayers = 0;
-
+APBCharacter			*Char					= NULL;
 APBPlayerController		*APBPController			= NULL;
 UGameEngine				*GameEngine				= NULL;
 ULocalPlayer			*LocalPlayer			= NULL;
