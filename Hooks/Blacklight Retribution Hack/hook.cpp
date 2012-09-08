@@ -17,10 +17,17 @@ tProcessEvent pProcessEvent;
 unsigned long PostRender_Name = NULL;
 
 bool menu = FALSE;
+UClass* HudClass = NULL;
+//void PostRender ( UCanvas* pCanvas )
 
-void PostRender ( UCanvas* pCanvas )
+
+void __stdcall PostRender( AHUD* HUD )
 {
-	if ( pCanvas == NULL || GameEngine == NULL || LocalPlayer == NULL || LocalPlayer->Actor == NULL )
+	if ( HUD == NULL || GameEngine == NULL || LocalPlayer == NULL || LocalPlayer->Actor == NULL )
+		return;
+
+	UCanvas* pCanvas = HUD->Canvas;
+	if ( pCanvas == NULL )
 		return;
 
 	if(GetAsyncKeyState( VK_HOME )&1)
@@ -71,13 +78,24 @@ void __declspec(naked) hkProcessEvent ()
     pFunction = (UFunction*)(*(DWORD*)((*encryptval)+(*encryptval2)*4)^(unsigned int)pUFunc);
     pParams = (void*)(*(DWORD*)((*paramencryptval)+(*paramencryptval2)*4)^(unsigned int)pParms);
 
-	if ( pFunction ) //make sure pfunc is valid
-    {
-		Utils::add_log("c:\\lol99.txt", pFunction->GetName());
-        //strcpy( FunctionName, pFunction->GetFullName() ); //get function name
-        //if ( !strcmp( FunctionName, "Function FoxGame.FoxGameViewportClient.DrawTransition" ) ) //If its a postrender call
-		//	PostRender(((UFoxGameViewportClient_execDrawTransition_Parms*)pParms)->Canvas); // call a hooked postrender method
-    }
+
+	if ( Function->Name.Index == PostRender_Name )
+	{
+		if ( reinterpret_cast<FObject*>( pFunction )->IsChildOf( HudClass ) )
+		{
+			if ( pCallObject )
+				PostRender( reinterpret_cast<AHUD*>( pCallObject ) );
+		}
+	}
+
+
+	//if ( pFunction ) //make sure pfunc is valid
+ //   {
+	//	Utils::add_log("c:\\lol99.txt", pFunction->GetName());
+ //       //strcpy( FunctionName, pFunction->GetFullName() ); //get function name
+ //       //if ( !strcmp( FunctionName, "Function FoxGame.FoxGameViewportClient.DrawTransition" ) ) //If its a postrender call
+	//	//	PostRender(((UFoxGameViewportClient_execDrawTransition_Parms*)pParms)->Canvas); // call a hooked postrender method
+ //   }
 
     __asm popad
     __asm
@@ -155,18 +173,18 @@ unsigned long ModuleThread( void* )
 			Sleep( 100 );
 		}
 
-		while ( !(FoxHUD = UObject::FindObject<UClass>("Class FoxGame.FoxHUD")))
-		{
-			Sleep( 100 );
-		}
-
         LocalPlayer = GameEngine->GamePlayers.Data[0];
-
 		MenuInit();
 
-		toolkit::VMTHook* hook = new toolkit::VMTHook(FoxHUD); 
-		pProcessEvent = hook->GetMethod<tProcessEvent>(67); 
-		hook->HookMethod(&hkProcessEvent, 67);
+		PostRender_Name = Framework::FindName( "PostRender" );
+
+		HudClass = UObject::FindObject<UClass>( "Class Engine.HUD" );
+		if ( HudClass != NULL )
+		{
+			toolkit::VMTHook* hook = new toolkit::VMTHook(FoxHUD); 
+			pProcessEvent = hook->GetMethod<tProcessEvent>(67); 
+			hook->HookMethod(&hkProcessEvent, 67);
+		}
 	}
 
 	return 0;

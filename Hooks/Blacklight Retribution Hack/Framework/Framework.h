@@ -62,6 +62,31 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "Hack\BRDraw.h"
 #endif
 
+class FObject : public UObject
+{
+public:
+	bool IsChildOf( UClass* );
+};
+
+class FField : public FObject
+{
+public:	
+	FField* Super;
+	FField* Next;
+};
+
+bool FObject::IsChildOf( UClass* Class )
+{
+	for ( FField* Object = reinterpret_cast<FField*>( this->Outer ); Object; Object = Object->Super )
+	{
+		if ( Object == reinterpret_cast<FObject*>( Class ) )
+			return true;
+	}
+
+	return false;
+}
+
+
 class Framework
 {
 public:
