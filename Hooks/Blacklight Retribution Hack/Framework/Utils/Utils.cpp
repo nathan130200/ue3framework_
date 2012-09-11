@@ -7,7 +7,7 @@
 #include <time.h>
 #include <winbase.h>
 #include "wininet.h"
-#include "Entry.h"
+//#include "Entry.h"
 
 using namespace std;
 
@@ -116,15 +116,15 @@ HMODULE Utils::GetModuleHandleInterLocked(const char * hMod)
 	return hModule;
 }
 
-bool Utils::read(addr address, void* str, int size )
-{
-	return ReadProcessMemory( Entry::g_hMainModule, (LPCVOID)address, str, size, NULL) != 0;
-}
-
-bool Utils::readFromExeBase( addr address, void* str, int size )
-{
-	return read( (addr)Entry::g_hMainModule + address, str, size );
-}
+//bool Utils::read(addr address, void* str, int size )
+//{
+//	return ReadProcessMemory( Entry::g_hMainModule, (LPCVOID)address, str, size, NULL) != 0;
+//}
+//
+//bool Utils::readFromExeBase( addr address, void* str, int size )
+//{
+//	return read( (addr)Entry::g_hMainModule + address, str, size );
+//}
 
 MODULEINFO Utils::GetModuleInfo ( LPCTSTR lpModuleName )
 {

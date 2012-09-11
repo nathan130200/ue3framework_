@@ -1,10 +1,19 @@
 #define test
+#define _ENDSCENE_
+#define _D3DX_RENDERING_
+#define _D3DX_FONT_
+
 #include "Framework\Framework.h"
+#include "CVMTHook.h"
 
 char FunctionName[ 256 ]; 
+CVMTHookManager EventHook;
 
-typedef void (__stdcall *tProcessEvent ) ( UFunction*, void*, void* );
-tProcessEvent pProcessEvent;
+typedef VOID( WINAPI *tEndScene )( LPDIRECT3DDEVICE9 pDevice);
+tEndScene oEndScene;
+
+typedef HRESULT ( WINAPI * tReset )( LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS * pPresent );
+tReset oReset;
 
 #define GObjects_Pattern		"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
 #define GObjects_Mask			"x?????xx?xx?xxxxx"
@@ -14,99 +23,155 @@ tProcessEvent pProcessEvent;
 #define GNames_Mask				"xx????xxxxx"
 #define GNames_Offset			0x2
 
-unsigned long PostRender_Name = NULL;
+#define ES	0
+#define RST 1
+#define DIP	2
 
-bool menu = FALSE;
-UClass* HudClass = NULL;
-//void PostRender ( UCanvas* pCanvas )
+#define HOOK(func,addy)	o##func = (t##func)DetourFunction((PBYTE)addy,(PBYTE)hk##func)
 
+LPD3DXFONT pFont;
+D3DXVECTOR3 vMyHeadPos;
+D3DXVECTOR3 vMyOrigin[4];
+D3DXVECTOR3 vMyAngles[4];
+AFoxGRI* GRI = NULL;
 
-void __stdcall PostRender( AHUD* HUD )
+void DrawString(IDirect3DDevice9* pDevice, int x, int y, DWORD color, DWORD dwFormat, const char *fmt, ...)
 {
-	if ( HUD == NULL || GameEngine == NULL || LocalPlayer == NULL || LocalPlayer->Actor == NULL )
-		return;
+	RECT FontPos;
+	FontPos.left	= x - 1;  
+	FontPos.right	= x + 1;  
+	FontPos.top		= y - 1;  
+	FontPos.bottom	= y + 1;
 
-	UCanvas* pCanvas = HUD->Canvas;
-	if ( pCanvas == NULL )
-		return;
+	char buf[1024] = {'\0'};
+	va_list va_alist;
+	dwFormat	|= DT_NOCLIP;
+	va_start(va_alist, fmt);
+	vsprintf_s(buf, fmt, va_alist);
+	va_end(va_alist);
 
-	if(GetAsyncKeyState( VK_HOME )&1)
-	{
-		menu = !menu;
-	}
-
-	if(menu)
-	{
-		CMenuManager::DrawMenu(pCanvas);
-	}
-
-	Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
-	APawn* Pawn = reinterpret_cast<APawn*>(LocalPlayer->Actor->Pawn);
-
-	if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL )
-		return;
-
-	Controller->eventGetPlayerViewPoint(&CameraLocation, &CameraRotation);
-	CRender::DrawStringEx( pCanvas, 10, 10, ColorGreen, 0, L"Location %0.2f %0.2f %0.2f", CameraLocation.X, CameraLocation.Y, CameraLocation.Z );
-
-	//Draw( pCanvas, APBPController, CameraLocation, CameraRotation, Pawn );
+	if(pFont == NULL)
+		D3DXCreateFont(pDevice, 15, 0, 400, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, TEXT("Ariel"), &pFont);
+	else
+		pFont->DrawTextA(NULL, buf, -1, &FontPos, dwFormat, color);
 }
 
-UFunction* pFunction;
-void* pParams;
-PDWORD encryptval = (PDWORD)0x13D4604;
-PDWORD encryptval2 = (PDWORD)0x12FEE7C; //This is a static value
-PDWORD paramencryptval = (PDWORD)0x13D4608;
-PDWORD paramencryptval2 = (PDWORD)0x12FEE80; //This is a static value
-
-void __declspec(naked) hkProcessEvent ()
+void Draw( LPDIRECT3DDEVICE9 pDevice, AFoxPC* Controller, AFoxGRI* GRI )
 {
-    __asm mov pCallObject, ecx;
-    __asm
-    {
-        push eax
-        mov eax, dword ptr [esp + 0x8]
-        mov pUFunc, eax
-        mov eax, dword ptr [esp + 0xC]
-        mov pParms, eax
-        mov eax, dword ptr [esp + 0x10]
-        mov pResult, eax
-        pop eax        
-    }
-	_asm pushad	
-	
-    pFunction = (UFunction*)(*(DWORD*)((*encryptval)+(*encryptval2)*4)^(unsigned int)pUFunc);
-    pParams = (void*)(*(DWORD*)((*paramencryptval)+(*paramencryptval2)*4)^(unsigned int)pParms);
+	if ( !Controller || !GRI || !GameEngine || !GameEngine->GamePlayers.Data )
+		return;
 
+	DrawString(pDevice, 10, 50, 0xFFFF0000, 0, "MaxPlayers %i", GRI->MaxPlayers);
 
-	if ( Function->Name.Index == PostRender_Name )
+	for ( int i = 0; i < 16; i++ )
 	{
-		if ( reinterpret_cast<FObject*>( pFunction )->IsChildOf( HudClass ) )
+		ULocalPlayer* test1 = GameEngine->GamePlayers.Data[i];
+
+		if ( !test1 || !test1->Actor || !test1->Actor->Pawn || !test1->Actor->Pawn->PlayerReplicationInfo )
+			continue;
+
+		DrawString(pDevice, 10, 60 + (5 * i), 0xFFFF0000, 0, "Name: %S i: %i", test1->Actor->Pawn->PlayerReplicationInfo->PlayerName.Data, i);
+	}
+}
+
+bool Do_Once = false;
+void RenderBackend( LPDIRECT3DDEVICE9 pDevice )
+{
+	if( !Do_Once )
+	{
+		while ( !(GameEngine = UObject::FindObject<UGameEngine>("GameEngine Transient.GameEngine")))
 		{
-			if ( pCallObject )
-				PostRender( reinterpret_cast<AHUD*>( pCallObject ) );
+			Sleep( 100 );
 		}
+
+		//while ( !(GRI = UObject::FindObject<AFoxGRI>("Class FoxGame.FoxGRI")))
+		//{
+		//	Sleep( 100 );
+		//}
+
+		LocalPlayer = GameEngine->GamePlayers.Data[0];
+
+		Do_Once = true;
 	}
 
+	if( Do_Once )
+	{
+		DrawString(pDevice, 10, 10, 0xFFFF0000, 0, "Test Hook");
 
-	//if ( pFunction ) //make sure pfunc is valid
- //   {
-	//	Utils::add_log("c:\\lol99.txt", pFunction->GetName());
- //       //strcpy( FunctionName, pFunction->GetFullName() ); //get function name
- //       //if ( !strcmp( FunctionName, "Function FoxGame.FoxGameViewportClient.DrawTransition" ) ) //If its a postrender call
-	//	//	PostRender(((UFoxGameViewportClient_execDrawTransition_Parms*)pParms)->Canvas); // call a hooked postrender method
- //   }
+		Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
+		AFoxPC* FoxPC = reinterpret_cast<AFoxPC*>( LocalPlayer->Actor );
 
-    __asm popad
-    __asm
-    {
-        push pResult
-        push pParms
-        push pUFunc
-        call pProcessEvent
+		if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL)
+			return;
 
-        retn 0xC
-    }
+		DrawString(pDevice, 10, 20, 0xFFFF0000, 0, "Controller 0x%X", Controller);
+		DrawString(pDevice, 10, 30, 0xFFFF0000, 0, "AFoxPC 0x%X", FoxPC);
+
+		AFoxGRI* GRI = reinterpret_cast<AFoxGRI*>( Controller->PlayerReplicationInfo );
+
+		if ( GRI == NULL )
+			return;
+
+		DrawString(pDevice, 10, 40, 0xFFFF0000, 0, "AFoxGRI 0x%X", GRI);
+
+
+		Draw( pDevice, FoxPC, GRI );
+	}
+}
+
+_declspec ( naked ) VOID WINAPI hkEndScene(LPDIRECT3DDEVICE9 pDevice)
+{
+	_asm pushad;
+
+	RenderBackend(pDevice);
+
+	_asm popad;
+	_asm jmp [oEndScene];
+}
+
+HRESULT hkReset( LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS * pPresentParams )
+{
+	_asm pushad;
+
+	if (pFont)
+		pFont->OnLostDevice();
+
+	HRESULT hRet = oReset(pDevice, pPresentParams);
+	if (hRet == D3D_OK)
+	{
+		if (pFont)
+			pFont->OnResetDevice();
+	}
+
+	_asm popad;
+	return hRet;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+// DIRECTX HOOKING
+//---------------------------------------------------------------------------------------------------------------------------------
+
+LRESULT CALLBACK MsgProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam){return DefWindowProc(hwnd, uMsg, wParam, lParam);} 
+void DirectXInit(DWORD* table)
+{
+	WNDCLASSEX wc = {sizeof(WNDCLASSEX),CS_CLASSDC,MsgProc,0L,0L,GetModuleHandle(NULL),NULL,NULL,NULL,NULL,L"DX",NULL};
+	RegisterClassEx(&wc);
+	HWND hWnd = CreateWindow(L"DX",NULL,WS_OVERLAPPEDWINDOW,100,100,300,300,GetDesktopWindow(),NULL,wc.hInstance,NULL);
+	LPDIRECT3D9 pD3D = Direct3DCreate9( D3D_SDK_VERSION );
+	D3DPRESENT_PARAMETERS d3dpp; 
+	ZeroMemory( &d3dpp, sizeof(d3dpp) );
+	d3dpp.Windowed = TRUE;
+	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+	LPDIRECT3DDEVICE9 pd3dDevice;
+	pD3D->CreateDevice(D3DADAPTER_DEFAULT,D3DDEVTYPE_HAL,hWnd,D3DCREATE_SOFTWARE_VERTEXPROCESSING,&d3dpp,&pd3dDevice);
+	DWORD* pVTable = (DWORD*)pd3dDevice;
+	pVTable = (DWORD*)pVTable[0];
+
+	table[ES]	= pVTable[42]; // [END SCENE]
+	table[RST]	= pVTable[16]; // [RESET]
+
+	DestroyWindow(hWnd);
 }
 
 bool FindGameTables( void )
@@ -120,47 +185,6 @@ bool FindGameTables( void )
     return true;
 }
 
-void MenuInit()
-{
-	MenuOriginX = 10;
-	MenuOriginY = 10;
-
-	//===========================
-	CMenuManager::AddTab(10,	0,	L"ESP");
-	//===========================
-	CMenuManager::AddCheckBox(20,	60,		0,	L"Name ESP");
-	CMenuManager::AddCheckBox(20,	80,		0,	L"Health ESP");
-	CMenuManager::AddCheckBox(20,	100,	0,	L"Distance ESP");
-	CMenuManager::AddCheckBox(20,	120,	0,	L"Bone ESP");
-	CMenuManager::AddCheckBox(20,	140,	0,	L"Box ESP");
-
-	//===========================
-	CMenuManager::AddTab(70,	0,	L"Aimbot");
-	//===========================
-	CMenuManager::AddCheckBox(20,	60,		1,	L"AimBot");
-	CMenuManager::AddCheckBox(20,	80,		1,	L"Auto Fire Bot");
-
-	//===========================
-	CMenuManager::AddTab(130,	0,	L"Misc");
-	//===========================
-	CMenuManager::AddCheckBox(20,	60,		2,	L"Visible Enemy Info");
-	CMenuManager::AddCheckBox(20,	80,		2,	L"Line To Target");
-	CMenuManager::AddCheckBox(20,	100,	2,	L"CossHair");
-	CMenuManager::AddCheckBox(20,	120,	2,	L"Radar");
-
-	//===========================
-
-	CMenuManager::AddCheckBox(20,	100,	1,	L"Auto Knife");
-}
-
-HMODULE Entry::g_hMainModule;
-DWORD Entry::dwCodeSize;
-DWORD Entry::dwCodeOffset;
-DWORD Entry::dwEntryPoint;
-
-UObject* VFT_ViewPort = NULL;
-UClass* FoxHUD = NULL;
-
 unsigned long ModuleThread( void* )
 {
 	while ( !GetAsyncKeyState( VK_HOME ) )
@@ -168,25 +192,18 @@ unsigned long ModuleThread( void* )
 
     if ( FindGameTables() )
     {
-		while ( !(GameEngine = UObject::FindObject<UGameEngine>("GameEngine Transient.GameEngine")))
+		DWORD VTable[3] = {0};
+
+		while(GetModuleHandle(L"d3d9.dll")==NULL)
 		{
-			Sleep( 100 );
+			Sleep(250);
 		}
 
-        LocalPlayer = GameEngine->GamePlayers.Data[0];
-		MenuInit();
+		DirectXInit(VTable);
 
-		PostRender_Name = Framework::FindName( "PostRender" );
-
-		HudClass = UObject::FindObject<UClass>( "Class Engine.HUD" );
-		if ( HudClass != NULL )
-		{
-			toolkit::VMTHook* hook = new toolkit::VMTHook(FoxHUD); 
-			pProcessEvent = hook->GetMethod<tProcessEvent>(67); 
-			hook->HookMethod(&hkProcessEvent, 67);
-		}
+		HOOK(EndScene,VTable[ES] + 0x13);
+		HOOK(Reset,VTable[RST]);
 	}
-
 	return 0;
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-#define NODRAWTEXT
+//#define NODRAWTEXT
 
 #pragma warning(disable:4996)
 #pragma warning(disable:4244)
@@ -13,6 +13,13 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+
+#include <d3dx9.h>
+#pragma comment(lib, "d3dx9.lib")
+#pragma comment(lib, "d3d9.lib")
+#include "detours.h"
+
+
 
 #include "ragekings.h"
 
@@ -44,6 +51,7 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #include "Utils\vmthooks.h"
 #include "Utils\Utils.h"
 #include "Utils\Entry.h"
+
 
 #include "Renders\CRender.h"
 
