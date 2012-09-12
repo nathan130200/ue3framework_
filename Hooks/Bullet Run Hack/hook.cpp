@@ -98,8 +98,8 @@ void __declspec(naked) hkProcessEvent ()
     if ( pUFunc )
     {
 		if ( pUFunc->Name.Index == PostRender_Name )
-            PostRender(((UGameViewportClient_eventPostRender_Parms*)pParms)->Canvas );
-    }
+			PostRender(((UGameViewportClient_eventPostRender_Parms*)pParms)->Canvas );
+	}
 
     __asm popad
     __asm

@@ -12,6 +12,8 @@ CVMTHookManager EventHook;
 typedef VOID( WINAPI *tEndScene )( LPDIRECT3DDEVICE9 pDevice);
 tEndScene oEndScene;
 
+void *pSub_4FE900 = NULL;
+
 typedef HRESULT ( WINAPI * tReset )( LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS * pPresent );
 tReset oReset;
 
@@ -56,38 +58,141 @@ void DrawString(IDirect3DDevice9* pDevice, int x, int y, DWORD color, DWORD dwFo
 		pFont->DrawTextA(NULL, buf, -1, &FontPos, dwFormat, color);
 }
 
-void Draw( LPDIRECT3DDEVICE9 pDevice, AFoxPC* Controller, AFoxGRI* GRI )
+//Class Engine.World 0x3C - 0x2DC
+class UWorld : public UObject
 {
-	if ( !Controller || !GRI || !GameEngine || !GameEngine->GamePlayers.Data )
-		return;
+public:
+	BYTE Unknown0[8]; //0x3C - 0x44
+	TArray<ULevel*> Levels; //0x44 - 0x50
+	BYTE Unknown1[652]; //0x50 - 0x2DC
 
-	DrawString(pDevice, 10, 50, 0xFFFF0000, 0, "MaxPlayers %i", GRI->MaxPlayers);
+private:
+	static UClass* pClassPointer;
 
-	for ( int i = 0; i < 16; i++ )
+public:
+	static UClass* StaticClass()
 	{
-		ULocalPlayer* test1 = GameEngine->GamePlayers.Data[i];
+		if ( ! pClassPointer )
+			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 338 ];
 
-		if ( !test1 || !test1->Actor || !test1->Actor->Pawn || !test1->Actor->Pawn->PlayerReplicationInfo )
-			continue;
+		return pClassPointer;
+	};
+};
 
-		DrawString(pDevice, 10, 60 + (5 * i), 0xFFFF0000, 0, "Name: %S i: %i", test1->Actor->Pawn->PlayerReplicationInfo->PlayerName.Data, i);
+DWORD eaxval = 0;
+DWORD ecxval = 0;
+
+_declspec ( naked ) VOID hkSub_4FE900()
+{
+	_asm 
+	{
+		mov     eax, [ecx+4]
+		mov     edx, [ecx]
+		mov     eaxval, eax
+		mov     ecxval, ecx
+	}
+	_asm pushad;
+
+	Utils::add_log( "c:\\lol.txt", "eax %08X edx %08X\n", eaxval, ecxval);
+
+	_asm popad;
+	_asm 
+	{
+		call pSub_4FE900
 	}
 }
+
+UClass* UWorld::pClassPointer = NULL;
+UWorld* World = NULL;
+void Draw( LPDIRECT3DDEVICE9 pDevice, AFoxPC* Controller )
+{
+	if ( !Controller )
+		return;
+
+	DrawString(pDevice, 10, 60, 0xFFFF0000, 0, "Levels: %i", World->Levels.Count);
+	Utils::add_log( "c:\\lol58.txt", "World->Levels.Count %i", World->Levels.Count);
+
+	if(World->Levels.Count > 0)
+	{
+		for ( int i = 0; i < World->Levels.Count; i++ )
+		{
+			if( World->Levels.Data[i] && World->Levels.Data[i]->Actors.Count > 0)
+			{
+				DrawString(pDevice, 10, 60, 0xFFFF0000, 0, "Actors.Count: %i", World->Levels.Data[i]->Actors.Count);
+				Utils::add_log( "c:\\lol58.txt", "Actors.Count: %i", World->Levels.Data[i]->Actors.Count);
+			}
+		}
+			//for ( int i = 0; i < World->Levels.Data[1]->Actors.Count; i++ )
+			//{
+			//	Utils::add_log( "c:\\lol58.txt", "(%0x%X)", World->Levels.Data[1]->Actors.Data[i]);
+			//	AFoxPC* FoxPC = reinterpret_cast<AFoxPC*>( World->Levels.Data[1]->Actors.Data[i] );
+
+			//	if(FoxPC)
+			//		Utils::add_log( "c:\\names.txt", "%s", FoxPC->PlayerReplicationInfo->PlayerName.Data);
+			//}
+
+	}
+}
+
+template< class T > T* FindObject(char* name)
+{
+	while ( ! UObject::GObjObjects() ) 
+		Sleep ( 100 );
+
+	for ( DWORD i = 0x0; i <  UObject::GObjObjects()->Count; i++ )
+	{
+		UObject* Object = UObject::GObjObjects()->Data[ i ]; 
+
+		if ( ! Object || !Object->IsA(T::StaticClass())) 
+			continue; 
+
+		if(! _stricmp(Object->GetFullName(), name))
+		{
+			return (T*)(Object);
+		}
+	}
+}
+
+
+template< class T > T* FindObject2(char* name)
+{
+	while ( ! UObject::GObjObjects() ) 
+		Sleep ( 100 );
+
+	for ( DWORD i = 0x0; i <  UObject::GObjObjects()->Count; i++ )
+	{
+		UObject* Object = UObject::GObjObjects()->Data[ i ]; 
+
+		if ( !Object ) 
+			continue; 
+
+		if(! _stricmp(Object->GetFullName(), name))
+		{
+			return (T*)(Object);
+		}
+	}
+}
+
 
 bool Do_Once = false;
 void RenderBackend( LPDIRECT3DDEVICE9 pDevice )
 {
 	if( !Do_Once )
 	{
-		while ( !(GameEngine = UObject::FindObject<UGameEngine>("GameEngine Transient.GameEngine")))
+		while ( !(GameEngine = FindObject<UGameEngine>("GameEngine Transient.GameEngine")))
 		{
 			Sleep( 100 );
 		}
 
-		//while ( !(GRI = UObject::FindObject<AFoxGRI>("Class FoxGame.FoxGRI")))
+		//while ( !(World = FindObject2<UWorld>("Class Engine.World")))
 		//{
 		//	Sleep( 100 );
 		//}
+
+		//World = (UWorld*)0x13EFD90;
+		//World = (UWorld*)0x1332A70;
+		//World = (UWorld*)*(DWORD*)0x1C4BBDC;
+		World = (UWorld*)(0x01C4BBDC + 4);
 
 		LocalPlayer = GameEngine->GamePlayers.Data[0];
 
@@ -101,28 +206,32 @@ void RenderBackend( LPDIRECT3DDEVICE9 pDevice )
 		Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
 		AFoxPC* FoxPC = reinterpret_cast<AFoxPC*>( LocalPlayer->Actor );
 
-		if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL)
+		if ( Controller == NULL || World == NULL )
 			return;
 
 		DrawString(pDevice, 10, 20, 0xFFFF0000, 0, "Controller 0x%X", Controller);
 		DrawString(pDevice, 10, 30, 0xFFFF0000, 0, "AFoxPC 0x%X", FoxPC);
 
-		AFoxGRI* GRI = reinterpret_cast<AFoxGRI*>( Controller->PlayerReplicationInfo );
 
-		if ( GRI == NULL )
-			return;
+		//FoxPC->eventGetPlayerViewPoint( &CameraLocation, &CameraRotation );
 
-		DrawString(pDevice, 10, 40, 0xFFFF0000, 0, "AFoxGRI 0x%X", GRI);
+		//DrawString(pDevice, 10, 40, 0xFFFF0000, 0, "Camera %0.0f %0.0f %0.0f", CameraLocation.X, CameraLocation.Y, CameraLocation.Z);
 
+		//DrawString(pDevice, 10, 50, 0xFFFF0000, 0, "AFoxGRI 0x%X", GRI);
 
-		Draw( pDevice, FoxPC, GRI );
+		//if ( !GRI->GetValidPlayerPRIs().Data )
+		//	return;
+
+		//DrawString(pDevice, 10, 60, 0xFFFF0000, 0, "GetValidPlayerPRIs %i", GRI->GetValidPlayerPRIs().Count);
+
+		Draw( pDevice, FoxPC );
 	}
 }
 
 _declspec ( naked ) VOID WINAPI hkEndScene(LPDIRECT3DDEVICE9 pDevice)
 {
 	_asm pushad;
-
+	
 	RenderBackend(pDevice);
 
 	_asm popad;
@@ -200,6 +309,8 @@ unsigned long ModuleThread( void* )
 		}
 
 		DirectXInit(VTable);
+
+		//pSub_4FE900 = (VOID*)Utils::DetourFunctionX((PBYTE)0x4FE900,(PBYTE)hkSub_4FE900,5);
 
 		HOOK(EndScene,VTable[ES] + 0x13);
 		HOOK(Reset,VTable[RST]);

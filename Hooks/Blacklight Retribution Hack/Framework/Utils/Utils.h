@@ -39,6 +39,7 @@ public:
 	static LPBYTE EncryptData(unsigned char* data, unsigned char* key, unsigned int size);
 	static LPBYTE DecryptData(unsigned char* data, unsigned char* key, unsigned int size);
 	static void add_log( char* LOG_FILE, const char *fmt, ... );
+	static void *DetourFunctionX (BYTE *src, const BYTE *dst, const int len);
 };
 
 #endif

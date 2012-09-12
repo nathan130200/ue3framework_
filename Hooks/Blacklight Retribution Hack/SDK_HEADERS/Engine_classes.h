@@ -11471,7 +11471,8 @@ UClass* UKMeshProps::pClassPointer = NULL;
 class ULevelBase : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[ 0x54 ];                            		// 0x003C (0x0054) MISSED OFFSET
+	TArray<AActor*> Actors; //0x3C - 0x48
+	BYTE Unknown0[92]; //0x48 - 0x90
 
 private:
 	static UClass* pClassPointer;
@@ -14857,29 +14858,6 @@ public:
 };
 
 UClass* UWaveFormBase::pClassPointer = NULL;
-
-// Class Engine.World
-// 0x02A0 (0x02DC - 0x003C)
-class UWorld : public UObject
-{
-public:
-	unsigned char                                      UnknownData00[ 0x2A0 ];                           		// 0x003C (0x02A0) MISSED OFFSET
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 352 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UWorld::pClassPointer = NULL;
 
 // Class Engine.EnvironmentVolume
 // 0x000C (0x0200 - 0x01F4)

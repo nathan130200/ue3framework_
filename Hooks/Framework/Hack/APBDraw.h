@@ -28,7 +28,7 @@ void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLoc
 		AActor* bTrace = IsVisible::FastTraceAPB( Controller, TargetController, CameraLocation, Location );
 
 		bool IsPlayer = true; 
-		bool IsVisible = true; //(TargetController->m_CurrentTarget != bTrace);
+		bool IsVisible = true; (TargetController->m_CurrentTarget != bTrace);
 		bool IsEnemy = IsPlayer ? (  Controller->m_eFaction != APBPawnTarget->m_eFaction ) : false;
 
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
