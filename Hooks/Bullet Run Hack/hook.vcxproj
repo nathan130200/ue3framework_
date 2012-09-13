@@ -66,18 +66,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="2dRadar.cpp" />
+    <ClCompile Include="AimBot.cpp" />
+    <ClCompile Include="CRender.cpp" />
+    <ClCompile Include="ESP.cpp" />
     <ClCompile Include="Framework\Utils\Base64.cpp" />
     <ClCompile Include="Framework\Utils\diskinfo.cpp" />
     <ClCompile Include="Framework\Utils\Utils.cpp" />
     <ClCompile Include="Framework\Utils\vmthooks.cpp" />
     <ClCompile Include="Framework\Utils\web.cpp" />
     <ClCompile Include="hook.cpp" />
+    <ClCompile Include="IsVisible.cpp" />
+    <ClCompile Include="MenuManager.cpp" />
+    <ClCompile Include="Misc.cpp" />
     <ClCompile Include="UE3function.cpp" />
     <ClCompile Include="SdkHeaders.cpp" />
+    <ClCompile Include="WorldToScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BRDraw.h" />
     <ClInclude Include="Framework\Framework.h" />
-    <ClInclude Include="Framework\Hack\BRDraw.h" />
+    <ClInclude Include="Framework\Hack\BRDraw.cpp" />
     <ClInclude Include="Framework\Menu\MenuManager.h" />
     <ClInclude Include="Framework\ragekings.h" />
     <ClInclude Include="Framework\Renders\CRender.h" />

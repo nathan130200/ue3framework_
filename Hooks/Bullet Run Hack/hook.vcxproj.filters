@@ -51,6 +51,30 @@
     <ClCompile Include="SdkHeaders.cpp">
       <Filter>Hook\UE3</Filter>
     </ClCompile>
+    <ClCompile Include="WorldToScreen.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="IsVisible.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="ESP.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="2dRadar.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="AimBot.cpp">
+      <Filter>Framework\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuManager.cpp">
+      <Filter>Framework\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="CRender.cpp">
+      <Filter>Framework\Renders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Framework.h">
@@ -98,9 +122,6 @@
     <ClInclude Include="Framework\Menu\MenuManager.h">
       <Filter>Framework\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Hack\BRDraw.h">
-      <Filter>Framework\Hack</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Utils\Base64.h">
       <Filter>Framework\Utils</Filter>
     </ClInclude>
@@ -118,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="UE3function.h">
       <Filter>Hook\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Hack\BRDraw.cpp">
+      <Filter>Framework\Hack</Filter>
+    </ClInclude>
+    <ClInclude Include="BRDraw.h">
+      <Filter>Framework\Hack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

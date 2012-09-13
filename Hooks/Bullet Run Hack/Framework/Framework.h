@@ -31,8 +31,9 @@
 #include <algorithm>
 #include <functional>
 
-#include "ragekings.h"
+using namespace std;
 
+#include "ragekings.h"
 
 #include "SdkHeaders.h"
 #include "Includes.h"
