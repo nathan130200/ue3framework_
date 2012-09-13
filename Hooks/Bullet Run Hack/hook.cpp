@@ -24,6 +24,8 @@ void PostRender ( UCanvas* pCanvas )
 	if ( pCanvas == NULL || GameEngine == NULL || LocalPlayer == NULL || LocalPlayer->Actor == NULL )
 		return;
 
+	DrawUtils* Drawer = reinterpret_cast<DrawUtils*>( pCanvas );
+
 	if(GetAsyncKeyState( VK_HOME )&1)
 	{
 		menu = !menu;
@@ -31,7 +33,7 @@ void PostRender ( UCanvas* pCanvas )
 
 	if(menu)
 	{
-		CMenuManager::DrawMenu(pCanvas);
+		CMenuManager::DrawMenu(Drawer);
 	}
 
 	Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
@@ -40,23 +42,25 @@ void PostRender ( UCanvas* pCanvas )
 	APBPawn* APawn = reinterpret_cast<APBPawn*>(LocalPlayer->Actor->Pawn);
 	APBCharacter* Char = reinterpret_cast<APBCharacter*>(LocalPlayer->Actor->Pawn);
 
+	ControllerUtils* AController = reinterpret_cast<ControllerUtils*>( LocalPlayer->Actor );
+
 	if ( Controller == NULL || Controller->WorldInfo == NULL || Controller->PlayerReplicationInfo == NULL || Char == NULL )
 		return;
 
-	wstring strs(Controller->PlayerReplicationInfo->PlayerName.Data);
-	if(currentName != strs)
-	{
-		currentName = strs;
-		string ws;
-		ws.assign(strs.begin(), strs.end());
+	//wstring strs(Controller->PlayerReplicationInfo->PlayerName.Data);
+	//if(currentName != strs)
+	//{
+	//	currentName = strs;
+	//	string ws;
+	//	ws.assign(strs.begin(), strs.end());
 
-		GetLoginGameName(ws);
-		GetinGameName = true;
-	}
+	//	GetLoginGameName(ws);
+	//	GetinGameName = true;
+	//}
 	
 	if(Char->pCurrentWeaponInfo && Char->pCurrentWeaponInfo->pCachedWeapon && Char->pCurrentWeaponInfo->pCachedWeapon->bReloadInPerfectPos )
 	{
-		APBPController->ReloadWeapon(0);
+		AController->ReloadWeapon(0);
 	}
 
 	if(Char->pCurrentWeaponInfo && Char->pCurrentWeaponInfo->pCachedWeapon )
@@ -78,6 +82,13 @@ void PostRender ( UCanvas* pCanvas )
 
 	Draw( pCanvas, APBPController, CameraLocation, CameraRotation, Pawn );
 }
+
+// Function Engine.GameViewportClient.PostRender
+// [0x00020802] ( FUNC_Event )
+struct UGameViewportClient_eventPostRender_Parms
+{
+	class UCanvas*                                     Canvas; // 0x0000 (0x0004) [0x0000000000000080]              ( CPF_Parm )
+};
 
 void __declspec(naked) hkProcessEvent ()
 {
@@ -194,6 +205,28 @@ void SecurityCheck()
 	}
 }
 
+template< class T > T* UObject::FindObject ( char* ObjectFullName ) 
+{ 
+	while ( ! UObject::GObjObjects() ) 
+		Sleep ( 100 ); 
+
+	printf("UObject::GObjObjects()->Count: %s\n", UObject::GObjObjects()->Count);
+
+	for ( int i = 0; i < UObject::GObjObjects()->Count; ++i ) 
+	{ 
+		UObject* Object = UObject::GObjObjects()->Data[ i ]; 
+
+		if(! Object ||	! Object->IsA ( T::StaticClass() )) 
+			continue; 
+
+		printf("GetFullName: %s\n", Object->GetFullName());
+
+		if ( ! _stricmp ( Object->GetFullName(), ObjectFullName ) ) 
+			return (T*) Object; 
+	} 
+
+	return NULL; 
+} 
 
 unsigned long ModuleThread( void* )
 {
@@ -218,9 +251,9 @@ unsigned long ModuleThread( void* )
 
 		MenuInit();
 
-		SetAimbotPlayerWhitelist();
+		//SetAimbotPlayerWhitelist();
 
-		SecurityCheck();
+		//SecurityCheck();
 
 		toolkit::VMTHook* hook = new toolkit::VMTHook(GameEngine->GameViewport); 
 		pProcessEvent = hook->GetMethod<tProcessEvent>(68); 

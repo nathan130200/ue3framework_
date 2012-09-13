@@ -39,8 +39,8 @@ static const float MenuBarHeight = 10.0f;
 static const float MenuTabWidth = 50.0f;
 static const float MenuTabHeight = 20.0f;
 
-FColor			ColorMenuBar		= {100,150,255,255};
-FLinearColor	LColorMenuBar		= {100,150,255,255};
+static FColor			ColorMenuBar		= {100,150,255,255};
+static FLinearColor		LColorMenuBar		= {100,150,255,255};
 
 static vector<CheckBoxItem> CheckBoxes;
 static vector<MenuTab> MenuTabs;
@@ -207,7 +207,7 @@ public:
 		return -1;
 	}
 
-	static void DrawMenu(UCanvas *Canvas)
+	static void DrawMenu(DrawUtils *Canvas)
 	{
 		if(!(GetAsyncKeyState( VK_LBUTTON ) < 0))
 		{
@@ -225,20 +225,8 @@ public:
 			MouseClickedDown = TRUE;	
 		}
 
-#ifdef UE3_0
-		CRender::DrawGradientBox(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuHeight, ColorBlack, 5, 5, 5);
-		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuBarHeight, ColorMenuBar);
-#endif
-
-#ifdef UE3_5
 		CRender::DrawGradientBox(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuHeight, ColorBlack, 5, 5, 5);
 		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuBarHeight, LColorMenuBar);
-#endif
-
-#ifdef UE3_9
-		CRender::DrawGradientBox(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuHeight, ColorBlack, 5, 5, 5);
-		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY, MenuWidth, MenuBarHeight, LColorMenuBar);
-#endif
 
 		for (int i = 0; i < MenuTabs.size(); i++)
 		{
@@ -254,44 +242,17 @@ public:
 			}
 		}
 
-#ifdef UE3_0
-		CRender::DrawRect(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x, MenuOriginY + MenuBarHeight + 5, MenuTabWidth, MenuTabHeight, ColorYellow);
-		CRender::DrawString(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x + (MenuTabWidth / 2), MenuOriginY + MenuBarHeight + 8, ColorLightGray, TRUE, MenuTabs[SelectedMenuTab].Label);
-		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, ColorYellow);
-#endif
-
-#ifdef UE3_5 || UE3_9
 		CRender::DrawRect(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x, MenuOriginY + MenuBarHeight + 5, MenuTabWidth, MenuTabHeight, LColorYellow);
 		CRender::DrawString(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x + (MenuTabWidth / 2), MenuOriginY + MenuBarHeight + 8, ColorLightGray, TRUE, MenuTabs[SelectedMenuTab].Label);
 		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, LColorYellow);
-#endif
 
-#ifdef UE3_9
-		CRender::DrawRect(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x, MenuOriginY + MenuBarHeight + 5, MenuTabWidth, MenuTabHeight, LColorYellow);
-		CRender::DrawString(Canvas, MenuOriginX + MenuTabs[SelectedMenuTab].x + (MenuTabWidth / 2), MenuOriginY + MenuBarHeight + 8, ColorLightGray, TRUE, MenuTabs[SelectedMenuTab].Label);
-		CRender::DrawRect(Canvas, MenuOriginX, MenuOriginY + MenuBarHeight + MenuTabHeight + 5, MenuWidth, 5, LColorYellow);
-#endif
 
 		for (int i = 0; i < CheckBoxes.size(); i++)
 		{
 			if (CheckBoxes[i].TabIndex == SelectedMenuTab)
 			{
-
-#ifdef UE3_0
-				CRender::DrawBox(Canvas, MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, ColorLightGray);
-				CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 15, MenuOriginY + CheckBoxes[i].y - 2, ColorWhite, FALSE, CheckBoxes[i].Label);
-#endif
-
-#ifdef UE3_5
 				CRender::DrawBox(Canvas, MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, LColorLightGray);
 				CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 15, MenuOriginY + CheckBoxes[i].y - 2, ColorWhite, FALSE, CheckBoxes[i].Label);
-#endif
-
-#ifdef UE3_9
-				CRender::DrawBox(Canvas, MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, LColorLightGray);
-				CRender::DrawString(Canvas, MenuOriginX + CheckBoxes[i].x + 15, MenuOriginY + CheckBoxes[i].y - 2, ColorWhite, FALSE, CheckBoxes[i].Label);
-#endif
-
 
 				if (MouseClicked(MenuOriginX + CheckBoxes[i].x, MenuOriginY + CheckBoxes[i].y, 10, 10, 0, 0) && !MouseClickedOnCheckbox)
 				{
@@ -357,23 +318,12 @@ public:
 		return false;
 	}
 
-	static void DrawCursor(UCanvas *Canvas)
+	static void DrawCursor(DrawUtils *Canvas)
 	{
 		POINT Cur;
 		GetCursorPos( &Cur );
 
-#ifdef UE3_0
-		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, ColorGreen);
-#endif
-
-#ifdef UE3_5 || UE3_9
 		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, LColorGreen);
-#endif
-
-#ifdef UE3_9
-		CRender::DrawRect(Canvas, Cur.x, Cur.y, 8, 8, LColorGreen);
-#endif
-
 	}
 
 	static int WaitForKey(WCHAR **Name)

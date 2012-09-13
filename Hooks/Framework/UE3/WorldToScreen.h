@@ -45,6 +45,23 @@ public:
 		return pOut;
 	}
 
+	static FVector WorldToScreen::World2(UCanvas* Canvas, FVector WorldLocation)//Helios
+	{
+		FVector X,Y,Z,D,Out,Delta,Transformed;
+		GetAxis(CameraRotation,X,Y,Z);
+		D = WorldLocation - CameraLocation;
+		VectorSubtract( &Delta, &WorldLocation, &CameraLocation );
+		Transformed.X = VectorDotProduct( &Delta, &Y );
+		Transformed.Y = VectorDotProduct( &Delta, &Z );
+		Transformed.Z = VectorDotProduct( &Delta, &X );
+		if( Transformed.Z < 1.00f )
+			Transformed.Z = 1.00f;
+		Out.X = ( Canvas->ClipX / 2.0f ) + Transformed.X * ( ( Canvas->ClipX / 2.0f ) / tan( Controller->PlayerCamera->GetFOVAngle() * CONST_Pi / 360.0f ) ) / Transformed.Z;
+		Out.Y = ( Canvas->ClipY / 2.0f ) + -Transformed.Y * ( ( Canvas->ClipX / 2.0f ) / tan( Controller->PlayerCamera->GetFOVAngle() * CONST_Pi / 360.0f ) ) / Transformed.Z;
+		Out.Z = 0;
+		return Out;
+	}
+
 	static FVector WorldToScreen::World(UCanvas* Canvas, FVector WorldLocation)
 	{
 		FVector X,Y,Z,D,Out,Delta,Transformed;
@@ -79,10 +96,10 @@ public:
 	float FOVAngle = Controller->FOVAngle;
 #endif
 
-		Out.X = ( Canvas->ClipX / 2.0f ) + Transformed.X * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
-		Out.Y = ( Canvas->ClipY / 2.0f ) + -Transformed.Y * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
-		Out.Z = 0;
-		return Out;
+	Out.X = ( Canvas->ClipX / 2.0f ) + Transformed.X * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
+	Out.Y = ( Canvas->ClipY / 2.0f ) + -Transformed.Y * ( ( Canvas->ClipX / 2.0f ) / Controller->Tan( FOVAngle * CONST_Pi / 360.0f ) ) / Transformed.Z;
+	Out.Z = 0;
+	return Out;
 	}
 
 #ifdef BRSDK

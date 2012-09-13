@@ -72,6 +72,8 @@
     <ClCompile Include="Framework\Utils\vmthooks.cpp" />
     <ClCompile Include="Framework\Utils\web.cpp" />
     <ClCompile Include="hook.cpp" />
+    <ClCompile Include="UE3function.cpp" />
+    <ClCompile Include="SdkHeaders.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Framework.h" />
@@ -93,6 +95,9 @@
     <ClInclude Include="Framework\Utils\Utils.h" />
     <ClInclude Include="Framework\Utils\vmthooks.h" />
     <ClInclude Include="Framework\Utils\web.h" />
+    <ClInclude Include="Includes.h" />
+    <ClInclude Include="SdkHeaders.h" />
+    <ClInclude Include="UE3function.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

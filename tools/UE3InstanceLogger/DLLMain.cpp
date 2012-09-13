@@ -183,6 +183,8 @@ void ObjectDump()
 	if(isnotPattern)
 		return;
 
+	MODULEINFO miGame = Utils::GetModuleInfo ( NULL );
+
 	// log file
 	FILE* Log = NULL;
 	sprintf_s ( cBuffer, "%s\\%s\\ObjectDump.txt", SDK_BASE_DIR, GAME_NAME_S );
@@ -191,13 +193,16 @@ void ObjectDump()
 	sprintf_s ( cBuffer, "%s\\%s\\logs.txt", SDK_BASE_DIR, GAME_NAME_S );
 	add_log( cBuffer, "void ObjectDump()\nGObjObjects->Num: %i", GObjObjects->Num );
 
+	fprintf ( Log, "(0x%X)\n", (DWORD)miGame.lpBaseOfDll);
+
 	for ( DWORD i = 0x0; i < GObjObjects->Num; i++ )
 	{
 		// check if it's a valid object
 		if ( ! GObjObjects->Data[ i ] ) { continue; }
 		
+
 		// log the object
-		fprintf ( Log, "UObject[%06i] %-50s 0x%X\n", i, GetName ( GObjObjects->Data[ i ] ), GObjObjects->Data[ i ] );
+		fprintf ( Log, "UObject[%06i] %-50s 0x%X (0x%X) (0x%X)\n", i, GetName ( GObjObjects->Data[ i ] ), GObjObjects->Data[ i ], (DWORD)miGame.lpBaseOfDll - (DWORD)GObjObjects->Data[ i ], (DWORD)GObjObjects->Data[ i ] - (DWORD)miGame.lpBaseOfDll);
 	}
 
 	// close log

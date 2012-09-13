@@ -63,7 +63,7 @@ APawn *CurrentTargetedPawn = NULL;
 
 FVector		CameraLocation;
 FRotator	CameraRotation;
-
+UAPBGameEngine			*APBGameEngine			= NULL;
 UGameEngine				*GameEngine				= NULL;
 ULocalPlayer			*LocalPlayer			= NULL;
 APlayerController		*Controller				= NULL;
@@ -78,6 +78,32 @@ const FRotator RotatorZero;
 
 int VisiblePlayerCount = 0;
 BOOL AutoFireKeyIsPressed = FALSE;
+
+class Framework
+{
+public:
+	static unsigned long Framework::FindName( char* Name )
+	{
+		while ( ! FName::Names() ) 
+			Sleep( 100 ); 
+
+		static char cOutBuffer[ 256 ]; 
+
+		for( unsigned int i = 0; i < FName::Names()->Count; i++ )
+		{
+			FNameEntry* Entry = FName::Names()->Data [i];
+			if ( Entry )
+			{
+				sprintf_s( cOutBuffer, sizeof( cOutBuffer ), "%s", Entry->Name );
+
+				if ( !strcmp( cOutBuffer, Name ) )
+					return i;
+			}
+		}
+
+		return NULL;
+	}
+};
 
 #include "Utils\vmthooks.h"
 #include "Utils\Utils.h"
@@ -134,30 +160,3 @@ BOOL AutoFireKeyIsPressed = FALSE;
 #ifdef RDSDK
 #include "Hack\RDDraw.h"
 #endif
-
-class Framework
-{
-public:
-	static unsigned long Framework::FindName( char* Name )
-	{
-		while ( ! FName::Names() ) 
-			Sleep( 100 ); 
-
-		static char cOutBuffer[ 256 ]; 
-
-		for( unsigned int i = 0; i < FName::Names()->Count; i++ )
-		{
-			FNameEntry* Entry = FName::Names()->Data [i];
-			if ( Entry )
-			{
-				sprintf_s( cOutBuffer, sizeof( cOutBuffer ), "%s", Entry->Name );
-
-				if ( !strcmp( cOutBuffer, Name ) )
-					return i;
-			}
-		}
-
-		return NULL;
-	}
-};
-

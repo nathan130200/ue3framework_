@@ -27,14 +27,15 @@ void PostRender ( UCanvas* pCanvas )
 
 	Controller = reinterpret_cast<APlayerController*>( LocalPlayer->Actor );
 	APawn* Pawn = reinterpret_cast<APawn*>(LocalPlayer->Actor->Pawn);
-
+	APBGameEngine = reinterpret_cast<UAPBGameEngine*>(GameEngine);
+	
 	AcAPBPlayerController* AcAPBController = reinterpret_cast<AcAPBPlayerController*>(LocalPlayer->Actor);
 	AcAPBPawn* APBPawn = reinterpret_cast<AcAPBPawn*>(LocalPlayer->Actor->Pawn);
 
 	if ( Controller == NULL )
 		return;
 
-	Controller->GetPlayerViewPoint( &CameraLocation, &CameraRotation );
+	AcAPBController->GetPlayerViewPoint( &CameraLocation, &CameraRotation );
 
 	Draw( pCanvas, AcAPBController, CameraLocation, CameraRotation, APBPawn );
 }

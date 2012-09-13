@@ -33,7 +33,10 @@
 
 #include "ragekings.h"
 
-#include "..\sdks\BRSDK\SdkHeaders.h"
+
+#include "SdkHeaders.h"
+#include "Includes.h"
+#include "UE3function.h"
 
 typedef struct _PawnInfo
 {
@@ -49,26 +52,26 @@ typedef struct _PawnInfo
 	FVector ScreenPos;
 } PawnInfo;
 
-PawnInfo    CurrentPawns[500];
-FVector		CameraLocation;
-FRotator	CameraRotation;
+static PawnInfo CurrentPawns[500];
+static FVector	CameraLocation;
+static FRotator	CameraRotation;
 
-int TotalPlayers = 0;
-APBCharacter			*Char					= NULL;
-APBPlayerController		*APBPController			= NULL;
-UGameEngine				*GameEngine				= NULL;
-ULocalPlayer			*LocalPlayer			= NULL;
-APlayerController		*Controller				= NULL;
+static int TotalPlayers = 0;
+static APBCharacter			*Char					= NULL;
+static APBPlayerController	*APBPController			= NULL;
+static UGameEngine			*GameEngine				= NULL;
+static ULocalPlayer			*LocalPlayer			= NULL;
+static APlayerController	*Controller				= NULL;
 
-UObject					*pCallObject			= NULL;
-UFunction				*pUFunc					= NULL;
-void					*pParms					= NULL;
-void					*pResult				= NULL;
+static UObject				*pCallObject			= NULL;
+static UFunction			*pUFunc					= NULL;
+static void					*pParms					= NULL;
+static void					*pResult				= NULL;
 
-const FVector VectorZero;
-const FRotator RotatorZero;
+static const FVector VectorZero;
+static const FRotator RotatorZero;
 
-BOOL AutorizedUser = FALSE;
+static BOOL AutorizedUser = FALSE;
 
 #include "Utils\diskinfo.h"
 #include "Utils\base64.h"
@@ -82,7 +85,7 @@ BOOL AutorizedUser = FALSE;
 #include "UE3\Color.h"
 #include "Menu\MenuManager.h"
 
-vector<std::wstring> AimbotPlayerWhitelist;
+static vector<std::wstring> AimbotPlayerWhitelist;
 
 #ifndef test
 #include "UE3\UE3Math.h"
@@ -110,17 +113,6 @@ public:
 	FField* Next;
 };
 
-bool FObject::IsChildOf( UClass* Class )
-{
-	for ( FField* Object = reinterpret_cast<FField*>( this->Outer ); Object; Object = Object->Super )
-	{
-		if ( Object == reinterpret_cast<FObject*>( Class ) )
-			return true;
-	}
-
-	return false;
-}
-
 class Framework
 {
 public:
@@ -146,4 +138,3 @@ public:
 		return NULL;
 	}
 };
-

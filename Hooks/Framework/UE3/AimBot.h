@@ -2,6 +2,7 @@ bool AutoKnifeKeyIsPressed = NULL;
 bool AutoKnifeWeaponOut = FALSE;
 BOOL AutoFireAimed = FALSE;
 
+
 class Aim
 {
 public:
@@ -11,14 +12,22 @@ public:
 		{
 			if( IsEnemy && IsVisible )
 			{
-				float Distance = (Location - CameraLocation).Length();
+				FVector	vHeadBone;
+
+#ifdef APBSDK
+				FName BoneName;
+				BoneName.Index = Framework::FindName("Bip01_Head");
+				BoneName.Recursion = 0;
+				vHeadBone = WorldToScreen::World2( Canvas, Pawn->Mesh->GetBoneLocation( BoneName, 0 ));
+#endif
+				float Distance = (vHeadBone - CameraLocation).Length();
 				if (Distance <= CurrentBest)
 				{
-					if (CurrentTargetedPawn && CurrentTargetedPawn->Health > 0)
+					if (CurrentTargetedPawn)
 					{
 						CurrentBest = Distance;
 						CurrentTarget = Pawn;
-						CurrentLocation = Location;
+						CurrentLocation = vHeadBone;
 					}
 					else
 					{

@@ -22,6 +22,9 @@
     <Filter Include="Hook">
       <UniqueIdentifier>{67fa030e-b806-4ee2-95a5-a75ec8ce758a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hook\UE3">
+      <UniqueIdentifier>{5ea16385-1075-48dc-abf5-5f3b4a717a82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utils\Utils.cpp">
@@ -41,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="Framework\Utils\diskinfo.cpp">
       <Filter>Framework\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="UE3function.cpp">
+      <Filter>Hook\UE3</Filter>
+    </ClCompile>
+    <ClCompile Include="SdkHeaders.cpp">
+      <Filter>Hook\UE3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="Framework\Utils\diskinfo.h">
       <Filter>Framework\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SdkHeaders.h">
+      <Filter>Hook\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes.h">
+      <Filter>Hook\UE3</Filter>
+    </ClInclude>
+    <ClInclude Include="UE3function.h">
+      <Filter>Hook\UE3</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

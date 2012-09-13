@@ -1,19 +1,26 @@
-FColor ColorRed					= CRender::MakeColor(255,0,0,255);
-FColor ColorGreen				= CRender::MakeColor(0,255,0,255);
-FColor ColorBlue				= CRender::MakeColor(0,0,255,255);
-FColor ColorYellow				= CRender::MakeColor(255,255,0,255);
-FColor ColorLilac				= CRender::MakeColor(0,255,255,255);
-FColor ColorGray				= CRender::MakeColor(96,96,96,255);
-FColor ColorLightGray			= CRender::MakeColor(120,120,120,255);
-FColor ColorWhite				= CRender::MakeColor(255,255,255,255);
-FColor ColorBlack				= CRender::MakeColor(0,0,0,0);
+#pragma once
 
-FLinearColor LColorRed			= {255,0,0,255};
-FLinearColor LColorGreen		= {0,255,0,255};
-FLinearColor LColorBlue			= {0,0,255,255};
-FLinearColor LColorYellow		= {255,255,0,255};
-FLinearColor LColorLilac		= {0,255,255,255};
-FLinearColor LColorGray			= {96,96,96,255};
-FLinearColor LColorLightGray	= {120,120,120,255};
-FLinearColor LColorWhite		= {255,255,255,255};
-FLinearColor LColorBlack		= {0,0,0,0};
+#ifndef __COLOR_H_
+#define __COLOR_H_
+
+static FColor ColorRed					= CRender::MakeColor(255,0,0,255);
+static FColor ColorGreen				= CRender::MakeColor(0,255,0,255);
+static FColor ColorBlue					= CRender::MakeColor(0,0,255,255);
+static FColor ColorYellow				= CRender::MakeColor(255,255,0,255);
+static FColor ColorLilac				= CRender::MakeColor(0,255,255,255);
+static FColor ColorGray					= CRender::MakeColor(96,96,96,255);
+static FColor ColorLightGray			= CRender::MakeColor(120,120,120,255);
+static FColor ColorWhite				= CRender::MakeColor(255,255,255,255);
+static FColor ColorBlack				= CRender::MakeColor(0,0,0,0);
+
+static FLinearColor LColorRed			= {255,0,0,255};
+static FLinearColor LColorGreen			= {0,255,0,255};
+static FLinearColor LColorBlue			= {0,0,255,255};
+static FLinearColor LColorYellow		= {255,255,0,255};
+static FLinearColor LColorLilac			= {0,255,255,255};
+static FLinearColor LColorGray			= {96,96,96,255};
+static FLinearColor LColorLightGray		= {120,120,120,255};
+static FLinearColor LColorWhite			= {255,255,255,255};
+static FLinearColor LColorBlack			= {0,0,0,0};
+
+#endif

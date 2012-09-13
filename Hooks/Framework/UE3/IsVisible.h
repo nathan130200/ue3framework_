@@ -18,7 +18,7 @@ public:
 	}
 
 #ifdef APBSDK
-	static AActor* IsVisible::FastTraceAPB( AcAPBPlayerController* Controller, AcAPBPlayerController* TargetController, FVector& StartLocation, FVector& EndLocation )
+	static AActor* IsVisible::FastTraceAPB( APlayerController* Controller, FVector& StartLocation, FVector& EndLocation )
 	{
 		FVector HitLocation, HitNormal;
 		FTraceHitInfo HitInfo;

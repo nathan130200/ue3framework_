@@ -4,7 +4,7 @@ public:
 	static void Misc::GetBoneName(APawn* you)
 	{
 		for (INT i = 0; i < 64; i++ )
-			Utils::add_log("c:\\bones.txt", "index: (%i) bone: %s", i, you->Mesh->GetBoneName(i).GetName());
+			Utils::add_log("c:\\bones.txt", "index: (%i) bone: %S", i, you->Mesh->GetBoneName(i).GetName());
 	}
 
 	static void Misc::DrawCossHair(UCanvas* pCanvas, const FColor& Color)

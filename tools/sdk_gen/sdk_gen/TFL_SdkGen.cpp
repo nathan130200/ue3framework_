@@ -33,14 +33,14 @@ void PrintFileHeder ( char* cFileName, char* cFileExt, bool setPP = false )
 	fprintf ( pFile, "/*\n" );
 	fprintf ( pFile, "#############################################################################################\n" );
 	fprintf ( pFile, "# %s (%s) SDK\n", GAME_NAME, GAME_VERSION );
-	fprintf ( pFile, "# Generated with TheFeckless UE3 SDK Generator %s\n", SDK_GEN_VER );
+	//fprintf ( pFile, "# Generated with TheFeckless UE3 SDK Generator %s\n", SDK_GEN_VER );
 	fprintf ( pFile, "# ========================================================================================= #\n" );
 	fprintf ( pFile, "# File: %s.%s\n", cFileName, cFileExt );
 	fprintf ( pFile, "# ========================================================================================= #\n" );
-	fprintf ( pFile, "# Credits: %s\n", SDK_GEN_CREDITS );
-	fprintf ( pFile, "# Thanks: %s\n", SDK_GEN_STHANKS );
-	fprintf ( pFile, "# Forums: %s\n", SDK_GEN_FORUMS );
-	fprintf ( pFile, "#############################################################################################\n" );
+	//fprintf ( pFile, "# Credits: %s\n", SDK_GEN_CREDITS );
+	//fprintf ( pFile, "# Thanks: %s\n", SDK_GEN_STHANKS );
+	//fprintf ( pFile, "# Forums: %s\n", SDK_GEN_FORUMS );
+	//fprintf ( pFile, "#############################################################################################\n" );
 	fprintf ( pFile, "*/\n" );
 
 	if ( setPP )
@@ -510,72 +510,72 @@ void GenerateConst ( UConst* pConst )
 // enums
 void GenerateEnum ( UEnum* pEnum )
 {	
-	// stream buffers
-	ostringstream ssStreamBuffer0; // main stream buffer
-	ostringstream ssStreamBuffer1; // support stream buffer
-	ostringstream ssStreamBuffer2; // support stream buffer
-	
-	// get enum names
-	string sEnumName = GetValidName ( string ( pEnum->GetName() ) );
-	string sEnumOuterNameCPP = GetValidName ( string ( pEnum->Outer->GetNameCPP() ) );
-	string sEnumFullName = string ( pEnum->GetFullName() );
+	//// stream buffers
+	//ostringstream ssStreamBuffer0; // main stream buffer
+	//ostringstream ssStreamBuffer1; // support stream buffer
+	//ostringstream ssStreamBuffer2; // support stream buffer
+	//
+	//// get enum names
+	//string sEnumName = GetValidName ( string ( pEnum->GetName() ) );
+	//string sEnumOuterNameCPP = GetValidName ( string ( pEnum->Outer->GetNameCPP() ) );
+	//string sEnumFullName = string ( pEnum->GetFullName() );
 
-	// remove default enum
-	if ( sEnumName.find ( "Default__" ) != string::npos )
-		return;
+	//// remove default enum
+	//if ( sEnumName.find ( "Default__" ) != string::npos )
+	//	return;
 
-	// print enum open
-	ssStreamBuffer0 << "// " << sEnumFullName << "\n"
-					//<< "enum " << sEnumOuterNameCPP << "_" << sEnumName << "\n{\n";
-					<< "/*enum " << sEnumName << "\n{\n";
+	//// print enum open
+	//ssStreamBuffer0 << "// " << sEnumFullName << "\n"
+	//				//<< "enum " << sEnumOuterNameCPP << "_" << sEnumName << "\n{\n";
+	//				<< "/*enum " << sEnumName << "\n{\n";
 
-	// property unique name array
-	StrIntM_t mPropertyName;
+	//// property unique name array
+	//StrIntM_t mPropertyName;
 
-	// loop enum members
-	for ( int i = 0; i < pEnum->Names.Num(); i++ )
-	{		
-		string sPropertyName = GetValidName ( ToS ( pEnum->Names.Data[ i ].GetName() ) ); 
-		
-		// check unique var name
-		if ( mPropertyName.count ( sPropertyName ) == 0 ) // not exist
-		{
-			// insert in unique name array
-			mPropertyName[ sPropertyName ] = 1;
+	//// loop enum members
+	//for ( int i = 0; i < pEnum->Names.Num(); i++ )
+	//{		
+	//	string sPropertyName = GetValidName ( ToS ( pEnum->Names.Data[ i ].GetName() ) ); 
+	//	
+	//	// check unique var name
+	//	if ( mPropertyName.count ( sPropertyName ) == 0 ) // not exist
+	//	{
+	//		// insert in unique name array
+	//		mPropertyName[ sPropertyName ] = 1;
 
-			// stream to support buffer (property name)
-			//ssStreamBuffer1 << sEnumOuterNameCPP << "_" << sEnumName << "_" << sPropertyName;
-			ssStreamBuffer1 << sPropertyName;
-		}
-		else
-		{
-			// stream to support buffer (name + index)
-			//ssStreamBuffer1 << sEnumOuterNameCPP << "_" << sEnumName << "_" << sPropertyName << SDKMC_SSDEC ( mPropertyName[ sPropertyName ], 2 );
-			ssStreamBuffer1 << sPropertyName << SDKMC_SSDEC ( mPropertyName[ sPropertyName ], 2 );
-					
-			// incremente name usage count
-			mPropertyName[ sPropertyName ]++;
-		}
+	//		// stream to support buffer (property name)
+	//		//ssStreamBuffer1 << sEnumOuterNameCPP << "_" << sEnumName << "_" << sPropertyName;
+	//		ssStreamBuffer1 << sPropertyName;
+	//	}
+	//	else
+	//	{
+	//		// stream to support buffer (name + index)
+	//		//ssStreamBuffer1 << sEnumOuterNameCPP << "_" << sEnumName << "_" << sPropertyName << SDKMC_SSDEC ( mPropertyName[ sPropertyName ], 2 );
+	//		ssStreamBuffer1 << sPropertyName << SDKMC_SSDEC ( mPropertyName[ sPropertyName ], 2 );
+	//				
+	//		// incremente name usage count
+	//		mPropertyName[ sPropertyName ]++;
+	//	}
 
-		// stram to main buffer (name = value)
-		if ( i != pEnum->Names.Num() - 1 )
-		{
-			ssStreamBuffer0 << "\t" << SDKMC_SSCOL ( ssStreamBuffer1.str(), SDK_COL1 ) << " = " << i << ",\n";
-		}
-		else
-		{
-			ssStreamBuffer0 << "\t" << SDKMC_SSCOL ( ssStreamBuffer1.str(), SDK_COL1 ) << " = " << i << "\n";
-		}
+	//	// stram to main buffer (name = value)
+	//	if ( i != pEnum->Names.Num() - 1 )
+	//	{
+	//		ssStreamBuffer0 << "\t" << SDKMC_SSCOL ( ssStreamBuffer1.str(), SDK_COL1 ) << " = " << i << ",\n";
+	//	}
+	//	else
+	//	{
+	//		ssStreamBuffer0 << "\t" << SDKMC_SSCOL ( ssStreamBuffer1.str(), SDK_COL1 ) << " = " << i << "\n";
+	//	}
 
-		// empty support stream buffer
-		SDKFN_EMPTY ( ssStreamBuffer1 );
-	}
+	//	// empty support stream buffer
+	//	SDKFN_EMPTY ( ssStreamBuffer1 );
+	//}
 
-	// stream to main buffer (close enum)
-	ssStreamBuffer0 << "};*/\n\n"; 
+	//// stream to main buffer (close enum)
+	//ssStreamBuffer0 << "};*/\n\n"; 
 
-	// print main stream buffer to file
-	SDKFN_PRINT ( pFile, ssStreamBuffer0 );
+	//// print main stream buffer to file
+	//SDKFN_PRINT ( pFile, ssStreamBuffer0 );
 }
 
 // script structs
@@ -1652,6 +1652,7 @@ void GenerateClass ( UClass* pClass )
 	ostringstream ssStreamBuffer0; // main stream buffer
 	ostringstream ssStreamBuffer1; // support stream buffer
 	ostringstream ssStreamBuffer2; // support stream buffer
+	ostringstream ssStreamBuffer9;
 
 	// vars
 	DWORD dwSize = 0;
@@ -1835,6 +1836,9 @@ void GenerateClass ( UClass* pClass )
 				GetAllPropertyFlags ( pProperty->PropertyFlags.A, ssStreamBuffer2 );
 
 				// stream to main buffer
+				if(ssStreamBuffer1.str() == "VfTableObject")
+					continue;
+
 				ssStreamBuffer0 << "\t" << SDKMC_SSCOL ( sPropertyType, SDK_COL1 ) << " " << SDKMC_SSCOL ( ssStreamBuffer1.str(), SDK_COL2 ) 
 								<< "\t\t// " << SDKMC_SSHEX ( pProperty->Offset, 4 ) << " (" << SDKMC_SSHEX ( ( pProperty->ElementSize * pProperty->ArrayDim ), 4 ) << ") [" << SDKMC_SSHEX ( pProperty->PropertyFlags.A, 16 ) << "]";
 
@@ -1914,48 +1918,54 @@ void GenerateClass ( UClass* pClass )
 		}
 	}
 
-	// stream to main buffer
-	ssStreamBuffer0 << "\nprivate:\n"
-					<< "\tstatic UClass* pClassPointer;\n\n"	// static class pointer
-					<< "public:\n"; 
-	
-	// print basic functions declaretion
+	//// stream to main buffer
+	ssStreamBuffer9 << "\nprivate:\n"
+					<< "\tstatic UClass* pClassPointer;\n\n";	// static class pointer
+
+	ssStreamBuffer0	<< "public:\n"; 
+	//
+	//// print basic functions declaretion
 	if ( pClass == UObject::FindClass ( "Class Core.Object" ) )
 		ssStreamBuffer0 << BASIC_FUNCTIONS_DEC;
 
-	// stream to main buffer (static class function)
-	if ( SDK_NO_STR )
+	ssStreamBuffer9 << sClassFullName << " \n\n";
+
+	ssStreamBuffer9 << "public:\n\tstatic UClass* StaticClass()\n"
+		<< "\t{\n"
+		<< "\t\tif ( ! pClassPointer )\n"
+		<< "\t\t\tpClassPointer = (UClass*) UObject::GObjObjects()->Data[ " << SDKMC_SSDEC( pClass->ObjectInternalInteger, 0 ) << " ];\n\n"
+		<< "\t\treturn pClassPointer;\n"
+		<< "\t};\n\n";
+
+	SDKFN_PRINT ( pFile2, ssStreamBuffer9 );
+
+	if ( pClass == UObject::FindClass ( "Class Core.Class" ) ||  pClass == UObject::FindClass ( "Class Engine.GameEngine" ))
 	{
-		ssStreamBuffer0 << "\tstatic UClass* StaticClass()\n"
-						<< "\t{\n"
-						<< "\t\tif ( ! pClassPointer )\n"
-						<< "\t\t\tpClassPointer = (UClass*) UObject::GObjObjects()->Data[ " << SDKMC_SSDEC( pClass->ObjectInternalInteger, 0 ) << " ];\n\n"
-						<< "\t\treturn pClassPointer;\n"
-						<< "\t};\n\n";
-	}
-	else
-	{
-		ssStreamBuffer0 << "\tstatic UClass* StaticClass()\n"
-						<< "\t{\n"
-						<< "\t\tif ( ! pClassPointer )\n"
-						<< "\t\t\tpClassPointer = UObject::FindClass ( \"" << sClassFullName << "\" );\n\n"
-						<< "\t\treturn pClassPointer;\n"
-						<< "\t};\n\n";
+		//// stream to main buffer
+		ssStreamBuffer0 << "\nprivate:\n"
+			<< "\tstatic UClass* pClassPointer;\n\n";	// static class pointer
+
+		ssStreamBuffer0 << "public:\n\tstatic UClass* StaticClass()\n"
+			<< "\t{\n"
+			<< "\t\tif ( ! pClassPointer )\n"
+			<< "\t\t\tpClassPointer = (UClass*) UObject::GObjObjects()->Data[ " << SDKMC_SSDEC( pClass->ObjectInternalInteger, 0 ) << " ];\n\n"
+			<< "\t\treturn pClassPointer;\n"
+			<< "\t};\n\n";
 	}
 
-	// print main stream buffer to file
+	//// print main stream buffer to file
 	SDKFN_PRINT ( pFile, ssStreamBuffer0 );
-	
+	//
 	// print functions declaretion
-	GenerateFuncDec ( pClass );
+	//GenerateFuncDec ( pClass );
 
 	// print virtual functions
 	if ( pClass == UObject::FindClass ( "Class Core.Object" ) )
 		GenerateVirtualFunc ( pClass );
 
-	// stream to main buffer
-	ssStreamBuffer0 << "};\n\n"															// close class
-					<< "UClass* " << sClassNameCPP << "::pClassPointer = NULL;\n\n";	// init static pointer
+	//// stream to main buffer
+	ssStreamBuffer0 << "};\n\n";														// close class
+	//				<< "UClass* " << sClassNameCPP << "::pClassPointer = NULL;\n\n";	// init static pointer
 
 	// print main stream buffer to file
 	SDKFN_PRINT ( pFile, ssStreamBuffer0 );
@@ -2113,7 +2123,7 @@ void ProcessEnumsByPackage ( UObject* pPackageToProcess )
 			&&	pObject->IsA ( UEnum::StaticClass() )
 		)
 		{
-			GenerateEnum ( (UEnum*) pObject );
+			//GenerateEnum ( (UEnum*) pObject );
 		}
 	}
 }
@@ -2254,6 +2264,9 @@ void gethook(UObject* pObject)
 	fclose ( f );
 }
 
+vector<char*> boobies;
+
+
 void ProcessPackages()
 {
 	char cBufferlog[256] = { 0 };
@@ -2338,7 +2351,7 @@ void ProcessPackages()
 				fclose ( pFile );
 
 				// create new function structs package header file
-				sprintf_s ( cBuffer, "%s\\%s\\SDK_HEADERS\\%s_f_structs.h", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
+				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_f_structs.log", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
 				fopen_s ( &pFile, cBuffer, "w+" );
 			
 				sprintf_s ( cBuffer, "%s_f_structs", pPackageObject->GetName() );
@@ -2355,9 +2368,9 @@ void ProcessPackages()
 				fclose ( pFile );
 
 				// create new function package header file
-				sprintf_s ( cBuffer, "%s\\%s\\SDK_HEADERS\\%s_functions.h", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
+				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_functions.log", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
 				fopen_s ( &pFile, cBuffer, "w+" );
-			
+
 				sprintf_s ( cBuffer, "%s_functions", pPackageObject->GetName() );
 				PrintFileHeder ( cBuffer, "h", true );
 			
@@ -2430,10 +2443,12 @@ void Final_SdkHeaders()
 	PrintFileHeder ( "SdkHeaders", "h" );
 	
 	PrintSectionHeader ( "Defines" );
-	fprintf ( pFile, "#define GObjects\t\t\t0x%08X\n", GObjects );
+	//fprintf ( pFile, "#define GObjects\t\t\t0x%08X\n", GObjects );
+	fprintf ( pFile, "static unsigned long	GObjects\t\t\t= NULL;\n", GObjects );
 
-	#ifdef GNames_Pattern
-	fprintf ( pFile, "#define GNames\t\t\t\t0x%08X\n", GNames );
+#ifdef GNames_Pattern
+	fprintf ( pFile, "static unsigned long	GNames\t\t\t\t= NULL;\n", GObjects );
+	//fprintf ( pFile, "#define GNames\t\t\t\t0x%08X\n", GNames );
 	#endif
 	
 	PrintSectionHeader ( "Structs" );
@@ -2445,8 +2460,8 @@ void Final_SdkHeaders()
 	{
 		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_structs.h\"\n",		vIncludes[i]->GetName() );
 		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_classes.h\"\n",		vIncludes[i]->GetName() );		
-		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_f_structs.h\"\n",		vIncludes[i]->GetName() );		
-		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_functions.h\"\n",		vIncludes[i]->GetName() );
+		//fprintf ( pFile, "#include \"SDK_HEADERS\\%s_f_structs.h\"\n",		vIncludes[i]->GetName() );		
+		//fprintf ( pFile, "#include \"SDK_HEADERS\\%s_functions.h\"\n",		vIncludes[i]->GetName() );
 	}
 
 	fclose ( pFile );
@@ -2483,9 +2498,17 @@ void OnAttach()
 	sprintf_s ( cBuffer, "%s\\%s\\SDK_HEADERS", SDK_BASE_DIR, GAME_NAME_S );
 	_mkdir ( cBuffer );
 
+	// mkdir sdk headers
+	sprintf_s ( cBuffer, "%s\\%s\\function", SDK_BASE_DIR, GAME_NAME_S );
+	_mkdir ( cBuffer );
+
 	// open log
 	sprintf_s ( cBuffer, "%s\\%s\\UE3SdkGenerator.log", SDK_BASE_DIR, GAME_NAME_S );
 	fopen_s ( &pLog, cBuffer, "w+" );
+
+	// stream to main buffer (static class function)
+	sprintf_s ( cBuffer, "%s\\%s\\StaticClass.log", SDK_BASE_DIR, GAME_NAME_S );
+	fopen_s ( &pFile2, cBuffer, "a" );
 
 	// get start time
 	GetSystemTime ( &stST );
@@ -2502,7 +2525,6 @@ void OnAttach()
 
 	// finalize
 	Final_SdkHeaders();
-	add_log( cBuffer, "Final_SdkHeaders" );
 
 	// get end time
 	GetSystemTime ( &stET );
@@ -2529,13 +2551,13 @@ BOOL WINAPI DllMain ( HMODULE hModule, DWORD dwReason, LPVOID lpReserved )
 {
 	switch ( dwReason )
 	{
-		case DLL_PROCESS_ATTACH:
+	case DLL_PROCESS_ATTACH:
 
-			DisableThreadLibraryCalls ( hModule );
-			CreateThread ( NULL, 0, ( LPTHREAD_START_ROUTINE ) OnAttach, NULL, 0, NULL );
-			
-			return true;
-		
+		DisableThreadLibraryCalls ( hModule );
+		CreateThread ( NULL, 0, ( LPTHREAD_START_ROUTINE ) OnAttach, NULL, 0, NULL );
+
+		return true;
+
 		break;
 	}
 }

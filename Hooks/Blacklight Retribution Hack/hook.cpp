@@ -130,7 +130,6 @@ void Draw( LPDIRECT3DDEVICE9 pDevice, AFoxPC* Controller )
 			//	if(FoxPC)
 			//		Utils::add_log( "c:\\names.txt", "%s", FoxPC->PlayerReplicationInfo->PlayerName.Data);
 			//}
-
 	}
 }
 

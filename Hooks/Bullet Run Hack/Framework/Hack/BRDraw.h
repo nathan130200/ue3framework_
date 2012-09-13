@@ -23,7 +23,7 @@ bool IsMe()
 
 void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, APawn* you )
 {
-	//wprintf(TEXT("draw function\n"));
+	wprintf(TEXT("draw function\n"));
 
 	if ( Canvas == NULL || Controller == NULL || Controller->WorldInfo == NULL || Controller->WorldInfo->PawnList == NULL || you == NULL )
 		return;
@@ -46,18 +46,18 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 		CurrentPawns[i].WorldPos = WorldToScreen::BRBones(CurrentPawns[i].Location, CurrentPawns[i].Pawn);
 		CurrentPawns[i].Distance = (CurrentPawns[i].Location - CameraLocation).Length();
 		CurrentPawns[i].IsEnemy = Pawn->PlayerReplicationInfo->Team != Controller->PlayerReplicationInfo->Team;
-		//wprintf(L"Pawn %d - %s\n", i, Pawn->PlayerReplicationInfo->PlayerName.Data);
+		wprintf(L"Pawn %d - %s\n", i, Pawn->PlayerReplicationInfo->PlayerName.Data);
 		i++;
 	}while(Pawn = Pawn->NextPawn);
 
 	TotalPlayers = iMax = i;
 
 	for (i = 0; i < iMax; i++)
- 	{
- 		if( !CurrentPawns[i].Pawn )
- 			continue;
- 
- 		PawnInfo Pawn = CurrentPawns[i];
+	{
+		if( !CurrentPawns[i].Pawn )
+			continue;
+
+		PawnInfo Pawn = CurrentPawns[i];
 
 		FColor DrawColor = Misc::GetTeamColor( TRUE, Pawn.IsVisible, Pawn.IsEnemy );
 		bool ListPlayer = IsWhiteListPlayer(i);
@@ -105,7 +105,7 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 		{
 			Radar::DrawRadar( Pawn, Canvas, DrawColor );
 		}
- 	}
+	}
 
 	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"AimBot")].Checked)
 	{
@@ -114,7 +114,7 @@ void Draw( UCanvas* Canvas, APBPlayerController* Controller, FVector CameraLocat
 
 	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"Auto Fire Bot")].Checked)
 	{
-		//Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
+		Aim::AutoFireBot(IsVisible, IsEnemy, Location, Pawn, Canvas);
 	}
 
 	if (CheckBoxes[CMenuManager::GetCheckBoxIndexByName(L"CossHair")].Checked)

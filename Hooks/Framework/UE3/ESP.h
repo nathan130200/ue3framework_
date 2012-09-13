@@ -1,10 +1,15 @@
 class ESP
 {
 public:
-	static void ESP::NameAPB(UCanvas* Canvas, FVector Screen, APawn* Pawn, FColor DrawColor)
+	static void ESP::APBName(UCanvas* Canvas, FVector Screen, AcAPBPawn* Pawn, FColor DrawColor)
 	{
-		CRender::DrawString( Canvas, Screen.X, Screen.Y-50, DrawColor, true, L"TEST" );
-		Screen.Y += 15;
+		if (!Canvas || !Pawn) return;
+
+		static FString PlayerName;
+
+		APBGameEngine->m_HostingClient->m_namequery->GetCharacterNameNative(Pawn->m_nControllerCharacterUID, &PlayerName);
+
+		CRender::DrawString( Canvas, Screen.X, Screen.Y-50, DrawColor, true, PlayerName.Data );
 	}
 
 	static void ESP::Name(UCanvas* Canvas, FVector Screen, APawn* Pawn, FColor DrawColor)

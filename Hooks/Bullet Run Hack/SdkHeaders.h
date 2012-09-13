@@ -1,15 +1,9 @@
 /*
 #############################################################################################
-# All Points Bulletin Reloaded (1.6) SDK
-# Generated with TheFeckless UE3 SDK Generator v1.4_Beta-Rev.51
+# Bullet Run (Unknown) SDK
 # ========================================================================================= #
 # File: SdkHeaders.h
 # ========================================================================================= #
-# Credits: uNrEaL, Tamimego, SystemFiles, R00T88, _silencer, the1domo, K@N@VEL
-# Thanks: HOOAH07, lowHertz
-# Forums: www.uc-forum.com, www.gamedeception.net
-#############################################################################################
-*/
 
 /*
 # ========================================================================================= #
@@ -17,8 +11,8 @@
 # ========================================================================================= #
 */
 
-#define		GObjects		0x1269BEFC;
-#define		GNames			0x1269BBB8;
+static unsigned long	GObjects		= NULL;
+static unsigned long	GNames			= NULL;
 
 /*
 # ========================================================================================= #
@@ -73,13 +67,13 @@ public:
 struct FNameEntry 
 { 
 	unsigned char	UnknownData00[ 0x10 ]; 
-	wchar_t			Name[ 0x10 ]; 
+	char			Name[ 0x10 ]; 
 }; 
 
 struct FName 
 { 
-	unsigned long Index;
-	unsigned long Recursion;
+	int				Index; 
+	unsigned char	unknownData00[ 0x4 ]; 
 
 	FName() : Index ( 0 ) {}; 
 
@@ -87,13 +81,13 @@ struct FName
 
 	~FName() {}; 
 
-	FName ( wchar_t* FindName ) 
+	FName ( char* FindName ) 
 	{ 
 		static TArray< int > NameCache; 
 
 		for ( int i = 0; i < NameCache.Count; ++i ) 
 		{ 
-		if ( ! wcscmp ( this->Names()->Data[ NameCache ( i ) ]->Name, FindName ) ) 
+		if ( ! strcmp ( this->Names()->Data[ NameCache ( i ) ]->Name, FindName ) ) 
 			{ 
 				Index = NameCache ( i ); 
 				return; 
@@ -104,7 +98,7 @@ struct FName
 		{ 
 			if ( this->Names()->Data[ i ] ) 
 			{ 
-				if ( ! wcscmp ( this->Names()->Data[ i ]->Name, FindName ) ) 
+				if ( ! strcmp ( this->Names()->Data[ i ]->Name, FindName ) ) 
 				{ 
 					NameCache.Add ( i ); 
 					Index = i; 
@@ -118,7 +112,7 @@ struct FName
 		return (TArray< FNameEntry* >*) GNames; 
 	}; 
 
-	wchar_t* GetName() 
+	char* GetName() 
 	{ 
 		return this->Names()->Data[ Index ]->Name; 
 	}; 
@@ -162,37 +156,4 @@ struct FScriptDelegate
 	unsigned char UnknownData00[ 0xC ]; 
 }; 
 
-/*
-# ========================================================================================= #
-# Includes
-# ========================================================================================= #
-*/
 
-#include "SDK_HEADERS\Core_structs.h"
-#include "SDK_HEADERS\Core_classes.h"
-#include "SDK_HEADERS\Core_f_structs.h"
-#include "SDK_HEADERS\Core_functions.h"
-#include "SDK_HEADERS\Engine_structs.h"
-#include "SDK_HEADERS\Engine_classes.h"
-#include "SDK_HEADERS\Engine_f_structs.h"
-#include "SDK_HEADERS\Engine_functions.h"
-#include "SDK_HEADERS\APBUserInterface_structs.h"
-#include "SDK_HEADERS\APBUserInterface_classes.h"
-#include "SDK_HEADERS\APBUserInterface_f_structs.h"
-#include "SDK_HEADERS\APBUserInterface_functions.h"
-#include "SDK_HEADERS\APBGame_structs.h"
-#include "SDK_HEADERS\APBGame_classes.h"
-#include "SDK_HEADERS\APBGame_f_structs.h"
-#include "SDK_HEADERS\APBGame_functions.h"
-#include "SDK_HEADERS\IpDrv_structs.h"
-#include "SDK_HEADERS\IpDrv_classes.h"
-#include "SDK_HEADERS\IpDrv_f_structs.h"
-#include "SDK_HEADERS\IpDrv_functions.h"
-#include "SDK_HEADERS\AKAudio_structs.h"
-#include "SDK_HEADERS\AKAudio_classes.h"
-#include "SDK_HEADERS\AKAudio_f_structs.h"
-#include "SDK_HEADERS\AKAudio_functions.h"
-#include "SDK_HEADERS\WinDrv_structs.h"
-#include "SDK_HEADERS\WinDrv_classes.h"
-#include "SDK_HEADERS\WinDrv_f_structs.h"
-#include "SDK_HEADERS\WinDrv_functions.h"

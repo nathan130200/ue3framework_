@@ -1,43 +1,50 @@
 static char weap = 0;
 
-void Draw( UCanvas* Canvas, AcAPBPlayerController* Controller, FVector CameraLocation, FRotator CameraRotation, AcAPBPawn* you )
+bool APBIsVisible(APlayerController* Controller, FVector Location)
 {
-	if ( Canvas == NULL || Controller == NULL || Controller->WorldInfo == NULL || Controller->WorldInfo->PawnList == NULL || you == NULL )
+	AActor* bTrace = IsVisible::FastTraceAPB( Controller, CameraLocation, Location );
+
+	if(AcAPBPawn* target = reinterpret_cast<AcAPBPawn*>(bTrace))
+		return true;
+
+	return false;
+}
+
+void Draw( UCanvas* Canvas, APlayerController* Controll, FVector CameraLocation, FRotator CameraRotation, AcAPBPawn* you )
+{
+	if ( Canvas == NULL || Controll == NULL || Controll->WorldInfo == NULL || Controll->WorldInfo->PawnList == NULL || you == NULL )
 		return;
 
 	CurrentBest = 999999.0f;
 	CurrentTarget = NULL;
 	VisiblePlayerCount = 0;
 	
-	for ( APawn* Pawn = Controller->WorldInfo->PawnList; Pawn; Pawn = Pawn->NextPawn)
+	for ( APawn* Pawn = Controll->WorldInfo->PawnList; Pawn; Pawn = Pawn->NextPawn)
 	{
-		if ( Controller == NULL || Pawn == NULL || Pawn->bDeleteMe || Pawn == Controller->Pawn )
+		if ( Controll == NULL || Pawn == NULL || Pawn->bDeleteMe || Pawn == Controll->Pawn )
 			continue;
 
 		AcAPBPawn* APBPawnTarget = reinterpret_cast<AcAPBPawn*>(Pawn);
 		AcAPBPlayerController* TargetController = reinterpret_cast<AcAPBPlayerController*>(Pawn);
+		AcAPBPlayerController* myAPBController = reinterpret_cast<AcAPBPlayerController*>(Controll);
 
-		//if(APBPawnTarget->m_MissionSideInfo.m_nMissionUID != you->m_MissionSideInfo.m_nMissionUID)
-		//	 continue;
-
-		if ( APBPawnTarget->m_DyingData.eDyingState != 0 || Pawn->IsA(AVehicle::StaticClass()))
+		if (!APBPawnTarget->IsAlive() || Pawn->IsA(AVehicle::StaticClass()))
 			 continue;
 
 		FVector Location = Pawn->Location;
 
-		AActor* bTrace = IsVisible::FastTraceAPB( Controller, TargetController, CameraLocation, Location );
 
 		bool IsPlayer = true; 
-		bool IsVisible = true; (TargetController->m_CurrentTarget != bTrace);
-		bool IsEnemy = IsPlayer ? (  Controller->m_eFaction != APBPawnTarget->m_eFaction ) : false;
+		bool IsVisible = true; //APBIsVisible(Controll, Location);
+		bool IsEnemy = IsPlayer ? (  myAPBController->m_eFaction != APBPawnTarget->m_eFaction ) : false;
 
 		FColor DrawColor = Misc::GetTeamColor( IsPlayer, IsVisible, IsEnemy );
 
-		FVector Screen = WorldToScreen::World( Canvas, Location );
+		FVector Screen = WorldToScreen::World2( Canvas, Location );
 		
 		if (CheckBoxes[0].Checked)
 		{
-			ESP::NameAPB(Canvas, Screen, Pawn, DrawColor);
+			ESP::APBName(Canvas, Screen, reinterpret_cast<AcAPBPawn*>(Pawn), DrawColor);
 			Screen.Y += 15;
 		}
 

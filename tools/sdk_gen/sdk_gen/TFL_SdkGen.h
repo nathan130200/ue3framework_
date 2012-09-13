@@ -171,6 +171,7 @@ typedef pair< string, string >		StrStrPair_t;
 */
 
 FILE*				pFile						= NULL;
+FILE*				pFile2						= NULL;
 FILE*				pLog						= NULL;
 char				cBuffer[ SDK_BUFF_SIZE ]	= { NULL };
 vector< UObject* >	vIncludes;
