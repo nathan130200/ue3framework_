@@ -29,7 +29,6 @@
 #define ProcessEvent_Pattern	"\x83\xc0\x07\x83\xe0\xf8\xe8\x00\x00\x00\x00\x8B\xC4"
 #define ProcessEvent_Mask		"xxxxxxx????xx"
 
-#define Pattern
 // UE3 Tables Sigs
 #define GObjects_Pattern		"\xa1\x00\x00\x00\x00\x8b\x00\x00\x8b\x00\x00\x25\x00\x02\x00\x00"
 #define GObjects_Mask			"x????x??x??xxxxx"

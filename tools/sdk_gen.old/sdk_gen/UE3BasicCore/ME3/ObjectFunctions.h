@@ -1,7 +1,7 @@
 /*
 #############################################################################################
-# Game: All Points Bulletin	Reloaded														#
-# Version: 1.6																				#
+# Game: Mass Effect 3																		#
+# Version: 1.0																				#
 # ========================================================================================= #
 # File: ObjectFunctions.h																	#
 #############################################################################################
@@ -159,9 +159,6 @@ template< class T > unsigned int UObject::CountObject ( char* ObjectName )
 	while ( ! UObject::GObjObjects() )
 		Sleep ( 100 );
 
-	while ( ! FName::Names() )
-		Sleep( 100 );
-
 	static map< string, int > mCountCache;
 	string sObjectName = string ( ObjectName );
 	
@@ -197,9 +194,6 @@ UClass* UObject::FindClass ( char* ClassFullName )
 {
 	while ( ! UObject::GObjObjects() )
 		Sleep ( 100 );
-
-	while ( ! FName::Names() )
-		Sleep ( 100 );
 	
 	for ( int i = 0; i < UObject::GObjObjects()->Count; ++i )
 	{
@@ -219,7 +213,7 @@ bool UObject::IsA ( UClass* pClass )
 {
 	for ( UClass* SuperClass = this->Class; SuperClass; SuperClass = (UClass*) SuperClass->SuperField )
 	{
-		if( SuperClass == pClass )
+		if ( SuperClass == pClass )
 			return true;
 	}
 

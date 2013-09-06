@@ -1,7 +1,7 @@
 /*
 #############################################################################################
-# Game: All Points Bulletin	Reloaded														#
-# Version: 1.6																				#
+# Game: Tom Clancy's Rainbow Six Vegas 2													#
+# Version: 1.03.101																			#
 # ========================================================================================= #
 # File: PiecesOfCode.h																		#
 #############################################################################################
@@ -54,17 +54,12 @@ public: \n\
 \n\
 struct FNameEntry \n\
 { \n\
-	unsigned char	UnknownData00[ 0x10 ]; \n\
-	union{ \n\
-		char		*Name1; \n\
-		char		Name2[ 0x10 ]; \n\
-	}; \n\
+	char			Name[ 0x10 ]; \n\
 }; \n\
 \n\
 struct FName \n\
 { \n\
 	int				Index; \n\
-	unsigned char	unknownData00[ 0x4 ]; \n\
 \n\
 	FName() : Index ( 0 ) {}; \n\
 \n\
@@ -78,21 +73,21 @@ struct FName \n\
 \n\
 		for ( int i = 0; i < NameCache.Count; ++i ) \n\
 		{ \n\
-		if ( ! strcmp ( GetName(NameCache ( i )), FindName ) ) \n\
+			if ( ! strcmp ( this->Names()->Data[ NameCache ( i ) * 3 ]->Name, FindName ) ) \n\
 			{ \n\
 				Index = NameCache ( i ); \n\
 				return; \n\
 			} \n\
 		} \n\
 \n\
-		for ( int i = 0; i < this->Names()->Count; ++i ) \n\
+		for ( int i = 0; i < this->Names()->Count; i += 3 ) \n\
 		{ \n\
 			if ( this->Names()->Data[ i ] ) \n\
 			{ \n\
-				if ( ! strcmp ( GetName(i), FindName ) ) \n\
+			if ( ! strcmp ( this->Names()->Data[ i ]->Name, FindName ) ) \n\
 				{ \n\
-					NameCache.Add ( i ); \n\
-					Index = i; \n\
+					NameCache.Add ( i / 3 ); \n\
+					Index = i / 3; \n\
 				} \n\
 			} \n\
 		} \n\
@@ -105,21 +100,7 @@ struct FName \n\
 \n\
 	char* GetName() \n\
 	{ \n\
-		if ( Index < 0 || Index > this->Names()->Num() ) \n\
-			return \"UnknownName\"; \n\
-		else if(Index < 3128) \n\
-			return this->Names()->Data[ Index ]->Name1; \n\
-		else \n\
-			return this->Names()->Data[ Index ]->Name2; \n\
-	}; \n\
-	char* GetName(int idx) \n\
-	{ \n\
-		if ( idx < 0 || idx > this->Names()->Num() ) \n\
-			return \"UnknownName\"; \n\
-		else if(idx < 3128) \n\
-			return this->Names()->Data[ idx ]->Name1; \n\
-		else \n\
-			return this->Names()->Data[ idx ]->Name2; \n\
+		return this->Names()->Data[ Index * 3 ]->Name; \n\
 	}; \n\
 \n\
 	bool operator == ( const FName& A ) const \n\
@@ -315,22 +296,10 @@ bool UObject::IsA ( UClass* pClass ) \n\
 } \n"
 
 #define CLASS_PROPERTIES_UFIELD "\
+	class UField*                                      SuperField;                                       		// NOT AUTO-GENERATED PROPERTY \n\
 	class UField*                                      Next;                                             		// NOT AUTO-GENERATED PROPERTY \n"
 
 #define CLASS_PROPERTIES_UFUNCTION "\
 	unsigned long                                      FunctionFlags;                                    		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned short                                     iNative;                                          		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned short                                     RepOffset;                                        		// NOT AUTO-GENERATED PROPERTY \n\
-	struct FName                                       FriendlyName;                                     		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned short                                     NumParms;                                         		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned short                                     ParmsSize;                                        		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned short                                     ReturnValueOffset;                                		// NOT AUTO-GENERATED PROPERTY \n\
-	unsigned char                                      _0x009E[6];										 		// NOT AUTO-GENERATED PROPERTY \n\
-	void*                                              Func;                                             		// NOT AUTO-GENERATED PROPERTY \n"
-
-#define CLASS_PROPERTIES_USTRUCT "\
-	char _0x0044[8];                                             												// NOT AUTO-GENERATED PROPERTY \n\
-	class UField* SuperField;                                             										// NOT AUTO-GENERATED PROPERTY \n\
-	class UField* Children;                                             										// NOT AUTO-GENERATED PROPERTY \n\
-	__int32 PropertySize;                                             											// NOT AUTO-GENERATED PROPERTY \n\
-	char _0x0058[48];                                             												// NOT AUTO-GENERATED PROPERTY \n"
+	unsigned long                                      iNative;                                          		// NOT AUTO-GENERATED PROPERTY \n\
+	unsigned char                                      UnknownData00[ 0x18 ];                                   // NOT AUTO-GENERATED PROPERTY \n"

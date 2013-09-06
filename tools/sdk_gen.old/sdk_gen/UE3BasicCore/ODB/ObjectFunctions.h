@@ -1,7 +1,7 @@
 /*
 #############################################################################################
-# Game: All Points Bulletin	Reloaded														#
-# Version: 1.6																				#
+# Game: ORION Dino Beatdown																	#
+# Version: Unknown																			#
 # ========================================================================================= #
 # File: ObjectFunctions.h																	#
 #############################################################################################
@@ -219,7 +219,7 @@ bool UObject::IsA ( UClass* pClass )
 {
 	for ( UClass* SuperClass = this->Class; SuperClass; SuperClass = (UClass*) SuperClass->SuperField )
 	{
-		if( SuperClass == pClass )
+		if ( SuperClass == pClass )
 			return true;
 	}
 

@@ -23,7 +23,7 @@ char* UObject::GetName()
 {
 	static char cOutBuffer[ 256 ];
 
-	sprintf_s ( cOutBuffer, "%s", this->Name.GetName() );
+	sprintf_s ( cOutBuffer, "%S", this->Name.GetName() );
 
 	return cOutBuffer;
 }
@@ -219,7 +219,7 @@ bool UObject::IsA ( UClass* pClass )
 {
 	for ( UClass* SuperClass = this->Class; SuperClass; SuperClass = (UClass*) SuperClass->SuperField )
 	{
-		if( SuperClass == pClass )
+		if ( SuperClass == pClass )
 			return true;
 	}
 

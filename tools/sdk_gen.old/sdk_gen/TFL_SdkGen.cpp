@@ -33,14 +33,14 @@ void PrintFileHeder ( char* cFileName, char* cFileExt, bool setPP = false )
 	fprintf ( pFile, "/*\n" );
 	fprintf ( pFile, "#############################################################################################\n" );
 	fprintf ( pFile, "# %s (%s) SDK\n", GAME_NAME, GAME_VERSION );
-	fprintf ( pFile, "# Generated with TheFeckless UE3 SDK Generator %s\n", SDK_GEN_VER );
+	//fprintf ( pFile, "# Generated with TheFeckless UE3 SDK Generator %s\n", SDK_GEN_VER );
 	fprintf ( pFile, "# ========================================================================================= #\n" );
 	fprintf ( pFile, "# File: %s.%s\n", cFileName, cFileExt );
 	fprintf ( pFile, "# ========================================================================================= #\n" );
-	fprintf ( pFile, "# Credits: %s\n", SDK_GEN_CREDITS );
-	fprintf ( pFile, "# Thanks: %s\n", SDK_GEN_STHANKS );
-	fprintf ( pFile, "# Forums: %s\n", SDK_GEN_FORUMS );
-	fprintf ( pFile, "#############################################################################################\n" );
+	//fprintf ( pFile, "# Credits: %s\n", SDK_GEN_CREDITS );
+	//fprintf ( pFile, "# Thanks: %s\n", SDK_GEN_STHANKS );
+	//fprintf ( pFile, "# Forums: %s\n", SDK_GEN_FORUMS );
+	//fprintf ( pFile, "#############################################################################################\n" );
 	fprintf ( pFile, "*/\n" );
 
 	if ( setPP )
@@ -1939,8 +1939,8 @@ void GenerateClass ( UClass* pClass )
 
 	SDKFN_PRINT ( pFile2, ssStreamBuffer9 );
 
-	//if ( pClass == UObject::FindClass ( "Class Core.Class" ) ||  pClass == UObject::FindClass ( "Class Engine.GameEngine" ))
-	//{
+	if ( pClass == UObject::FindClass ( "Class Core.Class" ) ||  pClass == UObject::FindClass ( "Class Engine.GameEngine" ))
+	{
 		//// stream to main buffer
 		ssStreamBuffer0 << "\nprivate:\n"
 			<< "\tstatic UClass* pClassPointer;\n\n";	// static class pointer
@@ -1951,21 +1951,21 @@ void GenerateClass ( UClass* pClass )
 			<< "\t\t\tpClassPointer = (UClass*) UObject::GObjObjects()->Data[ " << SDKMC_SSDEC( pClass->ObjectInternalInteger, 0 ) << " ];\n\n"
 			<< "\t\treturn pClassPointer;\n"
 			<< "\t};\n\n";
-	//}
+	}
 
 	//// print main stream buffer to file
 	SDKFN_PRINT ( pFile, ssStreamBuffer0 );
 	//
 	// print functions declaretion
-	GenerateFuncDec ( pClass );
+	//GenerateFuncDec ( pClass );
 
 	// print virtual functions
 	if ( pClass == UObject::FindClass ( "Class Core.Object" ) )
 		GenerateVirtualFunc ( pClass );
 
 	//// stream to main buffer
-	ssStreamBuffer0 << "};\n\n"														// close class
-					<< "UClass* " << sClassNameCPP << "::pClassPointer = NULL;\n\n";	// init static pointer
+	ssStreamBuffer0 << "};\n\n";														// close class
+	//				<< "UClass* " << sClassNameCPP << "::pClassPointer = NULL;\n\n";	// init static pointer
 
 	// print main stream buffer to file
 	SDKFN_PRINT ( pFile, ssStreamBuffer0 );
@@ -2351,7 +2351,7 @@ void ProcessPackages()
 				fclose ( pFile );
 
 				// create new function structs package header file
-				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_f_structs.h", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
+				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_f_structs.log", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
 				fopen_s ( &pFile, cBuffer, "w+" );
 			
 				sprintf_s ( cBuffer, "%s_f_structs", pPackageObject->GetName() );
@@ -2368,7 +2368,7 @@ void ProcessPackages()
 				fclose ( pFile );
 
 				// create new function package header file
-				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_functions.h", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
+				sprintf_s ( cBuffer, "%s\\%s\\function\\%s_functions.log", SDK_BASE_DIR, GAME_NAME_S, pPackageObject->GetName() );	
 				fopen_s ( &pFile, cBuffer, "w+" );
 
 				sprintf_s ( cBuffer, "%s_functions", pPackageObject->GetName() );
@@ -2460,8 +2460,8 @@ void Final_SdkHeaders()
 	{
 		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_structs.h\"\n",		vIncludes[i]->GetName() );
 		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_classes.h\"\n",		vIncludes[i]->GetName() );		
-		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_f_structs.h\"\n",		vIncludes[i]->GetName() );		
-		fprintf ( pFile, "#include \"SDK_HEADERS\\%s_functions.h\"\n",		vIncludes[i]->GetName() );
+		//fprintf ( pFile, "#include \"SDK_HEADERS\\%s_f_structs.h\"\n",		vIncludes[i]->GetName() );		
+		//fprintf ( pFile, "#include \"SDK_HEADERS\\%s_functions.h\"\n",		vIncludes[i]->GetName() );
 	}
 
 	fclose ( pFile );

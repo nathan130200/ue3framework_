@@ -1,7 +1,7 @@
 /*
 #############################################################################################
-# Game: Tribes: Ascend																		#
-# Version: 1.0.1016.7																		#
+# Game: Mass Effect 3																		#
+# Version: 1.0																				#
 # ========================================================================================= #
 # File: GameDefines.h																		#
 #############################################################################################
@@ -18,26 +18,21 @@
 */
 
 // Info
-#define GAME_NAME				"Tribes Ascend"
-#define GAME_NAME_S				"TA"
-#define GAME_VERSION			"1.0.1016.7"
+#define GAME_NAME				"Mass Effect 3"
+#define GAME_NAME_S				"ME3"
+#define GAME_VERSION			"1.0"
 
 // Game
 #define CLASS_ALIGN				0x4
 
 // ProcessEvent Sig
-#define ProcessEvent_Pattern	"\x83\xc0\x07\x83\xe0\xf8\xe8\x00\x00\x00\x00\x8B\xC4"
-#define ProcessEvent_Mask		"xxxxxxx????xx"
+#define ProcessEvent_Pattern	"\x74\x00\x83\xC0\x07\x83\xE0\xF8\xE8\x00\x00\x00\x00\x8B\xC4"
+#define ProcessEvent_Mask		"x?xxxxxxx????xx"
 
-#define Pattern
 // UE3 Tables Sigs
-#define GObjects_Pattern		"\xa1\x00\x00\x00\x00\x8b\x00\x00\x8b\x00\x00\x25\x00\x02\x00\x00"
-#define GObjects_Mask			"x????x??x??xxxxx"
-#define GObjects_Offset			0x1
-
-#define GNames_Pattern			"\x8b\x0d\x00\x00\x00\x00\x83\x3c\x81\x00\x74"
-#define GNames_Mask				"xx????xxxxx"
-#define GNames_Offset			0x2
+#define GObjects_Pattern		"\x8b\x00\x00\x00\x00\x00\x8b\x04\x00\x8b\x40\x00\x25\x00\x02\x00\x00"
+#define GObjects_Mask			"x?????xx?xx?xxxxx"
+#define GObjects_Offset			0x2
 
 // Function Flags ( incomplete )
 #define FUNC_Final				0x00000001
@@ -46,7 +41,6 @@
 #define FUNC_Exec				0x00000200
 #define FUNC_Native				0x00000400
 #define FUNC_Event				0x00000800
-
 
 // Proprerty Flags ( c&p from UE3 source )
 #define	CPF_Edit				0x0000000000000001		// Property is user-settable in the editor.
@@ -87,6 +81,7 @@
 #define CCP_UFLOAT
 #define CCP_UBOOL
 #define CCP_USTR
+#define CCP_USTRINGREF
 #define CCP_UNAME
 #define CCP_UDELEGATE
 #define CCP_UOBJECT
@@ -103,8 +98,6 @@
 */
 
 unsigned long GObjects			= NULL;
-unsigned long GNames			= NULL;
-
 
 /*
 # ========================================================================================= #
@@ -158,63 +151,26 @@ public:
 
 struct FNameEntry
 {
-	unsigned char	UnknownData00[ 0x10 ];
+	unsigned char	UnknownData00[ 0x8 ];
 	char			Name[ 0x10 ];
 };
 
 struct FName
 {
-	int				Index;
+	FNameEntry*		NameEntry;
 	unsigned char	unknownData00[ 0x4 ];															
-
-	FName() : Index ( 0 ) {};
-
-	FName ( int i ) : Index ( i ) {};
-
-	~FName() {};
-
-	FName ( char* FindName )
-	{
-		static TArray< int > NameCache;
-
-		for ( int i = 0; i < NameCache.Count; ++i )
-		{
-			if ( ! strcmp ( this->Names()->Data[ NameCache ( i ) ]->Name, FindName ) )
-			{
-				Index = NameCache ( i );
-				return;
-			}
-		}
-
-		for ( int i = 0; i < this->Names()->Count; ++i )
-		{
-			if ( this->Names()->Data[ i ] )
-			{
-				if ( ! strcmp ( this->Names()->Data[ i ]->Name, FindName ) )
-				{
-					NameCache.Add ( i );
-					Index = i;
-				}
-			}
-		}
-	};
-
-	static TArray< FNameEntry* >* Names()
-	{
-		return (TArray< FNameEntry* >*) GNames;
-	};
 
 	char* GetName()
 	{
-		if ( Index < 0 || Index > this->Names()->Num() )
+		if ( ! NameEntry )
 			return "UnknownName";
 		else
-			return this->Names()->Data[ Index ]->Name;
+			return this->NameEntry->Name;
 	};
 
 	bool operator == ( const FName& A ) const
 	{
-		return ( Index == A.Index );
+		return ( NameEntry == A.NameEntry );
 	};
 };
 
@@ -272,19 +228,19 @@ struct FQWord
 class UObject
 {
 public:
-	struct FPointer								VfTableObject;                                    		// 0x0000 (0x0004) 
-	int                                         ObjectInternalInteger;                            		// 0x0004 (0x0004) 
-	struct FQWord                               ObjectFlags;                                      		// 0x0008 (0x0008) 
-	struct FPointer                             HashNext;                                         		// 0x0010 (0x0004) 
-	struct FPointer                             HashOuterNext;                                    		// 0x0014 (0x0004) 
-	struct FPointer                             StateFrame;                                       		// 0x0018 (0x0004) 
-	class UObject*                              Linker;                                           		// 0x001C (0x0004) 
-	struct FPointer                             LinkerIndex;                                      		// 0x0020 (0x0004) 
-	int                                         NetIndex;                                         		// 0x0024 (0x0004) 
-	class UObject*                              Outer;                                            		// 0x0028 (0x0004) 
-	struct FName                                Name;                                             		// 0x002C (0x0008) 
-	class UClass*                               Class;                                            		// 0x0034 (0x0004) 
-	class UObject*								ObjectArchetype;                                  		// 0x0038 (0x0004) 
+	struct FPointer			VfTableObject;							// 0x0000 (0x04)
+	int						ObjectInternalInteger;					// 0x0004 (0x04)
+	struct FQWord			ObjectFlags;                            // 0x0008 (0x08)
+	struct FPointer			HashNext;                               // 0x0010 (0x04)
+	struct FPointer			HashOuterNext;                          // 0x0014 (0x04)
+	struct FPointer			StateFrame;                             // 0x0018 (0x04)
+	class UObject*			Linker;                                 // 0x001C (0x04)
+	struct FPointer			LinkerIndex;							// 0x0020 (0x04)
+	int						NetIndex;                               // 0x0024 (0x04)
+	class UObject*			Outer;                                  // 0x0028 (0x04)
+	struct FName			Name;                                   // 0x002C (0x08)
+	class UClass*			Class;                                  // 0x0034 (0x04)
+	class UObject*			ObjectArchetype;						// 0x0038 (0x04)
 
 private:
 	static UClass* pClassPointer;
@@ -313,11 +269,12 @@ public:
 	};
 };
 
-	// (0x003C - 0x0040)
+	// (0x003C - 0x0044)
 	class UField : public UObject
 	{
 	public:
-		class UField*		Next;										// 0x003C (0x04)
+		class UField*		SuperField;									// 0x003C (0x04)
+		class UField*		Next;										// 0x0040 (0x04)
 
 	private:
 		static UClass* pClassPointer;
@@ -332,11 +289,12 @@ public:
 		};
 	};
 
-		// (0x0040 - 0x004C)
+		// (0x0044 - 0x0054)
 		class UEnum : public UField
 		{
 		public:
-			TArray< FName >	Names;											// 0x0040 (0x0C)	
+			TArray< FName >			Names;									// 0x0044 (0x0C)
+			unsigned char			UnknownData00[ 0x4 ];					// 0x0050 (0x04)
 
 		private:
 			static UClass* pClassPointer;
@@ -351,11 +309,11 @@ public:
 			};
 		};
 
-		// (0x0040 - 0x004C)
+		// (0x0044 - 0x0050)
 		class UConst : public UField
 		{
 		public:
-			struct FString		Value;										// 0x0040 (0x0C)													
+			struct FString		Value;										// 0x0044 (0x0C)													
 
 		private:
 			static UClass* pClassPointer;
@@ -370,15 +328,15 @@ public:
 			};
 		};
 
-		// (0x0040 - 0x0090)
+		// (0x0044 - 0x0084)
 		class UStruct : public UField
 		{
 		public:
-			unsigned char			UnknownData00[ 0x8 ];					// 0x0040 (0x08)
-			class UField*			SuperField;								// 0x0048 (0x04)
-			class UField*			Children;								// 0x004C (0x04)
-			unsigned long			PropertySize;							// 0x0050 (0x04)
-			unsigned char			UnknownData01[ 0x3C ];					// 0x0054 (0x3C)
+			unsigned char			UnknownData00[ 0x4 ];					// 0x0044 (0x04)
+			unsigned long			PropertySize;							// 0x0048 (0x04)
+			unsigned char			UnknownData01[ 0x14 ];					// 0x004C (0x14)
+			class UField*			Children;								// 0x0060 (0x04)
+			unsigned char			UnknownData02[ 0x20 ];					// 0x0064 (0x20)
 
 		private:
 			static UClass* pClassPointer;
@@ -393,12 +351,11 @@ public:
 			};
 		};
 
-
-			// (0x0090 - 0x00AC)
+			// (0x0084 - 0x0094)
 			class UScriptStruct : public UStruct
 			{
 			public:
-				unsigned char		UnknownData00[ 0x1C ];						// 0x0090 (0x1C)
+				unsigned char		UnknownData00[ 0x10 ];						// 0x0084 (0x10)
 
 			private:
 				static UClass* pClassPointer;
@@ -413,19 +370,14 @@ public:
 				};
 			};
 
-			// (0x0090 - 0x00B0)
+			// (0x0084 - 0x0098)
 			class UFunction : public UStruct
 			{
 			public:
-				unsigned long		FunctionFlags;								// 0x0090 (0x04)
-				unsigned short		iNative;									// 0x0094 (0x02)
-				unsigned short		RepOffset;									// 0x0096 (0x02)
-				struct FName		FriendlyName;								// 0x0098 (0x08)
-				unsigned short		NumParms;									// 0x00A0 (0x01)
-				unsigned short		ParmsSize;									// 0x00A2 (0x02)
-				unsigned long		ReturnValueOffset;							// 0x00A4 (0x02)
-				unsigned char		UnknownData001;								// 0x00A8 (0x04)
-				void*				Func;										// 0x00AC (0x04)
+				void*				Func;										// 0x0084 (0x04)
+				unsigned long		FunctionFlags;								// 0x0088 (0x04)
+				unsigned short		iNative;									// 0x008C (0x02)
+				unsigned char		UnknownData00[ 0x8 ];						// 0x0090 (0x08)
 
 			private:
 				static UClass* pClassPointer;
@@ -440,11 +392,11 @@ public:
 				};
 			};
 
-			// (0x0090 - 0x00D8)
+			// (0x0084 - 0x00A8)
 			class UState : public UStruct
 			{
 			public:
-				unsigned char			UnknownData00[ 0x48 ];						// 0x0090 (0x48)
+				unsigned char			UnknownData00[ 0x24 ];						// 0x0084 (0x24)
 
 			private:
 				static UClass* pClassPointer;
@@ -459,11 +411,11 @@ public:
 				};
 			};
 
-				// (0x00D8 - 0x01D4)
+				// (0x00A8 - 0x0164)
 				class UClass : public UState
 				{
 				public:
-					unsigned char			UnknownData00[ 0xFC ];					// 0x00D8 (0xFC)
+					unsigned char			UnknownData00[ 0xBC ];					// 0x00A8 (0xBC)
 
 				private:
 					static UClass* pClassPointer;
@@ -478,16 +430,17 @@ public:
 					};
 				};
 
-		// (0x0040 - 0x0088)
+		// (0x0044 - 0x0088)
 		class UProperty : public UField 
 		{
 		public:
-			unsigned long		ArrayDim;									// 0x0040 (0x04)					
-			unsigned long		ElementSize;								// 0x0044 (0x04)
-			FQWord				PropertyFlags;								// 0x0048 (0x08)
-			unsigned char		UnknownData00[ 0x10 ];						// 0x0050 (0x10)
-			unsigned long		Offset;										// 0x0060 (0x04)
-			unsigned char		UnknownData01[ 0x1C ];						// 0x0064 (0x1C)
+			unsigned long		ArrayDim;									// 0x0044 (0x04)					
+			unsigned long		ElementSize;								// 0x0048 (0x04)
+			unsigned char		UnknownData00[ 0x4 ];						// 0x004C (0x04)
+			FQWord				PropertyFlags;								// 0x0050 (0x08)
+			unsigned char		UnknownData01[ 0x10 ];						// 0x0058 (0x10)
+			unsigned long		Offset;										// 0x0068 (0x04)
+			unsigned char		UnknownData02[ 0x1C ];						// 0x006C (0x1C)
 
 		private:
 			static UClass* pClassPointer;
@@ -502,11 +455,12 @@ public:
 			};
 		};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UByteProperty : public UProperty 
 			{
 			public:
-				class UEnum*		Enum;										// 0x0088 (0x04)
+				class UEnum*			Enum;									// 0x0088 (0x04)
+				unsigned char			UnknownData00[ 0x4 ];					// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -557,11 +511,12 @@ public:
 				};
 			};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UBoolProperty : public UProperty 
 			{
 			public:
-				unsigned long		BitMask;									// 0x0088 (0x04)			
+				unsigned long			BitMask;								// 0x0088 (0x04)
+				unsigned char			UnknownData00[ 0x4 ];					// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -589,6 +544,24 @@ public:
 				{
 					if ( ! pClassPointer )
 						pClassPointer = UObject::FindClass ( "Class Core.StrProperty" );
+
+					return pClassPointer;
+				};
+			};
+
+			// (0x0088 - 0x0088)
+			class UStringRefProperty : public UProperty 
+			{
+			public:
+
+			private:
+				static UClass* pClassPointer;
+
+			public:
+				static UClass* StaticClass()
+				{
+					if ( ! pClassPointer )
+						pClassPointer = UObject::FindClass ( "Class Core.StringRefProperty" );
 
 					return pClassPointer;
 				};
@@ -631,11 +604,12 @@ public:
 				};
 			};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UObjectProperty : public UProperty 
 			{
 			public:
 				class UClass*		PropertyClass;								// 0x0088 (0x04)
+				class UClass*		MetaClass;									// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -650,11 +624,10 @@ public:
 				};
 			};
 
-				// (0x008C - 0x0090)
+				// (0x0090 - 0x0090)
 				class UClassProperty : public UObjectProperty 
 				{
 				public:
-					class UClass*		MetaClass;									// 0x008C (0x04)
 
 				private:
 					static UClass* pClassPointer;
@@ -669,11 +642,12 @@ public:
 					};
 				};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UInterfaceProperty : public UProperty
 			{
 			public:
-				class UClass*		InterfaceClass;								// 0x0088 (0x04) 
+				class UClass*			InterfaceClass;							// 0x0088 (0x04)
+				unsigned char			UnknownData00[ 0x4 ];					// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -688,11 +662,12 @@ public:
 				};
 			};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UStructProperty : public UProperty 
 			{
 			public:
-				class UStruct*		Struct;										// 0x0088 (0x04)
+				class UStruct*			Struct;									// 0x0088 (0x04)
+				unsigned char			UnknownData00[ 0x4 ];					// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -707,11 +682,12 @@ public:
 				};
 			};
 
-			// (0x0088 - 0x008C)
+			// (0x0088 - 0x0090)
 			class UArrayProperty : public UProperty 
 			{
 			public:
-				class UProperty*	Inner;										// 0x0088 (0x04)
+				class UProperty*		Inner;									// 0x0088 (0x04)
+				unsigned char			UnknownData00[ 0x4 ];					// 0x008C (0x04)
 
 			private:
 				static UClass* pClassPointer;
@@ -767,6 +743,7 @@ UClass*			UIntProperty			::pClassPointer = NULL;
 UClass*			UFloatProperty			::pClassPointer = NULL;
 UClass*			UBoolProperty			::pClassPointer = NULL;
 UClass*			UStrProperty			::pClassPointer = NULL;
+UClass*			UStringRefProperty		::pClassPointer = NULL;
 UClass*			UNameProperty			::pClassPointer = NULL;
 UClass*			UDelegateProperty		::pClassPointer = NULL;
 UClass*			UObjectProperty			::pClassPointer = NULL;
